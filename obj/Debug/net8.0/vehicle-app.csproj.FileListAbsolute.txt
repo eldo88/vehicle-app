@@ -1,0 +1,14 @@
+/Users/leejones/Desktop/CodeProj/vehicle-app/bin/Debug/net8.0/vehicle-app
+/Users/leejones/Desktop/CodeProj/vehicle-app/bin/Debug/net8.0/vehicle-app.deps.json
+/Users/leejones/Desktop/CodeProj/vehicle-app/bin/Debug/net8.0/vehicle-app.runtimeconfig.json
+/Users/leejones/Desktop/CodeProj/vehicle-app/bin/Debug/net8.0/vehicle-app.dll
+/Users/leejones/Desktop/CodeProj/vehicle-app/bin/Debug/net8.0/vehicle-app.pdb
+/Users/leejones/Desktop/CodeProj/vehicle-app/obj/Debug/net8.0/vehicle-app.GeneratedMSBuildEditorConfig.editorconfig
+/Users/leejones/Desktop/CodeProj/vehicle-app/obj/Debug/net8.0/vehicle-app.AssemblyInfoInputs.cache
+/Users/leejones/Desktop/CodeProj/vehicle-app/obj/Debug/net8.0/vehicle-app.AssemblyInfo.cs
+/Users/leejones/Desktop/CodeProj/vehicle-app/obj/Debug/net8.0/vehicle-app.csproj.CoreCompileInputs.cache
+/Users/leejones/Desktop/CodeProj/vehicle-app/obj/Debug/net8.0/vehicle-app.dll
+/Users/leejones/Desktop/CodeProj/vehicle-app/obj/Debug/net8.0/refint/vehicle-app.dll
+/Users/leejones/Desktop/CodeProj/vehicle-app/obj/Debug/net8.0/vehicle-app.pdb
+/Users/leejones/Desktop/CodeProj/vehicle-app/obj/Debug/net8.0/vehicle-app.genruntimeconfig.cache
+/Users/leejones/Desktop/CodeProj/vehicle-app/obj/Debug/net8.0/ref/vehicle-app.dll
