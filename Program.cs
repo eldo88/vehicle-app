@@ -6,11 +6,13 @@ class Program
     {
         
         VehicleType vehicleType;
+
+        DisplayMenus displayMenus = new DisplayMenus();
         
-        var choice = DisplayMenus.MainMenu();
+        var choice = displayMenus.MainMenu();
   
 
-        switch (choice) 
+        switch (choice["vehicle"]) 
         {
             case 1:
                 vehicleType = VehicleType.Car;
@@ -23,6 +25,25 @@ class Program
             case 3:
                 vehicleType = VehicleType.Motorcycle;
                 Console.WriteLine("3");
+                break;
+        }
+
+        switch (choice["engine"]) 
+        {
+            case 1:
+                Console.WriteLine("V6");
+                break;
+            case 2:
+                Console.WriteLine("V8");
+                break;
+            case 3:
+                Console.WriteLine("V6 Hybrid");
+                break;
+            case 4:
+                Console.WriteLine("Electric");
+                break;
+            default:
+                Console.WriteLine("Exit");
                 break;
         }
     }
