@@ -16,15 +16,15 @@ class Program
         {
             case 1:
                 vehicleType = VehicleType.Car;
-                Console.WriteLine("1");
+                Console.WriteLine("Car");
                 break;
             case 2:
                 vehicleType = VehicleType.Truck;
-                Console.WriteLine("2");
+                Console.WriteLine("Truck");
                 break;
             case 3:
                 vehicleType = VehicleType.Motorcycle;
-                Console.WriteLine("3");
+                Console.WriteLine("Motorcycle");
                 break;
         }
 
@@ -46,5 +46,9 @@ class Program
                 Console.WriteLine("Exit");
                 break;
         }
+
+
+        Car car = new Car("blue", 4, "Toyota", "4Runner", 1997, VehicleType.Truck);
+        Console.WriteLine(car);
     }
 }
