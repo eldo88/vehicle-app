@@ -1,14 +1,13 @@
 namespace vehicle_app;
 
-public class DisplayMenus
+public static class DisplayMenus
 {
 
-    private Dictionary<string, int> finalMenuChoices = new Dictionary<string, int>();
-
-    public Dictionary<string, int> MainMenu()
+    public static Dictionary<string, int> MainMenu()
     {
         var choice = 0;
         bool displayMenu = true;
+        Dictionary<string, int> menuChoices = new Dictionary<string, int>();
 
         do 
         {
@@ -35,10 +34,9 @@ public class DisplayMenus
             {
                 Console.WriteLine($"{choiceStr} is not a valid input");
             }
+            menuChoices["vehicle"] = choice;
 
-            finalMenuChoices["vehicle"] = choice;
-
-            var engineChoice = EngineSelectionMenu(choice);
+            var engineChoice = EngineSelectionMenu(choice, menuChoices);
 
             if (choice != 0 && engineChoice != 5) 
             {
@@ -47,12 +45,10 @@ public class DisplayMenus
 
         } while(displayMenu);
 
-        Dictionary<string, int> menuChoices = finalMenuChoices;
-
         return menuChoices;
     }
 
-    public int EngineSelectionMenu(int mainMenuChoice)
+    public static int EngineSelectionMenu(int mainMenuChoice, Dictionary<string, int> menuChoices)
     {
         int engineSelection = 0;
         bool displayMenu = true;
@@ -91,8 +87,8 @@ public class DisplayMenus
                 }
             }
         } while (displayMenu);
-        
-        finalMenuChoices["engine"] = engineSelection;
+       menuChoices["engine"] = engineSelection;
+
         return engineSelection;
     }
 }

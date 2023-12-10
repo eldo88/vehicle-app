@@ -6,13 +6,11 @@ class Program
     {
         
         VehicleType vehicleType = VehicleType.Car;
-
-        DisplayMenus displayMenus = new DisplayMenus();
         
-        var choice = displayMenus.MainMenu();
+        var menuChoices = DisplayMenus.MainMenu();
   
 
-        switch (choice["vehicle"]) 
+        switch (menuChoices["vehicle"]) 
         {
             case 1:
                 vehicleType = VehicleType.Car;
@@ -30,7 +28,7 @@ class Program
 
         string engineType = "";
         int MPG = 0; 
-        switch (choice["engine"]) 
+        switch (menuChoices["engine"]) 
         {
             case 1:
                 engineType = "V6";
