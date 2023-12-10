@@ -5,7 +5,7 @@ class Program
     static void Main(string[] args)
     {
         
-        VehicleType vehicleType;
+        VehicleType vehicleType = VehicleType.Car;
 
         DisplayMenus displayMenus = new DisplayMenus();
         
@@ -28,18 +28,28 @@ class Program
                 break;
         }
 
+        string engineType = "";
+        int MPG = 0; 
         switch (choice["engine"]) 
         {
             case 1:
+                engineType = "V6";
+                MPG = 25;
                 Console.WriteLine("V6");
                 break;
             case 2:
+                engineType = "V8";
+                MPG = 18;
                 Console.WriteLine("V8");
                 break;
             case 3:
+                engineType = "V6 Hybrid";
+                MPG = 35;
                 Console.WriteLine("V6 Hybrid");
                 break;
             case 4:
+                engineType = "Electric";
+                MPG = 0;
                 Console.WriteLine("Electric");
                 break;
             default:
@@ -48,7 +58,7 @@ class Program
         }
 
 
-        Car car = new Car("blue", 4, "Toyota", "4Runner", 1997, VehicleType.Truck);
+        Car car = new Car("blue", 4, "Toyota", "4Runner", 1997, vehicleType, engineType, MPG);
         Console.WriteLine(car);
     }
 }

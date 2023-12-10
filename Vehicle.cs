@@ -1,6 +1,6 @@
 namespace vehicle_app;
 
-public abstract class Vehicle : Drive
+public abstract class Vehicle
 {
 
     public Vehicle(string color, int capacity, string make, string model, int year, VehicleType vehicleType)
@@ -32,8 +32,10 @@ public abstract class Vehicle : Drive
     public VehicleType VehicleType {get;}
 
 
-    public void Drive()
+    public virtual Dictionary<string, decimal> Drive()
     {
+        Dictionary<string, decimal> tripDetails = new Dictionary<string, decimal>();
 
+        return tripDetails;
     }
 }

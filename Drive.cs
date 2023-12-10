@@ -2,5 +2,5 @@ namespace vehicle_app;
 
 interface Drive
 {
-    void Drive();
+    Dictionary<string, decimal> Drive();
 }
