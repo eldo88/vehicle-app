@@ -30,6 +30,7 @@ public abstract class Vehicle
         if (engineType != "Electric")
         {
             MPG = mpg;
+            FuelCapacity = 20;
             Range = FuelCapacity * MPG;
         }
         else

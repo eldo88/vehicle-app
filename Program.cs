@@ -9,6 +9,7 @@ class Program
         
         var menuChoices = DisplayMenus.MainMenu();
   
+        var occupantCapacity = 4;
 
         switch (menuChoices["vehicle"]) 
         {
@@ -21,13 +22,37 @@ class Program
                 Console.WriteLine("Truck");
                 break;
             case 3:
-                vehicleType = VehicleType.Motorcycle;
+                vehicleType = VehicleType.SUV;
+                occupantCapacity = 2;
                 Console.WriteLine("Motorcycle");
+                break;
+            case 4:
+                Console.WriteLine("Exiting...");
+                return;
+            default:
+                Console.WriteLine("No choice for vehicle type was made");
                 break;
         }
 
-        string engineType = "";
-        int MPG = 0; 
+        var make = "";
+        switch(menuChoices["make"])
+        {
+            case 1:
+                make = "Toyota";
+                break;
+            case 2:
+                make = "Ford";
+                break;
+            case 3:
+                make = "Chevy";
+                break;
+            default:
+                Console.WriteLine("No make provided");
+                break;
+        }
+
+        var engineType = "";
+        var MPG = 0; 
         switch (menuChoices["engine"]) 
         {
             case 1:
@@ -56,7 +81,7 @@ class Program
         }
 
 
-        Car car = new Car("blue", 4, "Toyota", "4Runner", 1997, vehicleType, engineType, MPG);
+        Car car = new Car("blue", occupantCapacity, make, "4Runner", 1997, vehicleType, engineType, MPG);
         Console.WriteLine(car);
     }
 }

@@ -17,6 +17,6 @@ public sealed class Car : Vehicle
         return base.Drive();
     }
 
-    public override string ToString() => $"Make: {Make} Model: {Model} Year: {Year} Type: {VehicleType} Engine Type: {EngineType} Range: {Range}";
+    public override string ToString() => $" Make: {Make}\n Model: {Model}\n Year: {Year}\n Type: {VehicleType}\n Engine Type: {EngineType}\n Range: {Range}\n";
 
 }
