@@ -113,7 +113,7 @@ class Program
         }
 
 
-        Car car = new Car("blue", occupantCapacity, make, model, 1997, vehicleType, engineType, MPG);
+        Car car = new Car("blue", occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
         Console.WriteLine(car);
     }
 }

@@ -45,7 +45,7 @@ public static class DisplayMenus
 
             if (choice != 0)
             {
-                makeChoice = MakeSelectionMenu(choice, menuChoices);
+                makeChoice = MakeSelectionMenu(menuChoices);
             }
 
             if (choice != 0 && makeChoice != 4) 
@@ -58,7 +58,7 @@ public static class DisplayMenus
         return menuChoices;
     }
 
-    public static int MakeSelectionMenu(int mainMenuChoice, Dictionary<string, int> menuChoices)
+    public static int MakeSelectionMenu(Dictionary<string, int> menuChoices)
     {
         var makeSelection = 0;
         var displayMenu = true;
@@ -270,7 +270,10 @@ public static class DisplayMenus
                     engineSelection = 0;
                 }
 
-                if (engineSelection != 0)
+                var vehicleYear = VehicleYearSelectionMenu(menuChoices);
+
+
+                if (engineSelection != 0 && vehicleYear != 1)
                 {
                     displayMenu = false;
                 }
@@ -279,5 +282,37 @@ public static class DisplayMenus
        menuChoices["engine"] = engineSelection;
 
         return engineSelection;
+    }
+
+    public static int VehicleYearSelectionMenu(Dictionary<string, int> menuChoices)
+    {
+        var vehicleYear = 0;
+        var inputStr = "";
+        var displayMenu = true;
+
+        do
+        {
+            Console.WriteLine("***************************************************************");
+            Console.Write($"\n Please enter the year of your vehicle, if you want to exit enter 1: ");
+            inputStr = Console.ReadLine();
+            Console.WriteLine("\n***************************************************************\n");
+
+            var result = 0;
+            var validInput = int.TryParse(inputStr, out result);
+
+            if (validInput && result <= 2025)
+            {
+                vehicleYear = result;
+                displayMenu = false;
+            }
+            else
+            {
+                Console.WriteLine("Year entered not valid, please enter another year");
+            }
+
+        } while(displayMenu);
+        menuChoices["year"] = vehicleYear;
+
+        return vehicleYear;
     }
 }
