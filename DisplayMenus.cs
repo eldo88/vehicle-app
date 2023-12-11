@@ -88,16 +88,21 @@ public static class DisplayMenus
                 makeSelection = 0;
             }
 
-            var engineSelection = 0;
+            var modelSelection = 0;
 
             if (makeSelection != 4 && makeSelection != 0)
             {
+                switch (makeSelection)
+                {
+                    case 1:
+                        modelSelection = ToyotaModelSelectionMenu(menuChoices);
+                        break;
+                }
                 //switch statement goes here for model
                 //each make should have it's own menu
-                engineSelection = EngineSelectionMenu(mainMenuChoice, menuChoices);
             }
 
-            if (makeSelection != 0 && engineSelection != 5)
+            if (makeSelection != 0 && modelSelection != 99)
             {
                 displayMenu = false;
             }
@@ -106,6 +111,129 @@ public static class DisplayMenus
         menuChoices["make"] = makeSelection;
 
         return makeSelection;
+    }
+
+    public static int ToyotaModelSelectionMenu(Dictionary<string, int> menuChoices)
+    {
+        var modelSelection = 0;
+        var displayMenu = true;
+
+        do
+        {
+            if (menuChoices["vehicle"] == 1)
+            {
+                Console.WriteLine("***************************************************************");
+                Console.WriteLine("\n Please choose the make of your vehicle from the following options:");
+                Console.WriteLine("\t 1. Camry");
+                Console.WriteLine("\t 2. Corrolla");
+                Console.WriteLine("\t 3. Prius");
+                Console.WriteLine("\t 4. Go back");
+                Console.WriteLine("\n****************************************************************\n");
+                Console.Write("Enter an integer value of your choice: ");
+            }
+            else if (menuChoices["vehicle"] == 2)
+            {
+                Console.WriteLine("***************************************************************");
+                Console.WriteLine("\n Please choose the make of your vehicle from the following options:");
+                Console.WriteLine("\t 1. Tacoma");
+                Console.WriteLine("\t 2. Tundra");
+                Console.WriteLine("\t 3. Go back");
+                Console.WriteLine("\n****************************************************************\n");
+                Console.Write("Enter an integer value of your choice: ");
+            }
+            else
+            {
+                Console.WriteLine("***************************************************************");
+                Console.WriteLine("\n Please choose the make of your vehicle from the following options:");
+                Console.WriteLine("\t 1. 4Runner");
+                Console.WriteLine("\t 2. Land Cruiser");
+                Console.WriteLine("\t 3. Sequoia");
+                Console.WriteLine("\t 4. Go back");
+                Console.WriteLine("\n****************************************************************\n");
+                Console.Write("Enter an integer value of your choice: ");
+            }
+
+
+            var result = 0;
+            var choiceStr = Console.ReadLine();
+            var validInput = int.TryParse(choiceStr, out result);
+
+            if (validInput && result >= 1 && result <= 4)
+            {
+                modelSelection = result;
+            }
+            else
+            {
+                Console.WriteLine($"{choiceStr} is not a valid input");
+                modelSelection = 0;
+            }
+
+            if (menuChoices["vehicle"] == 1)
+            {
+                if (modelSelection == 4)
+                {
+                    modelSelection = 99;
+                }
+            }
+
+            if (menuChoices["vehicle"] == 2)
+            {
+                switch (modelSelection)
+                {
+                    case 1:
+                        modelSelection = 4;
+                        break;
+                    case 2: 
+                        modelSelection = 5;
+                        break;
+                    case 3:
+                        modelSelection = 99;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            if (menuChoices["vehicle"] == 3)
+            {
+                switch (modelSelection)
+                {
+                    case 1:
+                        modelSelection = 6;
+                        break;
+                    case 2:
+                        modelSelection = 7;
+                        break;
+                    case 3:
+                        modelSelection = 8;
+                        break;
+                    case 4:
+                        modelSelection = 99;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            var engineSelection = 0;
+
+            if (modelSelection != 99 && modelSelection != 0)
+            {
+                //switch statement goes here for model
+                //each make should have it's own menu
+                var mainMenuChoice = 1;
+                engineSelection = EngineSelectionMenu(mainMenuChoice, menuChoices);
+            }
+
+            if (modelSelection != 0 && engineSelection != 5)
+            {
+                displayMenu = false;
+            }
+
+        } while (displayMenu);
+        menuChoices["model"] = modelSelection;
+
+        return modelSelection;
     }
 
     public static int EngineSelectionMenu(int mainMenuChoice, Dictionary<string, int> menuChoices)

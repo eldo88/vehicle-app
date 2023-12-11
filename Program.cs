@@ -51,6 +51,38 @@ class Program
                 break;
         }
 
+        var model = "";
+        switch (menuChoices["model"])
+        {
+            case 1:
+                model = "Camry";
+                break;
+            case 2:
+                model = "Corrolla";
+                break;
+            case 3:
+                model = "Prius";
+                break;
+            case 4:
+                model = "Tacoma";
+                break;
+            case 5:
+                model = "Tundra";
+                break;
+            case 6:
+                model = "4Runner";
+                break;
+            case 7:
+                model = "Land Cruiser";
+                break;
+            case 8:
+                model = "Seqoia";
+                break;
+            default:
+                Console.WriteLine("No model provided");
+                break;
+        }
+
         var engineType = "";
         var MPG = 0; 
         switch (menuChoices["engine"]) 
@@ -81,7 +113,7 @@ class Program
         }
 
 
-        Car car = new Car("blue", occupantCapacity, make, "4Runner", 1997, vehicleType, engineType, MPG);
+        Car car = new Car("blue", occupantCapacity, make, model, 1997, vehicleType, engineType, MPG);
         Console.WriteLine(car);
     }
 }
