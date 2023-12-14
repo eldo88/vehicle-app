@@ -112,8 +112,19 @@ class Program
                 break;
         }
 
+        if (vehicleType == VehicleType.Car)
+        {
+            Car car = new Car("blue", occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
+            Console.WriteLine(car);
+        } else if (vehicleType == VehicleType.Truck)
+        {
+            Truck truck = new Truck("red", occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
+            Console.WriteLine(truck);
+        } else if (vehicleType == VehicleType.SUV)
+        {
+            Suv suv = new Suv("green", occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
+            Console.WriteLine(suv);
+        }
 
-        Car car = new Car("blue", occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
-        Console.WriteLine(car);
     }
 }
