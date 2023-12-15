@@ -1,4 +1,6 @@
-﻿namespace vehicle_app;
+﻿using System.Runtime.CompilerServices;
+
+namespace vehicle_app;
 
 class Program
 {
@@ -15,16 +17,13 @@ class Program
         {
             case 1:
                 vehicleType = VehicleType.Car;
-                Console.WriteLine("Car");
                 break;
             case 2:
                 vehicleType = VehicleType.Truck;
-                Console.WriteLine("Truck");
                 break;
             case 3:
                 vehicleType = VehicleType.SUV;
                 occupantCapacity = 2;
-                Console.WriteLine("Motorcycle");
                 break;
             case 4:
                 Console.WriteLine("Exiting...");
@@ -90,22 +89,18 @@ class Program
             case 1:
                 engineType = "V6";
                 MPG = 25;
-                Console.WriteLine("V6");
                 break;
             case 2:
                 engineType = "V8";
                 MPG = 18;
-                Console.WriteLine("V8");
                 break;
             case 3:
                 engineType = "V6 Hybrid";
                 MPG = 35;
-                Console.WriteLine("V6 Hybrid");
                 break;
             case 4:
                 engineType = "Electric";
                 MPG = 0;
-                Console.WriteLine("Electric");
                 break;
             default:
                 Console.WriteLine("Exit");
@@ -116,15 +111,32 @@ class Program
         {
             Car car = new Car("blue", occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
             Console.WriteLine(car);
-        } else if (vehicleType == VehicleType.Truck)
+
+            var tripDetails = car.Drive(1784);
+            car.PrintTripDetails(tripDetails);
+        } 
+        else if (vehicleType == VehicleType.Truck)
         {
             Truck truck = new Truck("red", occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
             Console.WriteLine(truck);
-        } else if (vehicleType == VehicleType.SUV)
+
+            var tripDetails = truck.Drive(2500);
+            truck.PrintTripDetails(tripDetails);
+        } 
+        else if (vehicleType == VehicleType.SUV)
         {
             Suv suv = new Suv("green", occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
             Console.WriteLine(suv);
+
+            var tripDetails = suv.Drive(1000);
+            suv.PrintTripDetails(tripDetails);
         }
+        else
+        {
+            Console.WriteLine("Invalid vehicle type");
+        }
+
+
 
     }
 }

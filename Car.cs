@@ -12,9 +12,14 @@ public sealed class Car : Vehicle
 
     }
 
-    public override Dictionary<string, decimal> Drive()
+    public override Dictionary<string, decimal> Drive(decimal tripLength)
     {
-        return base.Drive();
+        return base.Drive(tripLength);
+    }
+
+    public override void PrintTripDetails(Dictionary<string, decimal> tripDetails)
+    {
+        base.PrintTripDetails(tripDetails);
     }
 
     public override string ToString() => $" Make: {Make}\n Model: {Model}\n Year: {Year}\n Type: {VehicleType}\n Engine Type: {EngineType}\n Range: {Range}\n";
