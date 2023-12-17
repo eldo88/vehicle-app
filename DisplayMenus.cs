@@ -88,6 +88,8 @@ public static class DisplayMenus
                 makeSelection = 0;
             }
 
+            menuChoices["make"] = makeSelection;
+
             var modelSelection = 0;
 
             if (makeSelection != 4 && makeSelection != 0)
@@ -108,7 +110,7 @@ public static class DisplayMenus
             }
 
         } while (displayMenu);
-        menuChoices["make"] = makeSelection;
+        // menuChoices["make"] = makeSelection;
 
         return makeSelection;
     }
@@ -215,6 +217,8 @@ public static class DisplayMenus
                 }
             }
 
+            menuChoices["model"] = modelSelection;
+
             var engineSelection = 0;
 
             if (modelSelection != 99 && modelSelection != 0)
@@ -231,7 +235,6 @@ public static class DisplayMenus
             }
 
         } while (displayMenu);
-        menuChoices["model"] = modelSelection;
 
         return modelSelection;
     }
@@ -270,8 +273,14 @@ public static class DisplayMenus
                     engineSelection = 0;
                 }
 
-                var vehicleYear = VehicleYearSelectionMenu(menuChoices);
+                menuChoices["engine"] = engineSelection;
 
+                var vehicleYear = 1;
+                if (engineSelection != 0)
+                {
+                    vehicleYear = VehicleYearSelectionMenu(menuChoices);
+
+                }
 
                 if (engineSelection != 0 && vehicleYear != 1)
                 {
@@ -279,7 +288,6 @@ public static class DisplayMenus
                 }
             }
         } while (displayMenu);
-       menuChoices["engine"] = engineSelection;
 
         return engineSelection;
     }
@@ -303,6 +311,7 @@ public static class DisplayMenus
             if (validInput && result <= 2025)
             {
                 vehicleYear = result;
+                menuChoices["year"] = vehicleYear;
                 displayMenu = false;
             }
             else
@@ -311,7 +320,6 @@ public static class DisplayMenus
             }
 
         } while(displayMenu);
-        menuChoices["year"] = vehicleYear;
 
         return vehicleYear;
     }
