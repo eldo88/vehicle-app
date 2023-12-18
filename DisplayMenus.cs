@@ -99,9 +99,17 @@ public static class DisplayMenus
                     case 1:
                         modelSelection = ToyotaModelSelectionMenu(menuChoices);
                         break;
+                    case 2:
+                        modelSelection = FordModelSelectionMenu(menuChoices);
+                        break;
+                    case 3:
+                        modelSelection = ChevroletModelSelectionMenu(menuChoices);
+                        break;
+                    default:
+                        Console.WriteLine("An error occurred when selecting the model, default value selected");
+                        modelSelection = 4;
+                        break;
                 }
-                //switch statement goes here for model
-                //each make should have it's own menu
             }
 
             if (makeSelection != 0 && modelSelection != 99)
@@ -223,8 +231,283 @@ public static class DisplayMenus
 
             if (modelSelection != 99 && modelSelection != 0)
             {
-                //switch statement goes here for model
-                //each make should have it's own menu
+                //need to have separate menu for electric vehicles
+                var mainMenuChoice = 1;
+                engineSelection = EngineSelectionMenu(mainMenuChoice, menuChoices);
+            }
+
+            if (modelSelection != 0 && engineSelection != 5)
+            {
+                displayMenu = false;
+            }
+
+        } while (displayMenu);
+
+        return modelSelection;
+    }
+
+    public static int FordModelSelectionMenu(Dictionary<string, int> menuChoices)
+    {
+        var modelSelection = 0;
+        var displayMenu = true;
+
+        do
+        {
+            if (menuChoices["vehicle"] == 1)
+            {
+                Console.WriteLine("***************************************************************");
+                Console.WriteLine("\n Please choose the make of your vehicle from the following options:");
+                Console.WriteLine("\t 1. Focus");
+                Console.WriteLine("\t 2. Escort");
+                Console.WriteLine("\t 3. Fusion");
+                Console.WriteLine("\t 4. Go back");
+                Console.WriteLine("\n****************************************************************\n");
+                Console.Write("Enter an integer value of your choice: ");
+            }
+            else if (menuChoices["vehicle"] == 2)
+            {
+                Console.WriteLine("***************************************************************");
+                Console.WriteLine("\n Please choose the make of your vehicle from the following options:");
+                Console.WriteLine("\t 1. F-150");
+                Console.WriteLine("\t 2. Ranger");
+                Console.WriteLine("\t 3. Maverick");
+                Console.WriteLine("\t 4. Go back");
+                Console.WriteLine("\n****************************************************************\n");
+                Console.Write("Enter an integer value of your choice: ");
+            }
+            else
+            {
+                Console.WriteLine("***************************************************************");
+                Console.WriteLine("\n Please choose the make of your vehicle from the following options:");
+                Console.WriteLine("\t 1. Explorer");
+                Console.WriteLine("\t 2. Bronco");
+                Console.WriteLine("\t 3. Escape");
+                Console.WriteLine("\t 4. Go back");
+                Console.WriteLine("\n****************************************************************\n");
+                Console.Write("Enter an integer value of your choice: ");
+            }
+
+
+            var result = 0;
+            var choiceStr = Console.ReadLine();
+            var validInput = int.TryParse(choiceStr, out result);
+
+            if (validInput && result >= 1 && result <= 4)
+            {
+                modelSelection = result;
+            }
+            else
+            {
+                Console.WriteLine($"{choiceStr} is not a valid input");
+                modelSelection = 0;
+            }
+
+            if (menuChoices["vehicle"] == 1)
+            {
+                switch(modelSelection)
+                {
+                    case 1:
+                        modelSelection = 9;
+                        break;
+                    case 2:
+                        modelSelection = 10;
+                        break;
+                    case 3:
+                        modelSelection = 11;
+                        break;
+                    case 4:
+                        modelSelection = 99;
+                        break;
+                }
+            }
+
+            if (menuChoices["vehicle"] == 2)
+            {
+                switch (modelSelection)
+                {
+                    case 1:
+                        modelSelection = 12;
+                        break;
+                    case 2: 
+                        modelSelection = 13;
+                        break;
+                    case 3:
+                        modelSelection = 14;
+                        break;
+                    case 4:
+                        modelSelection = 99;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            if (menuChoices["vehicle"] == 3)
+            {
+                switch (modelSelection)
+                {
+                    case 1:
+                        modelSelection = 15;
+                        break;
+                    case 2:
+                        modelSelection = 16;
+                        break;
+                    case 3:
+                        modelSelection = 17;
+                        break;
+                    case 4:
+                        modelSelection = 99;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            menuChoices["model"] = modelSelection;
+
+            var engineSelection = 0;
+
+            if (modelSelection != 99 && modelSelection != 0)
+            {
+                //need separate engine menu for electric vehicles
+                var mainMenuChoice = 1;
+                engineSelection = EngineSelectionMenu(mainMenuChoice, menuChoices);
+            }
+
+            if (modelSelection != 0 && engineSelection != 5)
+            {
+                displayMenu = false;
+            }
+
+        } while (displayMenu);
+
+        return modelSelection;
+    }
+
+    public static int ChevroletModelSelectionMenu(Dictionary<string, int> menuChoices)
+    {
+        var modelSelection = 0;
+        var displayMenu = true;
+
+        do
+        {
+            if (menuChoices["vehicle"] == 1)
+            {
+                Console.WriteLine("***************************************************************");
+                Console.WriteLine("\n Please choose the make of your vehicle from the following options:");
+                Console.WriteLine("\t 1. Corvette");
+                Console.WriteLine("\t 2. Camaro");
+                Console.WriteLine("\t 3. Bolt");
+                Console.WriteLine("\t 4. Go back");
+                Console.WriteLine("\n****************************************************************\n");
+                Console.Write("Enter an integer value of your choice: ");
+            }
+            else if (menuChoices["vehicle"] == 2)
+            {
+                Console.WriteLine("***************************************************************");
+                Console.WriteLine("\n Please choose the make of your vehicle from the following options:");
+                Console.WriteLine("\t 1. Silverado 1500");
+                Console.WriteLine("\t 2. Silverado 2500");
+                Console.WriteLine("\t 3. Colorado");
+                Console.WriteLine("\t 4. Go back");
+                Console.WriteLine("\n****************************************************************\n");
+                Console.Write("Enter an integer value of your choice: ");
+            }
+            else
+            {
+                Console.WriteLine("***************************************************************");
+                Console.WriteLine("\n Please choose the make of your vehicle from the following options:");
+                Console.WriteLine("\t 1. Tahoe");
+                Console.WriteLine("\t 2. Suburban");
+                Console.WriteLine("\t 3. Blazer");
+                Console.WriteLine("\t 4. Go back");
+                Console.WriteLine("\n****************************************************************\n");
+                Console.Write("Enter an integer value of your choice: ");
+            }
+
+
+            var result = 0;
+            var choiceStr = Console.ReadLine();
+            var validInput = int.TryParse(choiceStr, out result);
+
+            if (validInput && result >= 1 && result <= 4)
+            {
+                modelSelection = result;
+            }
+            else
+            {
+                Console.WriteLine($"{choiceStr} is not a valid input");
+                modelSelection = 0;
+            }
+
+            if (menuChoices["vehicle"] == 1)
+            {
+                switch(modelSelection)
+                {
+                    case 1:
+                        modelSelection = 18;
+                        break;
+                    case 2:
+                        modelSelection = 19;
+                        break;
+                    case 3:
+                        modelSelection = 20;
+                        break;
+                    case 4:
+                        modelSelection = 99;
+                        break;
+                }
+            }
+
+            if (menuChoices["vehicle"] == 2)
+            {
+                switch (modelSelection)
+                {
+                    case 1:
+                        modelSelection = 21;
+                        break;
+                    case 2: 
+                        modelSelection = 22;
+                        break;
+                    case 3:
+                        modelSelection = 23;
+                        break;
+                    case 4:
+                        modelSelection = 99;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            if (menuChoices["vehicle"] == 3)
+            {
+                switch (modelSelection)
+                {
+                    case 1:
+                        modelSelection = 24;
+                        break;
+                    case 2:
+                        modelSelection = 25;
+                        break;
+                    case 3:
+                        modelSelection = 26;
+                        break;
+                    case 4:
+                        modelSelection = 99;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            menuChoices["model"] = modelSelection;
+
+            var engineSelection = 0;
+
+            if (modelSelection != 99 && modelSelection != 0)
+            {
+                //need separate engine menu for electric vehicles
                 var mainMenuChoice = 1;
                 engineSelection = EngineSelectionMenu(mainMenuChoice, menuChoices);
             }
@@ -248,6 +531,7 @@ public static class DisplayMenus
         {
             if (mainMenuChoice == 1 || mainMenuChoice == 2 || mainMenuChoice == 3)
             {
+                //4-cyl, and need to figure out way to only show correct engines for make/model
                 Console.WriteLine("***************************************************************");
                 Console.WriteLine($"\n Please choose from the following options for your engine type:");
                 Console.WriteLine("\t    Engine/powertrain type     Fuel Type            HP ");
@@ -275,11 +559,10 @@ public static class DisplayMenus
 
                 menuChoices["engine"] = engineSelection;
 
-                var vehicleYear = 1;
-                if (engineSelection != 0)
+                var vehicleYear = 0;
+                if (engineSelection != 0 && engineSelection != 5)
                 {
                     vehicleYear = VehicleYearSelectionMenu(menuChoices);
-
                 }
 
                 if (engineSelection != 0 && vehicleYear != 1)

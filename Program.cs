@@ -77,6 +77,60 @@ class Program
             case 8:
                 model = "Seqoia";
                 break;
+            case 9:
+                model = "Focus";
+                break;
+            case 10:
+                model = "Escort";
+                break;
+            case 11:
+                model = "Fusion";
+                break;
+            case 12:
+                model = "F-150";
+                break;
+            case 13:
+                model = "Ranger";
+                break;
+            case 14:
+                model = "Maverick";
+                break;
+            case 15:
+                model = "Explorer";
+                break;
+            case 16:
+                model = "Bronco";
+                break;
+            case 17:
+                model = "Escape";
+                break;
+            case 18:
+                model = "Corvette";
+                break;
+            case 19:
+                model = "Camaro";
+                break;
+            case 20:
+                model = "Bolt";
+                break;
+            case 21:
+                model = "Silverado 1500";
+                break;
+            case 22:
+                model = "Silverado 2500";
+                break;
+            case 23:
+                model = "Colorado";
+                break;
+            case 24:
+                model = "Tahoe";
+                break;
+            case 25:
+                model = "Suburban";
+                break;
+            case 26:
+                model = "Blazer";
+                break;
             default:
                 Console.WriteLine("No model provided");
                 break;
