@@ -14,11 +14,15 @@ public class DisplayMenus
             while (!fileReader.EndOfStream)
             {
                 var line = fileReader.ReadLine();
-                var values = line.Split(',');
 
-                foreach (var item in values)
+                if (line != null)
                 {
-                    vehicleTypeList.Add(item);
+                    var values = line.Split(',');
+
+                    foreach (var item in values)
+                    {
+                        vehicleTypeList.Add(item);
+                    }
                 }
             }
         }
@@ -33,11 +37,15 @@ public class DisplayMenus
             while (!fileReader.EndOfStream)
             {
                 var line = fileReader.ReadLine();
-                var values = line.Split(',');
 
-                foreach (var item in values)
+                if (line != null)
                 {
-                    vehicleMakeTypeList.Add(item);
+                    var values = line.Split(',');
+
+                    foreach (var item in values)
+                    {
+                        vehicleMakeTypeList.Add(item);
+                    }
                 }
             }
         }
@@ -52,11 +60,14 @@ public class DisplayMenus
             while (!fileReader.EndOfStream)
             {
                 var line = fileReader.ReadLine();
-                var values = line.Split(',');
-
-                foreach (var item in values)
+                if (line != null)
                 {
+                    var values = line.Split(',');
+
+                    foreach (var item in values)
+                    {
                     engineTypeList.Add(item);
+                    }
                 }
             }
         }
