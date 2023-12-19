@@ -19,10 +19,7 @@ public class DisplayMenus
                 {
                     var values = line.Split(',');
 
-                    foreach (var item in values)
-                    {
-                        vehicleTypeList.Add(item);
-                    }
+                    vehicleTypeList.AddRange(values);
                 }
             }
         }
@@ -42,9 +39,50 @@ public class DisplayMenus
                 {
                     var values = line.Split(',');
 
-                    foreach (var item in values)
+                    vehicleMakeTypeList.AddRange(values);
+                }
+            }
+        }
+
+        string toyotaCarDataFilePath = @"./data/vehicle-data/toyota-car-data.csv";
+        string toyotaTruckDataFilePath = @"./data/vehicle-data/toyota-truck-data.csv";
+        string toyotaSuvDataFilePath = @"./data/vehicle-data/toyota-suv-data.csv";
+        string fordCarDataFilePath = @"./data/vehicle-data/ford-car-data.csv";
+        string fordTruckDataFilePath = @"./data/vehicle-data/ford-truck-data.csv";
+        string fordSuvDataFilePath = @"./data/vehicle-data/ford-suv-data.csv";
+        string chevroletCarDataFilePath = @"./data/vehicle-data/chevrolet-car-data.csv";
+        string chevroletTruckDataFilePath = @"./data/vehicle-data/chevrolet-truck-data.csv";
+        string chevroletSuvDataFilePath = @"./data/vehicle-data/chevrolet-suv-data.csv";
+
+        var modelDataFilePaths = new List<string>
+        {
+            toyotaCarDataFilePath, toyotaTruckDataFilePath, toyotaSuvDataFilePath, fordCarDataFilePath, 
+            fordTruckDataFilePath, fordSuvDataFilePath, chevroletCarDataFilePath, chevroletTruckDataFilePath,
+            chevroletSuvDataFilePath
+        };
+
+        foreach (var filePath in modelDataFilePaths)
+        {
+            if (File.Exists(filePath))
+            {
+                StreamReader fileReader;
+                fileReader = new StreamReader(File.OpenRead(filePath));
+
+                while (!fileReader.EndOfStream)
+                {
+                    var makeVehicleTypeKey = fileReader.ReadLine();
+                    var line = fileReader.ReadLine();
+
+                    if (makeVehicleTypeKey != null && line != null)
                     {
-                        vehicleMakeTypeList.Add(item);
+                        var values = line.Split(',');
+
+                        var modelList = new List<string>();
+
+                        modelList.AddRange(values);
+
+                        vehicleModelDict.Add(makeVehicleTypeKey, modelList);
+
                     }
                 }
             }
@@ -60,23 +98,21 @@ public class DisplayMenus
             while (!fileReader.EndOfStream)
             {
                 var line = fileReader.ReadLine();
+
                 if (line != null)
                 {
                     var values = line.Split(',');
 
-                    foreach (var item in values)
-                    {
-                    engineTypeList.Add(item);
-                    }
+                    engineTypeList.AddRange(values);
                 }
             }
         }
     }
     Dictionary<string, int> menuChoices = new Dictionary<string, int>();
-
     List<string> vehicleTypeList = new List<string>();
     List<string> engineTypeList = new List<string>();
     List<string> vehicleMakeTypeList = new List<string>();
+    Dictionary<string, List<string>> vehicleModelDict = new Dictionary<string, List<string>>();
 
     public Dictionary<string, int> GetMenuChoices()
     {
@@ -162,7 +198,7 @@ public class DisplayMenus
                 itemMenuNum++;
             }
 
-            Console.WriteLine($"\t{itemMenuNum}. Exit Program");
+            Console.WriteLine($"\t{itemMenuNum}. Go Back");
             Console.WriteLine("\n****************************************************************\n");
             Console.Write("Enter an integer value of your choice: ");
 
@@ -170,7 +206,7 @@ public class DisplayMenus
             var choiceStr = Console.ReadLine();
             var validInput = int.TryParse(choiceStr, out result);
 
-            if (validInput && result >= 1 && result <= 4)
+            if (validInput && result >= 1 && result <= itemMenuNum)
             {
                 makeSelection = result;
             }
@@ -186,22 +222,24 @@ public class DisplayMenus
 
             if (makeSelection != itemMenuNum && makeSelection != 0)
             {
-                switch (makeSelection)
-                {
-                    case 1:
-                        modelSelection = ToyotaModelSelectionMenu();
-                        break;
-                    case 2:
-                        modelSelection = FordModelSelectionMenu();
-                        break;
-                    case 3:
-                        modelSelection = ChevroletModelSelectionMenu();
-                        break;
-                    default:
-                        Console.WriteLine("An error occurred when selecting the model, default value selected");
-                        modelSelection = 4;
-                        break;
-                }
+                modelSelection = ModelSelectionMenu();
+                // switch (makeSelection)
+                // {
+                //     case 1:
+                //         ModelSelectionMenu();
+                //         modelSelection = ToyotaModelSelectionMenu();
+                //         break;
+                //     case 2:
+                //         modelSelection = FordModelSelectionMenu();
+                //         break;
+                //     case 3:
+                //         modelSelection = ChevroletModelSelectionMenu();
+                //         break;
+                //     default:
+                //         Console.WriteLine("An error occurred when selecting the model, default value selected");
+                //         modelSelection = 4;
+                //         break;
+                // }
             }
 
             if (makeSelection != 0 && modelSelection != 99)
@@ -213,6 +251,72 @@ public class DisplayMenus
         // menuChoices["make"] = makeSelection;
 
         return makeSelection;
+    }
+
+    public int ModelSelectionMenu()
+    {
+        var modelSelection = 0;
+        var displayMenu = true;
+
+        do
+        {
+            var modelKey = vehicleMakeTypeList[menuChoices["make"] - 1] + vehicleTypeList[menuChoices["vehicle"] - 1];
+
+            var modelValues = vehicleModelDict[modelKey];
+
+            Console.WriteLine("***************************************************************");
+            Console.WriteLine("\n Please choose the make of your vehicle from the following options:");
+            
+            var itemMenuNum = 1;
+            foreach (var item in modelValues)
+            {
+                Console.WriteLine($"\t{itemMenuNum}. {item}");
+                itemMenuNum++;
+            }
+
+            Console.WriteLine($"\t{itemMenuNum}. Go back");
+            Console.WriteLine("\n****************************************************************\n");
+            Console.Write("Enter an integer value of your choice: ");
+
+            var result = 0;
+            var choiceStr = Console.ReadLine();
+            var validInput = int.TryParse(choiceStr, out result);
+
+            if (validInput && result >= 1 && result <= itemMenuNum)
+            {
+                modelSelection = result;
+            }
+            else
+            {
+                Console.WriteLine($"{choiceStr} is not a valid input");
+                modelSelection = 0;
+            }
+
+            menuChoices["model"] = modelSelection;
+
+            if (modelSelection == itemMenuNum)
+            {
+                modelSelection = 99;
+                return modelSelection;
+            }
+
+            var engineSelection = 0;
+
+            if (modelSelection != 99 && modelSelection != 0)
+            {
+                //need to have separate menu for electric vehicles
+                var mainMenuChoice = 1;
+                engineSelection = EngineSelectionMenu(mainMenuChoice);
+            }
+
+            if (modelSelection != 0 && engineSelection != 99)
+            {
+                displayMenu = false;
+            }
+
+        } while (displayMenu);
+
+        return modelSelection;
     }
 
     public int ToyotaModelSelectionMenu()
