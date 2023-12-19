@@ -6,9 +6,6 @@ class Program
 {
     static void Main(string[] args)
     {
-        
-        VehicleType vehicleType = VehicleType.Car;
-
         DisplayMenus menus = new DisplayMenus();
         
         menus.MainMenu();
@@ -17,184 +14,75 @@ class Program
   
         var occupantCapacity = 4; // hardcoded for now
 
-        switch (menuChoices["vehicle"]) 
+        if (menuChoices["vehicle"] == 99)
         {
-            case 1:
-                vehicleType = VehicleType.Car;
-                break;
-            case 2:
-                vehicleType = VehicleType.Truck;
-                break;
-            case 3:
-                vehicleType = VehicleType.SUV;
-                occupantCapacity = 2;
-                break;
-            case 4:
-                Console.WriteLine("Exiting...");
-                return;
-            default:
-                Console.WriteLine("No choice for vehicle type was made");
-                break;
+            Console.WriteLine("Exiting program.....");
+            return;
         }
 
-        var make = "";
-        switch(menuChoices["make"])
-        {
-            case 1:
-                make = "Toyota";
-                break;
-            case 2:
-                make = "Ford";
-                break;
-            case 3:
-                make = "Chevy";
-                break;
-            default:
-                Console.WriteLine("No make provided");
-                break;
-        }
+        var vehicleType = menus.GetVehicleTypeByIdx(menuChoices["vehicle"] - 1);
 
-        var model = "";
-        switch (menuChoices["model"])
-        {
-            case 1:
-                model = "Camry";
-                break;
-            case 2:
-                model = "Corrolla";
-                break;
-            case 3:
-                model = "Prius";
-                break;
-            case 4:
-                model = "Tacoma";
-                break;
-            case 5:
-                model = "Tundra";
-                break;
-            case 6:
-                model = "4Runner";
-                break;
-            case 7:
-                model = "Land Cruiser";
-                break;
-            case 8:
-                model = "Seqoia";
-                break;
-            case 9:
-                model = "Focus";
-                break;
-            case 10:
-                model = "Escort";
-                break;
-            case 11:
-                model = "Fusion";
-                break;
-            case 12:
-                model = "F-150";
-                break;
-            case 13:
-                model = "Ranger";
-                break;
-            case 14:
-                model = "Maverick";
-                break;
-            case 15:
-                model = "Explorer";
-                break;
-            case 16:
-                model = "Bronco";
-                break;
-            case 17:
-                model = "Escape";
-                break;
-            case 18:
-                model = "Corvette";
-                break;
-            case 19:
-                model = "Camaro";
-                break;
-            case 20:
-                model = "Bolt";
-                break;
-            case 21:
-                model = "Silverado 1500";
-                break;
-            case 22:
-                model = "Silverado 2500";
-                break;
-            case 23:
-                model = "Colorado";
-                break;
-            case 24:
-                model = "Tahoe";
-                break;
-            case 25:
-                model = "Suburban";
-                break;
-            case 26:
-                model = "Blazer";
-                break;
-            default:
-                Console.WriteLine("No model provided");
-                break;
-        }
+        var make = menus.GetVehicleMakeByIdx(menuChoices["make"] - 1);
+
+        var vehicleMakeKey = make + vehicleType;
+        var model = menus.GetVehicleModelByIdx(vehicleMakeKey, menuChoices["model"] - 1);
+       
 
         var engineType = menus.GetEngineTypeByIdx(menuChoices["engine"] - 1);
-        var MPG = 25; 
-        // switch (menuChoices["engine"]) 
-        // {
-        //     case 1:
-        //         engineType = "V6";
-        //         MPG = 25;
-        //         break;
-        //     case 2:
-        //         engineType = "V8";
-        //         MPG = 18;
-        //         break;
-        //     case 3:
-        //         engineType = "V6 Hybrid";
-        //         MPG = 35;
-        //         break;
-        //     case 4:
-        //         engineType = "Electric";
-        //         MPG = 0;
-        //         break;
-        //     default:
-        //         Console.WriteLine("Exit");
-        //         break;
-        // }
-
-        if (vehicleType == VehicleType.Car)
+        
+        var MPG = 25; //hardcoded for now
+        
+        if (vehicleType == "Car")
         {
             Car car = new Car("blue", occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
-            Console.WriteLine(car);
 
-            var tripDetails = car.Drive(1784);
-            car.PrintTripDetails(tripDetails);
+            if (menus.TakeVehicleOnDrive(car.Make, car.Model))
+            {
+                var driveLength = menus.DriveLength();
+                var tripDetails = car.Drive(driveLength);
+                Console.WriteLine(car);
+                car.PrintDriveDetails(tripDetails);
+            }
+            else
+            {
+                Console.WriteLine(car);
+            }
         } 
-        else if (vehicleType == VehicleType.Truck)
+        else if (vehicleType == "Truck")
         {
             Truck truck = new Truck("red", occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
-            Console.WriteLine(truck);
 
-            var tripDetails = truck.Drive(2500);
-            truck.PrintTripDetails(tripDetails);
+            if (menus.TakeVehicleOnDrive(truck.Make, truck.Model))
+            {
+                var driveLength = menus.DriveLength();
+                var tripDetails = truck.Drive(driveLength);
+                Console.WriteLine(truck);
+                truck.PrintDriveDetails(tripDetails);
+            }
+            else
+            {
+                Console.WriteLine(truck);
+            }
         } 
-        else if (vehicleType == VehicleType.SUV)
+        else if (vehicleType == "SUV")
         {
             Suv suv = new Suv("green", occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
-            Console.WriteLine(suv);
 
-            var tripDetails = suv.Drive(1000);
-            suv.PrintTripDetails(tripDetails);
+            if (menus.TakeVehicleOnDrive(suv.Make, suv.Model))
+            {
+                var driveLength = menus.DriveLength();
+                var tripDetails = suv.Drive(driveLength);
+                Console.WriteLine(suv);
+                suv.PrintDriveDetails(tripDetails);
+            }
+            else
+            {
+                Console.WriteLine(suv);
+            }
         }
         else
         {
             Console.WriteLine("Invalid vehicle type");
         }
-
-
-
     }
 }

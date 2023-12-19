@@ -3,7 +3,7 @@ namespace vehicle_app;
 public abstract class Vehicle
 {
 
-    public Vehicle(string color, int capacity, string make, string model, int year, VehicleType vehicleType, string engineType, int mpg)
+    public Vehicle(string color, int capacity, string make, string model, int year, string vehicleType, string engineType, int mpg)
     {
         if (string.IsNullOrWhiteSpace(color))
             {throw new ArgumentException("The color is required.");}
@@ -21,7 +21,20 @@ public abstract class Vehicle
 
         Year = year;
 
-        VehicleType = vehicleType;
+        if (string.IsNullOrWhiteSpace(vehicleType))
+            {throw new ArgumentException("The vehicle type is required");}
+        switch (vehicleType)
+        {
+            case "Car":
+                VehicleType = VehicleType.Car;
+                break;
+            case "Truck":
+                VehicleType = VehicleType.Truck;
+                break;
+            case "SUV":
+                VehicleType = VehicleType.SUV;
+                break;
+        }
 
         if (string.IsNullOrWhiteSpace(engineType))
             {throw new ArgumentException("Engine type is required");}
@@ -57,31 +70,39 @@ public abstract class Vehicle
     {
         Dictionary<string, decimal> tripDetails = new Dictionary<string, decimal>();
         
+        if (tripLength == 0)
+        {
+            tripDetails.Add("Error", 0);
+            return tripDetails;
+        }
+
+        tripDetails.Add("Drive length", tripLength * 2);
 
         if (MPG != 0)
         {
             decimal totalGallonsOfFuelNeeded = (decimal)tripLength / (decimal)MPG * 2;
             decimal numberOfTanksOfGasNeeded = totalGallonsOfFuelNeeded / FuelCapacity * 2;
-            tripDetails["totalGallonsOfFuelNeeded"] = totalGallonsOfFuelNeeded;
-            tripDetails["numberOfTanksOfGasNeeded"] = numberOfTanksOfGasNeeded;
-            tripDetails["vehicleMpg"] = MPG;
+            tripDetails.Add("Total Gallons Of Fuel Needed", totalGallonsOfFuelNeeded);
+            tripDetails.Add("Number Of Tanks Of Gas Needed",numberOfTanksOfGasNeeded);
+            tripDetails.Add("Vehicle Mpg", MPG);
         }
         else
         {
             decimal numberOfChargesNeeded = (decimal)tripLength / (decimal)Range * 2;
-            tripDetails["numberOfChargesNeeded"] = numberOfChargesNeeded;
+            tripDetails["Number Of Charges Needed"] = numberOfChargesNeeded;
         }
 
-        tripDetails["vehicleRange"] = Range;
+        tripDetails.Add("Vehicle Range", Range);
 
         return tripDetails;
     }
 
-    public virtual void PrintTripDetails(Dictionary<string, decimal> tripDetails)
+    public virtual void PrintDriveDetails(Dictionary<string, decimal> tripDetails)
     {
+            Console.WriteLine("\nThe details of your drive are:\n");
             foreach (var item in tripDetails)
             {
-                Console.WriteLine("{0:0.00} {1:0.00}", item.Key, item.Value);
+                Console.WriteLine("{0} {1:0.00}", item.Key, item.Value);
             }
     }
 }

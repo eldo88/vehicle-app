@@ -39,7 +39,7 @@ public class DisplayMenus
                 {
                     var values = line.Split(',');
 
-                    vehicleMakeTypeList.AddRange(values);
+                    vehicleMakeList.AddRange(values);
                 }
             }
         }
@@ -110,12 +110,29 @@ public class DisplayMenus
     Dictionary<string, int> menuChoices = new Dictionary<string, int>();
     List<string> vehicleTypeList = new List<string>();
     List<string> engineTypeList = new List<string>();
-    List<string> vehicleMakeTypeList = new List<string>();
+    List<string> vehicleMakeList = new List<string>();
     Dictionary<string, List<string>> vehicleModelDict = new Dictionary<string, List<string>>();
 
     public Dictionary<string, int> GetMenuChoices()
     {
         return menuChoices;
+    }
+
+    public string GetVehicleTypeByIdx(int idx)
+    {
+        return vehicleTypeList[idx];
+    }
+
+    public string GetVehicleMakeByIdx(int idx)
+    {
+        return vehicleMakeList[idx];
+    }
+
+    public string GetVehicleModelByIdx(string vehicleMakeKey, int idx)
+    {
+        var modelList = vehicleModelDict[vehicleMakeKey];
+
+        return modelList[idx];
     }
 
     public string GetEngineTypeByIdx(int idx)
@@ -150,7 +167,7 @@ public class DisplayMenus
             var validInput = int.TryParse(choiceStr, out result);
 
 
-            if (validInput && result >= 1 && result <= 4)
+            if (validInput && result >= 1 && result <= itemMenuNum)
             {
                 choice = result;
             }
@@ -158,10 +175,11 @@ public class DisplayMenus
             {
                 Console.WriteLine($"{choiceStr} is not a valid input");
             }
-            menuChoices["vehicle"] = choice;
+            menuChoices.Add("vehicle", choice);
 
             if (choice == itemMenuNum)
-            {
+            {   
+                menuChoices.Add("vehicle", 99);
                 return;
             }
 
@@ -191,7 +209,7 @@ public class DisplayMenus
             Console.WriteLine("\n Please choose the make of your vehicle from the following options:");
 
             var itemMenuNum = 1;
-            foreach (var item in vehicleMakeTypeList)
+            foreach (var item in vehicleMakeList)
             {
                 Console.WriteLine($"\t{itemMenuNum}. {item}");
                 itemMenuNum++;
@@ -215,7 +233,7 @@ public class DisplayMenus
                 makeSelection = 0;
             }
 
-            menuChoices["make"] = makeSelection;
+            menuChoices.Add("make", makeSelection);
 
             var modelSelection = 0;
 
@@ -241,7 +259,7 @@ public class DisplayMenus
 
         do
         {
-            var modelKey = vehicleMakeTypeList[menuChoices["make"] - 1] + vehicleTypeList[menuChoices["vehicle"] - 1];
+            var modelKey = vehicleMakeList[menuChoices["make"] - 1] + vehicleTypeList[menuChoices["vehicle"] - 1];
 
             var modelValues = vehicleModelDict[modelKey];
 
@@ -273,7 +291,7 @@ public class DisplayMenus
                 modelSelection = 0;
             }
 
-            menuChoices["model"] = modelSelection;
+            menuChoices.Add("model", modelSelection);
 
             if (modelSelection == itemMenuNum)
             {
@@ -336,7 +354,7 @@ public class DisplayMenus
                     engineSelection = 0;
                 }
 
-                menuChoices["engine"] = engineSelection;
+                menuChoices.Add("engine", engineSelection);
 
                 if (engineSelection == menuItemNum)
                 {
@@ -363,23 +381,21 @@ public class DisplayMenus
     public int VehicleYearSelectionMenu()
     {
         var vehicleYear = 0;
-        var inputStr = "";
         var displayMenu = true;
 
         do
         {
             Console.WriteLine("***************************************************************");
-            Console.Write($"\n Please enter the year of your vehicle, if you want to exit enter 1: ");
-            inputStr = Console.ReadLine();
-            Console.WriteLine("\n***************************************************************\n");
+            Console.WriteLine($"\nPlease enter the year of your vehicle, if you want to go back enter 1 ");
 
             var result = 0;
+            var inputStr = Console.ReadLine();
             var validInput = int.TryParse(inputStr, out result);
 
             if (validInput && result <= 2025)
             {
                 vehicleYear = result;
-                menuChoices["year"] = vehicleYear;
+                menuChoices.Add("year", vehicleYear);
                 displayMenu = false;
             }
             else
@@ -390,5 +406,46 @@ public class DisplayMenus
         } while(displayMenu);
 
         return vehicleYear;
+    }
+
+    public bool TakeVehicleOnDrive(string vehicleMake, string vehicleModel)
+    {
+        var drive = true;
+
+        Console.WriteLine($"Would you like to take your {vehicleMake} {vehicleModel} on a drive? (enter Y/N)");
+        
+        var result = ' ';
+        var choice = Console.ReadLine();
+        var validInput = char.TryParse(choice, out result);
+
+        if (validInput)
+        {
+            if (char.ToLower(result) == 'n')
+            {
+                drive = false;
+            }
+        }
+        return drive;
+    }
+
+    public int DriveLength()
+    {
+        Console.WriteLine("\nHow many miles are you driving?");
+
+        var result = 0;
+        var driveLengthInMiles = Console.ReadLine();
+        var validInput = int.TryParse(driveLengthInMiles, out result);
+
+        if (validInput && result > 0)
+        {
+            return result;
+        }
+        else
+        {
+            Console.WriteLine("Default drive length of 20 miles is being used.");
+            result = 20;
+        }
+
+        return result;
     }
 }

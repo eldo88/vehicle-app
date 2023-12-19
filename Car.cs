@@ -7,7 +7,7 @@ public sealed class Car : Vehicle
 {
     // public int? fuelCapacity = 18;
 
-    public Car(string color, int capacity, string make, string model, int year, VehicleType vehicleType, string engineType, int mpg) : base(color, capacity, make, model, year, vehicleType, engineType, mpg)
+    public Car(string color, int capacity, string make, string model, int year, string vehicleType, string engineType, int mpg) : base(color, capacity, make, model, year, vehicleType, engineType, mpg)
     {
 
     }
@@ -17,12 +17,12 @@ public sealed class Car : Vehicle
         return base.Drive(tripLength);
     }
 
-    public override void PrintTripDetails(Dictionary<string, decimal> tripDetails)
+    public override void PrintDriveDetails(Dictionary<string, decimal> tripDetails)
     {
-        base.PrintTripDetails(tripDetails);
+        base.PrintDriveDetails(tripDetails);
     }
 
-    public override string ToString() => $" Make: {Make}\n Model: {Model}\n Year: {Year}\n Type: {VehicleType}\n Engine Type: {EngineType}\n Range: {Range}\n";
+    public override string ToString() => $"\nThe details of your vehicle are:\n\nMake: {Make}\nModel: {Model}\nYear: {Year}\nType: {VehicleType}\nEngine Type: {EngineType}\nRange: {Range}\n";
 
     public override bool Equals(object? obj)
     {
