@@ -68,7 +68,7 @@ public abstract class Vehicle
 
     public virtual Dictionary<string, decimal> Drive(decimal tripLength)
     {
-        Dictionary<string, decimal> tripDetails = new Dictionary<string, decimal>();
+        Dictionary<string, decimal> tripDetails = [];
         
         if (tripLength == 0)
         {

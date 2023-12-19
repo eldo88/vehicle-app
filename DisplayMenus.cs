@@ -107,11 +107,11 @@ public class DisplayMenus
             }
         }
     }
-    Dictionary<string, int> menuChoices = new Dictionary<string, int>();
-    List<string> vehicleTypeList = new List<string>();
-    List<string> engineTypeList = new List<string>();
-    List<string> vehicleMakeList = new List<string>();
-    Dictionary<string, List<string>> vehicleModelDict = new Dictionary<string, List<string>>();
+    readonly Dictionary<string, int> menuChoices = [];
+    readonly List<string> vehicleTypeList = [];
+    readonly List<string> engineTypeList = [];
+    readonly List<string> vehicleMakeList = [];
+    readonly Dictionary<string, List<string>> vehicleModelDict = [];
 
     public Dictionary<string, int> GetMenuChoices()
     {
@@ -175,7 +175,8 @@ public class DisplayMenus
             {
                 Console.WriteLine($"{choiceStr} is not a valid input");
             }
-            menuChoices.Add("vehicle", choice);
+            
+            menuChoices["vehicle"] = choice;
 
             if (choice == itemMenuNum)
             {   
@@ -193,6 +194,10 @@ public class DisplayMenus
             if (choice != 0 && makeChoice != 4) 
             {
                 displayMenu = false;
+            }
+            else
+            {
+                menuChoices.Remove("vehicle");
             }
 
         } while(displayMenu);
@@ -233,7 +238,7 @@ public class DisplayMenus
                 makeSelection = 0;
             }
 
-            menuChoices.Add("make", makeSelection);
+            menuChoices["make"] = makeSelection;
 
             var modelSelection = 0;
 
@@ -291,7 +296,7 @@ public class DisplayMenus
                 modelSelection = 0;
             }
 
-            menuChoices.Add("model", modelSelection);
+            menuChoices["model"] = modelSelection;
 
             if (modelSelection == itemMenuNum)
             {
@@ -354,13 +359,13 @@ public class DisplayMenus
                     engineSelection = 0;
                 }
 
-                menuChoices.Add("engine", engineSelection);
-
                 if (engineSelection == menuItemNum)
                 {
                     engineSelection = 99;
                     return engineSelection;
                 }
+
+                menuChoices["engine"] = engineSelection;
 
                 var vehicleYear = 0;
                 if (engineSelection != 0 && engineSelection != menuItemNum)
@@ -395,7 +400,7 @@ public class DisplayMenus
             if (validInput && result <= 2025)
             {
                 vehicleYear = result;
-                menuChoices.Add("year", vehicleYear);
+                menuChoices["year"] = vehicleYear;
                 displayMenu = false;
             }
             else

@@ -27,7 +27,6 @@ class Program
         var vehicleMakeKey = make + vehicleType;
         var model = menus.GetVehicleModelByIdx(vehicleMakeKey, menuChoices["model"] - 1);
        
-
         var engineType = menus.GetEngineTypeByIdx(menuChoices["engine"] - 1);
         
         var MPG = 25; //hardcoded for now
