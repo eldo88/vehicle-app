@@ -8,10 +8,14 @@ class Program
     {
         
         VehicleType vehicleType = VehicleType.Car;
+
+        DisplayMenus menus = new DisplayMenus();
         
-        var menuChoices = DisplayMenus.MainMenu();
+        menus.MainMenu();
+
+        var menuChoices = menus.GetMenuChoices();
   
-        var occupantCapacity = 4;
+        var occupantCapacity = 4; // hardcoded for now
 
         switch (menuChoices["vehicle"]) 
         {
@@ -136,30 +140,30 @@ class Program
                 break;
         }
 
-        var engineType = "";
-        var MPG = 0; 
-        switch (menuChoices["engine"]) 
-        {
-            case 1:
-                engineType = "V6";
-                MPG = 25;
-                break;
-            case 2:
-                engineType = "V8";
-                MPG = 18;
-                break;
-            case 3:
-                engineType = "V6 Hybrid";
-                MPG = 35;
-                break;
-            case 4:
-                engineType = "Electric";
-                MPG = 0;
-                break;
-            default:
-                Console.WriteLine("Exit");
-                break;
-        }
+        var engineType = menus.GetEngineTypeByIdx(menuChoices["engine"] - 1);
+        var MPG = 25; 
+        // switch (menuChoices["engine"]) 
+        // {
+        //     case 1:
+        //         engineType = "V6";
+        //         MPG = 25;
+        //         break;
+        //     case 2:
+        //         engineType = "V8";
+        //         MPG = 18;
+        //         break;
+        //     case 3:
+        //         engineType = "V6 Hybrid";
+        //         MPG = 35;
+        //         break;
+        //     case 4:
+        //         engineType = "Electric";
+        //         MPG = 0;
+        //         break;
+        //     default:
+        //         Console.WriteLine("Exit");
+        //         break;
+        // }
 
         if (vehicleType == VehicleType.Car)
         {

@@ -1,23 +1,101 @@
 namespace vehicle_app;
 
-public static class DisplayMenus
+public class DisplayMenus
 {
+    public DisplayMenus()
+    {
+        string vehicleTypeDataFilePath = @"./data/vehicle-data/vehicle-type-data.csv";
 
-    public static Dictionary<string, int> MainMenu()
+        if (File.Exists(vehicleTypeDataFilePath))
+        {
+            StreamReader fileReader;
+            fileReader = new StreamReader(File.OpenRead(vehicleTypeDataFilePath));
+
+            while (!fileReader.EndOfStream)
+            {
+                var line = fileReader.ReadLine();
+                var values = line.Split(',');
+
+                foreach (var item in values)
+                {
+                    vehicleTypeList.Add(item);
+                }
+            }
+        }
+
+        string vehicleMakeDataFilePath = @"./data/vehicle-data/vehicle-make-data.csv";
+
+        if (File.Exists(vehicleMakeDataFilePath))
+        {
+            StreamReader fileReader;
+            fileReader = new StreamReader(File.OpenRead(vehicleMakeDataFilePath));
+
+            while (!fileReader.EndOfStream)
+            {
+                var line = fileReader.ReadLine();
+                var values = line.Split(',');
+
+                foreach (var item in values)
+                {
+                    vehicleMakeTypeList.Add(item);
+                }
+            }
+        }
+
+        string engineDataFilePath = @"./data/vehicle-data/engine-data.csv";
+
+        if (File.Exists(engineDataFilePath))
+        {
+            StreamReader fileReader;
+            fileReader = new StreamReader(File.OpenRead(engineDataFilePath));
+
+            while (!fileReader.EndOfStream)
+            {
+                var line = fileReader.ReadLine();
+                var values = line.Split(',');
+
+                foreach (var item in values)
+                {
+                    engineTypeList.Add(item);
+                }
+            }
+        }
+    }
+    Dictionary<string, int> menuChoices = new Dictionary<string, int>();
+
+    List<string> vehicleTypeList = new List<string>();
+    List<string> engineTypeList = new List<string>();
+    List<string> vehicleMakeTypeList = new List<string>();
+
+    public Dictionary<string, int> GetMenuChoices()
+    {
+        return menuChoices;
+    }
+
+    public string GetEngineTypeByIdx(int idx)
+    {
+        return engineTypeList[idx];
+    }
+
+    public void MainMenu()
     {
         var choice = 0;
         bool displayMenu = true;
-        Dictionary<string, int> menuChoices = new Dictionary<string, int>();
-
+       
         do 
         {
             Console.WriteLine("\nThe program will allow you to build a vehicle to take on a trip");
             Console.WriteLine("***************************************************************");
             Console.WriteLine($"\n Please choose from the following options:");
-            Console.WriteLine("\t 1. Car");
-            Console.WriteLine("\t 2. Pickup Truck");
-            Console.WriteLine("\t 3. SUV");
-            Console.WriteLine("\t 4. Exit Program");
+
+            var itemMenuNum = 1;
+            foreach (var item in vehicleTypeList)
+            {
+                Console.WriteLine($"\t{itemMenuNum}. {item}");
+                itemMenuNum++;
+            }
+
+            Console.WriteLine($"\t{itemMenuNum}. Exit Program");
             Console.WriteLine("\n****************************************************************\n");
             Console.Write("Enter an integer value of your choice: ");
 
@@ -36,16 +114,16 @@ public static class DisplayMenus
             }
             menuChoices["vehicle"] = choice;
 
-            if (choice == 4)
+            if (choice == itemMenuNum)
             {
-                return menuChoices;
+                return;
             }
 
             var makeChoice = 0;
 
             if (choice != 0)
             {
-                makeChoice = MakeSelectionMenu(menuChoices);
+                makeChoice = MakeSelectionMenu();
             }
 
             if (choice != 0 && makeChoice != 4) 
@@ -54,11 +132,9 @@ public static class DisplayMenus
             }
 
         } while(displayMenu);
-
-        return menuChoices;
     }
 
-    public static int MakeSelectionMenu(Dictionary<string, int> menuChoices)
+    public int MakeSelectionMenu()
     {
         var makeSelection = 0;
         var displayMenu = true;
@@ -67,10 +143,15 @@ public static class DisplayMenus
         {
             Console.WriteLine("***************************************************************");
             Console.WriteLine("\n Please choose the make of your vehicle from the following options:");
-            Console.WriteLine("\t 1. Toyota");
-            Console.WriteLine("\t 2. Ford");
-            Console.WriteLine("\t 3. Chevy");
-            Console.WriteLine("\t 4. Go back");
+
+            var itemMenuNum = 1;
+            foreach (var item in vehicleMakeTypeList)
+            {
+                Console.WriteLine($"\t{itemMenuNum}. {item}");
+                itemMenuNum++;
+            }
+
+            Console.WriteLine($"\t{itemMenuNum}. Exit Program");
             Console.WriteLine("\n****************************************************************\n");
             Console.Write("Enter an integer value of your choice: ");
 
@@ -92,18 +173,18 @@ public static class DisplayMenus
 
             var modelSelection = 0;
 
-            if (makeSelection != 4 && makeSelection != 0)
+            if (makeSelection != itemMenuNum && makeSelection != 0)
             {
                 switch (makeSelection)
                 {
                     case 1:
-                        modelSelection = ToyotaModelSelectionMenu(menuChoices);
+                        modelSelection = ToyotaModelSelectionMenu();
                         break;
                     case 2:
-                        modelSelection = FordModelSelectionMenu(menuChoices);
+                        modelSelection = FordModelSelectionMenu();
                         break;
                     case 3:
-                        modelSelection = ChevroletModelSelectionMenu(menuChoices);
+                        modelSelection = ChevroletModelSelectionMenu();
                         break;
                     default:
                         Console.WriteLine("An error occurred when selecting the model, default value selected");
@@ -123,7 +204,7 @@ public static class DisplayMenus
         return makeSelection;
     }
 
-    public static int ToyotaModelSelectionMenu(Dictionary<string, int> menuChoices)
+    public int ToyotaModelSelectionMenu()
     {
         var modelSelection = 0;
         var displayMenu = true;
@@ -233,10 +314,10 @@ public static class DisplayMenus
             {
                 //need to have separate menu for electric vehicles
                 var mainMenuChoice = 1;
-                engineSelection = EngineSelectionMenu(mainMenuChoice, menuChoices);
+                engineSelection = EngineSelectionMenu(mainMenuChoice);
             }
 
-            if (modelSelection != 0 && engineSelection != 5)
+            if (modelSelection != 0 && engineSelection != 99)
             {
                 displayMenu = false;
             }
@@ -246,7 +327,7 @@ public static class DisplayMenus
         return modelSelection;
     }
 
-    public static int FordModelSelectionMenu(Dictionary<string, int> menuChoices)
+    public int FordModelSelectionMenu()
     {
         var modelSelection = 0;
         var displayMenu = true;
@@ -371,10 +452,10 @@ public static class DisplayMenus
             {
                 //need separate engine menu for electric vehicles
                 var mainMenuChoice = 1;
-                engineSelection = EngineSelectionMenu(mainMenuChoice, menuChoices);
+                engineSelection = EngineSelectionMenu(mainMenuChoice);
             }
 
-            if (modelSelection != 0 && engineSelection != 5)
+            if (modelSelection != 0 && engineSelection != 99)
             {
                 displayMenu = false;
             }
@@ -384,7 +465,7 @@ public static class DisplayMenus
         return modelSelection;
     }
 
-    public static int ChevroletModelSelectionMenu(Dictionary<string, int> menuChoices)
+    public int ChevroletModelSelectionMenu()
     {
         var modelSelection = 0;
         var displayMenu = true;
@@ -509,10 +590,10 @@ public static class DisplayMenus
             {
                 //need separate engine menu for electric vehicles
                 var mainMenuChoice = 1;
-                engineSelection = EngineSelectionMenu(mainMenuChoice, menuChoices);
+                engineSelection = EngineSelectionMenu(mainMenuChoice);
             }
 
-            if (modelSelection != 0 && engineSelection != 5)
+            if (modelSelection != 0 && engineSelection != 99)
             {
                 displayMenu = false;
             }
@@ -522,7 +603,7 @@ public static class DisplayMenus
         return modelSelection;
     }
 
-    public static int EngineSelectionMenu(int mainMenuChoice, Dictionary<string, int> menuChoices)
+    public int EngineSelectionMenu(int mainMenuChoice)
     {
         var engineSelection = 0;
         var displayMenu = true;
@@ -531,23 +612,24 @@ public static class DisplayMenus
         {
             if (mainMenuChoice == 1 || mainMenuChoice == 2 || mainMenuChoice == 3)
             {
-                //4-cyl, and need to figure out way to only show correct engines for make/model
                 Console.WriteLine("***************************************************************");
                 Console.WriteLine($"\n Please choose from the following options for your engine type:");
-                Console.WriteLine("\t    Engine/powertrain type     Fuel Type            HP ");
-                Console.WriteLine("\t 1. V6                        Gas powered          300 ");
-                Console.WriteLine("\t 2. V8                        Gas powered          380 ");
-                Console.WriteLine("\t 3. V6 Hybrid                 Hybrid               360 ");
-                Console.WriteLine("\t 4. Electric                  Hybrid               450 ");
-                Console.WriteLine("\t 5. Go back");
-                Console.WriteLine("\n****************************************************************\n");
+                var menuItemNum = 1;
+                foreach (var item in engineTypeList)
+                {
+                    Console.WriteLine($"\t{menuItemNum}. {item}");
+                    menuItemNum++;
+                }
+
+                Console.WriteLine($"\t{menuItemNum}. Go back");
+                Console.WriteLine("\n***************************************************************\n");
                 Console.Write("Enter an integer value of your choice: ");
 
                 var result = 0;
                 var choiceStr = Console.ReadLine();
                 var validInput = int.TryParse(choiceStr, out result);
 
-                if (validInput && result >= 1 && result <= 5)
+                if (validInput && result >= 1 && result <= menuItemNum)
                 {
                     engineSelection = result;
                 }
@@ -559,10 +641,16 @@ public static class DisplayMenus
 
                 menuChoices["engine"] = engineSelection;
 
-                var vehicleYear = 0;
-                if (engineSelection != 0 && engineSelection != 5)
+                if (engineSelection == menuItemNum)
                 {
-                    vehicleYear = VehicleYearSelectionMenu(menuChoices);
+                    engineSelection = 99;
+                    return engineSelection;
+                }
+
+                var vehicleYear = 0;
+                if (engineSelection != 0 && engineSelection != menuItemNum)
+                {
+                    vehicleYear = VehicleYearSelectionMenu();
                 }
 
                 if (engineSelection != 0 && vehicleYear != 1)
@@ -575,7 +663,7 @@ public static class DisplayMenus
         return engineSelection;
     }
 
-    public static int VehicleYearSelectionMenu(Dictionary<string, int> menuChoices)
+    public int VehicleYearSelectionMenu()
     {
         var vehicleYear = 0;
         var inputStr = "";
