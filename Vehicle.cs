@@ -76,20 +76,20 @@ public abstract class Vehicle
             return tripDetails;
         }
 
-        tripDetails.Add("Drive length", tripLength * 2);
+        tripDetails.Add("Drive length", tripLength);
 
         if (MPG != 0)
         {
-            decimal totalGallonsOfFuelNeeded = (decimal)tripLength / (decimal)MPG * 2;
-            decimal numberOfTanksOfGasNeeded = totalGallonsOfFuelNeeded / FuelCapacity * 2;
+            decimal totalGallonsOfFuelNeeded = (decimal)tripLength / (decimal)MPG;
+            decimal numberOfTanksOfGasNeeded = totalGallonsOfFuelNeeded / FuelCapacity;
             tripDetails.Add("Total Gallons Of Fuel Needed", totalGallonsOfFuelNeeded);
             tripDetails.Add("Number Of Tanks Of Gas Needed",numberOfTanksOfGasNeeded);
             tripDetails.Add("Vehicle Mpg", MPG);
         }
         else
         {
-            decimal numberOfChargesNeeded = (decimal)tripLength / (decimal)Range * 2;
-            tripDetails["Number Of Charges Needed"] = numberOfChargesNeeded;
+            decimal numberOfChargesNeeded = (decimal)tripLength / (decimal)Range;
+            tripDetails.Add("Number Of Charges Needed", numberOfChargesNeeded);
         }
 
         tripDetails.Add("Vehicle Range", Range);
@@ -102,7 +102,7 @@ public abstract class Vehicle
             Console.WriteLine("\nThe details of your drive are:\n");
             foreach (var item in tripDetails)
             {
-                Console.WriteLine("{0} {1:0.00}", item.Key, item.Value);
+                Console.WriteLine("{0}: {1:0.00}", item.Key, item.Value);
             }
     }
 }
