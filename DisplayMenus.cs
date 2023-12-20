@@ -142,7 +142,7 @@ public class DisplayMenus
 
     public void MainMenu()
     {
-        var choice = 0;
+        var menuChoice = 0;
         bool displayMenu = true;
        
         do 
@@ -151,34 +151,22 @@ public class DisplayMenus
             Console.WriteLine("***************************************************************");
             Console.WriteLine($"\n Please choose from the following options:");
 
-            var itemMenuNum = 1;
+            var menuItemNum = 1;
             foreach (var item in vehicleTypeList)
             {
-                Console.WriteLine($"\t{itemMenuNum}. {item}");
-                itemMenuNum++;
+                Console.WriteLine($"\t{menuItemNum}. {item}");
+                menuItemNum++;
             }
 
-            Console.WriteLine($"\t{itemMenuNum}. Exit Program");
+            Console.WriteLine($"\t{menuItemNum}. Exit Program");
             Console.WriteLine("\n****************************************************************\n");
             Console.Write("Enter an integer value of your choice: ");
 
-            var result = 0;
-            var choiceStr = Console.ReadLine();
-            var validInput = int.TryParse(choiceStr, out result);
-
-
-            if (validInput && result >= 1 && result <= itemMenuNum)
-            {
-                choice = result;
-            }
-            else
-            {
-                Console.WriteLine($"{choiceStr} is not a valid input");
-            }
+            menuChoice = MenuInput(menuItemNum);
             
-            menuChoices["vehicle"] = choice;
+            menuChoices["vehicle"] = menuChoice;
 
-            if (choice == itemMenuNum)
+            if (menuChoice == menuItemNum)
             {   
                 menuChoices.Add("vehicle", 99);
                 return;
@@ -186,12 +174,12 @@ public class DisplayMenus
 
             var makeChoice = 0;
 
-            if (choice != 0)
+            if (menuChoice != 0)
             {
                 makeChoice = MakeSelectionMenu();
             }
 
-            if (choice != 0 && makeChoice != 4) 
+            if (menuChoice != 0 && makeChoice != 4) 
             {
                 displayMenu = false;
             }
@@ -213,36 +201,24 @@ public class DisplayMenus
             Console.WriteLine("***************************************************************");
             Console.WriteLine("\n Please choose the make of your vehicle from the following options:");
 
-            var itemMenuNum = 1;
+            var menuItemNum = 1;
             foreach (var item in vehicleMakeList)
             {
-                Console.WriteLine($"\t{itemMenuNum}. {item}");
-                itemMenuNum++;
+                Console.WriteLine($"\t{menuItemNum}. {item}");
+                menuItemNum++;
             }
 
-            Console.WriteLine($"\t{itemMenuNum}. Go Back");
+            Console.WriteLine($"\t{menuItemNum}. Go Back");
             Console.WriteLine("\n****************************************************************\n");
             Console.Write("Enter an integer value of your choice: ");
 
-            var result = 0;
-            var choiceStr = Console.ReadLine();
-            var validInput = int.TryParse(choiceStr, out result);
-
-            if (validInput && result >= 1 && result <= itemMenuNum)
-            {
-                makeSelection = result;
-            }
-            else
-            {
-                Console.WriteLine($"{choiceStr} is not a valid input");
-                makeSelection = 0;
-            }
+            makeSelection = MenuInput(menuItemNum);
 
             menuChoices["make"] = makeSelection;
 
             var modelSelection = 0;
 
-            if (makeSelection != itemMenuNum && makeSelection != 0)
+            if (makeSelection != menuItemNum && makeSelection != 0)
             {
                 modelSelection = ModelSelectionMenu();
             }
@@ -271,34 +247,22 @@ public class DisplayMenus
             Console.WriteLine("***************************************************************");
             Console.WriteLine("\n Please choose the make of your vehicle from the following options:");
             
-            var itemMenuNum = 1;
+            var menuItemNum = 1;
             foreach (var item in modelValues)
             {
-                Console.WriteLine($"\t{itemMenuNum}. {item}");
-                itemMenuNum++;
+                Console.WriteLine($"\t{menuItemNum}. {item}");
+                menuItemNum++;
             }
 
-            Console.WriteLine($"\t{itemMenuNum}. Go back");
+            Console.WriteLine($"\t{menuItemNum}. Go back");
             Console.WriteLine("\n****************************************************************\n");
             Console.Write("Enter an integer value of your choice: ");
 
-            var result = 0;
-            var choiceStr = Console.ReadLine();
-            var validInput = int.TryParse(choiceStr, out result);
-
-            if (validInput && result >= 1 && result <= itemMenuNum)
-            {
-                modelSelection = result;
-            }
-            else
-            {
-                Console.WriteLine($"{choiceStr} is not a valid input");
-                modelSelection = 0;
-            }
+            modelSelection = MenuInput(menuItemNum);
 
             menuChoices["model"] = modelSelection;
 
-            if (modelSelection == itemMenuNum)
+            if (modelSelection == menuItemNum)
             {
                 modelSelection = 99;
                 return modelSelection;
@@ -345,19 +309,7 @@ public class DisplayMenus
                 Console.WriteLine("\n***************************************************************\n");
                 Console.Write("Enter an integer value of your choice: ");
 
-                var result = 0;
-                var choiceStr = Console.ReadLine();
-                var validInput = int.TryParse(choiceStr, out result);
-
-                if (validInput && result >= 1 && result <= menuItemNum)
-                {
-                    engineSelection = result;
-                }
-                else
-                {
-                    Console.WriteLine($"{choiceStr} is not a valid input");
-                    engineSelection = 0;
-                }
+                engineSelection = MenuInput(menuItemNum);
 
                 if (engineSelection == menuItemNum)
                 {
@@ -393,9 +345,8 @@ public class DisplayMenus
             Console.WriteLine("***************************************************************");
             Console.WriteLine($"\nPlease enter the year of your vehicle, if you want to go back enter 1 ");
 
-            var result = 0;
             var inputStr = Console.ReadLine();
-            var validInput = int.TryParse(inputStr, out result);
+            var validInput = int.TryParse(inputStr, out int result);
 
             if (validInput && result <= 2025)
             {
@@ -413,33 +364,41 @@ public class DisplayMenus
         return vehicleYear;
     }
 
-    public bool TakeVehicleOnDrive(string vehicleMake, string vehicleModel)
+    public static bool TakeVehicleOnDrive(string vehicleMake, string vehicleModel)
     {
-        var drive = true;
-
-        Console.WriteLine($"Would you like to take your {vehicleMake} {vehicleModel} on a drive? (enter Y/N)");
-        
-        var result = ' ';
-        var choice = Console.ReadLine();
-        var validInput = char.TryParse(choice, out result);
-
-        if (validInput)
+        var drive = false;
+        var displayMenu = true;
+        do
         {
-            if (char.ToLower(result) == 'n')
+            Console.WriteLine($"Would you like to take your {vehicleMake} {vehicleModel} on a drive? (enter Y/N)");
+        
+            var choice = Console.ReadLine();
+
+            var validInput = char.TryParse(choice, out char result);
+
+            if (validInput)
             {
-                drive = false;
-            }
+                if (char.ToLower(result) == 'y')
+                {
+                    drive = true;
+                    displayMenu = false;
+                }
+                else
+                {
+                    Console.WriteLine($"{choice} is not a valid input");
+                }
         }
+        } while(displayMenu);
+
         return drive;
     }
 
-    public int DriveLength()
+    public static int DriveLength()
     {
         Console.WriteLine("\nHow many miles are you driving?");
 
-        var result = 0;
         var driveLengthInMiles = Console.ReadLine();
-        var validInput = int.TryParse(driveLengthInMiles, out result);
+        var validInput = int.TryParse(driveLengthInMiles, out int result);
 
         if (validInput && result > 0)
         {
@@ -449,6 +408,24 @@ public class DisplayMenus
         {
             Console.WriteLine("Default drive length of 20 miles is being used.");
             result = 20;
+        }
+
+        return result;
+    }
+
+    private static int MenuInput(int menuItemNum)
+    {
+        var choiceStr = Console.ReadLine();
+        var validInput = int.TryParse(choiceStr, out int result);
+
+        if (validInput && result >= 1 && result <= menuItemNum)
+        {
+            return result;
+        }
+        else
+        {
+            Console.WriteLine($"{choiceStr} is not a valid input");
+            result = 0;
         }
 
         return result;

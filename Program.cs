@@ -35,9 +35,9 @@ class Program
         {
             Car car = new Car("blue", occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
 
-            if (menus.TakeVehicleOnDrive(car.Make, car.Model))
+            if (DisplayMenus.TakeVehicleOnDrive(car.Make, car.Model))
             {
-                var driveLength = menus.DriveLength();
+                var driveLength = DisplayMenus.DriveLength();
                 var tripDetails = car.Drive(driveLength);
                 Console.WriteLine(car);
                 car.PrintDriveDetails(tripDetails);
@@ -51,9 +51,9 @@ class Program
         {
             Truck truck = new Truck("red", occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
 
-            if (menus.TakeVehicleOnDrive(truck.Make, truck.Model))
+            if (DisplayMenus.TakeVehicleOnDrive(truck.Make, truck.Model))
             {
-                var driveLength = menus.DriveLength();
+                var driveLength = DisplayMenus.DriveLength();
                 var tripDetails = truck.Drive(driveLength);
                 Console.WriteLine(truck);
                 truck.PrintDriveDetails(tripDetails);
@@ -67,9 +67,9 @@ class Program
         {
             Suv suv = new Suv("green", occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
 
-            if (menus.TakeVehicleOnDrive(suv.Make, suv.Model))
+            if (DisplayMenus.TakeVehicleOnDrive(suv.Make, suv.Model))
             {
-                var driveLength = menus.DriveLength();
+                var driveLength = DisplayMenus.DriveLength();
                 var tripDetails = suv.Drive(driveLength);
                 Console.WriteLine(suv);
                 suv.PrintDriveDetails(tripDetails);
