@@ -23,18 +23,7 @@ public abstract class Vehicle
 
         if (string.IsNullOrWhiteSpace(vehicleType))
             {throw new ArgumentException("The vehicle type is required");}
-        switch (vehicleType)
-        {
-            case "Car":
-                VehicleType = VehicleType.Car;
-                break;
-            case "Truck":
-                VehicleType = VehicleType.Truck;
-                break;
-            case "SUV":
-                VehicleType = VehicleType.SUV;
-                break;
-        }
+        VehicleType = (VehicleType) Enum.Parse(typeof(VehicleType), vehicleType);
 
         if (string.IsNullOrWhiteSpace(engineType))
             {throw new ArgumentException("Engine type is required");}
