@@ -56,9 +56,9 @@ public class DisplayMenus
 
         var modelDataFilePaths = new List<string>
         {
-            toyotaCarDataFilePath, toyotaTruckDataFilePath, toyotaSuvDataFilePath, fordCarDataFilePath, 
-            fordTruckDataFilePath, fordSuvDataFilePath, chevroletCarDataFilePath, chevroletTruckDataFilePath,
-            chevroletSuvDataFilePath
+            toyotaCarDataFilePath, toyotaTruckDataFilePath, toyotaSuvDataFilePath, 
+            fordCarDataFilePath, fordTruckDataFilePath, fordSuvDataFilePath, 
+            chevroletCarDataFilePath, chevroletTruckDataFilePath, chevroletSuvDataFilePath
         };
 
         foreach (var filePath in modelDataFilePaths)
@@ -273,8 +273,7 @@ public class DisplayMenus
             if (modelSelection != 99 && modelSelection != 0)
             {
                 //need to have separate menu for electric vehicles
-                var mainMenuChoice = 1;
-                engineSelection = EngineSelectionMenu(mainMenuChoice);
+                engineSelection = EngineSelectionMenu();
             }
 
             if (modelSelection != 0 && engineSelection != 99)
@@ -287,48 +286,45 @@ public class DisplayMenus
         return modelSelection;
     }
 
-    public int EngineSelectionMenu(int mainMenuChoice)
+    public int EngineSelectionMenu()
     {
         var engineSelection = 0;
         var displayMenu = true;
 
         do
         {
-            if (mainMenuChoice == 1 || mainMenuChoice == 2 || mainMenuChoice == 3)
+            Console.WriteLine("***************************************************************");
+            Console.WriteLine($"\n Please choose from the following options for your engine type:");
+            var menuItemNum = 1;
+            foreach (var item in engineTypeList)
             {
-                Console.WriteLine("***************************************************************");
-                Console.WriteLine($"\n Please choose from the following options for your engine type:");
-                var menuItemNum = 1;
-                foreach (var item in engineTypeList)
-                {
-                    Console.WriteLine($"\t{menuItemNum}. {item}");
-                    menuItemNum++;
-                }
+                Console.WriteLine($"\t{menuItemNum}. {item}");
+                menuItemNum++;
+            }
 
-                Console.WriteLine($"\t{menuItemNum}. Go back");
-                Console.WriteLine("\n***************************************************************\n");
-                Console.Write("Enter an integer value of your choice: ");
+            Console.WriteLine($"\t{menuItemNum}. Go back");
+            Console.WriteLine("\n***************************************************************\n");
+            Console.Write("Enter an integer value of your choice: ");
 
-                engineSelection = MenuInput(menuItemNum);
+            engineSelection = MenuInput(menuItemNum);
 
-                if (engineSelection == menuItemNum)
-                {
-                    engineSelection = 99;
-                    return engineSelection;
-                }
+            if (engineSelection == menuItemNum)
+            {
+                engineSelection = 99;
+                return engineSelection;
+            }
 
-                menuChoices["engine"] = engineSelection;
+            menuChoices["engine"] = engineSelection;
 
-                var vehicleYear = 0;
-                if (engineSelection != 0 && engineSelection != menuItemNum)
-                {
-                    vehicleYear = VehicleYearSelectionMenu();
-                }
+            var vehicleYear = 0;
+            if (engineSelection != 0 && engineSelection != menuItemNum)
+            {
+                vehicleYear = VehicleYearSelectionMenu();
+            }
 
-                if (engineSelection != 0 && vehicleYear != 1)
-                {
-                    displayMenu = false;
-                }
+            if (engineSelection != 0 && vehicleYear != 1)
+            {
+                displayMenu = false;
             }
         } while (displayMenu);
 
