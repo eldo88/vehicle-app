@@ -2,116 +2,73 @@ namespace vehicle_app;
 
 public class DisplayMenus
 {
-    public DisplayMenus()
-    {
-        string vehicleTypeDataFilePath = @"./data/vehicle-data/vehicle-type-data.csv";
-
-        if (File.Exists(vehicleTypeDataFilePath))
-        {
-            StreamReader fileReader;
-            fileReader = new StreamReader(File.OpenRead(vehicleTypeDataFilePath));
-
-            while (!fileReader.EndOfStream)
-            {
-                var line = fileReader.ReadLine();
-
-                if (line != null)
-                {
-                    var values = line.Split(',');
-
-                    vehicleTypeList.AddRange(values);
-                }
-            }
-        }
-
-        string vehicleMakeDataFilePath = @"./data/vehicle-data/vehicle-make-data.csv";
-
-        if (File.Exists(vehicleMakeDataFilePath))
-        {
-            StreamReader fileReader;
-            fileReader = new StreamReader(File.OpenRead(vehicleMakeDataFilePath));
-
-            while (!fileReader.EndOfStream)
-            {
-                var line = fileReader.ReadLine();
-
-                if (line != null)
-                {
-                    var values = line.Split(',');
-
-                    vehicleMakeList.AddRange(values);
-                }
-            }
-        }
-
-        string toyotaCarDataFilePath = @"./data/vehicle-data/toyota-car-data.csv";
-        string toyotaTruckDataFilePath = @"./data/vehicle-data/toyota-truck-data.csv";
-        string toyotaSuvDataFilePath = @"./data/vehicle-data/toyota-suv-data.csv";
-        string fordCarDataFilePath = @"./data/vehicle-data/ford-car-data.csv";
-        string fordTruckDataFilePath = @"./data/vehicle-data/ford-truck-data.csv";
-        string fordSuvDataFilePath = @"./data/vehicle-data/ford-suv-data.csv";
-        string chevroletCarDataFilePath = @"./data/vehicle-data/chevrolet-car-data.csv";
-        string chevroletTruckDataFilePath = @"./data/vehicle-data/chevrolet-truck-data.csv";
-        string chevroletSuvDataFilePath = @"./data/vehicle-data/chevrolet-suv-data.csv";
-
-        var modelDataFilePaths = new List<string>
-        {
-            toyotaCarDataFilePath, toyotaTruckDataFilePath, toyotaSuvDataFilePath, 
-            fordCarDataFilePath, fordTruckDataFilePath, fordSuvDataFilePath, 
-            chevroletCarDataFilePath, chevroletTruckDataFilePath, chevroletSuvDataFilePath
-        };
-
-        foreach (var filePath in modelDataFilePaths)
-        {
-            if (File.Exists(filePath))
-            {
-                StreamReader fileReader;
-                fileReader = new StreamReader(File.OpenRead(filePath));
-
-                while (!fileReader.EndOfStream)
-                {
-                    var makeVehicleTypeKey = fileReader.ReadLine();
-                    var line = fileReader.ReadLine();
-
-                    if (makeVehicleTypeKey != null && line != null)
-                    {
-                        var values = line.Split(',');
-
-                        var modelList = new List<string>();
-
-                        modelList.AddRange(values);
-
-                        vehicleModelDict.Add(makeVehicleTypeKey, modelList);
-                    }
-                }
-            }
-        }
-
-        string engineDataFilePath = @"./data/vehicle-data/engine-data.csv";
-
-        if (File.Exists(engineDataFilePath))
-        {
-            StreamReader fileReader;
-            fileReader = new StreamReader(File.OpenRead(engineDataFilePath));
-
-            while (!fileReader.EndOfStream)
-            {
-                var line = fileReader.ReadLine();
-
-                if (line != null)
-                {
-                    var values = line.Split(',');
-
-                    engineTypeList.AddRange(values);
-                }
-            }
-        }
-    }
+    public DisplayMenus(){}
     readonly Dictionary<string, int> menuChoices = [];
     readonly List<string> vehicleTypeList = [];
     readonly List<string> engineTypeList = [];
     readonly List<string> vehicleMakeList = [];
     readonly Dictionary<string, List<string>> vehicleModelDict = [];
+
+    private void ReadDataFromFile(string filePath, List<string> targetList)
+    {
+        if (File.Exists(filePath))
+        {
+            using StreamReader fileReader = new StreamReader(File.OpenRead(filePath));
+            while (!fileReader.EndOfStream)
+            {
+                var line = fileReader.ReadLine();
+                if (line != null)
+                {
+                    var values = line.Split(',');
+                    targetList.AddRange(values);
+                }
+            }
+        }
+    }
+
+    private void ReadModelData(string filePath, Dictionary<string, List<string>> targetDict)
+    {
+        if (File.Exists(filePath))
+        {
+            using StreamReader fileReader = new StreamReader(File.OpenRead(filePath));
+            while (!fileReader.EndOfStream)
+            {
+                var makeVehicleTypeKey = fileReader.ReadLine();
+                var line = fileReader.ReadLine();
+
+                if (makeVehicleTypeKey != null && line != null)
+                {
+                    var values = line.Split(',');
+                    var modelList = new List<string>(values);
+                    targetDict.Add(makeVehicleTypeKey, modelList);
+                }
+            }
+        }
+    }
+
+    private void LoadData()
+    {
+        string[] modelDataFilePaths = {
+            "./data/vehicle-data/toyota-car-data.csv",
+            "./data/vehicle-data/toyota-truck-data.csv",
+            "./data/vehicle-data/toyota-suv-data.csv",
+            "./data/vehicle-data/ford-car-data.csv",
+            "./data/vehicle-data/ford-truck-data.csv",
+            "./data/vehicle-data/ford-suv-data.csv",
+            "./data/vehicle-data/chevrolet-car-data.csv",
+            "./data/vehicle-data/chevrolet-truck-data.csv",
+            "./data/vehicle-data/chevrolet-suv-data.csv"
+        };
+
+        foreach (var filePath in modelDataFilePaths)
+        {
+            ReadModelData(filePath, vehicleModelDict);
+        }
+
+        ReadDataFromFile("./data/vehicle-data/vehicle-type-data.csv", vehicleTypeList);
+        ReadDataFromFile("./data/vehicle-data/vehicle-make-data.csv", vehicleMakeList);
+        ReadDataFromFile("./data/vehicle-data/engine-data.csv", engineTypeList);
+    }
 
     public Dictionary<string, int> GetMenuChoices()
     {
@@ -142,12 +99,14 @@ public class DisplayMenus
 
     public void MainMenu()
     {
+        LoadData();
+
         var menuChoice = 0;
         bool displayMenu = true;
        
         do 
         {
-            Console.WriteLine("\nThe program will allow you to build a vehicle to take on a trip");
+            Console.WriteLine("\nThis program will allow you to build a vehicle");
             Console.WriteLine("***************************************************************");
             Console.WriteLine($"\n Please choose from the following options:");
 
@@ -168,7 +127,7 @@ public class DisplayMenus
 
             if (menuChoice == menuItemNum)
             {   
-                menuChoices.Add("vehicle", 99);
+                menuChoices["vehicle"] = 99;
                 return;
             }
 
@@ -183,15 +142,11 @@ public class DisplayMenus
             {
                 displayMenu = false;
             }
-            else
-            {
-                menuChoices.Remove("vehicle");
-            }
 
         } while(displayMenu);
     }
 
-    public int MakeSelectionMenu()
+    private int MakeSelectionMenu()
     {
         var makeSelection = 0;
         var displayMenu = true;
@@ -233,7 +188,7 @@ public class DisplayMenus
         return makeSelection;
     }
 
-    public int ModelSelectionMenu()
+    private int ModelSelectionMenu()
     {
         var modelSelection = 0;
         var displayMenu = true;
@@ -286,7 +241,7 @@ public class DisplayMenus
         return modelSelection;
     }
 
-    public int EngineSelectionMenu()
+    private int EngineSelectionMenu()
     {
         var engineSelection = 0;
         var displayMenu = true;
@@ -331,7 +286,7 @@ public class DisplayMenus
         return engineSelection;
     }
 
-    public int VehicleYearSelectionMenu()
+    private int VehicleYearSelectionMenu()
     {
         var vehicleYear = 0;
         var displayMenu = true;
