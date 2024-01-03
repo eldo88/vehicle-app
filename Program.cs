@@ -28,16 +28,18 @@ class Program
         var model = menus.GetVehicleModelByIdx(vehicleMakeKey, menuChoices["model"] - 1);
        
         var engineType = menus.GetEngineTypeByIdx(menuChoices["engine"] - 1);
+
+        var vehicleColor = menus.GetVehicleColorByIdx(menuChoices["color"] - 1);
         
         var MPG = 25; //hardcoded for now
         
         if (vehicleType == "Car")
         {
-            Car car = new Car("blue", occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
+            Car car = new Car(vehicleColor, occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
 
-            if (DisplayMenus.TakeVehicleOnDrive(car.Make, car.Model))
+            if (DisplayMenus.TakeVehicleOnDriveMenu(car.Make, car.Model))
             {
-                var driveLength = DisplayMenus.DriveLength();
+                var driveLength = DisplayMenus.DriveLengthMenu();
                 var tripDetails = car.Drive(driveLength);
                 Console.WriteLine(car);
                 car.PrintDriveDetails(tripDetails);
@@ -49,11 +51,11 @@ class Program
         } 
         else if (vehicleType == "Truck")
         {
-            Truck truck = new Truck("red", occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
+            Truck truck = new Truck(vehicleColor, occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
 
-            if (DisplayMenus.TakeVehicleOnDrive(truck.Make, truck.Model))
+            if (DisplayMenus.TakeVehicleOnDriveMenu(truck.Make, truck.Model))
             {
-                var driveLength = DisplayMenus.DriveLength();
+                var driveLength = DisplayMenus.DriveLengthMenu();
                 var tripDetails = truck.Drive(driveLength);
                 Console.WriteLine(truck);
                 truck.PrintDriveDetails(tripDetails);
@@ -65,11 +67,11 @@ class Program
         } 
         else if (vehicleType == "SUV")
         {
-            Suv suv = new Suv("green", occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
+            Suv suv = new Suv(vehicleColor, occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
 
-            if (DisplayMenus.TakeVehicleOnDrive(suv.Make, suv.Model))
+            if (DisplayMenus.TakeVehicleOnDriveMenu(suv.Make, suv.Model))
             {
-                var driveLength = DisplayMenus.DriveLength();
+                var driveLength = DisplayMenus.DriveLengthMenu();
                 var tripDetails = suv.Drive(driveLength);
                 Console.WriteLine(suv);
                 suv.PrintDriveDetails(tripDetails);

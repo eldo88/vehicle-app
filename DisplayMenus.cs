@@ -7,6 +7,7 @@ public class DisplayMenus
     readonly List<string> vehicleTypeList = [];
     readonly List<string> engineTypeList = [];
     readonly List<string> vehicleMakeList = [];
+    readonly List<string> vehicleColorList = [];
     readonly Dictionary<string, List<string>> vehicleModelDict = [];
 
     private void ReadDataFromFile(string filePath, List<string> targetList)
@@ -68,6 +69,7 @@ public class DisplayMenus
         ReadDataFromFile("./data/vehicle-data/vehicle-type-data.csv", vehicleTypeList);
         ReadDataFromFile("./data/vehicle-data/vehicle-make-data.csv", vehicleMakeList);
         ReadDataFromFile("./data/vehicle-data/engine-data.csv", engineTypeList);
+        ReadDataFromFile("./data/vehicle-data/vehicle-color-data.csv", vehicleColorList);
     }
 
     public Dictionary<string, int> GetMenuChoices()
@@ -95,6 +97,11 @@ public class DisplayMenus
     public string GetEngineTypeByIdx(int idx)
     {
         return engineTypeList[idx];
+    }
+
+    public string GetVehicleColorByIdx(int idx)
+    {
+        return vehicleColorList[idx];
     }
 
     public void MainMenu()
@@ -227,7 +234,6 @@ public class DisplayMenus
 
             if (modelSelection != 99 && modelSelection != 0)
             {
-                //need to have separate menu for electric vehicles
                 engineSelection = EngineSelectionMenu();
             }
 
@@ -271,19 +277,64 @@ public class DisplayMenus
 
             menuChoices["engine"] = engineSelection;
 
-            var vehicleYear = 0;
+            var vehicleColor = 0;
             if (engineSelection != 0 && engineSelection != menuItemNum)
             {
-                vehicleYear = VehicleYearSelectionMenu();
+                vehicleColor = VehicleColorSelectionMenu();
             }
 
-            if (engineSelection != 0 && vehicleYear != 1)
+            if (engineSelection != 0 && vehicleColor != 99)
             {
                 displayMenu = false;
             }
         } while (displayMenu);
 
         return engineSelection;
+    }
+
+    private int VehicleColorSelectionMenu()
+    {
+        var colorSelection = 0;
+        var displayMenu = true;
+
+        do
+        {
+            Console.WriteLine("***************************************************************");
+            Console.WriteLine($"\n Please choose from the following options for your vehicle's color:");
+            var menuItemNum = 1;
+            foreach (var item in vehicleColorList)
+            {
+                Console.WriteLine($"\t{menuItemNum}. {item}");
+                menuItemNum++;
+            }
+
+            Console.WriteLine($"\t{menuItemNum}. Go back");
+            Console.WriteLine("\n***************************************************************\n");
+            Console.Write("Enter an integer value of your choice: ");
+
+            colorSelection = MenuInput(menuItemNum);
+
+            if (colorSelection == menuItemNum)
+            {
+                colorSelection = 99;
+                return colorSelection;
+            }
+
+            menuChoices["color"] = colorSelection;
+
+            var vehicleYear = 0;
+            if (colorSelection != 0 && colorSelection != menuItemNum)
+            {
+                vehicleYear = VehicleYearSelectionMenu();
+            }
+
+            if (colorSelection != 0 && vehicleYear != 1)
+            {
+                displayMenu = false;
+            }
+        } while (displayMenu);
+
+        return colorSelection;
     }
 
     private int VehicleYearSelectionMenu()
@@ -294,12 +345,12 @@ public class DisplayMenus
         do
         {
             Console.WriteLine("***************************************************************");
-            Console.WriteLine($"\nPlease enter the year of your vehicle, if you want to go back enter 1 ");
+            Console.WriteLine($"\nPlease enter the year of your vehicle (must be newer than 1990), if you want to go back enter 1 ");
 
             var inputStr = Console.ReadLine();
             var validInput = int.TryParse(inputStr, out int result);
 
-            if (validInput && result <= 2025)
+            if (validInput && result >= 1990 && result <= 2025)
             {
                 vehicleYear = result;
                 menuChoices["year"] = vehicleYear;
@@ -315,7 +366,7 @@ public class DisplayMenus
         return vehicleYear;
     }
 
-    public static bool TakeVehicleOnDrive(string vehicleMake, string vehicleModel)
+    public static bool TakeVehicleOnDriveMenu(string vehicleMake, string vehicleModel)
     {
         var drive = false;
         var displayMenu = true;
@@ -334,6 +385,11 @@ public class DisplayMenus
                     drive = true;
                     displayMenu = false;
                 }
+                else if (char.ToLower(result) == 'n')
+                {
+                    drive = false;
+                    displayMenu = false;
+                }
                 else
                 {
                     Console.WriteLine($"{choice} is not a valid input");
@@ -344,7 +400,7 @@ public class DisplayMenus
         return drive;
     }
 
-    public static int DriveLength()
+    public static int DriveLengthMenu()
     {
         Console.WriteLine("\nHow many miles are you driving?");
 

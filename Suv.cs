@@ -17,7 +17,7 @@ public class Suv : Vehicle
         base.PrintDriveDetails(tripDetails);
     }
 
-    public override string ToString() => $"\nThe details of your vehicle are:\n\nMake: {Make}\nModel: {Model}\nYear: {Year}\nType: {VehicleType}\nEngine Type: {EngineType}\nRange: {Range}\n";
+    public override string ToString() => $"\nThe details of your vehicle are:\n\nMake: {Make}\nModel: {Model}\nYear: {Year}\nType: {VehicleType}\nColor: {Color}\nEngine Type: {EngineType}\nRange: {Range}\n";
 
     public override bool Equals(object? obj)
     {
