@@ -4,10 +4,10 @@ public class DisplayMenus
 {
     public DisplayMenus(){}
     readonly Dictionary<string, int> menuChoices = [];
-    readonly List<string> vehicleTypeList = [];
-    readonly List<string> engineTypeList = [];
-    readonly List<string> vehicleMakeList = [];
-    readonly List<string> vehicleColorList = [];
+    List<string> vehicleTypeList = [];
+    List<string> engineTypeList = [];
+    List<string> vehicleMakeList = [];
+    List<string> vehicleColorList = [];
     readonly Dictionary<string, List<string>> vehicleModelDict = [];
 
     private void ReadDataFromFile(string filePath, List<string> targetList)
@@ -45,6 +45,45 @@ public class DisplayMenus
                 }
             }
         }
+    }
+
+    private void LoadHardCodedData()
+    {
+        List<string> chevyCar = ["Corvette","Camaro","Bolt"];
+        vehicleModelDict.Add("ChevroletCar", chevyCar);
+
+        List<string> chevyTruck = ["Silverado 1500","Silverado 2500","Colorado"];
+        vehicleModelDict.Add("ChevroletTruck", chevyTruck);
+
+        List<string> chevySuv = ["Tahoe","Suburban","Blazer"];
+        vehicleModelDict.Add("ChevroletSUV", chevySuv);
+
+        List<string> toyotaCar = ["Corrolla","Camry","Prius"];
+        vehicleModelDict.Add("ToyotaCar", toyotaCar);
+
+        List<string> toyotaTruck = ["Tacoma","Tundra"];
+        vehicleModelDict.Add("ToyotaTruck", toyotaTruck);
+
+        List<string> toyotaSuv = ["4Runner","Land Cruiser","Sequoia"];
+        vehicleModelDict.Add("ToyotaSUV", toyotaSuv);
+
+        List<string> fordCar = ["Focus","Escort","Fusion"];
+        vehicleModelDict.Add("FordCar", fordCar);
+
+        List<string> fordTruck = ["F-150","F-250","F-350","Ranger","Maverick"];
+        vehicleModelDict.Add("FordTruck", fordTruck);
+
+        List<string> fordSuv = ["Explorer","Bronco 2 Door","Bronco 4 Door","Escape"];
+        vehicleModelDict.Add("FordSUV", fordSuv);
+
+
+        vehicleTypeList = ["Car","Truck","SUV"];
+
+        engineTypeList = ["V4","V6","V8","V6 Hybrid","Electric","Turbo Diesel"];
+
+        vehicleMakeList = ["Toyota","Ford","Chevrolet"];
+
+        vehicleColorList = ["White","Black","Silver","Blue","Red","Grey"];
     }
 
     private void LoadData()
@@ -106,7 +145,8 @@ public class DisplayMenus
 
     public void MainMenu()
     {
-        LoadData();
+        // LoadData();
+        LoadHardCodedData();
 
         var menuChoice = 0;
         bool displayMenu = true;
