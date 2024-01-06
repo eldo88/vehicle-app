@@ -47,44 +47,44 @@ public class DisplayMenus
         }
     }
 
-    private void LoadHardCodedData()
-    {
-        List<string> chevyCar = ["Corvette","Camaro","Bolt"];
-        vehicleModelDict.Add("ChevroletCar", chevyCar);
+    // private void LoadHardCodedData()
+    // {
+    //     List<string> chevyCar = ["Corvette","Camaro","Bolt"];
+    //     vehicleModelDict.Add("ChevroletCar", chevyCar);
 
-        List<string> chevyTruck = ["Silverado 1500","Silverado 2500","Colorado"];
-        vehicleModelDict.Add("ChevroletTruck", chevyTruck);
+    //     List<string> chevyTruck = ["Silverado 1500","Silverado 2500","Colorado"];
+    //     vehicleModelDict.Add("ChevroletTruck", chevyTruck);
 
-        List<string> chevySuv = ["Tahoe","Suburban","Blazer"];
-        vehicleModelDict.Add("ChevroletSUV", chevySuv);
+    //     List<string> chevySuv = ["Tahoe","Suburban","Blazer"];
+    //     vehicleModelDict.Add("ChevroletSUV", chevySuv);
 
-        List<string> toyotaCar = ["Corrolla","Camry","Prius"];
-        vehicleModelDict.Add("ToyotaCar", toyotaCar);
+    //     List<string> toyotaCar = ["Corrolla","Camry","Prius"];
+    //     vehicleModelDict.Add("ToyotaCar", toyotaCar);
 
-        List<string> toyotaTruck = ["Tacoma","Tundra"];
-        vehicleModelDict.Add("ToyotaTruck", toyotaTruck);
+    //     List<string> toyotaTruck = ["Tacoma","Tundra"];
+    //     vehicleModelDict.Add("ToyotaTruck", toyotaTruck);
 
-        List<string> toyotaSuv = ["4Runner","Land Cruiser","Sequoia"];
-        vehicleModelDict.Add("ToyotaSUV", toyotaSuv);
+    //     List<string> toyotaSuv = ["4Runner","Land Cruiser","Sequoia"];
+    //     vehicleModelDict.Add("ToyotaSUV", toyotaSuv);
 
-        List<string> fordCar = ["Focus","Escort","Fusion"];
-        vehicleModelDict.Add("FordCar", fordCar);
+    //     List<string> fordCar = ["Focus","Escort","Fusion"];
+    //     vehicleModelDict.Add("FordCar", fordCar);
 
-        List<string> fordTruck = ["F-150","F-250","F-350","Ranger","Maverick"];
-        vehicleModelDict.Add("FordTruck", fordTruck);
+    //     List<string> fordTruck = ["F-150","F-250","F-350","Ranger","Maverick"];
+    //     vehicleModelDict.Add("FordTruck", fordTruck);
 
-        List<string> fordSuv = ["Explorer","Bronco 2 Door","Bronco 4 Door","Escape"];
-        vehicleModelDict.Add("FordSUV", fordSuv);
+    //     List<string> fordSuv = ["Explorer","Bronco 2 Door","Bronco 4 Door","Escape"];
+    //     vehicleModelDict.Add("FordSUV", fordSuv);
 
 
-        vehicleTypeList = ["Car","Truck","SUV"];
+    //     vehicleTypeList = ["Car","Truck","SUV"];
 
-        engineTypeList = ["V4","V6","V8","V6 Hybrid","Electric","Turbo Diesel"];
+    //     engineTypeList = ["V4","V6","V8","V6 Hybrid","Electric","Turbo Diesel"];
 
-        vehicleMakeList = ["Toyota","Ford","Chevrolet"];
+    //     vehicleMakeList = ["Toyota","Ford","Chevrolet"];
 
-        vehicleColorList = ["White","Black","Silver","Blue","Red","Grey"];
-    }
+    //     vehicleColorList = ["White","Black","Silver","Blue","Red","Grey"];
+    // }
 
     private void LoadData()
     {
@@ -145,8 +145,8 @@ public class DisplayMenus
 
     public void MainMenu()
     {
-        // LoadData();
-        LoadHardCodedData();
+        LoadData();
+        // LoadHardCodedData();
 
         var menuChoice = 0;
         bool displayMenu = true;
@@ -154,19 +154,9 @@ public class DisplayMenus
         do 
         {
             Console.WriteLine("\nThis program will allow you to build a vehicle");
-            Console.WriteLine("***************************************************************");
-            Console.WriteLine($"\n Please choose from the following options:");
 
-            var menuItemNum = 1;
-            foreach (var item in vehicleTypeList)
-            {
-                Console.WriteLine($"\t{menuItemNum}. {item}");
-                menuItemNum++;
-            }
-
-            Console.WriteLine($"\t{menuItemNum}. Exit Program");
-            Console.WriteLine("\n****************************************************************\n");
-            Console.Write("Enter an integer value of your choice: ");
+            const string menuText = "the type";
+            var menuItemNum = ShowMenuItems(vehicleTypeList, menuText);
 
             menuChoice = MenuInput(menuItemNum);
             
@@ -200,19 +190,8 @@ public class DisplayMenus
 
         do
         {
-            Console.WriteLine("***************************************************************");
-            Console.WriteLine("\n Please choose the make of your vehicle from the following options:");
-
-            var menuItemNum = 1;
-            foreach (var item in vehicleMakeList)
-            {
-                Console.WriteLine($"\t{menuItemNum}. {item}");
-                menuItemNum++;
-            }
-
-            Console.WriteLine($"\t{menuItemNum}. Go Back");
-            Console.WriteLine("\n****************************************************************\n");
-            Console.Write("Enter an integer value of your choice: ");
+            const string menuText = "make";
+            var menuItemNum = ShowMenuItems(vehicleMakeList, menuText);
 
             makeSelection = MenuInput(menuItemNum);
 
@@ -246,19 +225,8 @@ public class DisplayMenus
 
             var modelValues = vehicleModelDict[modelKey];
 
-            Console.WriteLine("***************************************************************");
-            Console.WriteLine("\n Please choose the make of your vehicle from the following options:");
-            
-            var menuItemNum = 1;
-            foreach (var item in modelValues)
-            {
-                Console.WriteLine($"\t{menuItemNum}. {item}");
-                menuItemNum++;
-            }
-
-            Console.WriteLine($"\t{menuItemNum}. Go back");
-            Console.WriteLine("\n****************************************************************\n");
-            Console.Write("Enter an integer value of your choice: ");
+            const string menuText = "model";
+            var menuItemNum = ShowMenuItems(modelValues, menuText);
 
             modelSelection = MenuInput(menuItemNum);
 
@@ -294,18 +262,8 @@ public class DisplayMenus
 
         do
         {
-            Console.WriteLine("***************************************************************");
-            Console.WriteLine($"\n Please choose from the following options for your engine type:");
-            var menuItemNum = 1;
-            foreach (var item in engineTypeList)
-            {
-                Console.WriteLine($"\t{menuItemNum}. {item}");
-                menuItemNum++;
-            }
-
-            Console.WriteLine($"\t{menuItemNum}. Go back");
-            Console.WriteLine("\n***************************************************************\n");
-            Console.Write("Enter an integer value of your choice: ");
+            const string menuText = "engine";
+            var menuItemNum = ShowMenuItems(engineTypeList, menuText);
 
             engineSelection = MenuInput(menuItemNum);
 
@@ -339,18 +297,8 @@ public class DisplayMenus
 
         do
         {
-            Console.WriteLine("***************************************************************");
-            Console.WriteLine($"\n Please choose from the following options for your vehicle's color:");
-            var menuItemNum = 1;
-            foreach (var item in vehicleColorList)
-            {
-                Console.WriteLine($"\t{menuItemNum}. {item}");
-                menuItemNum++;
-            }
-
-            Console.WriteLine($"\t{menuItemNum}. Go back");
-            Console.WriteLine("\n***************************************************************\n");
-            Console.Write("Enter an integer value of your choice: ");
+            const string menuText = "color";
+            var menuItemNum = ShowMenuItems(vehicleColorList, menuText);
 
             colorSelection = MenuInput(menuItemNum);
 
@@ -458,6 +406,25 @@ public class DisplayMenus
         }
 
         return result;
+    }
+
+    private int ShowMenuItems(List<string> menuItems, string menuText)
+    {
+        Console.WriteLine("***************************************************************");
+        Console.WriteLine($"\n Please choose the {menuText} of your vehicle from the following options:");
+
+        var menuItemNum = 1;
+        foreach (var item in menuItems)
+        {
+            Console.WriteLine($"\t{menuItemNum}. {item}");
+            menuItemNum++;
+        }
+
+        Console.WriteLine($"\t{menuItemNum}. Go Back");
+        Console.WriteLine("\n****************************************************************\n");
+        Console.Write("Enter an integer value of your choice: ");
+
+        return menuItemNum;
     }
 
     private static int MenuInput(int menuItemNum)
