@@ -1,3 +1,5 @@
+using Microsoft.VisualBasic;
+
 namespace vehicle_app;
 
 public class DisplayMenus
@@ -9,8 +11,9 @@ public class DisplayMenus
     List<string> vehicleMakeList = [];
     List<string> vehicleColorList = [];
     readonly Dictionary<string, List<string>> vehicleModelDict = [];
+    List<List<string>> menuData = [];
 
-    private void ReadDataFromFile(string filePath, List<string> targetList)
+    private static void ReadDataFromFile(string filePath, List<string> targetList)
     {
         if (File.Exists(filePath))
         {
@@ -27,7 +30,7 @@ public class DisplayMenus
         }
     }
 
-    private void ReadModelData(string filePath, Dictionary<string, List<string>> targetDict)
+    private static void ReadModelData(string filePath, Dictionary<string, List<string>> targetDict)
     {
         if (File.Exists(filePath))
         {
@@ -162,20 +165,18 @@ public class DisplayMenus
             
             menuChoices["vehicle"] = menuChoice;
 
+            var makeChoice = 0;
             if (menuChoice == menuItemNum)
             {   
                 menuChoices["vehicle"] = 99;
                 return;
-            }
-
-            var makeChoice = 0;
-
-            if (menuChoice != 0)
+            } 
+            else if (menuChoice > 0 && menuChoice < menuItemNum)
             {
                 makeChoice = MakeSelectionMenu();
             }
 
-            if (menuChoice != 0 && makeChoice != 4) 
+            if (makeChoice > 0 && makeChoice <= vehicleMakeList.Count)
             {
                 displayMenu = false;
             }
@@ -197,14 +198,18 @@ public class DisplayMenus
 
             menuChoices["make"] = makeSelection;
 
-            var modelSelection = 0;
-
-            if (makeSelection != menuItemNum && makeSelection != 0)
+            var modelSelection = 0; 
+            if (makeSelection == menuItemNum)
+            {
+                makeSelection = 99;
+                return makeSelection;
+            }
+            else if (makeSelection > 0 && makeSelection < menuItemNum)
             {
                 modelSelection = ModelSelectionMenu();
             }
 
-            if (makeSelection != 0 && modelSelection != 99)
+            if (makeSelection > 0 && modelSelection != 99)
             {
                 displayMenu = false;
             }
@@ -232,20 +237,18 @@ public class DisplayMenus
 
             menuChoices["model"] = modelSelection;
 
+            var engineSelection = 0;
             if (modelSelection == menuItemNum)
             {
                 modelSelection = 99;
                 return modelSelection;
             }
-
-            var engineSelection = 0;
-
-            if (modelSelection != 99 && modelSelection != 0)
+            else if (modelSelection > 0 && modelSelection < menuItemNum)
             {
                 engineSelection = EngineSelectionMenu();
             }
 
-            if (modelSelection != 0 && engineSelection != 99)
+            if (modelSelection > 0 && engineSelection <= engineTypeList.Count)
             {
                 displayMenu = false;
             }
@@ -267,24 +270,24 @@ public class DisplayMenus
 
             engineSelection = MenuInput(menuItemNum);
 
+            menuChoices["engine"] = engineSelection;
+
+            var vehicleColor = 0;
             if (engineSelection == menuItemNum)
             {
                 engineSelection = 99;
                 return engineSelection;
             }
-
-            menuChoices["engine"] = engineSelection;
-
-            var vehicleColor = 0;
-            if (engineSelection != 0 && engineSelection != menuItemNum)
+            else if (engineSelection > 0 && engineSelection < menuItemNum)
             {
                 vehicleColor = VehicleColorSelectionMenu();
             }
 
-            if (engineSelection != 0 && vehicleColor != 99)
+            if (engineSelection > 0 && vehicleColor <= vehicleColorList.Count)
             {
                 displayMenu = false;
             }
+
         } while (displayMenu);
 
         return engineSelection;
@@ -302,24 +305,24 @@ public class DisplayMenus
 
             colorSelection = MenuInput(menuItemNum);
 
+            menuChoices["color"] = colorSelection;
+
+            var vehicleYear = 0;
             if (colorSelection == menuItemNum)
             {
                 colorSelection = 99;
                 return colorSelection;
             }
-
-            menuChoices["color"] = colorSelection;
-
-            var vehicleYear = 0;
-            if (colorSelection != 0 && colorSelection != menuItemNum)
+            else if (colorSelection > 0 && colorSelection < menuItemNum)
             {
                 vehicleYear = VehicleYearSelectionMenu();
             }
 
-            if (colorSelection != 0 && vehicleYear != 1)
+            if (colorSelection > 0 && vehicleYear != 1)
             {
                 displayMenu = false;
             }
+
         } while (displayMenu);
 
         return colorSelection;
@@ -338,7 +341,7 @@ public class DisplayMenus
             var inputStr = Console.ReadLine();
             var validInput = int.TryParse(inputStr, out int result);
 
-            if (validInput && result >= 1990 && result <= 2025)
+            if ((validInput && result >= 1990 && result <= 2025) || result == 1)
             {
                 vehicleYear = result;
                 menuChoices["year"] = vehicleYear;
@@ -382,7 +385,8 @@ public class DisplayMenus
                 {
                     Console.WriteLine($"{choice} is not a valid input");
                 }
-        }
+            }
+
         } while(displayMenu);
 
         return drive;
@@ -408,7 +412,7 @@ public class DisplayMenus
         return result;
     }
 
-    private int ShowMenuItems(List<string> menuItems, string menuText)
+    private static int ShowMenuItems(List<string> menuItems, string menuText)
     {
         Console.WriteLine("***************************************************************");
         Console.WriteLine($"\n Please choose the {menuText} of your vehicle from the following options:");
