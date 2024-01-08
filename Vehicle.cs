@@ -19,6 +19,8 @@ public abstract class Vehicle
             {throw new ArgumentException("The vehicle model is required.");}
         Model = model;
 
+        if (year >= 1990 && year <= DateTime.Now.Year)
+            {throw new ArgumentException("The vehicle year is invalid");}
         Year = year;
 
         if (string.IsNullOrWhiteSpace(vehicleType))
@@ -47,7 +49,7 @@ public abstract class Vehicle
     public int? Capacity {get; set;}
     public string Make {get; set;}
     public string Model {get; set;}
-    public int? Year {get; set;}
+    public int Year {get; set;}
     public VehicleType VehicleType {get;}
     public string EngineType {get; set;}
     public decimal MPG {get; set;}
