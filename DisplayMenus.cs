@@ -21,7 +21,7 @@ public class DisplayMenus
             while (!fileReader.EndOfStream)
             {
                 var line = fileReader.ReadLine();
-                if (line == null)
+                if (string.IsNullOrWhiteSpace(line))
                 {
                     Console.WriteLine($"{filePath} is empty or missing correct data format");
                 }
@@ -31,6 +31,10 @@ public class DisplayMenus
                     targetList.AddRange(values);
                 }
             }
+        }
+        else
+        {
+            Console.WriteLine($"File path {filePath} does not exist");
         }
     }
 
@@ -44,7 +48,7 @@ public class DisplayMenus
                 var makeVehicleTypeKey = fileReader.ReadLine();
                 var line = fileReader.ReadLine();
 
-                if (makeVehicleTypeKey == null || line == null)
+                if (string.IsNullOrWhiteSpace(makeVehicleTypeKey) || string.IsNullOrWhiteSpace(line))
                 {
                     Console.WriteLine($"{filePath} is empty or missing correct data format");
                 }
@@ -55,6 +59,10 @@ public class DisplayMenus
                     targetDict.Add(makeVehicleTypeKey, modelList);
                 }
             }
+        }
+        else
+        {
+            Console.WriteLine($"File path {filePath} does not exist");
         }
     }
 
