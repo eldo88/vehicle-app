@@ -11,13 +11,13 @@ public class DisplayMenus
     List<string> vehicleMakeList = [];
     List<string> vehicleColorList = [];
     readonly Dictionary<string, List<string>> vehicleModelDict = [];
-    List<List<string>> menuData = [];
+    
 
     private static void ReadDataFromFile(string filePath, List<string> targetList)
     {
         if (File.Exists(filePath))
         {
-            using StreamReader fileReader = new StreamReader(File.OpenRead(filePath));
+            using StreamReader fileReader = new(File.OpenRead(filePath));
             while (!fileReader.EndOfStream)
             {
                 var line = fileReader.ReadLine();
@@ -34,7 +34,7 @@ public class DisplayMenus
     {
         if (File.Exists(filePath))
         {
-            using StreamReader fileReader = new StreamReader(File.OpenRead(filePath));
+            using StreamReader fileReader = new(File.OpenRead(filePath));
             while (!fileReader.EndOfStream)
             {
                 var makeVehicleTypeKey = fileReader.ReadLine();

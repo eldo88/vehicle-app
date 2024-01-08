@@ -29,17 +29,17 @@ public abstract class Vehicle
             {throw new ArgumentException("Engine type is required");}
         EngineType = engineType;
 
-        if (engineType != "Electric")
-        {
-            MPG = mpg;
-            FuelCapacity = 20;
-            Range = FuelCapacity * MPG;
-        }
-        else
+        if (engineType == "Electric")
         {
             Range = 350;
             FuelCapacity = 0;
             MPG = 0;
+        }
+        else
+        {
+            MPG = mpg;
+            FuelCapacity = 20;
+            Range = FuelCapacity * MPG;
         }
     }
 
@@ -67,18 +67,18 @@ public abstract class Vehicle
 
         tripDetails.Add("Drive length", tripLength);
 
-        if (MPG != 0)
+        if (MPG == 0)
+        {
+            decimal numberOfChargesNeeded = (decimal)tripLength / (decimal)Range;
+            tripDetails.Add("Number Of Charges Needed", numberOfChargesNeeded);
+        }
+        else
         {
             decimal totalGallonsOfFuelNeeded = (decimal)tripLength / (decimal)MPG;
             decimal numberOfTanksOfGasNeeded = totalGallonsOfFuelNeeded / FuelCapacity;
             tripDetails.Add("Total Gallons Of Fuel Needed", totalGallonsOfFuelNeeded);
             tripDetails.Add("Number Of Tanks Of Gas Needed",numberOfTanksOfGasNeeded);
             tripDetails.Add("Vehicle Mpg", MPG);
-        }
-        else
-        {
-            decimal numberOfChargesNeeded = (decimal)tripLength / (decimal)Range;
-            tripDetails.Add("Number Of Charges Needed", numberOfChargesNeeded);
         }
 
         tripDetails.Add("Vehicle Range", Range);

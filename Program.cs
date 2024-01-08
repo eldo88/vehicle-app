@@ -6,7 +6,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        DisplayMenus menus = new DisplayMenus();
+        DisplayMenus menus = new();
         
         menus.MainMenu();
 
@@ -35,7 +35,7 @@ class Program
         
         if (vehicleType == "Car")
         {
-            Car car = new Car(vehicleColor, occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
+            Car car = new(vehicleColor, occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
 
             if (DisplayMenus.TakeVehicleOnDriveMenu(car.Make, car.Model))
             {
@@ -51,7 +51,7 @@ class Program
         } 
         else if (vehicleType == "Truck")
         {
-            Truck truck = new Truck(vehicleColor, occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
+            Truck truck = new(vehicleColor, occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
 
             if (DisplayMenus.TakeVehicleOnDriveMenu(truck.Make, truck.Model))
             {
@@ -67,7 +67,7 @@ class Program
         } 
         else if (vehicleType == "SUV")
         {
-            Suv suv = new Suv(vehicleColor, occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
+            Suv suv = new(vehicleColor, occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
 
             if (DisplayMenus.TakeVehicleOnDriveMenu(suv.Make, suv.Model))
             {

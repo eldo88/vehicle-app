@@ -1,12 +1,8 @@
 
 namespace vehicle_app;
 
-public class Suv : Vehicle
+public class Suv(string color, int capacity, string make, string model, int year, string vehicleType, string engineType, int mpg) : Vehicle(color, capacity, make, model, year, vehicleType, engineType, mpg)
 {
-    public Suv(string color, int capacity, string make, string model, int year, string vehicleType, string engineType, int mpg) : base(color, capacity, make, model, year, vehicleType, engineType, mpg)
-    {
-    }
-
     public override Dictionary<string, decimal> Drive(decimal tripLength)
     {
         return base.Drive(tripLength);

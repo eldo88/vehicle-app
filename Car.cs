@@ -3,15 +3,8 @@ using System.Diagnostics.Contracts;
 
 namespace vehicle_app;
 
-public sealed class Car : Vehicle
+public class Car(string color, int capacity, string make, string model, int year, string vehicleType, string engineType, int mpg) : Vehicle(color, capacity, make, model, year, vehicleType, engineType, mpg)
 {
-    // public int? fuelCapacity = 18;
-
-    public Car(string color, int capacity, string make, string model, int year, string vehicleType, string engineType, int mpg) : base(color, capacity, make, model, year, vehicleType, engineType, mpg)
-    {
-
-    }
-
     public override Dictionary<string, decimal> Drive(decimal tripLength)
     {
         return base.Drive(tripLength);
