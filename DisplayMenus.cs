@@ -21,7 +21,11 @@ public class DisplayMenus
             while (!fileReader.EndOfStream)
             {
                 var line = fileReader.ReadLine();
-                if (line != null)
+                if (line == null)
+                {
+                    Console.WriteLine($"{filePath} is empty or missing correct data format");
+                }
+                else
                 {
                     var values = line.Split(',');
                     targetList.AddRange(values);
@@ -40,7 +44,11 @@ public class DisplayMenus
                 var makeVehicleTypeKey = fileReader.ReadLine();
                 var line = fileReader.ReadLine();
 
-                if (makeVehicleTypeKey != null && line != null)
+                if (makeVehicleTypeKey == null || line == null)
+                {
+                    Console.WriteLine($"{filePath} is empty or missing correct data format");
+                }
+                else
                 {
                     var values = line.Split(',');
                     var modelList = new List<string>(values);
@@ -341,7 +349,7 @@ public class DisplayMenus
             var inputStr = Console.ReadLine();
             var validInput = int.TryParse(inputStr, out int result);
 
-            if ((validInput && result >= 1990 && result <= 2025) || result == 1)
+            if ((validInput && result >= 1990 && result <= DateTime.Now.Year + 1) || result == 1)
             {
                 vehicleYear = result;
                 menuChoices["year"] = vehicleYear;

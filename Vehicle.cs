@@ -19,7 +19,7 @@ public abstract class Vehicle
             {throw new ArgumentException("The vehicle model is required.");}
         Model = model;
 
-        if (year >= 1990 && year <= DateTime.Now.Year)
+        if (year <= 1990 && year >= DateTime.Now.Year + 1)
             {throw new ArgumentException("The vehicle year is invalid");}
         Year = year;
 
