@@ -1,5 +1,3 @@
-using Microsoft.VisualBasic;
-
 namespace vehicle_app;
 
 public class Menus
@@ -180,64 +178,41 @@ public class Menus
                     break;
                 case 1:
                     Console.WriteLine("\nThis program will allow you to build a vehicle");
-
                     var mainMenuText = "the type";
                     menuItemNum = ShowMenuItems(vehicleTypeList, mainMenuText);
-
                     menuChoice = MenuInput(menuItemNum);
-
                     menuChoices["vehicle"] = menuChoice;
-
                     menuControl += GoToPreviousNextOrSameMenu(menuItemNum, menuChoice);
-
                     break;
                 case 2:
                     var makeMenuText = "make";
                     menuItemNum = ShowMenuItems(vehicleMakeList, makeMenuText);
-
                     menuChoice = MenuInput(menuItemNum);
-
                     menuChoices["make"] = menuChoice;
-
                     menuControl += GoToPreviousNextOrSameMenu(menuItemNum, menuChoice);
-
                     break;
                 case 3:
                     var modelKey = vehicleMakeList[menuChoices["make"] - 1] + vehicleTypeList[menuChoices["vehicle"] - 1];
-
                     var modelValues = vehicleModelDict[modelKey];
-
                     var modelMenuText = "model";
                     menuItemNum = ShowMenuItems(modelValues, modelMenuText);
-
                     menuChoice = MenuInput(menuItemNum);
-
                     menuChoices["model"] = menuChoice;
-
                     menuControl += GoToPreviousNextOrSameMenu(menuItemNum, menuChoice);
-
                     break;
                 case 4:
                     var engineMenuText = "engine";
                     menuItemNum = ShowMenuItems(engineTypeList, engineMenuText);
-
                     menuChoice = MenuInput(menuItemNum);
-
                     menuChoices["engine"] = menuChoice;
-
                     menuControl += GoToPreviousNextOrSameMenu(menuItemNum, menuChoice);
-
                     break;
                 case 5:
                     var colorMenuText = "color";
                     menuItemNum = ShowMenuItems(vehicleColorList, colorMenuText);
-
                     menuChoice = MenuInput(menuItemNum);
-
                     menuChoices["color"] = menuChoice;
-
                     menuControl += GoToPreviousNextOrSameMenu(menuItemNum, menuChoice);
-
                     break;
                 case 6:
                     var year = VehicleYearSelectionMenu();
