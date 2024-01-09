@@ -1,8 +1,18 @@
 
 namespace vehicle_app;
 
-public class Truck(string color, int capacity, string make, string model, int year, string vehicleType, string engineType, int mpg) : Vehicle(color, capacity, make, model, year, vehicleType, engineType, mpg)
+public class Truck : Vehicle
 {
+    Truck(string color, int capacity, string make, string model, int year, string vehicleType, string engineType, int mpg) 
+    : base(color, capacity, make, model, year, vehicleType, engineType, mpg)
+    {}
+
+    public bool? IsFourWheelDrive {get; set;}
+    public decimal? BedLength {get; set;}
+    public int? PayLoadCapacity {get; set;}
+    public int? TowingCapacity {get; set;}
+    public bool? IsDully {get; set;}
+
     public override List<(string, decimal)> Drive(decimal tripLength)
     {
         return base.Drive(tripLength);

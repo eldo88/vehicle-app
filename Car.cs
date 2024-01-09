@@ -3,8 +3,16 @@ using System.Diagnostics.Contracts;
 
 namespace vehicle_app;
 
-public class Car(string color, int capacity, string make, string model, int year, string vehicleType, string engineType, int mpg) : Vehicle(color, capacity, make, model, year, vehicleType, engineType, mpg)
+public class Car : Vehicle
 {
+   
+    public Car(string color, int capacity, string make, string model, int year, string vehicleType, string engineType, int mpg)
+    : base(color, capacity, make, model, year, vehicleType, engineType, mpg)
+    {}
+
+    public int? NumDoors {get; set;}
+    public bool? IsConvertible {get; set;}
+
     public override List<(string, decimal)> Drive(decimal tripLength)
     {
         return base.Drive(tripLength);
