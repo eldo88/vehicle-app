@@ -6,9 +6,10 @@ class Program
 {
     static void Main(string[] args)
     {
-        DisplayMenus menus = new();
+        Menus menus = new();
         
-        menus.MainMenu();
+        // menus.MainMenu();
+        menus.DisplayMenus();
 
         var menuChoices = menus.GetMenuChoices();
   
@@ -37,9 +38,9 @@ class Program
         {
             Car car = new(vehicleColor, occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
 
-            if (DisplayMenus.TakeVehicleOnDriveMenu(car.Make, car.Model))
+            if (Menus.TakeVehicleOnDriveMenu(car.Make, car.Model))
             {
-                var driveLength = DisplayMenus.DriveLengthMenu();
+                var driveLength = Menus.DriveLengthMenu();
                 var tripDetails = car.Drive(driveLength);
                 Console.WriteLine(car);
                 car.PrintDriveDetails(tripDetails);
@@ -53,9 +54,9 @@ class Program
         {
             Truck truck = new(vehicleColor, occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
 
-            if (DisplayMenus.TakeVehicleOnDriveMenu(truck.Make, truck.Model))
+            if (Menus.TakeVehicleOnDriveMenu(truck.Make, truck.Model))
             {
-                var driveLength = DisplayMenus.DriveLengthMenu();
+                var driveLength = Menus.DriveLengthMenu();
                 var tripDetails = truck.Drive(driveLength);
                 Console.WriteLine(truck);
                 truck.PrintDriveDetails(tripDetails);
@@ -69,9 +70,9 @@ class Program
         {
             Suv suv = new(vehicleColor, occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
 
-            if (DisplayMenus.TakeVehicleOnDriveMenu(suv.Make, suv.Model))
+            if (Menus.TakeVehicleOnDriveMenu(suv.Make, suv.Model))
             {
-                var driveLength = DisplayMenus.DriveLengthMenu();
+                var driveLength = Menus.DriveLengthMenu();
                 var tripDetails = suv.Drive(driveLength);
                 Console.WriteLine(suv);
                 suv.PrintDriveDetails(tripDetails);

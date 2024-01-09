@@ -2,9 +2,9 @@ using Microsoft.VisualBasic;
 
 namespace vehicle_app;
 
-public class DisplayMenus
+public class Menus
 {
-    public DisplayMenus(){}
+    public Menus(){}
     readonly Dictionary<string, int> menuChoices = [];
     List<string> vehicleTypeList = [];
     List<string> engineTypeList = [];
@@ -162,188 +162,103 @@ public class DisplayMenus
         return vehicleColorList[idx];
     }
 
-    public void MainMenu()
+    public void DisplayMenus()
     {
+        var menuControl = 1;
+        var displayMenu = true;
         LoadData();
-        // LoadHardCodedData();
-
-        var menuChoice = 0;
-        bool displayMenu = true;
-       
-        do 
-        {
-            Console.WriteLine("\nThis program will allow you to build a vehicle");
-
-            const string menuText = "the type";
-            var menuItemNum = ShowMenuItems(vehicleTypeList, menuText);
-
-            menuChoice = MenuInput(menuItemNum);
-            
-            menuChoices["vehicle"] = menuChoice;
-
-            var makeChoice = 0;
-            if (menuChoice == menuItemNum)
-            {   
-                menuChoices["vehicle"] = 99;
-                return;
-            } 
-            else if (menuChoice > 0 && menuChoice < menuItemNum)
-            {
-                makeChoice = MakeSelectionMenu();
-            }
-
-            if (makeChoice > 0 && makeChoice <= vehicleMakeList.Count)
-            {
-                displayMenu = false;
-            }
-
-        } while(displayMenu);
-    }
-
-    private int MakeSelectionMenu()
-    {
-        var makeSelection = 0;
-        var displayMenu = true;
 
         do
         {
-            const string menuText = "make";
-            var menuItemNum = ShowMenuItems(vehicleMakeList, menuText);
-
-            makeSelection = MenuInput(menuItemNum);
-
-            menuChoices["make"] = makeSelection;
-
-            var modelSelection = 0; 
-            if (makeSelection == menuItemNum)
+            int menuItemNum;
+            int menuChoice;
+            switch (menuControl)
             {
-                makeSelection = 99;
-                return makeSelection;
-            }
-            else if (makeSelection > 0 && makeSelection < menuItemNum)
-            {
-                modelSelection = ModelSelectionMenu();
-            }
+                case 0:
+                    menuChoices["vehicle"] = 99;
+                    displayMenu = false;
+                    break;
+                case 1:
+                    Console.WriteLine("\nThis program will allow you to build a vehicle");
 
-            if (makeSelection > 0 && modelSelection != 99)
-            {
-                displayMenu = false;
-            }
+                    var mainMenuText = "the type";
+                    menuItemNum = ShowMenuItems(vehicleTypeList, mainMenuText);
 
-        } while (displayMenu);
+                    menuChoice = MenuInput(menuItemNum);
 
-        return makeSelection;
-    }
+                    menuChoices["vehicle"] = menuChoice;
 
-    private int ModelSelectionMenu()
-    {
-        var modelSelection = 0;
-        var displayMenu = true;
+                    menuControl += GoToPreviousNextOrSameMenu(menuItemNum, menuChoice);
 
-        do
-        {
-            var modelKey = vehicleMakeList[menuChoices["make"] - 1] + vehicleTypeList[menuChoices["vehicle"] - 1];
+                    break;
+                case 2:
+                    var makeMenuText = "make";
+                    menuItemNum = ShowMenuItems(vehicleMakeList, makeMenuText);
 
-            var modelValues = vehicleModelDict[modelKey];
+                    menuChoice = MenuInput(menuItemNum);
 
-            const string menuText = "model";
-            var menuItemNum = ShowMenuItems(modelValues, menuText);
+                    menuChoices["make"] = menuChoice;
 
-            modelSelection = MenuInput(menuItemNum);
+                    menuControl += GoToPreviousNextOrSameMenu(menuItemNum, menuChoice);
 
-            menuChoices["model"] = modelSelection;
+                    break;
+                case 3:
+                    var modelKey = vehicleMakeList[menuChoices["make"] - 1] + vehicleTypeList[menuChoices["vehicle"] - 1];
 
-            var engineSelection = 0;
-            if (modelSelection == menuItemNum)
-            {
-                modelSelection = 99;
-                return modelSelection;
-            }
-            else if (modelSelection > 0 && modelSelection < menuItemNum)
-            {
-                engineSelection = EngineSelectionMenu();
-            }
+                    var modelValues = vehicleModelDict[modelKey];
 
-            if (modelSelection > 0 && engineSelection <= engineTypeList.Count)
-            {
-                displayMenu = false;
-            }
+                    var modelMenuText = "model";
+                    menuItemNum = ShowMenuItems(modelValues, modelMenuText);
 
-        } while (displayMenu);
+                    menuChoice = MenuInput(menuItemNum);
 
-        return modelSelection;
-    }
+                    menuChoices["model"] = menuChoice;
 
-    private int EngineSelectionMenu()
-    {
-        var engineSelection = 0;
-        var displayMenu = true;
+                    menuControl += GoToPreviousNextOrSameMenu(menuItemNum, menuChoice);
 
-        do
-        {
-            const string menuText = "engine";
-            var menuItemNum = ShowMenuItems(engineTypeList, menuText);
+                    break;
+                case 4:
+                    var engineMenuText = "engine";
+                    menuItemNum = ShowMenuItems(engineTypeList, engineMenuText);
 
-            engineSelection = MenuInput(menuItemNum);
+                    menuChoice = MenuInput(menuItemNum);
 
-            menuChoices["engine"] = engineSelection;
+                    menuChoices["engine"] = menuChoice;
 
-            var vehicleColor = 0;
-            if (engineSelection == menuItemNum)
-            {
-                engineSelection = 99;
-                return engineSelection;
-            }
-            else if (engineSelection > 0 && engineSelection < menuItemNum)
-            {
-                vehicleColor = VehicleColorSelectionMenu();
-            }
+                    menuControl += GoToPreviousNextOrSameMenu(menuItemNum, menuChoice);
 
-            if (engineSelection > 0 && vehicleColor <= vehicleColorList.Count)
-            {
-                displayMenu = false;
+                    break;
+                case 5:
+                    var colorMenuText = "color";
+                    menuItemNum = ShowMenuItems(vehicleColorList, colorMenuText);
+
+                    menuChoice = MenuInput(menuItemNum);
+
+                    menuChoices["color"] = menuChoice;
+
+                    menuControl += GoToPreviousNextOrSameMenu(menuItemNum, menuChoice);
+
+                    break;
+                case 6:
+                    var year = VehicleYearSelectionMenu();
+
+                    if (year == 1)
+                    {
+                        menuControl -= 1;
+                    }
+                    else
+                    {
+                        displayMenu = false;
+                    }
+
+                    break;
+                default:
+                    break;
             }
 
         } while (displayMenu);
-
-        return engineSelection;
     }
-
-    private int VehicleColorSelectionMenu()
-    {
-        var colorSelection = 0;
-        var displayMenu = true;
-
-        do
-        {
-            const string menuText = "color";
-            var menuItemNum = ShowMenuItems(vehicleColorList, menuText);
-
-            colorSelection = MenuInput(menuItemNum);
-
-            menuChoices["color"] = colorSelection;
-
-            var vehicleYear = 0;
-            if (colorSelection == menuItemNum)
-            {
-                colorSelection = 99;
-                return colorSelection;
-            }
-            else if (colorSelection > 0 && colorSelection < menuItemNum)
-            {
-                vehicleYear = VehicleYearSelectionMenu();
-            }
-
-            if (colorSelection > 0 && vehicleYear != 1)
-            {
-                displayMenu = false;
-            }
-
-        } while (displayMenu);
-
-        return colorSelection;
-    }
-
+   
     private int VehicleYearSelectionMenu()
     {
         var vehicleYear = 0;
@@ -463,5 +378,23 @@ public class DisplayMenus
         }
 
         return result;
+    }
+
+    private static int GoToPreviousNextOrSameMenu(int menuItemNum, int menuChoice)
+    {
+        var changeMenuValue = 0;
+
+        if (menuItemNum == menuChoice)
+        {
+            return changeMenuValue - 1;
+        }
+        else if (menuChoice < 1 || menuChoice > menuItemNum)
+        {
+            return changeMenuValue;
+        }
+        else 
+        {
+            return changeMenuValue + 1;
+        }
     }
 }
