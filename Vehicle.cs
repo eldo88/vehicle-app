@@ -1,3 +1,5 @@
+using System.ComponentModel.Design;
+
 namespace vehicle_app;
 
 public abstract class Vehicle
@@ -56,44 +58,50 @@ public abstract class Vehicle
     public decimal Range {get; set;}
     public decimal FuelCapacity {get; set;} 
 
-
-    public virtual Dictionary<string, decimal> Drive(decimal tripLength)
+    public virtual List<(string, decimal)> Drive(decimal tripLength)
     {
-        Dictionary<string, decimal> tripDetails = [];
-        
-        if (tripLength == 0)
+        List<(string, decimal)> tripDetail = [];
+        (string, decimal) message;
+
+        if (tripLength <= 0)
         {
-            tripDetails.Add("Error", 0);
-            return tripDetails;
+            message = ("Error", 0);
+            tripDetail.Add(message);
         }
 
-        tripDetails.Add("Drive length", tripLength);
+        message = ("Drive length", tripLength);
+        tripDetail.Add(message);
 
         if (MPG == 0)
         {
             decimal numberOfChargesNeeded = (decimal)tripLength / (decimal)Range;
-            tripDetails.Add("Number Of Charges Needed", numberOfChargesNeeded);
+            message = ("Number Of Charges Needed", numberOfChargesNeeded);
+            tripDetail.Add(message);
         }
         else
         {
             decimal totalGallonsOfFuelNeeded = (decimal)tripLength / (decimal)MPG;
             decimal numberOfTanksOfGasNeeded = totalGallonsOfFuelNeeded / FuelCapacity;
-            tripDetails.Add("Total Gallons Of Fuel Needed", totalGallonsOfFuelNeeded);
-            tripDetails.Add("Number Of Tanks Of Gas Needed",numberOfTanksOfGasNeeded);
-            tripDetails.Add("Vehicle Mpg", MPG);
+            message = ("Total Gallons Of Fuel Needed", totalGallonsOfFuelNeeded);
+            tripDetail.Add(message);
+            message = ("Number Of Tanks Of Gas Needed",numberOfTanksOfGasNeeded);
+            tripDetail.Add(message);
+            message = ("Vehicle Mpg", MPG);
+            tripDetail.Add(message);
         }
 
-        tripDetails.Add("Vehicle Range", Range);
+        message = ("Vehicle Range", Range);
+        tripDetail.Add(message);
 
-        return tripDetails;
+        return tripDetail;
     }
 
-    public virtual void PrintDriveDetails(Dictionary<string, decimal> tripDetails)
+    public virtual void PrintDriveDetails(List<(string, decimal)> tripDetails)
     {
             Console.WriteLine("\nThe details of your drive are:\n");
             foreach (var item in tripDetails)
             {
-                Console.WriteLine("{0}: {1:0.00}", item.Key, item.Value);
+                Console.WriteLine("{0}: {1:0.00}", item.Item1, item.Item2);
             }
     }
 }

@@ -3,12 +3,12 @@ namespace vehicle_app;
 
 public class Truck(string color, int capacity, string make, string model, int year, string vehicleType, string engineType, int mpg) : Vehicle(color, capacity, make, model, year, vehicleType, engineType, mpg)
 {
-    public override Dictionary<string, decimal> Drive(decimal tripLength)
+    public override List<(string, decimal)> Drive(decimal tripLength)
     {
         return base.Drive(tripLength);
     }
 
-    public override void PrintDriveDetails(Dictionary<string, decimal> tripDetails)
+    public override void PrintDriveDetails(List<(string, decimal)> tripDetails)
     {
         base.PrintDriveDetails(tripDetails);
     }
