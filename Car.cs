@@ -8,7 +8,7 @@ public class Car : Vehicle
    
     public Car(string color, int capacity, string make, string model, int year, string vehicleType, string engineType, int mpg)
     : base(color, capacity, make, model, year, vehicleType, engineType, mpg)
-    {}
+    {/*empty for now*/}
 
     public int? NumDoors {get; set;}
     public bool? IsConvertible {get; set;}

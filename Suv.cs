@@ -3,9 +3,9 @@ namespace vehicle_app;
 
 public class Suv : Vehicle
 {
-    Suv(string color, int capacity, string make, string model, int year, string vehicleType, string engineType, int mpg) 
+    public Suv(string color, int capacity, string make, string model, int year, string vehicleType, string engineType, int mpg) 
     : base(color, capacity, make, model, year, vehicleType, engineType, mpg)
-    {}
+    {/*empty for now*/}
 
     public bool? IsFourWheelDrive {get; set;}
     public int? TowingCapacity {get; set;}
