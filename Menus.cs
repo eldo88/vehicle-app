@@ -11,59 +11,6 @@ public class Menus
     readonly Dictionary<string, List<string>> vehicleModelDict = [];
     
 
-    private static void ReadDataFromFile(string filePath, List<string> targetList)
-    {
-        if (File.Exists(filePath))
-        {
-            using StreamReader fileReader = new(File.OpenRead(filePath));
-            while (!fileReader.EndOfStream)
-            {
-                var line = fileReader.ReadLine();
-                if (string.IsNullOrWhiteSpace(line))
-                {
-                    Console.WriteLine($"{filePath} is empty or missing correct data format");
-                }
-                else
-                {
-                    var values = line.Split(',');
-                    targetList.AddRange(values);
-                }
-            }
-        }
-        else
-        {
-            Console.WriteLine($"File path {filePath} does not exist");
-        }
-    }
-
-    private static void ReadModelData(string filePath, Dictionary<string, List<string>> targetDict)
-    {
-        if (File.Exists(filePath))
-        {
-            using StreamReader fileReader = new(File.OpenRead(filePath));
-            while (!fileReader.EndOfStream)
-            {
-                var makeVehicleTypeKey = fileReader.ReadLine();
-                var line = fileReader.ReadLine();
-
-                if (string.IsNullOrWhiteSpace(makeVehicleTypeKey) || string.IsNullOrWhiteSpace(line))
-                {
-                    Console.WriteLine($"{filePath} is empty or missing correct data format");
-                }
-                else
-                {
-                    var values = line.Split(',');
-                    var modelList = new List<string>(values);
-                    targetDict.Add(makeVehicleTypeKey, modelList);
-                }
-            }
-        }
-        else
-        {
-            Console.WriteLine($"File path {filePath} does not exist");
-        }
-    }
-
     private void LoadData()
     {
         string[] modelDataFilePaths = {
@@ -80,13 +27,13 @@ public class Menus
 
         foreach (var filePath in modelDataFilePaths)
         {
-            ReadModelData(filePath, vehicleModelDict);
+            FileOperations.ReadModelDataIntoDict(filePath, vehicleModelDict);
         }
 
-        ReadDataFromFile("./data/vehicle-data/vehicle-type-data.csv", vehicleTypeList);
-        ReadDataFromFile("./data/vehicle-data/vehicle-make-data.csv", vehicleMakeList);
-        ReadDataFromFile("./data/vehicle-data/engine-data.csv", engineTypeList);
-        ReadDataFromFile("./data/vehicle-data/vehicle-color-data.csv", vehicleColorList);
+        FileOperations.ReadDataFromFile("./data/vehicle-data/vehicle-type-data.csv", vehicleTypeList);
+        FileOperations.ReadDataFromFile("./data/vehicle-data/vehicle-make-data.csv", vehicleMakeList);
+        FileOperations.ReadDataFromFile("./data/vehicle-data/engine-data.csv", engineTypeList);
+        FileOperations.ReadDataFromFile("./data/vehicle-data/vehicle-color-data.csv", vehicleColorList);
     }
 
     public Dictionary<string, int> GetMenuChoices()

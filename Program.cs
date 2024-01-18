@@ -52,6 +52,8 @@ class Program
 
             CarRepository carRepository = new();
             carRepository.SaveVehicle(car);
+            //carRepository.GetVehicle();
+            //Console.ReadLine();
         } 
         else if (vehicleType == "Truck")
         {
