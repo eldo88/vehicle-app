@@ -7,8 +7,17 @@ internal class TruckRepository : IVehicleRepository<Truck>
         throw new NotImplementedException();
     }
 
-    public void SaveVehicle(Truck vehicle)
+    public void SaveVehicle(Truck truck)
     {
-        throw new NotImplementedException();
+        var filePath = "./data/vehicle-data/trucks-saved.csv";
+        Func<List<string>> data = truck.FormatDataForSavingToFile;
+        List<string> truckData = data();
+
+        using StreamWriter streamWriter = File.AppendText(filePath);
+        foreach (var line in truckData)
+        {
+            streamWriter.Write(line + ',');
+        }
+        streamWriter.WriteLine();
     }
 }

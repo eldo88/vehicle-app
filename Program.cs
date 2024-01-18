@@ -44,13 +44,14 @@ class Program
                 var tripDetails = car.Drive(driveLength);
                 Console.WriteLine(car);
                 car.PrintDriveDetails(tripDetails);
-                CarRepository carRepository = new();
-                carRepository.SaveVehicle(car);
             }
             else
             {
                 Console.WriteLine(car);
             }
+
+            CarRepository carRepository = new();
+            carRepository.SaveVehicle(car);
         } 
         else if (vehicleType == "Truck")
         {
@@ -67,6 +68,9 @@ class Program
             {
                 Console.WriteLine(truck);
             }
+
+            TruckRepository truckRepository = new();
+            truckRepository.SaveVehicle(truck);
         } 
         else if (vehicleType == "SUV")
         {
@@ -83,6 +87,9 @@ class Program
             {
                 Console.WriteLine(suv);
             }
+            
+            SuvRepository suvRepository = new();
+            suvRepository.SaveVehicle(suv);
         }
         else
         {
