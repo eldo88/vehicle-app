@@ -54,4 +54,31 @@ public static class FileOperations
             Console.WriteLine($"File path {filePath} does not exist");
         }
     }
+
+    public static void ReadDataFromMockDbFile(string filePath, List<List<string>> targetList)
+    {
+        if (File.Exists(filePath))
+        {
+            using StreamReader fileReader = new(File.OpenRead(filePath));
+            while (!fileReader.EndOfStream)
+            {
+                var line = fileReader.ReadLine();
+                if (string.IsNullOrWhiteSpace(line))
+                {
+                    Console.WriteLine($"{filePath} is empty or missing correct data format");
+                }
+                else
+                {
+                    var values = line.Split(',');
+                    List<string> tempList = [];
+                    tempList.AddRange(values);
+                    targetList.Add(tempList);
+                }
+            }
+        }
+        else
+        {
+            Console.WriteLine($"File path {filePath} does not exist");
+        }
+    }
 }

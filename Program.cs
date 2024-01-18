@@ -34,10 +34,14 @@ class Program
         
         var MPG = 25; //hardcoded for now
 
+        VehicleCreator carCreator = new CarCreator();
+        VehicleCreator truckCreator = new TruckCreator();
+        VehicleCreator suvCreator = new SuvCreator();
+
         if (vehicleType == "Car")
         {
-            Car car = new(vehicleColor, occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
-
+            Car car = (Car)carCreator.VehicleFactory(vehicleColor, occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
+            
             if (Menus.TakeVehicleOnDriveMenu(car.Make, car.Model))
             {
                 var driveLength = Menus.DriveLengthMenu();
@@ -52,12 +56,16 @@ class Program
 
             CarRepository carRepository = new();
             carRepository.SaveVehicle(car);
-            //carRepository.GetVehicle();
+            var cars = carRepository.GetVehicles();
+            foreach (var item in cars)
+            {
+                Console.WriteLine(item);
+            }
             //Console.ReadLine();
         } 
         else if (vehicleType == "Truck")
         {
-            Truck truck = new(vehicleColor, occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
+            Truck truck = (Truck)truckCreator.VehicleFactory(vehicleColor, occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
 
             if (Menus.TakeVehicleOnDriveMenu(truck.Make, truck.Model))
             {
@@ -76,7 +84,7 @@ class Program
         } 
         else if (vehicleType == "SUV")
         {
-            Suv suv = new(vehicleColor, occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
+            Suv suv = (Suv)suvCreator.VehicleFactory(vehicleColor, occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
 
             if (Menus.TakeVehicleOnDriveMenu(suv.Make, suv.Model))
             {

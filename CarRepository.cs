@@ -2,27 +2,30 @@ namespace vehicle_app;
 
 internal class CarRepository : IVehicleRepository<Car>
 {
-    readonly List<string> _cars = [];
+    readonly List<List<string>> _cars = [];
+    private readonly CarCreator carCreator = new();
 
-    public Car GetVehicle()
+    public List<Car> GetVehicles()
     {
-        FileOperations.ReadDataFromFile("./data/vehicle-data/cars-saved.csv", _cars);
+        List<Car> cars = [];
+        FileOperations.ReadDataFromMockDbFile("./data/vehicle-data/cars-saved.csv", _cars);
 
         foreach (var line in _cars)
         {
-            Console.WriteLine(line);
+            var capacity = int.Parse(line[2]);
+            var year = int.Parse(line[5]);
+            var mpg = int.Parse(line[8]);
+            Car car = (Car)carCreator.VehicleFactory(line[1], capacity, line[3], line[4], year, line[6], line[7], mpg);
+            cars.Add(car);
         }
 
-        Car car = new("test", 1, "test", "test", 2, "Car", "test", 3);
-
-        return car;
+        return cars;
     }
 
     public void SaveVehicle(Car car)
     {
         var filePath = "./data/vehicle-data/cars-saved.csv";
-        Func<List<string>> data = car.FormatDataForSavingToFile;
-        List<string> carData = data();
+        var carData = car.FormatDataForSavingToFile();
 
         using StreamWriter streamWriter = File.AppendText(filePath);
         foreach (var line in carData)

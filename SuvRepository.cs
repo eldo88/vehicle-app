@@ -2,7 +2,7 @@ namespace vehicle_app;
 
 internal class SuvRepository : IVehicleRepository<Suv>
 {
-    public Suv GetVehicle()
+    public List<Suv> GetVehicles()
     {
         throw new NotImplementedException();
     }
@@ -10,8 +10,7 @@ internal class SuvRepository : IVehicleRepository<Suv>
     public void SaveVehicle(Suv suv)
     {
         var filePath = "./data/vehicle-data/suvs-saved.csv";
-        Func<List<string>> data = suv.FormatDataForSavingToFile;
-        List<string> suvData = data();
+        var suvData = suv.FormatDataForSavingToFile();
 
         using StreamWriter streamWriter = File.AppendText(filePath);
         foreach (var line in suvData)
