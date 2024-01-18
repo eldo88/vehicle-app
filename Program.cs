@@ -33,7 +33,7 @@ class Program
         var vehicleColor = menus.GetVehicleColorByIdx(menuChoices["color"] - 1);
         
         var MPG = 25; //hardcoded for now
-        
+
         if (vehicleType == "Car")
         {
             Car car = new(vehicleColor, occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
@@ -44,6 +44,8 @@ class Program
                 var tripDetails = car.Drive(driveLength);
                 Console.WriteLine(car);
                 car.PrintDriveDetails(tripDetails);
+                CarRepository carRepository = new();
+                carRepository.SaveVehicle(car);
             }
             else
             {

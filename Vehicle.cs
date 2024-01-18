@@ -1,5 +1,3 @@
-using System.ComponentModel.Design;
-
 namespace vehicle_app;
 
 public abstract class Vehicle
@@ -45,18 +43,37 @@ public abstract class Vehicle
             FuelCapacity = 20;
             Range = FuelCapacity * MPG;
         }
+
+        Guid = Guid.NewGuid(); // TODO: add as property in ctor
     }
 
+    public Guid Guid {get;} // move to concrete classes?
     public string Color {get; set;}
-    public int? Capacity {get; set;}
+    public int Capacity {get; set;}
     public string Make {get; set;}
     public string Model {get; set;}
     public int Year {get; set;}
-    public VehicleType VehicleType {get;}
+    public VehicleType VehicleType {get; set;}
     public string EngineType {get; set;}
     public decimal MPG {get; set;}
     public decimal Range {get; set;}
     public decimal FuelCapacity {get; set;} 
+
+    public List<string> FormatDataForSavingToFile()
+    {
+        var guid = Guid.ToString();
+        var capacity = Convert.ToString(Capacity);
+        var year = Convert.ToString(Year);
+        var vehicleType = Enum.GetName(typeof(VehicleType), VehicleType);
+        var mpg = Convert.ToString(MPG);
+        var range = Convert.ToString(Range);
+        var fuelCapacity = Convert.ToString(FuelCapacity);
+
+        #pragma warning disable CS8601 // Possible null reference assignment.
+        List<string> data = [guid, Color, capacity, Make, Model, year, vehicleType, EngineType, mpg, range, fuelCapacity];
+        #pragma warning restore CS8601 // Possible null reference assignment.
+        return data;
+    }
 
     public virtual List<(string, decimal)> Drive(decimal tripLength)
     {

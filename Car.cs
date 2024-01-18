@@ -1,6 +1,3 @@
-
-using System.Diagnostics.Contracts;
-
 namespace vehicle_app;
 
 public class Car : Vehicle
@@ -25,6 +22,10 @@ public class Car : Vehicle
 
     public override string ToString() => $"\nThe details of your vehicle are:\n\nMake: {Make}\nModel: {Model}\nYear: {Year}\nType: {VehicleType}\nColor: {Color}\nEngine Type: {EngineType}\nRange: {Range}\n";
 
+    // public override string ToString()
+    // {
+    //     return base.ToString();
+    // }
     public override bool Equals(object? obj)
     {
         return base.Equals(obj);
