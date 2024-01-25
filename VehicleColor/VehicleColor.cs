@@ -1,0 +1,10 @@
+namespace vehicle_app;
+
+public class VehicleColor
+{
+    public VehicleColor()
+    {
+        ColorList = FileOperations.ReadDataFromFile("./data/vehicle-data/vehicle-color-data.csv");
+    }
+    public List<string> ColorList{get; set;}
+}

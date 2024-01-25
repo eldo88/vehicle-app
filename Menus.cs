@@ -2,40 +2,27 @@ namespace vehicle_app;
 
 public class Menus
 {
-    public Menus(){}
-    readonly Dictionary<string, int> menuChoices = [];
-    List<string> vehicleTypeList = [];
-    List<string> engineTypeList = [];
-    List<string> vehicleMakeList = [];
-    List<string> vehicleColorList = [];
-    readonly Dictionary<string, List<string>> vehicleModelDict = [];
-    
-
-    private void LoadData()
+    public Menus()
     {
-        string[] modelDataFilePaths = {
-            "./data/vehicle-data/toyota-car-data.csv",
-            "./data/vehicle-data/toyota-truck-data.csv",
-            "./data/vehicle-data/toyota-suv-data.csv",
-            "./data/vehicle-data/ford-car-data.csv",
-            "./data/vehicle-data/ford-truck-data.csv",
-            "./data/vehicle-data/ford-suv-data.csv",
-            "./data/vehicle-data/chevrolet-car-data.csv",
-            "./data/vehicle-data/chevrolet-truck-data.csv",
-            "./data/vehicle-data/chevrolet-suv-data.csv"
-        };
-
-        foreach (var filePath in modelDataFilePaths)
-        {
-            FileOperations.ReadModelDataIntoDict(filePath, vehicleModelDict);
-        }
-
-        FileOperations.ReadDataFromFile("./data/vehicle-data/vehicle-type-data.csv", vehicleTypeList);
-        FileOperations.ReadDataFromFile("./data/vehicle-data/vehicle-make-data.csv", vehicleMakeList);
-        FileOperations.ReadDataFromFile("./data/vehicle-data/engine-data.csv", engineTypeList);
-        FileOperations.ReadDataFromFile("./data/vehicle-data/vehicle-color-data.csv", vehicleColorList);
+        vehicleModelDict = vehicleModel.VehicleModelDict;
+        vehicleTypeList = vehicleType.VehicleTypeList;
+        vehicleMakeList = vehicleMake.VehicleMakeList;
+        engineTypeList = vehicleEngine.EngineList;
+        vehicleColorList = vehicleColor.ColorList;
     }
 
+    readonly Dictionary<string, int> menuChoices = [];
+    readonly List<string> vehicleTypeList = [];
+    readonly VehicleType vehicleType = new();
+    readonly List<string> engineTypeList = [];
+    readonly VehicleEngine vehicleEngine = new();
+    readonly List<string> vehicleMakeList = [];
+    readonly VehicleMake vehicleMake = new();
+    readonly List<string> vehicleColorList = [];
+    readonly VehicleColor vehicleColor = new();
+    readonly Dictionary<string, List<string>> vehicleModelDict = [];
+    readonly VehicleModel vehicleModel = new();
+    
     public Dictionary<string, int> GetMenuChoices()
     {
         return menuChoices;
@@ -72,7 +59,7 @@ public class Menus
     {
         var menuControl = 1;
         var displayMenu = true;
-        LoadData();
+        // LoadModelData();
 
         do
         {

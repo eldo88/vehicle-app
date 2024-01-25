@@ -1,6 +1,6 @@
 namespace vehicle_app;
 
-public enum VehicleType 
+public enum VehicleTypeEnum 
 {
     Car = 0,
     Truck = 1,

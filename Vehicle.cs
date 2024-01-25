@@ -25,7 +25,7 @@ public abstract class Vehicle
 
         if (string.IsNullOrWhiteSpace(vehicleType))
             {throw new ArgumentException("The vehicle type is required");}
-        VehicleType = (VehicleType) Enum.Parse(typeof(VehicleType), vehicleType);
+        VehicleTypeEnum = (VehicleTypeEnum) Enum.Parse(typeof(VehicleTypeEnum), vehicleType);
 
         if (string.IsNullOrWhiteSpace(engineType))
             {throw new ArgumentException("Engine type is required");}
@@ -53,7 +53,7 @@ public abstract class Vehicle
     public string Make {get; set;}
     public string Model {get; set;}
     public int Year {get; set;}
-    public VehicleType VehicleType {get; set;}
+    public VehicleTypeEnum VehicleTypeEnum {get; set;}
     public string EngineType {get; set;}
     public decimal MPG {get; set;}
     public decimal Range {get; set;}
@@ -64,14 +64,15 @@ public abstract class Vehicle
         var guid = Guid.ToString();
         var capacity = Convert.ToString(Capacity);
         var year = Convert.ToString(Year);
-        var vehicleType = Enum.GetName(typeof(VehicleType), VehicleType);
+        var vehicleType = Enum.GetName(typeof(VehicleTypeEnum), VehicleTypeEnum);
         var mpg = Convert.ToString(MPG);
         var range = Convert.ToString(Range);
         var fuelCapacity = Convert.ToString(FuelCapacity);
 
-        #pragma warning disable CS8601 // Possible null reference assignment.
+    #pragma warning disable CS8604 // Possible null reference argument.
         List<string> data = [guid, Color, capacity, Make, Model, year, vehicleType, EngineType, mpg, range, fuelCapacity];
-        #pragma warning restore CS8601 // Possible null reference assignment.
+    #pragma warning restore CS8604 // Possible null reference argument.
+
         return data;
     }
 
