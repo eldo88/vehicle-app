@@ -1,9 +1,26 @@
+
 namespace vehicle_app;
 
 internal class CarRepository : IVehicleRepository<Car>
 {
-    readonly List<List<string>> _cars = [];
+    private readonly List<List<string>> _cars = [];
     private readonly CarCreator carCreator = new();
+
+    public Car GetVehicleById(Guid id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public List<Car> GetVehicleByMake(string make)
+    {
+        throw new NotImplementedException();
+    }
+
+    public List<Car> GetVehicleByModel(string model)
+    {
+        List<Car> cars = GetVehicles();
+        return cars.FindAll(c => c.Model == model);
+    }
 
     public List<Car> GetVehicles()
     {
