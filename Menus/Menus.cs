@@ -28,29 +28,29 @@ public class Menus
         return menuChoices;
     }
 
-    public string GetVehicleTypeByIdx(int idx)
+    public string GetVehicleTypeByIdx(int idx) // moved to VehicleType
     {
         return vehicleTypeList[idx];
     }
 
-    public string GetVehicleMakeByIdx(int idx)
+    public string GetVehicleMakeByIdx(int idx) // moved to VehicleMake
     {
         return vehicleMakeList[idx];
     }
 
-    public string GetVehicleModelByIdx(string vehicleMakeKey, int idx)
+    public string GetVehicleModelByIdx(string vehicleMakeKey, int idx) //moved to VehicleModel
     {
         var modelList = vehicleModelDict[vehicleMakeKey];
 
         return modelList[idx];
     }
 
-    public string GetEngineTypeByIdx(int idx)
+    public string GetEngineTypeByIdx(int idx) // moved to VehicleEngine
     {
         return engineTypeList[idx];
     }
 
-    public string GetVehicleColorByIdx(int idx)
+    public string GetVehicleColorByIdx(int idx) // moved to VehicleColor
     {
         return vehicleColorList[idx];
     }

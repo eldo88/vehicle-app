@@ -8,4 +8,9 @@ public class VehicleEngine
     }
 
     public List<string> EngineList {get; set;}
+
+    public string GetEngineTypeByIdx(int idx)
+    {
+        return EngineList[idx];
+    }
 }

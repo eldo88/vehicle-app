@@ -20,4 +20,11 @@ public class VehicleModel
         ];
 
     public Dictionary<string, List<string>> VehicleModelDict {get; set;}
+
+    public string GetVehicleModelByIdx(string vehicleMakeKey, int idx)
+    {
+        var modelList = VehicleModelDict[vehicleMakeKey];
+
+        return modelList[idx];
+    }
 }
