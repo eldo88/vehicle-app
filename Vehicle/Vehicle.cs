@@ -2,6 +2,7 @@ namespace vehicle_app;
 
 public abstract class Vehicle
 {
+    public Vehicle(){}
 
     public Vehicle(string color, int capacity, string make, string model, int year, string vehicleType, string engineType, int mpg)
     {
@@ -48,13 +49,13 @@ public abstract class Vehicle
     }
 
     public Guid Guid {get;} // move to concrete classes?
-    public string Color {get; set;}
+    public string Color {get; set;} = "";
     public int Capacity {get; set;}
-    public string Make {get; set;}
-    public string Model {get; set;}
+    public string Make {get; set;} = "";
+    public string Model {get; set;} = "";
     public int Year {get; set;}
     public VehicleTypeEnum VehicleTypeEnum {get; set;}
-    public string EngineType {get; set;}
+    public string EngineType {get; set;} = "";
     public decimal MPG {get; set;}
     public decimal Range {get; set;}
     public decimal FuelCapacity {get; set;} 

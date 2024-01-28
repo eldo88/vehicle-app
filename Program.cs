@@ -44,25 +44,26 @@ class Program
         VehicleCreator carCreator = new CarCreator();
         VehicleCreator truckCreator = new TruckCreator();
         VehicleCreator suvCreator = new SuvCreator();
+        Vehicle createdVehicle;
 
         if (createdVehicleType == "Car")
         {
-            Car car = (Car)carCreator.VehicleFactory(createdVehicleColor, occupantCapacity, createdMake, createdModel, menuChoices["year"], createdVehicleType, createdEngineType, MPG);
+            createdVehicle = (Car)carCreator.VehicleFactory(createdVehicleColor, occupantCapacity, createdMake, createdModel, menuChoices["year"], createdVehicleType, createdEngineType, MPG);
             
-            if (Menus.TakeVehicleOnDriveMenu(car.Make, car.Model))
+            if (Menus.TakeVehicleOnDriveMenu(createdVehicle.Make, createdVehicle.Model))
             {
                 var driveLength = Menus.DriveLengthMenu();
-                var tripDetails = car.Drive(driveLength);
-                Console.WriteLine(car);
-                car.PrintDriveDetails(tripDetails);
+                var tripDetails = createdVehicle.Drive(driveLength);
+                Console.WriteLine(createdVehicle);
+                createdVehicle.PrintDriveDetails(tripDetails);
             }
             else
             {
-                Console.WriteLine(car);
+                Console.WriteLine(createdVehicle);
             }
 
             CarRepository carRepository = new();
-            carRepository.SaveVehicle(car);
+            //carRepository.SaveVehicle(createdVehicle);
             var cars = carRepository.GetVehicles();
             foreach (var item in cars)
             {
