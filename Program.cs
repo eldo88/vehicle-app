@@ -26,11 +26,9 @@ class Program
 
         Vehicle createdVehicle;
 
-        CreateVehicle createVehicle = new(vehicleColor, vehicleEngine, vehicleMake, vehicleModel, vehicleType, menuChoices);
-
         try
         {
-            createdVehicle = createVehicle.CreateVehicleFromMenuChoices();
+            createdVehicle = CreateVehicle.CreateVehicleFromMenuChoices(vehicleColor, vehicleEngine, vehicleMake, vehicleModel, vehicleType, menuChoices);
             DisplayCreatedVehicle.PrintToConsole(createdVehicle);
             // TODO: implement saving, will need to explicitly cast
         }
