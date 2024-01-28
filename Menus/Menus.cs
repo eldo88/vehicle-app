@@ -11,17 +11,17 @@ public class Menus
         vehicleColorList = vehicleColor.ColorList;
     }
 
-    readonly Dictionary<string, int> menuChoices = [];
-    readonly List<string> vehicleTypeList = [];
-    readonly VehicleType vehicleType = new();
-    readonly List<string> engineTypeList = [];
-    readonly VehicleEngine vehicleEngine = new();
-    readonly List<string> vehicleMakeList = [];
-    readonly VehicleMake vehicleMake = new();
-    readonly List<string> vehicleColorList = [];
-    readonly VehicleColor vehicleColor = new();
-    readonly Dictionary<string, List<string>> vehicleModelDict = [];
-    readonly VehicleModel vehicleModel = new();
+    public Dictionary<string, int> menuChoices {get; set;} = [];
+    public List<string> vehicleTypeList = [];
+    public VehicleType vehicleType = new();
+    public List<string> engineTypeList = [];
+    public VehicleEngine vehicleEngine = new();
+    public List<string> vehicleMakeList = [];
+    public VehicleMake vehicleMake = new();
+    public List<string> vehicleColorList = [];
+    public VehicleColor vehicleColor = new();
+    public Dictionary<string, List<string>> vehicleModelDict = [];
+    public VehicleModel vehicleModel = new();
     
     public Dictionary<string, int> GetMenuChoices()
     {
@@ -129,7 +129,7 @@ public class Menus
         } while (displayMenu);
     }
    
-    private int VehicleYearSelectionMenu()
+    public int VehicleYearSelectionMenu()
     {
         var vehicleYear = 0;
         var displayMenu = true;
@@ -213,7 +213,7 @@ public class Menus
         return result;
     }
 
-    private static int ShowMenuItems(List<string> menuItems, string menuText)
+    public static int ShowMenuItems(List<string> menuItems, string menuText)
     {
         Console.WriteLine("***************************************************************");
         Console.WriteLine($"\n Please choose the {menuText} of your vehicle from the following options:");
@@ -232,7 +232,7 @@ public class Menus
         return menuItemNum;
     }
 
-    private static int MenuInput(int menuItemNum)
+    public static int MenuInput(int menuItemNum)
     {
         var choiceStr = Console.ReadLine();
         var validInput = int.TryParse(choiceStr, out int result);
@@ -250,7 +250,7 @@ public class Menus
         return result;
     }
 
-    private static int GoToPreviousNextOrSameMenu(int menuItemNum, int menuChoice)
+    public static int GoToPreviousNextOrSameMenu(int menuItemNum, int menuChoice)
     {
         var changeMenuValue = 0;
 
