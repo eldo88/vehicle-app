@@ -2,134 +2,7 @@ namespace vehicle_app;
 
 public class Menus
 {
-    public Menus()
-    {
-        vehicleModelDict = vehicleModel.VehicleModelDict;
-        vehicleTypeList = vehicleType.VehicleTypeList;
-        vehicleMakeList = vehicleMake.VehicleMakeList;
-        engineTypeList = vehicleEngine.EngineList;
-        vehicleColorList = vehicleColor.ColorList;
-    }
-
-    public Dictionary<string, int> menuChoices {get; set;} = [];
-    public List<string> vehicleTypeList = [];
-    public VehicleType vehicleType = new();
-    public List<string> engineTypeList = [];
-    public VehicleEngine vehicleEngine = new();
-    public List<string> vehicleMakeList = [];
-    public VehicleMake vehicleMake = new();
-    public List<string> vehicleColorList = [];
-    public VehicleColor vehicleColor = new();
-    public Dictionary<string, List<string>> vehicleModelDict = [];
-    public VehicleModel vehicleModel = new();
-    
-    public Dictionary<string, int> GetMenuChoices()
-    {
-        return menuChoices;
-    }
-
-    public string GetVehicleTypeByIdx(int idx) // moved to VehicleType
-    {
-        return vehicleTypeList[idx];
-    }
-
-    public string GetVehicleMakeByIdx(int idx) // moved to VehicleMake
-    {
-        return vehicleMakeList[idx];
-    }
-
-    public string GetVehicleModelByIdx(string vehicleMakeKey, int idx) //moved to VehicleModel
-    {
-        var modelList = vehicleModelDict[vehicleMakeKey];
-
-        return modelList[idx];
-    }
-
-    public string GetEngineTypeByIdx(int idx) // moved to VehicleEngine
-    {
-        return engineTypeList[idx];
-    }
-
-    public string GetVehicleColorByIdx(int idx) // moved to VehicleColor
-    {
-        return vehicleColorList[idx];
-    }
-
-    public void DisplayMenus()
-    {
-        var menuControl = 1;
-        var displayMenu = true;
-        // LoadModelData();
-
-        do
-        {
-            int menuItemNum;
-            int menuChoice;
-            switch (menuControl)
-            {
-                case 0:
-                    menuChoices["vehicle"] = 99;
-                    displayMenu = false;
-                    break;
-                case 1:
-                    Console.WriteLine("\nThis program will allow you to build a vehicle");
-                    var mainMenuText = "the type";
-                    menuItemNum = ShowMenuItems(vehicleTypeList, mainMenuText);
-                    menuChoice = MenuInput(menuItemNum);
-                    menuChoices["vehicle"] = menuChoice;
-                    menuControl += GoToPreviousNextOrSameMenu(menuItemNum, menuChoice);
-                    break;
-                case 2:
-                    var makeMenuText = "make";
-                    menuItemNum = ShowMenuItems(vehicleMakeList, makeMenuText);
-                    menuChoice = MenuInput(menuItemNum);
-                    menuChoices["make"] = menuChoice;
-                    menuControl += GoToPreviousNextOrSameMenu(menuItemNum, menuChoice);
-                    break;
-                case 3:
-                    var modelKey = vehicleMakeList[menuChoices["make"] - 1] + vehicleTypeList[menuChoices["vehicle"] - 1];
-                    var modelValues = vehicleModelDict[modelKey];
-                    var modelMenuText = "model";
-                    menuItemNum = ShowMenuItems(modelValues, modelMenuText);
-                    menuChoice = MenuInput(menuItemNum);
-                    menuChoices["model"] = menuChoice;
-                    menuControl += GoToPreviousNextOrSameMenu(menuItemNum, menuChoice);
-                    break;
-                case 4:
-                    var engineMenuText = "engine";
-                    menuItemNum = ShowMenuItems(engineTypeList, engineMenuText);
-                    menuChoice = MenuInput(menuItemNum);
-                    menuChoices["engine"] = menuChoice;
-                    menuControl += GoToPreviousNextOrSameMenu(menuItemNum, menuChoice);
-                    break;
-                case 5:
-                    var colorMenuText = "color";
-                    menuItemNum = ShowMenuItems(vehicleColorList, colorMenuText);
-                    menuChoice = MenuInput(menuItemNum);
-                    menuChoices["color"] = menuChoice;
-                    menuControl += GoToPreviousNextOrSameMenu(menuItemNum, menuChoice);
-                    break;
-                case 6:
-                    var year = VehicleYearSelectionMenu();
-
-                    if (year == 1)
-                    {
-                        menuControl -= 1;
-                    }
-                    else
-                    {
-                        displayMenu = false;
-                    }
-
-                    break;
-                default:
-                    break;
-            }
-
-        } while (displayMenu);
-    }
-   
-    public int VehicleYearSelectionMenu()
+    public static int VehicleYearSelectionMenu()
     {
         var vehicleYear = 0;
         var displayMenu = true;
@@ -145,7 +18,6 @@ public class Menus
             if ((validInput && result >= 1990 && result <= DateTime.Now.Year + 1) || result == 1)
             {
                 vehicleYear = result;
-                menuChoices["year"] = vehicleYear;
                 displayMenu = false;
             }
             else

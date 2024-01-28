@@ -10,8 +10,9 @@ public class ShowMenus
         VehicleModel = vehicleModel;
         VehicleType = vehicleType;
     }
-    Menus menus = new();
-    VehicleColor VehicleColor; //take data classes in ctor?
+
+    public MenuChoices menuChoices = new();
+    VehicleColor VehicleColor;
     VehicleEngine VehicleEngine;
     VehicleMake VehicleMake;
     VehicleModel VehicleModel;
@@ -29,7 +30,7 @@ public class ShowMenus
             switch (menuControl)
             {
                 case 0:
-                    menus.menuChoices["vehicle"] = 99;
+                    menuChoices.MenuChoicesFromUserInput["vehicle"] = 99;
                     displayMenu = false;
                     break;
                 case 1:
@@ -37,41 +38,42 @@ public class ShowMenus
                     var mainMenuText = "the type";
                     menuItemNum = Menus.ShowMenuItems(VehicleType.VehicleTypeList, mainMenuText);
                     menuChoice = Menus.MenuInput(menuItemNum);
-                    menus.menuChoices["vehicle"] = menuChoice;
+                    menuChoices.MenuChoicesFromUserInput["vehicle"] = menuChoice;
                     menuControl += Menus.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice);
                     break;
                 case 2:
                     var makeMenuText = "make";
                     menuItemNum = Menus.ShowMenuItems(VehicleMake.VehicleMakeList, makeMenuText);
                     menuChoice = Menus.MenuInput(menuItemNum);
-                    menus.menuChoices["make"] = menuChoice;
+                    menuChoices.MenuChoicesFromUserInput["make"] = menuChoice;
                     menuControl += Menus.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice);
                     break;
                 case 3:
-                    var modelKey = VehicleMake.VehicleMakeList[menus.menuChoices["make"] - 1] + VehicleMake.VehicleMakeList[menus.menuChoices["vehicle"] - 1];
-                    var modelValues = menus.vehicleModelDict[modelKey];
+                    var modelKey = VehicleMake.VehicleMakeList[menuChoices.MenuChoicesFromUserInput["make"] - 1] + VehicleType.VehicleTypeList[menuChoices.MenuChoicesFromUserInput["vehicle"] - 1];
+                    var modelValues = VehicleModel.VehicleModelDict[modelKey];
                     var modelMenuText = "model";
                     menuItemNum = Menus.ShowMenuItems(modelValues, modelMenuText);
                     menuChoice = Menus.MenuInput(menuItemNum);
-                    menus.menuChoices["model"] = menuChoice;
+                    menuChoices.MenuChoicesFromUserInput["model"] = menuChoice;
                     menuControl += Menus.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice);
                     break;
                 case 4:
                     var engineMenuText = "engine";
                     menuItemNum = Menus.ShowMenuItems(VehicleEngine.EngineList, engineMenuText);
                     menuChoice = Menus.MenuInput(menuItemNum);
-                    menus.menuChoices["engine"] = menuChoice;
+                    menuChoices.MenuChoicesFromUserInput["engine"] = menuChoice;
                     menuControl += Menus.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice);
                     break;
                 case 5:
                     var colorMenuText = "color";
                     menuItemNum = Menus.ShowMenuItems(VehicleColor.ColorList, colorMenuText);
                     menuChoice = Menus.MenuInput(menuItemNum);
-                    menus.menuChoices["color"] = menuChoice;
+                    menuChoices.MenuChoicesFromUserInput["color"] = menuChoice;
                     menuControl += Menus.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice);
                     break;
                 case 6:
-                    var year = menus.VehicleYearSelectionMenu();
+                    var year = Menus.VehicleYearSelectionMenu();
+                    menuChoices.MenuChoicesFromUserInput["year"] = year;
 
                     if (year == 1)
                     {

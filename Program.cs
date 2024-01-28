@@ -6,12 +6,19 @@ class Program
 {
     static void Main(string[] args)
     {
-        Menus menus = new();
+        // Menus menus = new();
+        VehicleColor vehicleColor = new();
+        VehicleEngine vehicleEngine = new();
+        VehicleMake vehicleMake = new();
+        VehicleModel vehicleModel = new();
+        VehicleType vehicleType = new();
+
+        ShowMenus showMenus = new(vehicleColor, vehicleEngine, vehicleMake, vehicleModel, vehicleType);
         
         // menus.MainMenu();
-        menus.DisplayMenus();
+        showMenus.DisplayMenus();
 
-        var menuChoices = menus.GetMenuChoices();
+        var menuChoices = showMenus.menuChoices.MenuChoicesFromUserInput;
   
         var occupantCapacity = 4; // hardcoded for now
 
@@ -21,16 +28,16 @@ class Program
             return;
         }
 
-        var vehicleType = menus.GetVehicleTypeByIdx(menuChoices["vehicle"] - 1);
+        var createdVehicleType = vehicleType.GetVehicleTypeByIdx(menuChoices["vehicle"] - 1);
 
-        var make = menus.GetVehicleMakeByIdx(menuChoices["make"] - 1);
+        var createdMake = vehicleMake.GetVehicleMakeByIdx(menuChoices["make"] - 1);
 
-        var vehicleMakeKey = make + vehicleType;
-        var model = menus.GetVehicleModelByIdx(vehicleMakeKey, menuChoices["model"] - 1);
+        var vehicleMakeKey = createdMake + createdVehicleType;
+        var createdModel = vehicleModel.GetVehicleModelByIdx(vehicleMakeKey, menuChoices["model"] - 1);
        
-        var engineType = menus.GetEngineTypeByIdx(menuChoices["engine"] - 1);
+        var createdEngineType = vehicleEngine.GetEngineTypeByIdx(menuChoices["engine"] - 1);
 
-        var vehicleColor = menus.GetVehicleColorByIdx(menuChoices["color"] - 1);
+        var createdVehicleColor = vehicleColor.GetVehicleColorByIdx(menuChoices["color"] - 1);
         
         var MPG = 25; //hardcoded for now
 
@@ -38,9 +45,9 @@ class Program
         VehicleCreator truckCreator = new TruckCreator();
         VehicleCreator suvCreator = new SuvCreator();
 
-        if (vehicleType == "Car")
+        if (createdVehicleType == "Car")
         {
-            Car car = (Car)carCreator.VehicleFactory(vehicleColor, occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
+            Car car = (Car)carCreator.VehicleFactory(createdVehicleColor, occupantCapacity, createdMake, createdModel, menuChoices["year"], createdVehicleType, createdEngineType, MPG);
             
             if (Menus.TakeVehicleOnDriveMenu(car.Make, car.Model))
             {
@@ -63,9 +70,9 @@ class Program
             }
             //Console.ReadLine();
         } 
-        else if (vehicleType == "Truck")
+        else if (createdVehicleType == "Truck")
         {
-            Truck truck = (Truck)truckCreator.VehicleFactory(vehicleColor, occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
+            Truck truck = (Truck)truckCreator.VehicleFactory(createdVehicleColor, occupantCapacity, createdMake, createdModel, menuChoices["year"], createdVehicleType, createdEngineType, MPG);
 
             if (Menus.TakeVehicleOnDriveMenu(truck.Make, truck.Model))
             {
@@ -82,9 +89,9 @@ class Program
             TruckRepository truckRepository = new();
             truckRepository.SaveVehicle(truck);
         } 
-        else if (vehicleType == "SUV")
+        else if (createdVehicleType == "SUV")
         {
-            Suv suv = (Suv)suvCreator.VehicleFactory(vehicleColor, occupantCapacity, make, model, menuChoices["year"], vehicleType, engineType, MPG);
+            Suv suv = (Suv)suvCreator.VehicleFactory(createdVehicleColor, occupantCapacity, createdMake, createdModel, menuChoices["year"], createdVehicleType, createdEngineType, MPG);
 
             if (Menus.TakeVehicleOnDriveMenu(suv.Make, suv.Model))
             {
