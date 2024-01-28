@@ -9,8 +9,8 @@ public class Menus
 
         do
         {
-            Console.WriteLine("***************************************************************");
-            Console.WriteLine($"\nPlease enter the year of your vehicle (must be newer than 1990), if you want to go back enter 1 ");
+            StandardUiMessages.MenuSeparator();
+            StandardUiMessages.YearSelectionMessage();
 
             var inputStr = Console.ReadLine();
             var validInput = int.TryParse(inputStr, out int result);
@@ -22,7 +22,7 @@ public class Menus
             }
             else
             {
-                Console.WriteLine("Year entered not valid, please enter another year");
+                StandardUiMessages.GeneralInvalidInput();
             }
 
         } while(displayMenu);
@@ -36,7 +36,7 @@ public class Menus
         var displayMenu = true;
         do
         {
-            Console.WriteLine($"Would you like to take your {vehicleMake} {vehicleModel} on a drive? (enter Y/N)");
+            StandardUiMessages.TakeOnDriveMessage(vehicleMake, vehicleModel);
         
             var choice = Console.ReadLine();
 
@@ -54,9 +54,9 @@ public class Menus
                     drive = false;
                     displayMenu = false;
                 }
-                else
+                else if (choice is not null)
                 {
-                    Console.WriteLine($"{choice} is not a valid input");
+                    StandardUiMessages.InvalidInputMessage(choice);
                 }
             }
 
@@ -67,7 +67,7 @@ public class Menus
 
     public static int DriveLengthMenu()
     {
-        Console.WriteLine("\nHow many miles are you driving?");
+        StandardUiMessages.DriveLengthMessage();
 
         var driveLengthInMiles = Console.ReadLine();
         var validInput = int.TryParse(driveLengthInMiles, out int result);
@@ -78,7 +78,7 @@ public class Menus
         }
         else
         {
-            Console.WriteLine("Default drive length of 20 miles is being used.");
+            StandardUiMessages.DriveLengthDefaultMessage();
             result = 20;
         }
 
@@ -87,19 +87,19 @@ public class Menus
 
     public static int ShowMenuItems(List<string> menuItems, string menuText)
     {
-        Console.WriteLine("***************************************************************");
-        Console.WriteLine($"\n Please choose the {menuText} of your vehicle from the following options:");
+        StandardUiMessages.MenuSeparator();
+        StandardUiMessages.MenuSubject(menuText);
 
         var menuItemNum = 1;
         foreach (var item in menuItems)
         {
-            Console.WriteLine($"\t{menuItemNum}. {item}");
+            StandardUiMessages.ShowMenuItemsInUi(menuItemNum, item);
             menuItemNum++;
         }
 
-        Console.WriteLine($"\t{menuItemNum}. Go Back");
-        Console.WriteLine("\n****************************************************************\n");
-        Console.Write("Enter an integer value of your choice: ");
+        StandardUiMessages.GoBack(menuItemNum);
+        StandardUiMessages.MenuSeparator();
+        StandardUiMessages.EnterMenuChoice();
 
         return menuItemNum;
     }
@@ -113,9 +113,9 @@ public class Menus
         {
             return result;
         }
-        else
+        else if (choiceStr is not null)
         {
-            Console.WriteLine($"{choiceStr} is not a valid input");
+            StandardUiMessages.InvalidInputMessage(choiceStr);
             result = 0;
         }
 
