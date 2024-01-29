@@ -56,4 +56,9 @@ public static class StandardUiMessages
     {
         Console.WriteLine("Default drive length of 20 miles is being used.");
     }
+
+    public static void ExitProgramMessage()
+    {
+        Console.WriteLine("Exiting program.....");
+    }
 }

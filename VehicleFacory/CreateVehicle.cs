@@ -27,7 +27,7 @@ public class CreateVehicle
                                         .VehicleFactory(createdVehicleColor, occupantCapacity, createdMake, createdModel, menuChoices["year"], createdVehicleType, createdEngineType, MPG);
                     break;
                 case "Truck":
-                    createdVehicle = (Car)truckCreator
+                    createdVehicle = (Truck)truckCreator
                                         .VehicleFactory(createdVehicleColor, occupantCapacity, createdMake, createdModel, menuChoices["year"], createdVehicleType, createdEngineType, MPG);
                     break;
                 case "SUV":

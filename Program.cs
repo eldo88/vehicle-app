@@ -13,17 +13,10 @@ class Program
         VehicleType vehicleType = new();
 
         ShowMenus showMenus = new(vehicleColor, vehicleEngine, vehicleMake, vehicleModel, vehicleType);
-        
         showMenus.DisplayMenus();
 
         var menuChoices = showMenus.menuChoices.MenuChoicesFromUserInput;
-
-        if (menuChoices["vehicle"] == 99)
-        {
-            Console.WriteLine("Exiting program.....");
-            return;
-        }
-
+        if(ExitProgram.ExitProgramValidator(menuChoices)) return;
         Vehicle createdVehicle;
 
         try
