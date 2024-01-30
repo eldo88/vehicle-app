@@ -69,11 +69,12 @@ public abstract class Vehicle
         var mpg = Convert.ToString(MPG);
         var range = Convert.ToString(Range);
         var fuelCapacity = Convert.ToString(FuelCapacity);
+        List<string> data = [];
 
-    #pragma warning disable CS8604 // Possible null reference argument.
-        List<string> data = [guid, Color, capacity, Make, Model, year, vehicleType, EngineType, mpg, range, fuelCapacity];
-    #pragma warning restore CS8604 // Possible null reference argument.
-
+        if (vehicleType is not null)
+        {
+            data = [guid, Color, capacity, Make, Model, year, vehicleType, EngineType, mpg, range, fuelCapacity];
+        }
         return data;
     }
 
