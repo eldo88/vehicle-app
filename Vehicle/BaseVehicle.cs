@@ -4,7 +4,7 @@ public abstract class BaseVehicle : IVehicle
 {
     public BaseVehicle(){}
 
-    public BaseVehicle(string color, int capacity, string make, string model, int year, string vehicleType, string engineType, int mpg)
+    public BaseVehicle(string color, int capacity, string make, string model, int year, string vehicleType)
     {
         if (string.IsNullOrWhiteSpace(color))
             {throw new ArgumentException("The color is required.");}

@@ -3,7 +3,7 @@ namespace vehicle_app;
 public class MotorizedVehicle : BaseVehicle, IMotorizedVehicle
 {
     public MotorizedVehicle() {}
-    public MotorizedVehicle(string color, int capacity, string make, string model, int year, string vehicleType, string engineType, int mpg) : base(color, capacity, make, model, year, vehicleType, engineType, mpg)
+    public MotorizedVehicle(string color, int capacity, string make, string model, int year, string vehicleType, string engineType, int mpg) : base(color, capacity, make, model, year, vehicleType)
     {
         if (string.IsNullOrWhiteSpace(engineType))
             {throw new ArgumentException("Engine type is required");}
