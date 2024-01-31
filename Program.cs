@@ -24,7 +24,6 @@ class Program
         {
             createdVehicle = VehicleFactory.BuildFromMenuChoices(vehicleColor, vehicleEngine, vehicleMake, vehicleModel, vehicleType, menuChoices);
             DisplayCreatedVehicle.PrintToConsole(createdVehicle);
-            // TODO: implement saving, will need to explicitly cast
         }
         catch(Exception ex)
         {

@@ -66,12 +66,30 @@ public class MotorizedVehicle : BaseVehicle, IMotorizedVehicle
         return tripDetail;
     }
 
-    public virtual void PrintDriveDetails(List<(string, decimal)> tripDetails)
+    public static void PrintDriveDetails(List<(string, decimal)> tripDetails)
     {
             Console.WriteLine("\nThe details of your drive are:\n");
             foreach (var item in tripDetails)
             {
                 Console.WriteLine("{0}: {1:0.00}", item.Item1, item.Item2);
             }
+    }
+
+    public List<string> FormatDataForSavingToFile()
+    {
+        var guid = Guid.ToString();
+        var capacity = Convert.ToString(Capacity);
+        var year = Convert.ToString(Year);
+        var vehicleType = Enum.GetName(typeof(VehicleTypeEnum), VehicleTypeEnum);
+        var mpg = Convert.ToString(MPG);
+        var range = Convert.ToString(Range);
+        var fuelCapacity = Convert.ToString(FuelCapacity);
+        List<string> data = [];
+
+        if (vehicleType is not null)
+        {
+            data = [guid, Color, capacity, Make, Model, year, vehicleType, EngineType, mpg, range, fuelCapacity];
+        }
+        return data;
     }
 }
