@@ -4,7 +4,6 @@ namespace vehicle_app;
 internal class CarRepository : IVehicleRepository<Car>
 {
     private readonly List<List<string>> _cars = [];
-    private readonly CarCreator carCreator = new();
 
     public Car GetVehicleById(Guid id)
     {
@@ -32,7 +31,7 @@ internal class CarRepository : IVehicleRepository<Car>
             var capacity = int.Parse(line[2]);
             var year = int.Parse(line[5]);
             var mpg = int.Parse(line[8]);
-            Car car = (Car)carCreator.VehicleFactory(line[1], capacity, line[3], line[4], year, line[6], line[7], mpg);
+            Car car = (Car)VehicleFactory.Build(line[1], capacity, line[3], line[4], year, line[6], line[7], mpg);
             cars.Add(car);
         }
 

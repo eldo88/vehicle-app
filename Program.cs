@@ -17,11 +17,11 @@ class Program
 
         var menuChoices = showMenus.menuChoices.MenuChoicesFromUserInput;
         if(ExitProgram.ExitProgramValidator(menuChoices)) return;
-        Vehicle createdVehicle;
+        IVehicle createdVehicle;
 
         try
         {
-            createdVehicle = CreateVehicle.CreateVehicleFromMenuChoices(vehicleColor, vehicleEngine, vehicleMake, vehicleModel, vehicleType, menuChoices);
+            createdVehicle = VehicleFactory.BuildFromMenuChoices(vehicleColor, vehicleEngine, vehicleMake, vehicleModel, vehicleType, menuChoices);
             DisplayCreatedVehicle.PrintToConsole(createdVehicle);
             // TODO: implement saving, will need to explicitly cast
         }
