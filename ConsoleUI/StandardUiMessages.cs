@@ -61,4 +61,9 @@ public static class StandardUiMessages
     {
         Console.WriteLine("Exiting program.....");
     }
+
+    public static void SaveVehicleMessage(IVehicle vehicle)
+    {
+        Console.WriteLine($"Would you like to save your {vehicle.Make} {vehicle.Model}? (Y/N)");
+    }
 }

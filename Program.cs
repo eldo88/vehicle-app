@@ -24,6 +24,7 @@ class Program
         {
             createdVehicle = VehicleFactory.BuildFromMenuChoices(vehicleColor, vehicleEngine, vehicleMake, vehicleModel, vehicleType, menuChoices);
             DisplayCreatedVehicle.PrintToConsole(createdVehicle);
+            SaveMenu.SaveVehicleMenu(createdVehicle);
         }
         catch(Exception ex)
         {

@@ -37,14 +37,14 @@ public class ShowMenus
                     Console.WriteLine("\nThis program will allow you to build a vehicle");
                     var mainMenuText = "the type";
                     menuItemNum = Menus.ShowMenuItems(VehicleType.VehicleTypeList, mainMenuText);
-                    menuChoice = Menus.MenuInput(menuItemNum);
+                    menuChoice = Input.MenuInput(menuItemNum);
                     menuChoices.MenuChoicesFromUserInput["vehicle"] = menuChoice;
                     menuControl += Menus.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice);
                     break;
                 case 2:
                     var makeMenuText = "make";
                     menuItemNum = Menus.ShowMenuItems(VehicleMake.VehicleMakeList, makeMenuText);
-                    menuChoice = Menus.MenuInput(menuItemNum);
+                    menuChoice = Input.MenuInput(menuItemNum);
                     menuChoices.MenuChoicesFromUserInput["make"] = menuChoice;
                     menuControl += Menus.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice);
                     break;
@@ -53,21 +53,21 @@ public class ShowMenus
                     var modelValues = VehicleModel.VehicleModelDict[modelKey];
                     var modelMenuText = "model";
                     menuItemNum = Menus.ShowMenuItems(modelValues, modelMenuText);
-                    menuChoice = Menus.MenuInput(menuItemNum);
+                    menuChoice = Input.MenuInput(menuItemNum);
                     menuChoices.MenuChoicesFromUserInput["model"] = menuChoice;
                     menuControl += Menus.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice);
                     break;
                 case 4:
                     var engineMenuText = "engine";
                     menuItemNum = Menus.ShowMenuItems(VehicleEngine.EngineList, engineMenuText);
-                    menuChoice = Menus.MenuInput(menuItemNum);
+                    menuChoice = Input.MenuInput(menuItemNum);
                     menuChoices.MenuChoicesFromUserInput["engine"] = menuChoice;
                     menuControl += Menus.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice);
                     break;
                 case 5:
                     var colorMenuText = "color";
                     menuItemNum = Menus.ShowMenuItems(VehicleColor.ColorList, colorMenuText);
-                    menuChoice = Menus.MenuInput(menuItemNum);
+                    menuChoice = Input.MenuInput(menuItemNum);
                     menuChoices.MenuChoicesFromUserInput["color"] = menuChoice;
                     menuControl += Menus.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice);
                     break;

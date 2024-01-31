@@ -1,6 +1,6 @@
 namespace vehicle_app;
 
-internal interface IVehicleRepository<T> where T : BaseVehicle
+internal interface IVehicleRepository<T> where T : IVehicle
 {
 
     public List<T> GetVehicles();
