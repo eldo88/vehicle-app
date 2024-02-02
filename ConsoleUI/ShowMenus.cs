@@ -25,8 +25,8 @@ public class ShowMenus
 
         do
         {
-            int menuItemNum;
-            int menuChoice;
+            int menuItemNum = 0;
+            int menuChoice = 0;
             switch (menuControl)
             {
                 case 0:
@@ -34,12 +34,13 @@ public class ShowMenus
                     displayMenu = false;
                     break;
                 case 1:
-                    Console.WriteLine("\nThis program will allow you to build a vehicle");
-                    var mainMenuText = "the type";
-                    menuItemNum = Menus.ShowMenuItems(VehicleType.VehicleTypeList, mainMenuText);
-                    menuChoice = Input.MenuInput(menuItemNum);
-                    menuChoices.MenuChoicesFromUserInput["vehicle"] = menuChoice;
-                    menuControl += Menus.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice);
+                    // Console.WriteLine("\nThis program will allow you to build a vehicle");
+                    // var mainMenuText = "the type";
+                    // menuItemNum = Menus.ShowMenuItems(VehicleType.VehicleTypeList, mainMenuText);
+                    // menuChoice = Input.MenuInput(menuItemNum);
+                    // menuChoices.MenuChoicesFromUserInput["vehicle"] = menuChoice;
+                    // menuControl += Menus.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice);
+                    Test(ref menuItemNum, ref menuChoice, ref menuControl);
                     break;
                 case 2:
                     var makeMenuText = "make";
@@ -90,5 +91,15 @@ public class ShowMenus
             }
 
         } while (displayMenu);
+    }
+
+    public void Test(ref int menuItemNum, ref int menuChoice, ref int menuControl)
+    {
+        Console.WriteLine("\nThis program will allow you to build a vehicle");
+        var mainMenuText = "the type";
+        menuItemNum = Menus.ShowMenuItems(VehicleType.VehicleTypeList, mainMenuText);
+        menuChoice = Input.MenuInput(menuItemNum);
+        menuChoices.MenuChoicesFromUserInput["vehicle"] = menuChoice;
+        menuControl += Menus.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice);
     }
 }

@@ -13,9 +13,7 @@ public class SaveMenu
             StandardUiMessages.SaveVehicleMessage(vehicle);
             var choice = Console.ReadLine();
 
-            var validInput = char.TryParse(choice, out char result);
-
-            if (validInput)
+            if (char.TryParse(choice, out char result))
             {
                 if (char.ToLower(result) == 'y')
                 {
