@@ -49,7 +49,7 @@ public class ShowMenus
                     VehicleColorMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, ref VehicleColor, ref menuChoices);
                     break;
                 case 6:
-                    var year = Menus.VehicleYearSelectionMenu();
+                    var year = VehicleYearMenu.Show();
                     menuChoices.MenuChoicesFromUserInput["year"] = year;
 
                     if (year == 1)
