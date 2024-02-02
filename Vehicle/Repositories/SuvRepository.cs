@@ -41,7 +41,7 @@ internal class SuvRepository : IVehicleRepository<Suv>
     public void SaveVehicle(Suv suv)
     {
         var filePath = "./data/vehicle-data/suvs-saved.csv";
-        var suvData = suv.FormatDataForSavingToFile();
+        var suvData = FormatData.ParseVehicleDataForSavingToFile(suv);
 
         using StreamWriter streamWriter = File.AppendText(filePath);
         foreach (var line in suvData)

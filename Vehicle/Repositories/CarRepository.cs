@@ -41,7 +41,7 @@ internal class CarRepository : IVehicleRepository<Car>
     public void SaveVehicle(Car car)
     {
         var filePath = "./data/vehicle-data/cars-saved.csv";
-        var carData = car.FormatDataForSavingToFile();
+        var carData = FormatData.ParseVehicleDataForSavingToFile(car);
 
         using StreamWriter streamWriter = File.AppendText(filePath);
         foreach (var line in carData)

@@ -104,22 +104,4 @@ public class MotorizedVehicle : IMotorizedVehicle
                 Console.WriteLine("{0}: {1:0.00}", item.Item1, item.Item2);
             }
     }
-
-    public List<string> FormatDataForSavingToFile()
-    {
-        var guid = Guid.ToString();
-        var capacity = Convert.ToString(Capacity);
-        var year = Convert.ToString(Year);
-        var vehicleType = Enum.GetName(typeof(VehicleTypeEnum), VehicleTypeEnum);
-        var mpg = Convert.ToString(MPG);
-        var range = Convert.ToString(Range);
-        var fuelCapacity = Convert.ToString(FuelCapacity);
-        List<string> data = [];
-
-        if (vehicleType is not null)
-        {
-            data = [guid, Color, capacity, Make, Model, year, vehicleType, EngineType, mpg, range, fuelCapacity];
-        }
-        return data;
-    }
 }
