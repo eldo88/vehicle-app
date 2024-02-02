@@ -1,10 +1,30 @@
 namespace vehicle_app;
 
-public class MotorizedVehicle : BaseVehicle, IMotorizedVehicle
+public class MotorizedVehicle : IMotorizedVehicle
 {
     public MotorizedVehicle() {}
-    public MotorizedVehicle(string color, int capacity, string make, string model, int year, string vehicleType, string engineType, int mpg) : base(color, capacity, make, model, year, vehicleType)
+    public MotorizedVehicle(string color, int capacity, string make, string model, int year, string vehicleType, string engineType, int mpg)
     {
+        if (string.IsNullOrWhiteSpace(color))
+            {throw new ArgumentException("Color is required");}
+        Color = color;
+
+        Capacity = capacity;
+
+        if (string.IsNullOrWhiteSpace(make))
+            {throw new ArgumentException("Make is required");}
+        Make = make;
+
+        if (string.IsNullOrWhiteSpace(model))
+            {throw new ArgumentException("Model is required");}
+        Model = model;
+
+        Year = year;
+
+        if (string.IsNullOrWhiteSpace(vehicleType))
+            {throw new ArgumentException("Make is required");}
+        VehicleTypeEnum = (VehicleTypeEnum) Enum.Parse(typeof(VehicleTypeEnum), vehicleType);
+
         if (string.IsNullOrWhiteSpace(engineType))
             {throw new ArgumentException("Engine type is required");}
         EngineType = engineType;
@@ -27,6 +47,16 @@ public class MotorizedVehicle : BaseVehicle, IMotorizedVehicle
     public decimal MPG { get; set; }
     public decimal Range { get; set; } = 1;
     public decimal FuelCapacity { get; set; }
+
+    public Guid Guid {get; set;}
+
+    public string Color { get; set; } = "";
+    public int Capacity { get; set; }
+    public string Make { get; set; } = "";
+    public string Model { get; set; } = "";
+    public int Year { get; set; }
+    public VehicleTypeEnum VehicleTypeEnum { get; set; }
+
 
     public List<(string, decimal)> Drive(decimal tripLength)
     {

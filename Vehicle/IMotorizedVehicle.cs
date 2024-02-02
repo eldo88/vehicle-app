@@ -1,6 +1,6 @@
 namespace vehicle_app;
 
-public interface IMotorizedVehicle
+public interface IMotorizedVehicle : IVehicle
 {
     public string EngineType {get; set;}
     public decimal MPG {get; set;}
