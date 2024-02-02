@@ -43,11 +43,7 @@ public class ShowMenus
                     VehicleModelMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, ref VehicleModel, ref VehicleMake, ref VehicleType, ref menuChoices);
                     break;
                 case 4:
-                    var engineMenuText = "engine";
-                    menuItemNum = Menus.ShowMenuItems(VehicleEngine.EngineList, engineMenuText);
-                    menuChoice = Input.MenuInput(menuItemNum);
-                    menuChoices.MenuChoicesFromUserInput["engine"] = menuChoice;
-                    menuControl += Menus.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice);
+                    VehicleEngineMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, ref VehicleEngine, ref menuChoices);
                     break;
                 case 5:
                     var colorMenuText = "color";
