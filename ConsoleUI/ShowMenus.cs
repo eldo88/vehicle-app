@@ -34,13 +34,7 @@ public class ShowMenus
                     displayMenu = false;
                     break;
                 case 1:
-                    // Console.WriteLine("\nThis program will allow you to build a vehicle");
-                    // var mainMenuText = "the type";
-                    // menuItemNum = Menus.ShowMenuItems(VehicleType.VehicleTypeList, mainMenuText);
-                    // menuChoice = Input.MenuInput(menuItemNum);
-                    // menuChoices.MenuChoicesFromUserInput["vehicle"] = menuChoice;
-                    // menuControl += Menus.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice);
-                    Test(ref menuItemNum, ref menuChoice, ref menuControl);
+                    VehicleTypeMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, ref VehicleType, ref menuChoices);
                     break;
                 case 2:
                     var makeMenuText = "make";
