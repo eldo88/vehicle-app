@@ -37,11 +37,7 @@ public class ShowMenus
                     VehicleTypeMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, ref VehicleType, ref menuChoices);
                     break;
                 case 2:
-                    var makeMenuText = "make";
-                    menuItemNum = Menus.ShowMenuItems(VehicleMake.VehicleMakeList, makeMenuText);
-                    menuChoice = Input.MenuInput(menuItemNum);
-                    menuChoices.MenuChoicesFromUserInput["make"] = menuChoice;
-                    menuControl += Menus.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice);
+                    VehicleMakeMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, ref VehicleMake, ref menuChoices);
                     break;
                 case 3:
                     var modelKey = VehicleMake.VehicleMakeList[menuChoices.MenuChoicesFromUserInput["make"] - 1] + VehicleType.VehicleTypeList[menuChoices.MenuChoicesFromUserInput["vehicle"] - 1];
