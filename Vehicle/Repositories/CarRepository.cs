@@ -44,10 +44,6 @@ internal class CarRepository : IVehicleRepository<Car>
         var carData = FormatData.ParseVehicleDataForSavingToFile(car);
 
         using StreamWriter streamWriter = File.AppendText(filePath);
-        foreach (var line in carData)
-        {
-            streamWriter.Write(line + ',');
-        }
-        streamWriter.WriteLine();
+        FileOperations.WriteDataToFile(streamWriter, carData);
     }
 }

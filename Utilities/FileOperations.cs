@@ -95,4 +95,13 @@ public static class FileOperations
             Console.WriteLine($"File path {filePath} does not exist");
         }
     }
+
+    public static void WriteDataToFile(StreamWriter streamWriter, List<string> vehicleData)
+    {
+        foreach (var line in vehicleData)
+        {
+            streamWriter.Write(line + ',');
+        }
+        streamWriter.WriteLine();
+    }
 }

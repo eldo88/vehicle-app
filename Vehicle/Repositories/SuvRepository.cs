@@ -44,10 +44,6 @@ internal class SuvRepository : IVehicleRepository<Suv>
         var suvData = FormatData.ParseVehicleDataForSavingToFile(suv);
 
         using StreamWriter streamWriter = File.AppendText(filePath);
-        foreach (var line in suvData)
-        {
-            streamWriter.Write(line + ',');
-        }
-        streamWriter.WriteLine();
+        FileOperations.WriteDataToFile(streamWriter, suvData);
     }
 }

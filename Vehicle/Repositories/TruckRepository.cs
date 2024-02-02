@@ -44,10 +44,6 @@ internal class TruckRepository : IVehicleRepository<Truck>
         var truckData = FormatData.ParseVehicleDataForSavingToFile(truck);
 
         using StreamWriter streamWriter = File.AppendText(filePath);
-        foreach (var line in truckData)
-        {
-            streamWriter.Write(line + ',');
-        }
-        streamWriter.WriteLine();
+        FileOperations.WriteDataToFile(streamWriter, truckData);
     }
 }
