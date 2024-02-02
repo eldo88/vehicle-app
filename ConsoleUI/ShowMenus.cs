@@ -40,13 +40,7 @@ public class ShowMenus
                     VehicleMakeMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, ref VehicleMake, ref menuChoices);
                     break;
                 case 3:
-                    var modelKey = VehicleMake.VehicleMakeList[menuChoices.MenuChoicesFromUserInput["make"] - 1] + VehicleType.VehicleTypeList[menuChoices.MenuChoicesFromUserInput["vehicle"] - 1];
-                    var modelValues = VehicleModel.VehicleModelDict[modelKey];
-                    var modelMenuText = "model";
-                    menuItemNum = Menus.ShowMenuItems(modelValues, modelMenuText);
-                    menuChoice = Input.MenuInput(menuItemNum);
-                    menuChoices.MenuChoicesFromUserInput["model"] = menuChoice;
-                    menuControl += Menus.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice);
+                    VehicleModelMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, ref VehicleModel, ref VehicleMake, ref VehicleType, ref menuChoices);
                     break;
                 case 4:
                     var engineMenuText = "engine";
@@ -81,15 +75,5 @@ public class ShowMenus
             }
 
         } while (displayMenu);
-    }
-
-    public void Test(ref int menuItemNum, ref int menuChoice, ref int menuControl)
-    {
-        Console.WriteLine("\nThis program will allow you to build a vehicle");
-        var mainMenuText = "the type";
-        menuItemNum = Menus.ShowMenuItems(VehicleType.VehicleTypeList, mainMenuText);
-        menuChoice = Input.MenuInput(menuItemNum);
-        menuChoices.MenuChoicesFromUserInput["vehicle"] = menuChoice;
-        menuControl += Menus.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice);
     }
 }
