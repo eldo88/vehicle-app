@@ -13,7 +13,8 @@ internal class SuvRepository : IVehicleRepository<Suv>
 
     public List<Suv> GetVehicleByMake(string make)
     {
-        throw new NotImplementedException();
+        List<Suv> suvs = GetVehicles();
+        return suvs.FindAll(s => s.Make == make);
     }
 
     public List<Suv> GetVehicleByModel(string model)

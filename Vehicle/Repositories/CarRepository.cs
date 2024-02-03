@@ -13,7 +13,8 @@ internal class CarRepository : IVehicleRepository<Car>
 
     public List<Car> GetVehicleByMake(string make)
     {
-        throw new NotImplementedException();
+        List<Car> cars = GetVehicles();
+        return cars.FindAll(c => c.Make == make);
     }
 
     public List<Car> GetVehicleByModel(string model)
