@@ -13,7 +13,7 @@ class Program
         VehicleModel vehicleModel = new();
         VehicleType vehicleType = new();
 
-        ShowMenus showMenus = new(vehicleColor, vehicleEngine, vehicleMake, vehicleModel, vehicleType);
+        ShowMenus showMenus = new();
         showMenus.DisplayMenus();
 
         var menuChoices = showMenus.menuChoices.MenuChoicesFromUserInput;

@@ -2,21 +2,21 @@ namespace vehicle_app;
 
 public class ShowMenus
 {
-    public ShowMenus(VehicleColor vehicleColor, VehicleEngine vehicleEngine, VehicleMake vehicleMake, VehicleModel vehicleModel, VehicleType vehicleType)
+    public ShowMenus()
     {
-        VehicleColor = vehicleColor;
-        VehicleEngine = vehicleEngine;
-        VehicleMake = vehicleMake;
-        VehicleModel = vehicleModel;
-        VehicleType = vehicleType;
+        _vehicleColor = MenuDataFactory.CreateVehicleColor();
+        _vehicleEngine = MenuDataFactory.CreateVehicleEngine();
+        _vehicleMake = MenuDataFactory.CreateVehicleMake();
+        _vehicleModel = MenuDataFactory.CreateVehicleModel();
+        _vehicleType = MenuDataFactory.CreateVehicleType();
     }
 
     public MenuChoices menuChoices = new();
-    VehicleColor VehicleColor;
-    VehicleEngine VehicleEngine;
-    VehicleMake VehicleMake;
-    VehicleModel VehicleModel;
-    VehicleType VehicleType;
+    VehicleColor _vehicleColor;
+    VehicleEngine _vehicleEngine;
+    VehicleMake _vehicleMake;
+    VehicleModel _vehicleModel;
+    VehicleType _vehicleType;
 
     public void DisplayMenus()
     {
@@ -34,19 +34,19 @@ public class ShowMenus
                     displayMenu = false;
                     break;
                 case 1:
-                    VehicleTypeMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, ref VehicleType, ref menuChoices);
+                    VehicleTypeMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, ref _vehicleType, ref menuChoices);
                     break;
                 case 2:
-                    VehicleMakeMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, ref VehicleMake, ref menuChoices);
+                    VehicleMakeMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, ref _vehicleMake, ref menuChoices);
                     break;
                 case 3:
-                    VehicleModelMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, ref VehicleModel, ref VehicleMake, ref VehicleType, ref menuChoices);
+                    VehicleModelMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, ref _vehicleModel, ref _vehicleMake, ref _vehicleType, ref menuChoices);
                     break;
                 case 4:
-                    VehicleEngineMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, ref VehicleEngine, ref menuChoices);
+                    VehicleEngineMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, ref _vehicleEngine, ref menuChoices);
                     break;
                 case 5:
-                    VehicleColorMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, ref VehicleColor, ref menuChoices);
+                    VehicleColorMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, ref _vehicleColor, ref menuChoices);
                     break;
                 case 6:
                     var year = VehicleYearMenu.Show();

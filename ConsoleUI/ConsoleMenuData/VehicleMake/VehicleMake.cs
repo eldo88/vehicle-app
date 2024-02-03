@@ -1,6 +1,6 @@
 namespace vehicle_app;
 
-public class VehicleMake
+public class VehicleMake : IMenuData
 {
     public VehicleMake()
     {
