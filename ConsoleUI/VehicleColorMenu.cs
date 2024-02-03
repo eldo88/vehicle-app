@@ -2,7 +2,7 @@
 
 public class VehicleColorMenu
 {
-    public static void Show(ref int menuItemNum, ref int menuChoice, ref int menuControl, ref  VehicleColor vehicleColor, ref MenuChoices menuChoices)
+    public static void Show(ref int menuItemNum, ref int menuChoice, ref int menuControl, ref  IVehicleColor vehicleColor, ref IMenuChoices menuChoices)
     {
         var colorMenuText = "color";
         menuItemNum = MenuActions.ShowMenuItems(vehicleColor.ColorList, colorMenuText);

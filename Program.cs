@@ -16,7 +16,7 @@ class Program
         ShowMenus showMenus = new();
         showMenus.DisplayMenus();
 
-        var menuChoices = showMenus.menuChoices.MenuChoicesFromUserInput;
+        var menuChoices = showMenus._menuChoices.MenuChoicesFromUserInput;
         if(ExitProgram.ExitProgramValidator(menuChoices)) return;
         IVehicle createdVehicle;
 

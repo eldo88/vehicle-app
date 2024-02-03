@@ -1,6 +1,6 @@
 namespace vehicle_app;
 
-public class MenuChoices
+public class MenuChoices : IMenuChoices
 {
     public Dictionary<string, int> MenuChoicesFromUserInput {get; set;} = [];
 }

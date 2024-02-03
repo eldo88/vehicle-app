@@ -2,7 +2,7 @@
 
 public class VehicleMakeMenu
 {
-    public static void Show(ref int menuItemNum, ref int menuChoice, ref int menuControl, ref  VehicleMake vehicleMake, ref MenuChoices menuChoices)
+    public static void Show(ref int menuItemNum, ref int menuChoice, ref int menuControl, ref  IVehicleMake vehicleMake, ref IMenuChoices menuChoices)
     {
         var makeMenuText = "make";
         menuItemNum = MenuActions.ShowMenuItems(vehicleMake.VehicleMakeList, makeMenuText);

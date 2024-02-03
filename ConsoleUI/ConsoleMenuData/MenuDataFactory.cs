@@ -2,28 +2,33 @@
 
 public static class MenuDataFactory
 {
-    public static VehicleColor CreateVehicleColor()
+    public static IVehicleColor CreateVehicleColor()
     {
         return new VehicleColor();
     }
 
-    public static VehicleEngine CreateVehicleEngine()
+    public static IVehicleEngine CreateVehicleEngine()
     {
         return new VehicleEngine();
     }
 
-    public static VehicleMake CreateVehicleMake()
+    public static IVehicleMake CreateVehicleMake()
     {
         return new VehicleMake();
     }
 
-    public static VehicleModel CreateVehicleModel()
+    public static IVehicleModel CreateVehicleModel()
     {
         return new VehicleModel();
     }
 
-    public static VehicleType CreateVehicleType()
+    public static IVehicleType CreateVehicleType()
     {
         return new VehicleType();
+    }
+
+    public static IMenuChoices CreateMenuChoices()
+    {
+        return new MenuChoices();
     }
 }
