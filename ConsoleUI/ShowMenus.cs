@@ -69,4 +69,20 @@ public class ShowMenus
 
         } while (displayMenu);
     }
+
+    public Dictionary<string, string> GetMenuChoiceData()
+    {
+        Dictionary<string, string> MenuChoiceData = [];
+
+        MenuChoiceData.Add("type", _vehicleType.GetVehicleTypeByIdx(_menuChoices.MenuChoicesFromUserInput["vehicle"] - 1));
+        MenuChoiceData.Add("make", _vehicleMake.GetVehicleMakeByIdx(_menuChoices.MenuChoicesFromUserInput["make"] - 1));
+        var vehicleMakeKey = MenuChoiceData["make"] + MenuChoiceData["type"];
+        MenuChoiceData.Add("model", _vehicleModel.GetVehicleModelByIdx(vehicleMakeKey, _menuChoices.MenuChoicesFromUserInput["model"] - 1));
+        MenuChoiceData.Add("engine", _vehicleEngine.GetEngineTypeByIdx(_menuChoices.MenuChoicesFromUserInput["engine"] - 1));
+        MenuChoiceData.Add("color", _vehicleColor.GetVehicleColorByIdx(_menuChoices.MenuChoicesFromUserInput["color"] - 1));
+        MenuChoiceData.Add("year", _menuChoices.MenuChoicesFromUserInput["year"].ToString());
+        // var MPG = 25; //hardcoded for now
+        // var occupantCapacity = 4; // hardcoded for now
+        return MenuChoiceData;
+    }
 }

@@ -7,24 +7,25 @@ class Program
 {
     static void Main(string[] args)
     {
-        VehicleColor vehicleColor = new();
-        VehicleEngine vehicleEngine = new();
-        VehicleMake vehicleMake = new();
-        VehicleModel vehicleModel = new();
-        VehicleType vehicleType = new();
-
         ShowMenus showMenus = new();
         showMenus.DisplayMenus();
 
         var menuChoices = showMenus._menuChoices.MenuChoicesFromUserInput;
         if(ExitProgram.ExitProgramValidator(menuChoices)) return;
-        IVehicle createdVehicle;
+        IMotorizedVehicle createdVehicle;
+        var data = showMenus.GetMenuChoiceData();
 
         try
         {
-            createdVehicle = VehicleFactory.BuildFromMenuChoices(vehicleColor, vehicleEngine, vehicleMake, vehicleModel, vehicleType, menuChoices);
+            createdVehicle = VehicleFactory.BuildFromMenuChoices(data);
             DisplayCreatedVehicle.PrintToConsole(createdVehicle);
             SaveMenu.SaveVehicleMenu(createdVehicle);
+
+            if (TakeVehicleOnDriveMenu.GoOnDrive(createdVehicle.Make, createdVehicle.Model))
+            {
+                var driveLength = DriveLengthScreen.EnterDriveLength();
+                MotorizedVehicle.PrintDriveDetails(createdVehicle.Drive(driveLength));
+            }
         }
         catch(Exception ex)
         {

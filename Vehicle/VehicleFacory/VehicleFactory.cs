@@ -2,7 +2,7 @@ namespace vehicle_app;
 
 public static class VehicleFactory
 {
-    public static IVehicle Build(string vehicleType)
+    public static IMotorizedVehicle Build(string vehicleType)
     {
         return vehicleType switch
         {
@@ -13,7 +13,7 @@ public static class VehicleFactory
         };
     }
 
-    public static IVehicle Build(string vehicleColor, int occupantCapacity, string vehicleMake, string vehicleModel, int year, string vehicleType, string vehicleEngine, int MPG)
+    public static IMotorizedVehicle Build(string vehicleColor, int occupantCapacity, string vehicleMake, string vehicleModel, int year, string vehicleType, string vehicleEngine, int MPG)
     {
         return vehicleType switch
         {
@@ -24,23 +24,14 @@ public static class VehicleFactory
         };
     }
 
-    public static IVehicle BuildFromMenuChoices(VehicleColor vehicleColor, VehicleEngine vehicleEngine, VehicleMake vehicleMake, VehicleModel vehicleModel, VehicleType vehicleType, Dictionary<string, int> menuChoices)
-    { 
-        var createdVehicleType = vehicleType.GetVehicleTypeByIdx(menuChoices["vehicle"] - 1);
-        var createdMake = vehicleMake.GetVehicleMakeByIdx(menuChoices["make"] - 1);
-        var vehicleMakeKey = createdMake + createdVehicleType;
-        var createdModel = vehicleModel.GetVehicleModelByIdx(vehicleMakeKey, menuChoices["model"] - 1);
-        var createdEngineType = vehicleEngine.GetEngineTypeByIdx(menuChoices["engine"] - 1);
-        var createdVehicleColor = vehicleColor.GetVehicleColorByIdx(menuChoices["color"] - 1);
-        var MPG = 25; //hardcoded for now
-        var occupantCapacity = 4; // hardcoded for now
-
-        return createdVehicleType switch
+    public static IMotorizedVehicle BuildFromMenuChoices(Dictionary<string, string> menuData)
+    {
+        return menuData["type"] switch
         {
-            "Car" => new Car(createdVehicleColor, occupantCapacity, createdMake, createdModel, menuChoices["year"], createdVehicleType, createdEngineType, MPG),
-            "Truck" => new Truck(createdVehicleColor, occupantCapacity, createdMake, createdModel, menuChoices["year"], createdVehicleType, createdEngineType, MPG),
-            "SUV" => new Suv(createdVehicleColor, occupantCapacity, createdMake, createdModel, menuChoices["year"], createdVehicleType, createdEngineType, MPG),
-            _ => new Car(),
+            "Car" => new Car(menuData["color"], 4, menuData["make"], menuData["model"], int.Parse(menuData["year"]), menuData["type"], menuData["engine"], 25),
+            "Truck" => new Truck(menuData["color"], 4, menuData["make"], menuData["model"], int.Parse(menuData["year"]), menuData["type"], menuData["engine"], 25),
+            "SUV" => new Suv(menuData["color"], 4, menuData["make"], menuData["model"], int.Parse(menuData["year"]), menuData["type"], menuData["engine"], 25),
+            _ => new Car(menuData["color"], 4, menuData["make"], menuData["model"], int.Parse(menuData["year"]), menuData["type"], menuData["engine"], 25)
         };
     }
 }
