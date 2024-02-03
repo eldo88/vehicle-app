@@ -1,7 +1,4 @@
-﻿using System.Buffers.Text;
-using System.Runtime.CompilerServices;
-
-namespace vehicle_app;
+﻿namespace vehicle_app;
 
 class Program
 {
