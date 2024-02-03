@@ -2,25 +2,6 @@ namespace vehicle_app;
 
 public class Menus
 {
-    public static int DriveLengthMenu()
-    {
-        StandardUiMessages.DriveLengthMessage();
-
-        var driveLengthInMiles = Console.ReadLine();
-
-        if (int.TryParse(driveLengthInMiles, out int result) && result > 0)
-        {
-            return result;
-        }
-        else
-        {
-            StandardUiMessages.DriveLengthDefaultMessage();
-            result = 20;
-        }
-
-        return result;
-    }
-
     public static int ShowMenuItems(List<string> menuItems, string menuText)
     {
         StandardUiMessages.MenuSeparator();
