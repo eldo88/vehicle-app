@@ -2,49 +2,13 @@ namespace vehicle_app;
 
 public class Menus
 {
-    public static bool TakeVehicleOnDriveMenu(string vehicleMake, string vehicleModel)
-    {
-        var drive = false;
-        var displayMenu = true;
-        do
-        {
-            StandardUiMessages.TakeOnDriveMessage(vehicleMake, vehicleModel);
-        
-            var choice = Console.ReadLine();
-
-            var validInput = char.TryParse(choice, out char result);
-
-            if (validInput)
-            {
-                if (char.ToLower(result) == 'y')
-                {
-                    drive = true;
-                    displayMenu = false;
-                }
-                else if (char.ToLower(result) == 'n')
-                {
-                    drive = false;
-                    displayMenu = false;
-                }
-                else if (choice is not null)
-                {
-                    StandardUiMessages.InvalidInputMessage(choice);
-                }
-            }
-
-        } while(displayMenu);
-
-        return drive;
-    }
-
     public static int DriveLengthMenu()
     {
         StandardUiMessages.DriveLengthMessage();
 
         var driveLengthInMiles = Console.ReadLine();
-        var validInput = int.TryParse(driveLengthInMiles, out int result);
 
-        if (validInput && result > 0)
+        if (int.TryParse(driveLengthInMiles, out int result) && result > 0)
         {
             return result;
         }
@@ -75,24 +39,6 @@ public class Menus
 
         return menuItemNum;
     }
-
-    // public static int MenuInput(int menuItemNum)
-    // {
-    //     var choiceStr = Console.ReadLine();
-    //     var validInput = int.TryParse(choiceStr, out int result);
-
-    //     if (validInput && result >= 1 && result <= menuItemNum)
-    //     {
-    //         return result;
-    //     }
-    //     else if (choiceStr is not null)
-    //     {
-    //         StandardUiMessages.InvalidInputMessage(choiceStr);
-    //         result = 0;
-    //     }
-
-    //     return result;
-    // }
 
     public static int GoToPreviousNextOrSameMenu(int menuItemNum, int menuChoice)
     {
