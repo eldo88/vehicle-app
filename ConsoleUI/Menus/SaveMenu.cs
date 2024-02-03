@@ -37,17 +37,17 @@ public class SaveMenu
         switch (vehicle.VehicleTypeEnum)
         {
             case VehicleTypeEnum.Truck:
-                TruckRepository truckRepository = new();
+                var truckRepository = VehicleRepositoryFactory.BuildTruckRepo();
                 var truck = (Truck)vehicle;
                 truckRepository.SaveVehicle(truck);
                 break;
             case VehicleTypeEnum.Car:
-                CarRepository carRepository = new();
+                var carRepository = VehicleRepositoryFactory.BuildCarRepo();
                 var car = (Car)vehicle;
                 carRepository.SaveVehicle(car);
                 break;
             case VehicleTypeEnum.SUV:
-                SuvRepository suvRepository = new();
+                var suvRepository = VehicleRepositoryFactory.BuildSuvRepo();
                 var suv = (Suv)vehicle;
                 suvRepository.SaveVehicle(suv);
                 break;
