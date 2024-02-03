@@ -2,7 +2,6 @@ namespace vehicle_app;
 
 public interface IVehicleRepository<T> where T : IVehicle
 {
-
     public List<T> GetVehicles();
     public List<T> GetVehicleByMake(string make);
     public List<T> GetVehicleByModel(string model);

@@ -4,6 +4,7 @@ namespace vehicle_app;
 internal class SuvRepository : IVehicleRepository<Suv>
 {
     private readonly List<List<string>> _suvs = [];
+    private const string MockDbFilePath = "./data/vehicle-data/suvs-saved.csv";
 
     public Suv GetVehicleById(Guid id)
     {
@@ -24,7 +25,7 @@ internal class SuvRepository : IVehicleRepository<Suv>
     public List<Suv> GetVehicles()
     {
         List<Suv> suvs = [];
-        FileOperations.ReadDataFromMockDbFile("./data/vehicle-data/suvs-saved.csv", _suvs);
+        FileOperations.ReadDataFromMockDbFile(MockDbFilePath, _suvs);
         
         foreach (var line in _suvs)
         {
