@@ -6,9 +6,9 @@ public class VehicleTypeMenu
     {
         Console.WriteLine("\nThis program will allow you to build a vehicle");
         var mainMenuText = "the type";
-        menuItemNum = Menus.ShowMenuItems(vehicleType.VehicleTypeList, mainMenuText);
+        menuItemNum = MenuActions.ShowMenuItems(vehicleType.VehicleTypeList, mainMenuText);
         menuChoice = Input.MenuInput(menuItemNum);
         menuChoices.MenuChoicesFromUserInput["vehicle"] = menuChoice;
-        menuControl += Menus.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice);
+        menuControl += MenuActions.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice);
     }
 }
