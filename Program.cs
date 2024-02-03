@@ -24,7 +24,7 @@ class Program
             if (TakeVehicleOnDriveMenu.GoOnDrive(createdVehicle.Make, createdVehicle.Model))
             {
                 var driveLength = DriveLengthScreen.EnterDriveLength();
-                MotorizedVehicle.PrintDriveDetails(createdVehicle.Drive(driveLength));
+                DisplayCreatedVehicle.PrintDriveDetails(createdVehicle.Drive(driveLength));
             }
         }
         catch(Exception ex)
