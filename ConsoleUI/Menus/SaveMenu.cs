@@ -4,7 +4,9 @@ namespace vehicle_app;
 
 public class SaveMenu
 {
-    public static void SaveVehicleMenu(IVehicle vehicle)
+    public delegate void SaveVehicleEventHandler(object source, VehicleEvent vehicleEvent);
+    public event SaveVehicleEventHandler? SaveVehicleEvent;
+    public void SaveVehicleMenu(IVehicle vehicle)
     {
         bool displayMenu = true;
         do
@@ -17,7 +19,7 @@ public class SaveMenu
             {
                 if (char.ToLower(result) == 'y')
                 {
-                    SaveVehicle(vehicle);
+                    OnSaveVehicle(vehicle);
                     displayMenu = false;
                 }
                 else if (char.ToLower(result) == 'n')
@@ -32,27 +34,11 @@ public class SaveMenu
         }while(displayMenu);
     }
 
-    public static void SaveVehicle(IVehicle vehicle)
+    protected void OnSaveVehicle(IVehicle vehicle)
     {
-        switch (vehicle.VehicleTypeEnum)
+        if (SaveVehicleEvent is not null)
         {
-            case VehicleTypeEnum.Truck:
-                var truckRepository = VehicleRepositoryFactory.BuildTruckRepo();
-                var truck = (Truck)vehicle;
-                truckRepository.SaveVehicle(truck);
-                break;
-            case VehicleTypeEnum.Car:
-                var carRepository = VehicleRepositoryFactory.BuildCarRepo();
-                var car = (Car)vehicle;
-                carRepository.SaveVehicle(car);
-                break;
-            case VehicleTypeEnum.SUV:
-                var suvRepository = VehicleRepositoryFactory.BuildSuvRepo();
-                var suv = (Suv)vehicle;
-                suvRepository.SaveVehicle(suv);
-                break;
-            default:
-                break;
+            SaveVehicleEvent(this, new VehicleEvent() {Vehicle = vehicle});
         }
     }
 }

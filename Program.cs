@@ -16,7 +16,10 @@ class Program
         {
             createdVehicle = VehicleFactory.BuildFromMenuChoices(data);
             DisplayCreatedVehicle.PrintToConsole(createdVehicle);
-            SaveMenu.SaveVehicleMenu(createdVehicle);
+            var vehicleService = VehicleServiceFactory.CreateVehicleService();
+            var saveMenu = MenuFactory.CreateSaveMenu();
+            saveMenu.SaveVehicleEvent += vehicleService.Save;
+            saveMenu.SaveVehicleMenu(createdVehicle);
 
             if (TakeVehicleOnDriveMenu.GoOnDrive(createdVehicle.Make, createdVehicle.Model))
             {
