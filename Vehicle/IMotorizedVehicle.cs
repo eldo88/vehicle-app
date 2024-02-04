@@ -43,4 +43,9 @@ public interface IMotorizedVehicle : IVehicle
 
         return tripDetail;
     }
+    
+    public static void Print(IMotorizedVehicle motorizedVehicle)
+    {
+        Console.WriteLine(motorizedVehicle);
+    }
 }
