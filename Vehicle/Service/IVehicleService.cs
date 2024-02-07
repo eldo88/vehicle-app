@@ -2,5 +2,5 @@
 
 public interface IVehicleService
 {
-    public void Save(object source, VehicleEvent vehicleEvent);
+    public void OnVehicleSaved(object source, VehicleEvent vehicleEvent);
 }

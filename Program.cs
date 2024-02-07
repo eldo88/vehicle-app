@@ -18,7 +18,7 @@ class Program
             DisplayCreatedVehicle.PrintToConsole(createdVehicle);
             var vehicleService = VehicleServiceFactory.CreateVehicleService();
             var saveMenu = MenuFactory.CreateSaveMenu();
-            saveMenu.SaveVehicleEvent += vehicleService.Save;
+            saveMenu.SaveVehicleEvent += vehicleService.OnVehicleSaved;
             saveMenu.SaveVehicleMenu(createdVehicle);
 
             if (TakeVehicleOnDriveMenu.GoOnDrive(createdVehicle.Make, createdVehicle.Model))

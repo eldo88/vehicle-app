@@ -4,8 +4,8 @@ namespace vehicle_app;
 
 public class SaveMenu
 {
-    public delegate void SaveVehicleEventHandler(object source, VehicleEvent vehicleEvent);
-    public event SaveVehicleEventHandler? SaveVehicleEvent;
+    
+    public event EventHandler<VehicleEvent>? SaveVehicleEvent;
     public void SaveVehicleMenu(IVehicle vehicle)
     {
         bool displayMenu = true;
@@ -34,7 +34,7 @@ public class SaveMenu
         }while(displayMenu);
     }
 
-    protected void OnSaveVehicle(IVehicle vehicle)
+    protected virtual void OnSaveVehicle(IVehicle vehicle)
     {
         if (SaveVehicleEvent is not null)
         {

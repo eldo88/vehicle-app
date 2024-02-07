@@ -3,7 +3,7 @@ namespace vehicle_app;
 
 public class VehicleService : IVehicleService
 {
-    public void Save(object source, VehicleEvent vehicleEvent)
+    public void OnVehicleSaved(object? source, VehicleEvent vehicleEvent)
     {
         if (vehicleEvent is not null)
         {
