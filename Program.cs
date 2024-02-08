@@ -4,7 +4,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        ShowMenus showMenus = new();
+        Console.ForegroundColor = ConsoleColor.DarkRed;
+        ShowMenus showMenus = MenuFactory.CreateShowMenus();
         showMenus.DisplayMainMenu();
 
         var menuChoices = showMenus._menuChoices.MenuChoicesFromUserInput;

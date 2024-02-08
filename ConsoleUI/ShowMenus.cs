@@ -106,6 +106,11 @@ public class ShowMenus
                     break;
                 case 1:
                     MainMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, ref _mainMenuData, ref _menuChoices);
+                    if (menuChoice == 1)
+                    {
+                        CreatedVehicleSearchScreen.Show();
+                        menuControl = 1;
+                    }
                     break;
                 case 2:
                     DisplayBuildVehicleMenus();
