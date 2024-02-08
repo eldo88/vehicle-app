@@ -8,7 +8,7 @@ class Program
         ShowMenus showMenus = MenuFactory.CreateShowMenus();
         showMenus.DisplayMainMenu();
 
-        var menuChoices = showMenus._menuChoices.MenuChoicesFromUserInput;
+        var menuChoices = showMenus.MenuChoices.MenuChoicesFromUserInput;
         if(ExitProgram.ExitProgramValidator(menuChoices)) return;
         IMotorizedVehicle createdVehicle;
         var data = showMenus.GetMenuChoiceData();

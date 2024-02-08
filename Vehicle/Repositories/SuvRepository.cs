@@ -11,11 +11,12 @@ internal class SuvRepository : IVehicleRepository<Suv>
         throw new NotImplementedException();
     }
 
-    public List<Suv> GetVehicleByMake(string make)
-    {
-        List<Suv> suvs = GetVehicles();
-        return suvs.FindAll(s => s.Make == make);
-    }
+    // public IEnumerable<Suv> GetVehicleByMake(string make)
+    // {
+    //     List<Suv> suvs = GetVehicles();
+    //     return suvs.Where(s => s.Make == make)
+    //                 .OrderByDescending(s => s.Year);
+    // }
 
     public List<Suv> GetVehicleByModel(string model)
     {
@@ -47,5 +48,10 @@ internal class SuvRepository : IVehicleRepository<Suv>
 
         using StreamWriter streamWriter = File.AppendText(filePath);
         FileOperations.WriteDataToFile(streamWriter, suvData);
+    }
+
+    public List<Suv> GetVehicleByMake(string make)
+    {
+        throw new NotImplementedException();
     }
 }
