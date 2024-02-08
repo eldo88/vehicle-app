@@ -6,4 +6,9 @@ public class MenuFactory
     {
         return new SaveMenu();
     }
+
+    public static ShowMenus CreateShowMenus()
+    {
+        return new ShowMenus();
+    }
 }

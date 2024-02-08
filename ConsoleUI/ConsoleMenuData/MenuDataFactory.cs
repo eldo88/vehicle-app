@@ -31,4 +31,9 @@ public static class MenuDataFactory
     {
         return new MenuChoices();
     }
+
+    public static IMainMenuData CreateMainMenuData()
+    {
+        return new MainMenuData();
+    }
 }

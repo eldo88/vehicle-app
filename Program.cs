@@ -5,7 +5,7 @@ class Program
     static void Main(string[] args)
     {
         ShowMenus showMenus = new();
-        showMenus.DisplayMenus();
+        showMenus.DisplayMainMenu();
 
         var menuChoices = showMenus._menuChoices.MenuChoicesFromUserInput;
         if(ExitProgram.ExitProgramValidator(menuChoices)) return;

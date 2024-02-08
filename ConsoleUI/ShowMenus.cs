@@ -10,6 +10,7 @@ public class ShowMenus
         _vehicleMake = MenuDataFactory.CreateVehicleMake();
         _vehicleModel = MenuDataFactory.CreateVehicleModel();
         _vehicleType = MenuDataFactory.CreateVehicleType();
+        _mainMenuData = MenuDataFactory.CreateMainMenuData();
     }
 
     public IMenuChoices _menuChoices;
@@ -18,8 +19,9 @@ public class ShowMenus
     IVehicleMake _vehicleMake;
     IVehicleModel _vehicleModel;
     IVehicleType _vehicleType;
+    IMainMenuData _mainMenuData;
 
-    public void DisplayMenus()
+    public void DisplayBuildVehicleMenus()
     {
         var menuControl = 1;
         var displayMenu = true;
@@ -84,5 +86,34 @@ public class ShowMenus
         // var MPG = 25; //hardcoded for now
         // var occupantCapacity = 4; // hardcoded for now
         return MenuChoiceData;
+    }
+
+    public void DisplayMainMenu()
+    {
+        var menuControl = 1;
+        var displayMenu = true;
+
+        do
+        {
+            int menuItemNum = 0;
+            int menuChoice = 0;
+
+            switch (menuControl)
+            {
+                case 0:
+                    _menuChoices.MenuChoicesFromUserInput["vehicle"] = 99;
+                    displayMenu = false;
+                    break;
+                case 1:
+                    MainMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, ref _mainMenuData, ref _menuChoices);
+                    break;
+                case 2:
+                    DisplayBuildVehicleMenus();
+                    displayMenu = false;
+                    break;
+                default:
+                    break;
+            }
+        } while (displayMenu);
     }
 }
