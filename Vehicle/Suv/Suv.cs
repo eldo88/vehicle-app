@@ -63,6 +63,44 @@ public class Suv : ISuv
     public int Year { get; set; }
     public VehicleTypeEnum VehicleTypeEnum { get; set; }
 
+    List<(string, decimal)> IMotorizedVehicle.Drive(decimal tripLength)
+    {
+        List<(string, decimal)> tripDetail = [];
+        (string, decimal) message;
+
+        if (tripLength <= 0)
+        {
+            message = ("Error", 0);
+            tripDetail.Add(message);
+        }
+
+        message = ("Drive length", tripLength);
+        tripDetail.Add(message);
+
+        if (MPG == 0)
+        {
+            decimal numberOfChargesNeeded = (decimal)tripLength / (decimal)Range;
+            message = ("Number Of Charges Needed", numberOfChargesNeeded);
+            tripDetail.Add(message);
+        }
+        else
+        {
+            decimal totalGallonsOfFuelNeeded = (decimal)tripLength / (decimal)MPG;
+            decimal numberOfTanksOfGasNeeded = totalGallonsOfFuelNeeded / FuelCapacity;
+            message = ("Total Gallons Of Fuel Needed", totalGallonsOfFuelNeeded);
+            tripDetail.Add(message);
+            message = ("Number Of Tanks Of Gas Needed",numberOfTanksOfGasNeeded);
+            tripDetail.Add(message);
+            message = ("Vehicle Mpg", MPG);
+            tripDetail.Add(message);
+        }
+
+        message = ("Vehicle Range", Range);
+        tripDetail.Add(message);
+
+        return tripDetail;
+    }
+
     public override string ToString() => $"\nThe details of your vehicle are:\n\nMake: {Make}\nModel: {Model}\nYear: {Year}\nType: {VehicleTypeEnum}\nColor: {Color}\nEngine Type: {EngineType}\nRange: {Range}\n";
 
     public override bool Equals(object? obj)

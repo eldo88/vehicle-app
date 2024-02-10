@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <Folder Include="ConsoleUI/Menus/Factory/" />
+    <Folder Include="Vehicle/Interfaces/" />
   </ItemGroup>
 
 </Project>

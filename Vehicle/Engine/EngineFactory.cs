@@ -2,18 +2,14 @@
 
 public class EngineFactory
 {
-    public static IGasEngine CreateGasEngine(int numberOfCylinders, bool hasTurbo)
+    public static IEngine Build(string fuelType, int numberOfCylinders, bool hasTurbo = false)
     {
-        return new GasEngine(numberOfCylinders, hasTurbo);
-    }
-
-    public static IElectricMotor CreateElectricMotor()
-    {
-        return new ElectricMotor();
-    }
-
-    public static IDieselEngine CreateDieselEngine(int numberOfCylinders)
-    {
-        return new DieselEngine(numberOfCylinders);
+        return fuelType switch 
+        {
+            "Gas" => new GasEngine(numberOfCylinders, hasTurbo),
+            "Diesel" => new DieselEngine(numberOfCylinders),
+            "Electric" => new ElectricMotor(),
+            _ => new GasEngine(numberOfCylinders, hasTurbo)
+        };
     }
 }
