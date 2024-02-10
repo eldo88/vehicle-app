@@ -8,7 +8,7 @@ public class CreatedVehicleSearchScreen
         StandardUiMessages.MenuSeparator();
         var menuText = "make";
         Console.WriteLine("Search Criteria");
-        var makes = MenuDataFactory.CreateVehicleMake();
+        var makes = new VehicleMake();
         var menuItemNum = MenuActions.ShowMenuItems(makes.VehicleMakeList, menuText);
         var choiceNum = Input.MenuInput(menuItemNum);
         var choice = CreatedVehicleSearch(choiceNum);

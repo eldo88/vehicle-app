@@ -1,6 +1,6 @@
 namespace vehicle_app;
 
-public class VehicleType : IVehicleType
+public class VehicleType
 {
     public VehicleType()
     {

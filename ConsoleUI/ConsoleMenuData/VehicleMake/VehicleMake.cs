@@ -1,6 +1,6 @@
 namespace vehicle_app;
 
-public class VehicleMake : IVehicleMake
+public class VehicleMake
 {
     public VehicleMake()
     {

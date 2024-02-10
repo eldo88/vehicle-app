@@ -1,7 +1,7 @@
 ﻿
 namespace vehicle_app;
 
-public class MainMenuData : IMainMenuData
+public class MainMenuData
 {
     public MainMenuData()
     {

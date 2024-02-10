@@ -2,7 +2,7 @@
 
 public class VehicleTypeMenu
 {
-    public static void Show(ref int menuItemNum, ref int menuChoice, ref int menuControl, ref IVehicleType vehicleType, ref IMenuChoices menuChoices)
+    public static void Show(ref int menuItemNum, ref int menuChoice, ref int menuControl, VehicleType vehicleType, MenuChoices menuChoices)
     {
         Console.WriteLine("\nThis program will allow you to build a vehicle");
         var mainMenuText = "the type";

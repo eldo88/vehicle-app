@@ -1,6 +1,6 @@
 namespace vehicle_app;
 
-public class VehicleModel : IVehicleModel
+public class VehicleModel
 {
     public VehicleModel()
     {

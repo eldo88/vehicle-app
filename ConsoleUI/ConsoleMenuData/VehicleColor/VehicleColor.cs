@@ -1,6 +1,6 @@
 namespace vehicle_app;
 
-public class VehicleColor : IVehicleColor
+public class VehicleColor
 {
     public VehicleColor()
     {

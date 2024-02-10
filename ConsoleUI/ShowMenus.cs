@@ -4,22 +4,22 @@ public class ShowMenus
 {
     public ShowMenus()
     {
-        MenuChoices = MenuDataFactory.CreateMenuChoices();
-        _vehicleColor = MenuDataFactory.CreateVehicleColor();
-        _vehicleEngine = MenuDataFactory.CreateVehicleEngine();
-        _vehicleMake = MenuDataFactory.CreateVehicleMake();
-        _vehicleModel = MenuDataFactory.CreateVehicleModel();
-        _vehicleType = MenuDataFactory.CreateVehicleType();
-        _mainMenuData = MenuDataFactory.CreateMainMenuData();
+        MenuChoices = new();
+        _vehicleColor = new();
+        _vehicleEngine = new();
+        _vehicleMake = new();
+        _vehicleModel = new();
+        _vehicleType = new();
+        _mainMenuData = new();
     }
 
-    public IMenuChoices MenuChoices;
-    IVehicleColor _vehicleColor;
-    IVehicleEngine _vehicleEngine;
-    IVehicleMake _vehicleMake;
-    IVehicleModel _vehicleModel;
-    IVehicleType _vehicleType;
-    IMainMenuData _mainMenuData;
+    public MenuChoices MenuChoices;
+    VehicleColor _vehicleColor;
+    VehicleEngine _vehicleEngine;
+    VehicleMake _vehicleMake;
+    VehicleModel _vehicleModel;
+    VehicleType _vehicleType;
+    MainMenuData _mainMenuData;
 
     public void DisplayBuildVehicleMenus()
     {
@@ -37,19 +37,19 @@ public class ShowMenus
                     displayMenu = false;
                     break;
                 case 1:
-                    VehicleTypeMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, ref _vehicleType, ref MenuChoices);
+                    VehicleTypeMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, _vehicleType, MenuChoices);
                     break;
                 case 2:
-                    VehicleMakeMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, ref _vehicleMake, ref MenuChoices);
+                    VehicleMakeMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, _vehicleMake, MenuChoices);
                     break;
                 case 3:
-                    VehicleModelMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, ref _vehicleModel, ref _vehicleMake, ref _vehicleType, ref MenuChoices);
+                    VehicleModelMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, _vehicleModel, _vehicleMake, _vehicleType, MenuChoices);
                     break;
                 case 4:
-                    VehicleEngineMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, ref _vehicleEngine, ref MenuChoices);
+                    VehicleEngineMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, _vehicleEngine, MenuChoices);
                     break;
                 case 5:
-                    VehicleColorMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, ref _vehicleColor, ref MenuChoices);
+                    VehicleColorMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, _vehicleColor, MenuChoices);
                     break;
                 case 6:
                     var year = VehicleYearMenu.Show();
@@ -103,7 +103,7 @@ public class ShowMenus
                     displayMenu = false;
                     break;
                 case 1:
-                    MainMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, ref _mainMenuData, ref MenuChoices);
+                    MainMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, _mainMenuData, MenuChoices);
                     if (menuChoice == 1)
                     {
                         CreatedVehicleSearchScreen.Show();

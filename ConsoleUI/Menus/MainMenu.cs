@@ -2,7 +2,7 @@
 
 public class MainMenu
 {
-    public static void Show(ref int menuItemNum, ref int menuChoice, ref int menuControl, ref IMainMenuData mainMenuData, ref IMenuChoices menuChoices)
+    public static void Show(ref int menuItemNum, ref int menuChoice, ref int menuControl, MainMenuData mainMenuData, MenuChoices menuChoices)
     {
         StandardUiMessages.MenuSeparator();
         Console.WriteLine("Please make a selection");
