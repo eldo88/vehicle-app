@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <RootNamespace>vehicle_app</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
@@ -13,4 +13,14 @@
     <Folder Include="Vehicle/Interfaces/" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="data\vehicle-data\chevrolet-car-data.csv" />
+    <None Remove="data\vehicle-data\chevrolet-suv-data.csv" />
+    <None Remove="data\vehicle-data\vehicle-type-data.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="data\vehicle-data\chevrolet-car-data.csv" />
+    <EmbeddedResource Include="data\vehicle-data\chevrolet-suv-data.csv" />
+    <EmbeddedResource Include="data\vehicle-data\vehicle-type-data.csv" />
+  </ItemGroup>
 </Project>

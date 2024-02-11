@@ -74,7 +74,7 @@ public class ShowMenus
 
     public Dictionary<string, string> GetMenuChoiceData()
     {
-        Dictionary<string, string> MenuChoiceData = [];
+        Dictionary<string, string> MenuChoiceData = new();
 
         MenuChoiceData.Add("type", _vehicleType.GetVehicleTypeByIdx(MenuChoices.MenuChoicesFromUserInput["vehicle"] - 1));
         MenuChoiceData.Add("make", _vehicleMake.GetVehicleMakeByIdx(MenuChoices.MenuChoicesFromUserInput["make"] - 1));

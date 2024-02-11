@@ -4,7 +4,7 @@ public static class FileOperations
 {
     public static List<string> ReadDataFromFile(string filePath)
     {
-        List<string> targetList = [];
+        List<string> targetList = new();
         if (File.Exists(filePath))
         {
             using StreamReader fileReader = new(File.OpenRead(filePath));
@@ -31,7 +31,7 @@ public static class FileOperations
 
     public static Dictionary<string, List<string>> ReadModelDataIntoDict(List<string> filePaths)
     {
-        Dictionary<string, List<string>> targetDict = [];
+        Dictionary<string, List<string>> targetDict = new();
         foreach (var filePath in filePaths)
         {
             if (File.Exists(filePath))
@@ -84,7 +84,7 @@ public static class FileOperations
                 else
                 {
                     var values = line.Split(',');
-                    List<string> tempList = [];
+                    List<string> tempList = new();
                     tempList.AddRange(values);
                     targetList.Add(tempList);
                 }

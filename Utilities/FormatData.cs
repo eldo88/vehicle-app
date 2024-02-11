@@ -11,11 +11,21 @@ public class FormatData
         var mpg = Convert.ToString(motorizedVehicle.MPG);
         var range = Convert.ToString(motorizedVehicle.Range);
         var fuelCapacity = Convert.ToString(motorizedVehicle.FuelCapacity);
-        List<string> data = [];
+        List<string> data = new();
 
         if (vehicleType is not null)
         {
-            data = [guid, motorizedVehicle.Color, capacity, motorizedVehicle.Make, motorizedVehicle.Model, year, vehicleType, motorizedVehicle.EngineType, mpg, range, fuelCapacity];
+            data.Add(guid);
+            data.Add(motorizedVehicle.Color);
+            data.Add(capacity);
+            data.Add(motorizedVehicle.Make);
+            data.Add(motorizedVehicle.Model);
+            data.Add(year);
+            data.Add(vehicleType);
+            data.Add(motorizedVehicle.EngineType);
+            data.Add(mpg);
+            data.Add(range);
+            data.Add(fuelCapacity);
         }
         return data;
     }

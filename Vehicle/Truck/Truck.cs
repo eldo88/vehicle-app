@@ -67,7 +67,7 @@ public class Truck : ITruck
 
     List<(string, decimal)> IMotorizedVehicle.Drive(decimal tripLength)
     {
-        List<(string, decimal)> tripDetail = [];
+        List<(string, decimal)> tripDetail = new();
         (string, decimal) message;
 
         if (tripLength <= 0)

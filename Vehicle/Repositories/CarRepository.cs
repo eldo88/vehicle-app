@@ -3,8 +3,8 @@ namespace vehicle_app;
 
 internal class CarRepository : IVehicleRepository<Car>
 {
-    private readonly List<List<string>> _cars = [];
-    private const string MockDbFilePath = "./data/vehicle-data/cars-saved.csv";
+    private readonly List<List<string>> _cars = new();
+    private const string MockDbFilePath = "../data/vehicle-data/cars-saved.csv";
 
     public Car GetVehicleById(Guid id)
     {
@@ -25,7 +25,7 @@ internal class CarRepository : IVehicleRepository<Car>
 
     public List<Car> GetVehicles()
     {
-        List<Car> cars = [];
+        List<Car> cars = new();
         FileOperations.ReadDataFromMockDbFile(MockDbFilePath, _cars);
 
         foreach (var line in _cars)

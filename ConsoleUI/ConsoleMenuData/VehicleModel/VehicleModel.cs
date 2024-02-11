@@ -7,7 +7,8 @@ public class VehicleModel
         VehicleModelDict = FileOperations.ReadModelDataIntoDict(modelDataFilePaths);
     }
 
-    public List<string> modelDataFilePaths = [
+    public List<string> modelDataFilePaths = new()
+    {
             "./data/vehicle-data/toyota-car-data.csv",
             "./data/vehicle-data/toyota-truck-data.csv",
             "./data/vehicle-data/toyota-suv-data.csv",
@@ -17,7 +18,7 @@ public class VehicleModel
             "./data/vehicle-data/chevrolet-car-data.csv",
             "./data/vehicle-data/chevrolet-truck-data.csv",
             "./data/vehicle-data/chevrolet-suv-data.csv"
-        ];
+        };
 
     public Dictionary<string, List<string>> VehicleModelDict {get; set;}
 

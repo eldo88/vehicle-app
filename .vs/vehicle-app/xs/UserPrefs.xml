@@ -1,0 +1,51 @@
+﻿<Properties StartupConfiguration="{C9483B97-078A-4455-827A-B9A9AC7DE39D}|Default">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ConsoleUI/ConsoleMenuData/MainMenu/MainMenuData.cs">
+    <Files>
+      <File FileName="Vehicle/Suv/Suv.cs" Line="68" Column="47" />
+      <File FileName="Vehicle/Car/Car.cs" Line="66" Column="50" />
+      <File FileName="Vehicle/Truck/Truck.cs" Line="70" Column="47" />
+      <File FileName="Vehicle/Repositories/SuvRepository.cs" Line="7" Column="45" />
+      <File FileName="Vehicle/Repositories/CarRepository.cs" Line="45" Column="26" />
+      <File FileName="ConsoleUI/ConsoleMenuData/VehicleColor/VehicleColor.cs" Line="7" Column="55" />
+      <File FileName="ConsoleUI/ConsoleMenuData/VehicleEngine/VehicleEngine.cs" Line="7" Column="56" />
+      <File FileName="ConsoleUI/ConsoleMenuData/VehicleMake/VehicleMake.cs" Line="7" Column="61" />
+      <File FileName="ConsoleUI/ConsoleMenuData/VehicleModel/VehicleModel.cs" Line="20" Column="17" />
+      <File FileName="ConsoleUI/ConsoleMenuData/VehicleType/VehicleType.cs" Line="7" Column="60" />
+      <File FileName="ConsoleUI/ConsoleMenuData/MainMenu/MainMenuData.cs" Line="8" Column="62" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="vehicle-app">
+            <Node name="vehicle-app">
+              <Node name="ConsoleUI" expanded="True">
+                <Node name="ConsoleMenuData" expanded="True">
+                  <Node name="VehicleColor" expanded="True" />
+                  <Node name="VehicleEngine" expanded="True" />
+                  <Node name="VehicleMake" expanded="True" />
+                  <Node name="VehicleModel" expanded="True" />
+                  <Node name="VehicleType" expanded="True" />
+                </Node>
+              </Node>
+              <Node name="data" expanded="True">
+                <Node name="vehicle-data" expanded="True" />
+              </Node>
+              <Node name="Utilities" expanded="True" />
+              <Node name="Vehicle" expanded="True">
+                <Node name="Suv" expanded="True" />
+                <Node name="Truck" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.vehicle-app PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+</Properties>

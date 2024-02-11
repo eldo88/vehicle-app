@@ -3,8 +3,8 @@ namespace vehicle_app;
 
 internal class SuvRepository : IVehicleRepository<Suv>
 {
-    private readonly List<List<string>> _suvs = [];
-    private const string MockDbFilePath = "./data/vehicle-data/suvs-saved.csv";
+    private readonly List<List<string>> _suvs = new();
+    private const string MockDbFilePath = "../data/vehicle-data/suvs-saved.csv";
 
     public Suv GetVehicleById(Guid id)
     {
@@ -26,7 +26,7 @@ internal class SuvRepository : IVehicleRepository<Suv>
 
     public List<Suv> GetVehicles()
     {
-        List<Suv> suvs = [];
+        List<Suv> suvs = new();
         FileOperations.ReadDataFromMockDbFile(MockDbFilePath, _suvs);
         
         foreach (var line in _suvs)
@@ -43,7 +43,7 @@ internal class SuvRepository : IVehicleRepository<Suv>
 
     public void SaveVehicle(Suv suv)
     {
-        var filePath = "./data/vehicle-data/suvs-saved.csv";
+        var filePath = "../data/vehicle-data/suvs-saved.csv";
         var suvData = FormatData.ParseVehicleDataForSavingToFile(suv);
 
         using StreamWriter streamWriter = File.AppendText(filePath);
