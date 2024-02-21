@@ -18,7 +18,7 @@ public class VehicleModel
             "./data/vehicle-data/chevrolet-car-data.csv",
             "./data/vehicle-data/chevrolet-truck-data.csv",
             "./data/vehicle-data/chevrolet-suv-data.csv"
-        };
+    };
 
     public Dictionary<string, List<string>> VehicleModelDict {get; set;}
 
