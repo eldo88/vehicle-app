@@ -1,0 +1,32 @@
+[
+  {
+    "NumDoors": null,
+    "IsConvertible": null,
+    "EngineType": "V6",
+    "MPG": 25,
+    "Range": 500,
+    "FuelCapacity": 20,
+    "Guid": "00000000-0000-0000-0000-000000000000",
+    "Color": "White",
+    "Capacity": 4,
+    "Make": "Ford",
+    "Model": "Fusion",
+    "Year": 2005,
+    "VehicleTypeEnum": 0
+  },
+  {
+    "NumDoors": null,
+    "IsConvertible": null,
+    "EngineType": "V8",
+    "MPG": 25,
+    "Range": 500,
+    "FuelCapacity": 20,
+    "Guid": "00000000-0000-0000-0000-000000000000",
+    "Color": "Blue",
+    "Capacity": 4,
+    "Make": "Toyota",
+    "Model": "Camry",
+    "Year": 2005,
+    "VehicleTypeEnum": 0
+  }
+]
