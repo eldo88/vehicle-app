@@ -30,5 +30,37 @@
     "Model": "Bronco 4 Door",
     "Year": 2024,
     "VehicleTypeEnum": 2
+  },
+  {
+    "IsFourWheelDrive": null,
+    "TowingCapacity": null,
+    "CargoSpace": null,
+    "EngineType": "V6",
+    "MPG": 25,
+    "Range": 500,
+    "FuelCapacity": 20,
+    "Guid": "00000000-0000-0000-0000-000000000000",
+    "Color": "Silver",
+    "Capacity": 4,
+    "Make": "Toyota",
+    "Model": "4Runner",
+    "Year": 2023,
+    "VehicleTypeEnum": 2
+  },
+  {
+    "IsFourWheelDrive": null,
+    "TowingCapacity": null,
+    "CargoSpace": null,
+    "EngineType": "V6",
+    "MPG": 25,
+    "Range": 500,
+    "FuelCapacity": 20,
+    "Guid": "00000000-0000-0000-0000-000000000000",
+    "Color": "Black",
+    "Capacity": 4,
+    "Make": "Ford",
+    "Model": "Bronco 2 Door",
+    "Year": 2001,
+    "VehicleTypeEnum": 2
   }
 ]

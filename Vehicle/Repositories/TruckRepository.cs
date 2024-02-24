@@ -6,17 +6,11 @@ namespace vehicle_app;
 internal class TruckRepository : IVehicleRepository<Truck>
 {
     private readonly List<List<string>> _trucks = new();
-    private const string MockDbFilePath = "./data/vehicle-data/trucks-saved.csv";
+    private const string MockDbFilePath = "./Vehicle/Repositories/SavedData/trucks-saved.json";
 
     public Truck GetVehicleById(Guid id)
     {
         throw new NotImplementedException();
-    }
-
-    public List<Truck> GetVehicleByMake(string make)
-    {
-        List<Truck> trucks = GetVehicles();
-        return trucks.FindAll(t => t.Make == make);
     }
 
     public List<Truck> GetVehicleByModel(string model)
@@ -25,27 +19,9 @@ internal class TruckRepository : IVehicleRepository<Truck>
         return trucks.FindAll(t => t.Model == model);
     }
 
-    // public List<Truck> GetVehicles()
-    // {
-    //     List<Truck> trucks = new();
-    //     FileOperations.ReadDataFromMockDbFile(MockDbFilePath, _trucks);
-        
-    //     foreach (var line in _trucks)
-    //     {
-    //         var capacity = int.Parse(line[2]);
-    //         var year = int.Parse(line[5]);
-    //         var mpg = int.Parse(line[8]);
-    //         var truck = (Truck)VehicleFactory.Build(line[1], capacity, line[3], line[4], year, line[6], line[7], mpg);
-    //         trucks.Add(truck);
-    //     }
-
-    //     return trucks;
-    // }
-
     public List<Truck> GetVehicles()
     {
-        var filePath = "./Vehicle/Repositories/SavedData/trucks-saved.json";
-        using StreamReader fileReader = new(File.OpenRead(filePath));
+        using StreamReader fileReader = new(File.OpenRead(MockDbFilePath));
         var jd = fileReader.ReadToEnd();
 
         List<Truck>? trucks = new();
@@ -62,19 +38,9 @@ internal class TruckRepository : IVehicleRepository<Truck>
         return trucks;
     }
 
-    // public void SaveVehicle(Truck truck)
-    // {
-    //     var filePath = "../data/vehicle-data/trucks-saved.csv";
-    //     var truckData = FormatData.ParseVehicleDataForSavingToFile(truck);
-
-    //     using StreamWriter streamWriter = File.AppendText(filePath);
-    //     FileOperations.WriteDataToFile(streamWriter, truckData);
-    // }
-
     public void SaveVehicle(Truck truck)
     {
-        var filePath = "./Vehicle/Repositories/SavedData/trucks-saved.json";
-        using StreamReader fileReader = new(File.OpenRead(filePath));
+        using StreamReader fileReader = new(File.OpenRead(MockDbFilePath));
         var jd = fileReader.ReadToEnd();
 
         List<Truck>? trucks = new();
@@ -95,7 +61,14 @@ internal class TruckRepository : IVehicleRepository<Truck>
         
         var options = new JsonSerializerOptions(){WriteIndented=true};
         var jsonData = JsonSerializer.Serialize<IList<Truck>>(trucks, options);
-        using StreamWriter streamWriter = new(filePath, false);
+        using StreamWriter streamWriter = new(MockDbFilePath, false);
         streamWriter.Write(jsonData);
+    }
+
+    public IEnumerable<Truck> GetVehicleByMake(string make)
+    {
+        List<Truck> trucks = GetVehicles();
+        return trucks.Where(t => t.Make == make)
+                    .OrderByDescending(t => t.Year);
     }
 }

@@ -44,42 +44,47 @@ public class CreatedVehicleSearchScreen
         }
     }
 
-    public static void ShowCars(List<Car> cars)
+    public static void ShowCars(IEnumerable<Car> cars)
     {
-        if (cars.Count <= 0)
+        if (!cars.Any())
         {
             Console.WriteLine("No cars found");
         }
 
+        Console.WriteLine();
+        Console.WriteLine("List of cars:");
         foreach (var car in cars)
         {
-            Console.WriteLine($"{car.Make} {car.Model} {car.Color}");
+            Console.WriteLine($"{car.Year} {car.Make} {car.Model} {car.Color}");
         }
     }
 
-    public static void ShowTrucks(List<Truck> trucks)
+    public static void ShowTrucks(IEnumerable<Truck> trucks)
     {
-        if (trucks.Count <= 0)
+        if (!trucks.Any())
         {
             Console.WriteLine("No trucks found");
         }
-
+        Console.WriteLine();
+        Console.WriteLine("List of trucks:");
         foreach (var truck in trucks)
         {
-            Console.WriteLine($"{truck.Make} {truck.Model} {truck.Color}");
+            Console.WriteLine($"{truck.Year} {truck.Make} {truck.Model} {truck.Color}");
         }
     }
 
-    public static void ShowSuvs(List<Suv> suvs)
+    public static void ShowSuvs(IEnumerable<Suv> suvs)
     {
-        if (suvs.Count <= 0)
+        if (!suvs.Any())
         {
             Console.WriteLine("No SUVs found");
         }
 
+        Console.WriteLine();
+        Console.WriteLine("List of SUVs:");
         foreach (var suv in suvs)
         {
-            Console.WriteLine($"{suv.Make} {suv.Model} {suv.Color}");
+            Console.WriteLine($"{suv.Year} {suv.Make} {suv.Model} {suv.Color}");
         }
     }
 }
