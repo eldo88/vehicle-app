@@ -1,4 +1,6 @@
 
+using System.Text.Json;
+
 namespace vehicle_app;
 
 internal class TruckRepository : IVehicleRepository<Truck>
@@ -40,12 +42,40 @@ internal class TruckRepository : IVehicleRepository<Truck>
         return trucks;
     }
 
+    // public void SaveVehicle(Truck truck)
+    // {
+    //     var filePath = "../data/vehicle-data/trucks-saved.csv";
+    //     var truckData = FormatData.ParseVehicleDataForSavingToFile(truck);
+
+    //     using StreamWriter streamWriter = File.AppendText(filePath);
+    //     FileOperations.WriteDataToFile(streamWriter, truckData);
+    // }
+
     public void SaveVehicle(Truck truck)
     {
-        var filePath = "../data/vehicle-data/trucks-saved.csv";
-        var truckData = FormatData.ParseVehicleDataForSavingToFile(truck);
+        var filePath = "./Vehicle/Repositories/SavedData/trucks-saved.json";
+        using StreamReader fileReader = new(File.OpenRead(filePath));
+        var jd = fileReader.ReadToEnd();
+        
+        List<Truck>? trucks = new();
 
-        using StreamWriter streamWriter = File.AppendText(filePath);
-        FileOperations.WriteDataToFile(streamWriter, truckData);
+        if (!string.IsNullOrWhiteSpace(jd))
+        {
+            trucks = JsonSerializer.Deserialize<List<Truck>>(jd);
+        }
+
+        if (trucks is null)
+        {
+            trucks = new List<Truck>{truck};
+        }
+        else
+        {
+            trucks.Add(truck);
+        }
+        
+        var options = new JsonSerializerOptions(){WriteIndented=true};
+        var jsonData = JsonSerializer.Serialize<IList<Truck>>(trucks, options);
+        using StreamWriter streamWriter = new(filePath, false);
+        streamWriter.Write(jsonData);
     }
 }
