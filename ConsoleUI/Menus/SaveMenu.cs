@@ -38,7 +38,7 @@ public class SaveMenu
     {
         if (SaveVehicleEvent is not null)
         {
-            SaveVehicleEvent(this, new VehicleEvent() {Vehicle = vehicle});
+            SaveVehicleEvent(this, new VehicleEvent(vehicle));
         }
     }
 }

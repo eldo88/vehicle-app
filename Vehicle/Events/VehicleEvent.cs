@@ -2,5 +2,10 @@
 
 public class VehicleEvent : EventArgs
 {
-    public IVehicle? Vehicle { get; set; }
+    public VehicleEvent(IVehicle vehicle)
+    {
+        Vehicle = vehicle;
+    }
+    
+    public IVehicle Vehicle { get; set; }
 }
