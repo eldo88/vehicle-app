@@ -45,8 +45,8 @@ public class Car : ICar
         }
     }
 
-    public int? NumDoors {get; set;}
-    public bool? IsConvertible {get; set;}
+    public int? NumDoors {get; set;} = 4;
+    public bool? IsConvertible {get; set;} = false;
     public string EngineType { get; set; } = "";
     public decimal MPG { get; set; }
     public decimal Range { get; set; }

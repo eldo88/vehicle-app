@@ -45,9 +45,9 @@ public class Suv : ISuv
         } 
     }
 
-    public bool? IsFourWheelDrive {get; set;}
-    public int? TowingCapacity {get; set;}
-    public int? CargoSpace {get; set;}
+    public bool? IsFourWheelDrive {get; set;} = false;
+    public int? TowingCapacity {get; set;} = 5000;
+    public int? CargoSpace {get; set;} = 15;
 
     public string EngineType { get; set; } = "";
     public decimal MPG { get; set; }

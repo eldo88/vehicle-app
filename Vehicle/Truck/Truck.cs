@@ -45,11 +45,11 @@ public class Truck : ITruck
         } 
     }
 
-    public bool? IsFourWheelDrive {get; set;}
-    public decimal? BedLength {get; set;}
-    public int? PayLoadCapacity {get; set;}
-    public int? TowingCapacity {get; set;}
-    public bool? IsDully {get; set;}
+    public bool? IsFourWheelDrive {get; set;} = true;
+    public decimal? BedLength {get; set;} = (decimal?)6.5;
+    public int? PayLoadCapacity {get; set;} = 2500;
+    public int? TowingCapacity {get; set;} = 6500;
+    public bool? IsDully {get; set;} = false;
 
     public string EngineType { get; set; } = "";
     public decimal MPG { get; set; }
