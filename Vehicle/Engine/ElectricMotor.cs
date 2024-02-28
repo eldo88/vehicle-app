@@ -4,6 +4,5 @@ public class ElectricMotor : IElectricMotor
 {
     public int HorsePower { get; set; } = 400;
     public int Torque { get; set; } = 350;
-    public string FuelType { get; set; } = "";
-    public int NumberOfCylinders { get; set; } = 0;
+    public string FuelType { get; set; } = "Electric";
 }

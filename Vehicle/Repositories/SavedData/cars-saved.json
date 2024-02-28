@@ -13,7 +13,10 @@
     "Model": "Fusion",
     "Year": 2005,
     "VehicleTypeEnum": 0,
-    "CurrentMileage": 0
+    "CurrentMileage": 0,
+    "GasEngine": null,
+    "DieselEngine": null,
+    "ElectricMotor": null
   },
   {
     "NumDoors": null,
@@ -29,7 +32,10 @@
     "Model": "Camry",
     "Year": 2005,
     "VehicleTypeEnum": 0,
-    "CurrentMileage": 0
+    "CurrentMileage": 0,
+    "GasEngine": null,
+    "DieselEngine": null,
+    "ElectricMotor": null
   },
   {
     "NumDoors": null,
@@ -45,7 +51,10 @@
     "Model": "Camaro",
     "Year": 2024,
     "VehicleTypeEnum": 0,
-    "CurrentMileage": 0
+    "CurrentMileage": 0,
+    "GasEngine": null,
+    "DieselEngine": null,
+    "ElectricMotor": null
   },
   {
     "NumDoors": null,
@@ -61,7 +70,10 @@
     "Model": "Prius",
     "Year": 2023,
     "VehicleTypeEnum": 0,
-    "CurrentMileage": 0
+    "CurrentMileage": 0,
+    "GasEngine": null,
+    "DieselEngine": null,
+    "ElectricMotor": null
   },
   {
     "NumDoors": 4,
@@ -77,7 +89,10 @@
     "Model": "Camry",
     "Year": 2024,
     "VehicleTypeEnum": 0,
-    "CurrentMileage": 0
+    "CurrentMileage": 0,
+    "GasEngine": null,
+    "DieselEngine": null,
+    "ElectricMotor": null
   },
   {
     "NumDoors": 4,
@@ -93,7 +108,10 @@
     "Model": "Fusion",
     "Year": 2007,
     "VehicleTypeEnum": 0,
-    "CurrentMileage": 0
+    "CurrentMileage": 0,
+    "GasEngine": null,
+    "DieselEngine": null,
+    "ElectricMotor": null
   },
   {
     "NumDoors": 4,
@@ -109,7 +127,10 @@
     "Model": "Prius",
     "Year": 2023,
     "VehicleTypeEnum": 0,
-    "CurrentMileage": 0
+    "CurrentMileage": 0,
+    "GasEngine": null,
+    "DieselEngine": null,
+    "ElectricMotor": null
   },
   {
     "NumDoors": 4,
@@ -125,6 +146,82 @@
     "Model": "Corrolla",
     "Year": 2000,
     "VehicleTypeEnum": 0,
-    "CurrentMileage": 25000
+    "CurrentMileage": 25000,
+    "GasEngine": null,
+    "DieselEngine": null,
+    "ElectricMotor": null
+  },
+  {
+    "NumDoors": 4,
+    "IsConvertible": false,
+    "EngineType": "V4",
+    "MPG": 25,
+    "Range": 500,
+    "FuelCapacity": 20,
+    "Guid": "c2d57aa2-a4f2-4ec6-8096-acad262983a2",
+    "Color": "Black",
+    "Capacity": 4,
+    "Make": "Ford",
+    "Model": "Escort",
+    "Year": 2006,
+    "VehicleTypeEnum": 0,
+    "CurrentMileage": 20000,
+    "GasEngine": null,
+    "DieselEngine": null,
+    "ElectricMotor": null
+  },
+  {
+    "NumDoors": 4,
+    "IsConvertible": false,
+    "EngineType": "V8",
+    "MPG": 25,
+    "Range": 500,
+    "FuelCapacity": 20,
+    "Guid": "10eaa35d-f84d-4824-af60-d3be54288c4f",
+    "Color": "Black",
+    "Capacity": 4,
+    "Make": "Chevrolet",
+    "Model": "Camaro",
+    "Year": 2003,
+    "VehicleTypeEnum": 0,
+    "CurrentMileage": 10000,
+    "GasEngine": {
+      "RecommendedFuelOctane": 85,
+      "HasSuperCharger": false,
+      "NumberOfCylinders": 8,
+      "HasTurbo": false,
+      "FuelType": "Gas",
+      "HorsePower": 400,
+      "Torque": 455
+    },
+    "DieselEngine": null,
+    "ElectricMotor": null
+  },
+  {
+    "NumDoors": 4,
+    "IsConvertible": false,
+    "EngineType": "V6",
+    "MPG": 25,
+    "Range": 500,
+    "FuelCapacity": 20,
+    "Guid": "f00ab223-6b8c-45f4-bda3-8cb1b7a6f0fc",
+    "Color": "Black",
+    "Capacity": 4,
+    "Make": "Ford",
+    "Model": "Focus",
+    "Year": 2006,
+    "VehicleTypeEnum": 0,
+    "CurrentMileage": 1234,
+    "GasEngine": {
+      "RecommendedFuelOctane": 85,
+      "HasSuperCharger": false,
+      "NumberOfCylinders": 6,
+      "HasTurbo": false,
+      "FuelType": "Gas",
+      "HorsePower": 330,
+      "Torque": 360
+    },
+    "DieselEngine": null,
+    "ElectricMotor": null
   }
 ]

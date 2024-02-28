@@ -13,7 +13,11 @@
     "Make": "Toyota",
     "Model": "Land Cruiser",
     "Year": 1999,
-    "VehicleTypeEnum": 2
+    "VehicleTypeEnum": 2,
+    "CurrentMileage": 0,
+    "GasEngine": null,
+    "DieselEngine": null,
+    "ElectricMotor": null
   },
   {
     "IsFourWheelDrive": null,
@@ -29,7 +33,11 @@
     "Make": "Ford",
     "Model": "Bronco 4 Door",
     "Year": 2024,
-    "VehicleTypeEnum": 2
+    "VehicleTypeEnum": 2,
+    "CurrentMileage": 0,
+    "GasEngine": null,
+    "DieselEngine": null,
+    "ElectricMotor": null
   },
   {
     "IsFourWheelDrive": null,
@@ -45,7 +53,11 @@
     "Make": "Toyota",
     "Model": "4Runner",
     "Year": 2023,
-    "VehicleTypeEnum": 2
+    "VehicleTypeEnum": 2,
+    "CurrentMileage": 0,
+    "GasEngine": null,
+    "DieselEngine": null,
+    "ElectricMotor": null
   },
   {
     "IsFourWheelDrive": null,
@@ -61,7 +73,11 @@
     "Make": "Ford",
     "Model": "Bronco 2 Door",
     "Year": 2001,
-    "VehicleTypeEnum": 2
+    "VehicleTypeEnum": 2,
+    "CurrentMileage": 0,
+    "GasEngine": null,
+    "DieselEngine": null,
+    "ElectricMotor": null
   },
   {
     "IsFourWheelDrive": false,
@@ -77,7 +93,11 @@
     "Make": "Toyota",
     "Model": "4Runner",
     "Year": 1997,
-    "VehicleTypeEnum": 2
+    "VehicleTypeEnum": 2,
+    "CurrentMileage": 0,
+    "GasEngine": null,
+    "DieselEngine": null,
+    "ElectricMotor": null
   },
   {
     "IsFourWheelDrive": false,
@@ -93,7 +113,11 @@
     "Make": "Ford",
     "Model": "Escape",
     "Year": 2002,
-    "VehicleTypeEnum": 2
+    "VehicleTypeEnum": 2,
+    "CurrentMileage": 0,
+    "GasEngine": null,
+    "DieselEngine": null,
+    "ElectricMotor": null
   },
   {
     "IsFourWheelDrive": false,
@@ -109,6 +133,54 @@
     "Make": "Chevrolet",
     "Model": "Tahoe",
     "Year": 2025,
-    "VehicleTypeEnum": 2
+    "VehicleTypeEnum": 2,
+    "CurrentMileage": 0,
+    "GasEngine": null,
+    "DieselEngine": null,
+    "ElectricMotor": null
+  },
+  {
+    "IsFourWheelDrive": false,
+    "TowingCapacity": 5000,
+    "CargoSpace": 15,
+    "EngineType": "Electric",
+    "MPG": 0,
+    "Range": 350,
+    "FuelCapacity": 0,
+    "Guid": "344209d5-a263-455b-95ac-eaea41bfa134",
+    "Color": "Silver",
+    "Capacity": 4,
+    "Make": "Ford",
+    "Model": "Bronco 2 Door",
+    "Year": 2005,
+    "VehicleTypeEnum": 2,
+    "CurrentMileage": 17556,
+    "GasEngine": null,
+    "DieselEngine": null,
+    "ElectricMotor": null
+  },
+  {
+    "IsFourWheelDrive": false,
+    "TowingCapacity": 5000,
+    "CargoSpace": 15,
+    "EngineType": "Electric",
+    "MPG": 0,
+    "Range": 350,
+    "FuelCapacity": 0,
+    "Guid": "92b3a085-2108-49cf-a0e7-5025b8f5214c",
+    "Color": "Silver",
+    "Capacity": 4,
+    "Make": "Ford",
+    "Model": "Bronco 2 Door",
+    "Year": 2009,
+    "VehicleTypeEnum": 2,
+    "CurrentMileage": 1234,
+    "GasEngine": null,
+    "DieselEngine": null,
+    "ElectricMotor": {
+      "HorsePower": 400,
+      "Torque": 350,
+      "FuelType": "Electric"
+    }
   }
 ]
