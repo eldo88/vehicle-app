@@ -43,6 +43,8 @@ public class Car : ICar
             FuelCapacity = 20;
             Range = FuelCapacity * MPG;
         }
+
+        Guid = Guid.NewGuid();
     }
 
     public int? NumDoors {get; set;} = 4;
@@ -52,7 +54,7 @@ public class Car : ICar
     public decimal Range { get; set; }
     public decimal FuelCapacity { get; set; }
 
-    public Guid Guid => new();
+    public Guid Guid {get; set;}
 
     public string Color { get; set; } = "";
     public int Capacity { get; set; }

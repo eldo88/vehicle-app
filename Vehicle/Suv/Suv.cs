@@ -42,7 +42,9 @@ public class Suv : ISuv
             MPG = mpg;
             FuelCapacity = 20;
             Range = FuelCapacity * MPG;
-        } 
+        }
+
+        Guid = Guid.NewGuid(); 
     }
 
     public bool? IsFourWheelDrive {get; set;} = false;
@@ -54,7 +56,7 @@ public class Suv : ISuv
     public decimal Range { get; set; }
     public decimal FuelCapacity { get; set; }
 
-    public Guid Guid => new();
+    public Guid Guid {get; set;}
 
     public string Color { get; set; } = "";
     public int Capacity { get; set; }

@@ -58,5 +58,50 @@
     "Model": "Prius",
     "Year": 2023,
     "VehicleTypeEnum": 0
+  },
+  {
+    "NumDoors": 4,
+    "IsConvertible": false,
+    "EngineType": "V6 Hybrid",
+    "MPG": 25,
+    "Range": 500,
+    "FuelCapacity": 20,
+    "Guid": "00000000-0000-0000-0000-000000000000",
+    "Color": "Silver",
+    "Capacity": 4,
+    "Make": "Toyota",
+    "Model": "Camry",
+    "Year": 2024,
+    "VehicleTypeEnum": 0
+  },
+  {
+    "NumDoors": 4,
+    "IsConvertible": false,
+    "EngineType": "V6",
+    "MPG": 25,
+    "Range": 500,
+    "FuelCapacity": 20,
+    "Guid": "0fd3d5ff-e9e0-4878-b928-0e0ec4128d3f",
+    "Color": "Silver",
+    "Capacity": 4,
+    "Make": "Ford",
+    "Model": "Fusion",
+    "Year": 2007,
+    "VehicleTypeEnum": 0
+  },
+  {
+    "NumDoors": 4,
+    "IsConvertible": false,
+    "EngineType": "V6 Hybrid",
+    "MPG": 25,
+    "Range": 500,
+    "FuelCapacity": 20,
+    "Guid": "435a9cf7-5af3-432c-ac1b-8249dcae50f3",
+    "Color": "Silver",
+    "Capacity": 4,
+    "Make": "Toyota",
+    "Model": "Prius",
+    "Year": 2023,
+    "VehicleTypeEnum": 0
   }
 ]

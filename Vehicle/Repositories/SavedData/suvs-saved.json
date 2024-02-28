@@ -62,5 +62,53 @@
     "Model": "Bronco 2 Door",
     "Year": 2001,
     "VehicleTypeEnum": 2
+  },
+  {
+    "IsFourWheelDrive": false,
+    "TowingCapacity": 5000,
+    "CargoSpace": 15,
+    "EngineType": "V6",
+    "MPG": 25,
+    "Range": 500,
+    "FuelCapacity": 20,
+    "Guid": "533bf6e6-d556-45b6-b366-2b8e26011981",
+    "Color": "Silver",
+    "Capacity": 4,
+    "Make": "Toyota",
+    "Model": "4Runner",
+    "Year": 1997,
+    "VehicleTypeEnum": 2
+  },
+  {
+    "IsFourWheelDrive": false,
+    "TowingCapacity": 5000,
+    "CargoSpace": 15,
+    "EngineType": "V4",
+    "MPG": 25,
+    "Range": 500,
+    "FuelCapacity": 20,
+    "Guid": "1094d414-a779-4e72-aa24-56eb3aa5b97e",
+    "Color": "Silver",
+    "Capacity": 4,
+    "Make": "Ford",
+    "Model": "Escape",
+    "Year": 2002,
+    "VehicleTypeEnum": 2
+  },
+  {
+    "IsFourWheelDrive": false,
+    "TowingCapacity": 5000,
+    "CargoSpace": 15,
+    "EngineType": "V6 Hybrid",
+    "MPG": 25,
+    "Range": 500,
+    "FuelCapacity": 20,
+    "Guid": "d1d62369-78c0-4a1d-8e86-e22bc03edb70",
+    "Color": "Blue",
+    "Capacity": 4,
+    "Make": "Chevrolet",
+    "Model": "Tahoe",
+    "Year": 2025,
+    "VehicleTypeEnum": 2
   }
 ]
