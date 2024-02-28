@@ -6,7 +6,7 @@ public class MainMenu
     {
         StandardUiMessages.MenuSeparator();
         Console.WriteLine("Please make a selection");
-        var menuText = "main menu";
+        var menuText = "";
         menuItemNum = MenuActions.ShowMenuItems(mainMenuData.MainMenuDataList, menuText);
         menuChoice = Input.MenuInput(menuItemNum);
         menuChoices.MenuChoicesFromUserInput["vehicle"] = menuChoice;

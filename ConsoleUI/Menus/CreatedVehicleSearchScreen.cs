@@ -6,7 +6,7 @@ public class CreatedVehicleSearchScreen
     {
         Console.WriteLine();
         StandardUiMessages.MenuSeparator();
-        var menuText = "make";
+        var menuText = "the make you want to search for";
         Console.WriteLine("Search Criteria");
         var makes = new VehicleMake();
         var menuItemNum = MenuActions.ShowMenuItems(makes.VehicleMakeList, menuText);
@@ -18,12 +18,19 @@ public class CreatedVehicleSearchScreen
 
         if (!string.IsNullOrWhiteSpace(choice))
         {
-            var carList = car.GetVehicleByMake(choice);
-            var truckList = truck.GetVehicleByMake(choice);
-            var suvList = suv.GetVehicleByMake(choice);
-            ShowCars(carList);
-            ShowTrucks(truckList);
-            ShowSuvs(suvList);
+            try
+            {
+                var carList = car.GetVehicleByMake(choice);
+                var truckList = truck.GetVehicleByMake(choice);
+                var suvList = suv.GetVehicleByMake(choice);
+                ShowCars(carList);
+                ShowTrucks(truckList);
+                ShowSuvs(suvList);
+            }
+            catch (NullReferenceException ex)
+            {
+                Console.WriteLine($"Error occurred: {ex.Message}");
+            }
         }
 
         Console.WriteLine();
@@ -48,14 +55,16 @@ public class CreatedVehicleSearchScreen
     {
         if (!cars.Any())
         {
-            Console.WriteLine("No cars found");
+            Console.WriteLine("\nNo cars found");
         }
-
-        Console.WriteLine();
-        Console.WriteLine("List of cars:");
-        foreach (var car in cars)
+        else
         {
-            Console.WriteLine($"{car.Year} {car.Make} {car.Model} {car.Color}");
+            Console.WriteLine();
+            Console.WriteLine("List of cars:");
+            foreach (var car in cars)
+            {
+                Console.WriteLine($"{car.Year} {car.Make} {car.Model} {car.Color}");
+            }
         }
     }
 
@@ -63,13 +72,16 @@ public class CreatedVehicleSearchScreen
     {
         if (!trucks.Any())
         {
-            Console.WriteLine("No trucks found");
+            Console.WriteLine("\nNo trucks found");
         }
-        Console.WriteLine();
-        Console.WriteLine("List of trucks:");
-        foreach (var truck in trucks)
+        else
         {
-            Console.WriteLine($"{truck.Year} {truck.Make} {truck.Model} {truck.Color}");
+            Console.WriteLine();
+            Console.WriteLine("List of trucks:");
+            foreach (var truck in trucks)
+            {
+                Console.WriteLine($"{truck.Year} {truck.Make} {truck.Model} {truck.Color}");
+            }
         }
     }
 
@@ -77,14 +89,16 @@ public class CreatedVehicleSearchScreen
     {
         if (!suvs.Any())
         {
-            Console.WriteLine("No SUVs found");
+            Console.WriteLine("\nNo SUVs found");
         }
-
-        Console.WriteLine();
-        Console.WriteLine("List of SUVs:");
-        foreach (var suv in suvs)
+        else
         {
-            Console.WriteLine($"{suv.Year} {suv.Make} {suv.Model} {suv.Color}");
+            Console.WriteLine();
+            Console.WriteLine("List of SUVs:");
+            foreach (var suv in suvs)
+            {
+                Console.WriteLine($"{suv.Year} {suv.Make} {suv.Model} {suv.Color}");
+            }
         }
     }
 }

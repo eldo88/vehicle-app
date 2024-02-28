@@ -17,9 +17,9 @@ public static class StandardUiMessages
         Console.WriteLine("Invalid input, please try again");
     }
 
-    public static void MenuSubject(string menuText)
+    public static void MenuSubject(string? menuText)
     {
-        Console.WriteLine($"\n Please choose the {menuText} of your vehicle from the following options:");
+        Console.WriteLine($"\n Please choose {menuText} from the following options:");
     }
 
     public static void EnterMenuChoice()
