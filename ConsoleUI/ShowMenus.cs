@@ -52,6 +52,9 @@ public class ShowMenus
                     VehicleColorMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, _vehicleColor, MenuChoices);
                     break;
                 case 6:
+                    VehicleMileageMenu.Show(ref menuControl, MenuChoices);
+                    break;
+                case 7:
                     var year = VehicleYearMenu.Show();
                     MenuChoices.MenuChoicesFromUserInput["year"] = year;
 
@@ -83,6 +86,7 @@ public class ShowMenus
         MenuChoiceData.Add("engine", _vehicleEngine.GetEngineTypeByIdx(MenuChoices.MenuChoicesFromUserInput["engine"] - 1));
         MenuChoiceData.Add("color", _vehicleColor.GetVehicleColorByIdx(MenuChoices.MenuChoicesFromUserInput["color"] - 1));
         MenuChoiceData.Add("year", MenuChoices.MenuChoicesFromUserInput["year"].ToString());
+        MenuChoiceData.Add("mileage", MenuChoices.MenuChoicesFromUserInput["mileage"].ToString());
         // var MPG = 25; //hardcoded for now
         // var occupantCapacity = 4; // hardcoded for now
         return MenuChoiceData;

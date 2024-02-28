@@ -12,7 +12,8 @@
     "Make": "Ford",
     "Model": "Fusion",
     "Year": 2005,
-    "VehicleTypeEnum": 0
+    "VehicleTypeEnum": 0,
+    "CurrentMileage": 0
   },
   {
     "NumDoors": null,
@@ -27,7 +28,8 @@
     "Make": "Toyota",
     "Model": "Camry",
     "Year": 2005,
-    "VehicleTypeEnum": 0
+    "VehicleTypeEnum": 0,
+    "CurrentMileage": 0
   },
   {
     "NumDoors": null,
@@ -42,7 +44,8 @@
     "Make": "Chevrolet",
     "Model": "Camaro",
     "Year": 2024,
-    "VehicleTypeEnum": 0
+    "VehicleTypeEnum": 0,
+    "CurrentMileage": 0
   },
   {
     "NumDoors": null,
@@ -57,7 +60,8 @@
     "Make": "Toyota",
     "Model": "Prius",
     "Year": 2023,
-    "VehicleTypeEnum": 0
+    "VehicleTypeEnum": 0,
+    "CurrentMileage": 0
   },
   {
     "NumDoors": 4,
@@ -72,7 +76,8 @@
     "Make": "Toyota",
     "Model": "Camry",
     "Year": 2024,
-    "VehicleTypeEnum": 0
+    "VehicleTypeEnum": 0,
+    "CurrentMileage": 0
   },
   {
     "NumDoors": 4,
@@ -87,7 +92,8 @@
     "Make": "Ford",
     "Model": "Fusion",
     "Year": 2007,
-    "VehicleTypeEnum": 0
+    "VehicleTypeEnum": 0,
+    "CurrentMileage": 0
   },
   {
     "NumDoors": 4,
@@ -102,6 +108,23 @@
     "Make": "Toyota",
     "Model": "Prius",
     "Year": 2023,
-    "VehicleTypeEnum": 0
+    "VehicleTypeEnum": 0,
+    "CurrentMileage": 0
+  },
+  {
+    "NumDoors": 4,
+    "IsConvertible": false,
+    "EngineType": "V6",
+    "MPG": 25,
+    "Range": 500,
+    "FuelCapacity": 20,
+    "Guid": "06b91778-27a1-45d4-9b2c-0185ddc7a746",
+    "Color": "Black",
+    "Capacity": 4,
+    "Make": "Toyota",
+    "Model": "Corrolla",
+    "Year": 2000,
+    "VehicleTypeEnum": 0,
+    "CurrentMileage": 25000
   }
 ]

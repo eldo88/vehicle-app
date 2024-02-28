@@ -5,7 +5,7 @@ public class Car : ICar
 {
    public Car(){}
 
-    public Car(string color, int capacity, string make, string model, int year, string vehicleType, string engineType, int mpg)
+    public Car(string color, int capacity, string make, string model, int year, string vehicleType, string engineType, int mpg, int currentMileage)
     {
         if (string.IsNullOrWhiteSpace(color))
             {throw new ArgumentException("Color is required");}
@@ -45,6 +45,8 @@ public class Car : ICar
         }
 
         Guid = Guid.NewGuid();
+
+        CurrentMileage = currentMileage;
     }
 
     public int? NumDoors {get; set;} = 4;
@@ -62,7 +64,8 @@ public class Car : ICar
     public string Model { get; set; } = "";
     public int Year { get; set; }
     public VehicleTypeEnum VehicleTypeEnum { get; set; }
-
+    public int CurrentMileage { get; set; }
+    
     List<(string, decimal)> IMotorizedVehicle.Drive(decimal tripLength)
     {
         List<(string, decimal)> tripDetail = new();

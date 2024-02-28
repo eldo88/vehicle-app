@@ -15,7 +15,8 @@
     "Make": "Chevrolet",
     "Model": "Silverado 2500",
     "Year": 2005,
-    "VehicleTypeEnum": 1
+    "VehicleTypeEnum": 1,
+    "CurrentMileage": 0
   },
   {
     "IsFourWheelDrive": null,
@@ -33,7 +34,8 @@
     "Make": "Chevrolet",
     "Model": "Silverado 1500",
     "Year": 2004,
-    "VehicleTypeEnum": 1
+    "VehicleTypeEnum": 1,
+    "CurrentMileage": 0
   },
   {
     "IsFourWheelDrive": null,
@@ -51,7 +53,8 @@
     "Make": "Toyota",
     "Model": "Tundra",
     "Year": 2015,
-    "VehicleTypeEnum": 1
+    "VehicleTypeEnum": 1,
+    "CurrentMileage": 0
   },
   {
     "IsFourWheelDrive": null,
@@ -69,7 +72,8 @@
     "Make": "Ford",
     "Model": "F-250",
     "Year": 2023,
-    "VehicleTypeEnum": 1
+    "VehicleTypeEnum": 1,
+    "CurrentMileage": 0
   },
   {
     "IsFourWheelDrive": null,
@@ -87,7 +91,8 @@
     "Make": "Ford",
     "Model": "Ranger",
     "Year": 2023,
-    "VehicleTypeEnum": 1
+    "VehicleTypeEnum": 1,
+    "CurrentMileage": 0
   },
   {
     "IsFourWheelDrive": true,
@@ -105,7 +110,8 @@
     "Make": "Chevrolet",
     "Model": "Colorado",
     "Year": 2015,
-    "VehicleTypeEnum": 1
+    "VehicleTypeEnum": 1,
+    "CurrentMileage": 0
   },
   {
     "IsFourWheelDrive": true,
@@ -123,7 +129,8 @@
     "Make": "Ford",
     "Model": "F-250",
     "Year": 2009,
-    "VehicleTypeEnum": 1
+    "VehicleTypeEnum": 1,
+    "CurrentMileage": 0
   },
   {
     "IsFourWheelDrive": true,
@@ -141,6 +148,26 @@
     "Make": "Toyota",
     "Model": "Tacoma",
     "Year": 2025,
-    "VehicleTypeEnum": 1
+    "VehicleTypeEnum": 1,
+    "CurrentMileage": 0
+  },
+  {
+    "IsFourWheelDrive": true,
+    "BedLength": 6.5,
+    "PayLoadCapacity": 2500,
+    "TowingCapacity": 6500,
+    "IsDully": false,
+    "EngineType": "V6",
+    "MPG": 25,
+    "Range": 500,
+    "FuelCapacity": 20,
+    "Guid": "eef0f3d8-6f7d-4ff0-9962-151b129d4149",
+    "Color": "Black",
+    "Capacity": 4,
+    "Make": "Ford",
+    "Model": "F-250",
+    "Year": 2004,
+    "VehicleTypeEnum": 1,
+    "CurrentMileage": 30000
   }
 ]
