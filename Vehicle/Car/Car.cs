@@ -1,11 +1,13 @@
 
+using System.Text.Json.Serialization;
+
 namespace vehicle_app;
 
 public class Car : ICar
 {
    public Car(){}
 
-    public Car(string color, int capacity, string make, string model, int year, string vehicleType, string engineType, int mpg, int currentMileage)
+    public Car(string color, int capacity, string make, string model, int year, string vehicleType, string engineType, int mpg, int currentMileage, IEngine engine)
     {
         if (string.IsNullOrWhiteSpace(color))
             {throw new ArgumentException("Color is required");}
@@ -65,6 +67,8 @@ public class Car : ICar
                 ElectricMotor = (ElectricMotor)vehicleEngine;
                 break;
         }
+
+        Engine = engine;
     }
 
     public int? NumDoors {get; set;} = 4;
@@ -86,6 +90,7 @@ public class Car : ICar
     public GasEngine? GasEngine { get; set; }
     public DieselEngine? DieselEngine { get; set; }
     public ElectricMotor? ElectricMotor { get; set; }
+    public IEngine? Engine {get; set;}
 
     List<(string, decimal)> IMotorizedVehicle.Drive(decimal tripLength)
     {

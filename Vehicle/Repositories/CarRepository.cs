@@ -53,22 +53,31 @@ internal class CarRepository : IVehicleRepository<Car>
 
         if (!string.IsNullOrWhiteSpace(jd))
         {
+            try
+            {
             cars = JsonSerializer.Deserialize<List<Car>>(jd);
+            }
+            catch(Exception e) when 
+            (
+                e is ArgumentNullException ||
+                e is JsonException ||
+                e is NotSupportedException
+            )
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
-        if (cars is null)
-        {
-            cars = new List<Car>{car};
-        }
-        else
+        if (cars is not null)
         {
             cars.Add(car);
+                    
+            var options = new JsonSerializerOptions(){WriteIndented=true};
+            var jsonData = JsonSerializer.Serialize<IList<Car>>(cars, options);
+            using StreamWriter streamWriter = new(MockDbFilePath, false);
+            streamWriter.Write(jsonData);
         }
-        
-        var options = new JsonSerializerOptions(){WriteIndented=true};
-        var jsonData = JsonSerializer.Serialize<IList<Car>>(cars, options);
-        using StreamWriter streamWriter = new(MockDbFilePath, false);
-        streamWriter.Write(jsonData);
+
     }
 
     public IEnumerable<Car> GetVehicleByMake(string make)
