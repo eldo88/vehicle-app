@@ -5,7 +5,7 @@ public class Suv : ISuv
 {
     public Suv() {}
 
-    public Suv(string color, int capacity, string make, string model, int year, string vehicleType, string engineType, int mpg, int currentMileage)
+    public Suv(string color, int capacity, string make, string model, int year, string vehicleType, string engineType, int mpg, int currentMileage, IEngine engine)
     {
         if (string.IsNullOrWhiteSpace(color))
             {throw new ArgumentException("Color is required");}
@@ -48,23 +48,25 @@ public class Suv : ISuv
 
         CurrentMileage = currentMileage;
 
-        var fuelType = EngineHelper.GetFuelType(engineType);
-        var numberOfCylinders = EngineHelper.GetNumberOfCylinders(engineType);
-        var hasTurbo = EngineHelper.HasTurbo(engineType);
-        var vehicleEngine = EngineFactory.Build(fuelType, numberOfCylinders, hasTurbo);
+        // var fuelType = EngineHelper.GetFuelType(engineType);
+        // var numberOfCylinders = EngineHelper.GetNumberOfCylinders(engineType);
+        // var hasTurbo = EngineHelper.HasTurbo(engineType);
+        // var vehicleEngine = EngineFactory.Build(fuelType, numberOfCylinders, hasTurbo);
 
-        switch (vehicleEngine.FuelType)
-        {
-            case "Gas":
-                GasEngine = (GasEngine)vehicleEngine;
-                break;
-            case "Diesel":
-                DieselEngine = (DieselEngine)vehicleEngine;
-                break;
-            case "Electric":
-                ElectricMotor = (ElectricMotor)vehicleEngine;
-                break;
-        }
+        // switch (vehicleEngine.FuelType)
+        // {
+        //     case "Gas":
+        //         GasEngine = (GasEngine)vehicleEngine;
+        //         break;
+        //     case "Diesel":
+        //         DieselEngine = (DieselEngine)vehicleEngine;
+        //         break;
+        //     case "Electric":
+        //         ElectricMotor = (ElectricMotor)vehicleEngine;
+        //         break;
+        // }
+
+        Engine = engine;
     }
 
     public bool? IsFourWheelDrive {get; set;} = false;
@@ -88,6 +90,7 @@ public class Suv : ISuv
     public GasEngine? GasEngine { get; set; }
     public DieselEngine? DieselEngine { get; set; }
     public ElectricMotor? ElectricMotor { get; set; }
+    public IEngine? Engine {get; set;}
 
     List<(string, decimal)> IMotorizedVehicle.Drive(decimal tripLength)
     {

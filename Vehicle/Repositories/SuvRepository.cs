@@ -52,23 +52,31 @@ internal class SuvRepository : IVehicleRepository<Suv>
 
         List<Suv>? suvs = new();
 
-        if (!string.IsNullOrWhiteSpace(jd))
+         if (!string.IsNullOrWhiteSpace(jd))
         {
+            try
+            {
             suvs = JsonSerializer.Deserialize<List<Suv>>(jd);
+            }
+            catch(Exception e) when 
+            (
+                e is ArgumentNullException ||
+                e is JsonException ||
+                e is NotSupportedException
+            )
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
-        if (suvs is null)
-        {
-            suvs = new List<Suv>{suv};
-        }
-        else
+        if (suvs is not null)
         {
             suvs.Add(suv);
+                    
+            var options = new JsonSerializerOptions(){WriteIndented=true};
+            var jsonData = JsonSerializer.Serialize<IList<Suv>>(suvs, options);
+            using StreamWriter streamWriter = new(MockDbFilePath, false);
+            streamWriter.Write(jsonData);
         }
-        
-        var options = new JsonSerializerOptions(){WriteIndented=true};
-        var jsonData = JsonSerializer.Serialize<IList<Suv>>(suvs, options);
-        using StreamWriter streamWriter = new(MockDbFilePath, false);
-        streamWriter.Write(jsonData);
     }
 }
