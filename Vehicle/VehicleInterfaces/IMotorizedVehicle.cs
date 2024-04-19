@@ -7,8 +7,5 @@ public interface IMotorizedVehicle : IVehicle
     public decimal Range {get; set;}
     public decimal FuelCapacity {get; set;} 
     List<(string, decimal)> Drive(decimal tripLength);
-    public int CurrentMileage {get; set;}
-    public GasEngine GasEngine { set;}
-    public DieselEngine DieselEngine { set;}
-    public ElectricMotor ElectricMotor { set;}
+    IEngine? Engine { get; set; }
 }

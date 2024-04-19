@@ -50,24 +50,6 @@ public class Car : ICar
 
         CurrentMileage = currentMileage;
 
-        var fuelType = EngineHelper.GetFuelType(engineType);
-        var numberOfCylinders = EngineHelper.GetNumberOfCylinders(engineType);
-        var hasTurbo = EngineHelper.HasTurbo(engineType);
-        var vehicleEngine = EngineFactory.Build(fuelType, numberOfCylinders, hasTurbo);
-
-        switch (vehicleEngine.FuelType)
-        {
-            case "Gas":
-                GasEngine = (GasEngine)vehicleEngine;
-                break;
-            case "Diesel":
-                DieselEngine = (DieselEngine)vehicleEngine;
-                break;
-            case "Electric":
-                ElectricMotor = (ElectricMotor)vehicleEngine;
-                break;
-        }
-
         Engine = engine;
     }
 
@@ -87,10 +69,7 @@ public class Car : ICar
     public int Year { get; set; }
     public VehicleTypeEnum VehicleTypeEnum { get; set; }
     public int CurrentMileage { get; set; }
-    public GasEngine? GasEngine { get; set; }
-    public DieselEngine? DieselEngine { get; set; }
-    public ElectricMotor? ElectricMotor { get; set; }
-    public IEngine? Engine {get; set;}
+    public IEngine? Engine { get; set; }
 
     List<(string, decimal)> IMotorizedVehicle.Drive(decimal tripLength)
     {
