@@ -64,7 +64,12 @@ public class ShowMenus
                     menuControl += MenuActions.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice + 1);
                     break;
                 case 4:
-                    VehicleEngineMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, _vehicleEngine, MenuChoices);
+                    //VehicleEngineMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, _vehicleEngine, MenuChoices);
+                    MainMenu engineMenu = new MainMenu(_vehicleEngine.EngineList, "Select the engine/motor for your vehicle");
+                    menuItemNum = _vehicleEngine.EngineList.Count;
+                    menuChoice = engineMenu.Run();
+                    MenuChoices.MenuChoicesFromUserInput["engine"] = menuChoice;
+                    menuControl += MenuActions.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice + 1);
                     break;
                 case 5:
                     VehicleColorMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, _vehicleColor, MenuChoices);
