@@ -37,10 +37,20 @@ public class ShowMenus
                     displayMenu = false;
                     break;
                 case 1:
-                    VehicleTypeMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, _vehicleType, MenuChoices);
+                    // VehicleTypeMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, _vehicleType, MenuChoices);
+                    MainMenu typeMenu = new MainMenu(_vehicleType.VehicleTypeList, "Select the type of your vehicle");
+                    menuItemNum = _vehicleType.VehicleTypeList.Count;
+                    menuChoice = typeMenu.Run();
+                    MenuChoices.MenuChoicesFromUserInput["vehicle"] = menuChoice;
+                    menuControl += MenuActions.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice + 1);
                     break;
                 case 2:
-                    VehicleMakeMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, _vehicleMake, MenuChoices);
+                    //VehicleMakeMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, _vehicleMake, MenuChoices);
+                    MainMenu makeMenu = new MainMenu(_vehicleMake.VehicleMakeList, "Select the make of your vehicle");
+                    menuItemNum = _vehicleMake.VehicleMakeList.Count;
+                    menuChoice = makeMenu.Run();
+                    MenuChoices.MenuChoicesFromUserInput["make"] = menuChoice;
+                    menuControl += MenuActions.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice + 1);
                     break;
                 case 3:
                     VehicleModelMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, _vehicleModel, _vehicleMake, _vehicleType, MenuChoices);
@@ -79,8 +89,8 @@ public class ShowMenus
     {
         Dictionary<string, string> MenuChoiceData = new();
 
-        MenuChoiceData.Add("type", _vehicleType.GetVehicleTypeByIdx(MenuChoices.MenuChoicesFromUserInput["vehicle"] - 1));
-        MenuChoiceData.Add("make", _vehicleMake.GetVehicleMakeByIdx(MenuChoices.MenuChoicesFromUserInput["make"] - 1));
+        MenuChoiceData.Add("type", _vehicleType.GetVehicleTypeByIdx(MenuChoices.MenuChoicesFromUserInput["vehicle"]));
+        MenuChoiceData.Add("make", _vehicleMake.GetVehicleMakeByIdx(MenuChoices.MenuChoicesFromUserInput["make"]));
         var vehicleMakeKey = MenuChoiceData["make"] + MenuChoiceData["type"];
         MenuChoiceData.Add("model", _vehicleModel.GetVehicleModelByIdx(vehicleMakeKey, MenuChoices.MenuChoicesFromUserInput["model"] - 1));
         MenuChoiceData.Add("engine", _vehicleEngine.GetEngineTypeByIdx(MenuChoices.MenuChoicesFromUserInput["engine"] - 1));

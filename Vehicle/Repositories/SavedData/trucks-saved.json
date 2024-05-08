@@ -137,5 +137,34 @@
       "HorsePower": 330,
       "Torque": 360
     }
+  },
+  {
+    "IsFourWheelDrive": true,
+    "BedLength": 6.5,
+    "PayLoadCapacity": 2500,
+    "TowingCapacity": 6500,
+    "IsDully": false,
+    "EngineType": "V8",
+    "MPG": 25,
+    "Range": 500,
+    "FuelCapacity": 20,
+    "Guid": "9712ef22-9669-4cff-9eb7-b373d9a2ae83",
+    "Color": "Silver",
+    "Capacity": 4,
+    "Make": "Toyota",
+    "Model": "Tundra",
+    "Year": 2024,
+    "VehicleTypeEnum": 1,
+    "CurrentMileage": 2023,
+    "Engine": {
+      "$type": "gas",
+      "RecommendedFuelOctane": 85,
+      "HasSuperCharger": false,
+      "NumberOfCylinders": 8,
+      "HasTurbo": false,
+      "FuelType": "Gas",
+      "HorsePower": 400,
+      "Torque": 455
+    }
   }
 ]
