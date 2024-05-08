@@ -37,7 +37,6 @@ public class ShowMenus
                     displayMenu = false;
                     break;
                 case 1:
-                    // VehicleTypeMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, _vehicleType, MenuChoices);
                     MainMenu typeMenu = new MainMenu(_vehicleType.VehicleTypeList, "Select the type of your vehicle");
                     menuItemNum = _vehicleType.VehicleTypeList.Count;
                     menuChoice = typeMenu.Run();
@@ -45,7 +44,6 @@ public class ShowMenus
                     menuControl += MenuActions.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice + 1);
                     break;
                 case 2:
-                    //VehicleMakeMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, _vehicleMake, MenuChoices);
                     MainMenu makeMenu = new MainMenu(_vehicleMake.VehicleMakeList, "Select the make of your vehicle");
                     menuItemNum = _vehicleMake.VehicleMakeList.Count;
                     menuChoice = makeMenu.Run();
@@ -54,7 +52,6 @@ public class ShowMenus
                     menuControl += MenuActions.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice + 1);
                     break;
                 case 3:
-                    //VehicleModelMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, _vehicleModel, _vehicleMake, _vehicleType, MenuChoices);
                     var modelKey = _vehicleMake.VehicleMakeList[MenuChoices.MenuChoicesFromUserInput["make"]] + _vehicleType.VehicleTypeList[MenuChoices.MenuChoicesFromUserInput["vehicle"]];
                     var modelValues = _vehicleModel.VehicleModelDict[modelKey];
                     MainMenu modelMenu = new MainMenu(modelValues, "Select the model of your vehicle");
@@ -64,7 +61,6 @@ public class ShowMenus
                     menuControl += MenuActions.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice + 1);
                     break;
                 case 4:
-                    //VehicleEngineMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, _vehicleEngine, MenuChoices);
                     MainMenu engineMenu = new MainMenu(_vehicleEngine.EngineList, "Select the engine/motor for your vehicle");
                     menuItemNum = _vehicleEngine.EngineList.Count;
                     menuChoice = engineMenu.Run();
@@ -72,7 +68,6 @@ public class ShowMenus
                     menuControl += MenuActions.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice + 1);
                     break;
                 case 5:
-                    // VehicleColorMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, _vehicleColor, MenuChoices);
                     MainMenu colorMenu = new MainMenu(_vehicleColor.ColorList, "Select the paint color for your vehicle");
                     menuItemNum = _vehicleColor.ColorList.Count;
                     menuChoice = colorMenu.Run();
