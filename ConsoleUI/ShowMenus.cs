@@ -72,7 +72,12 @@ public class ShowMenus
                     menuControl += MenuActions.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice + 1);
                     break;
                 case 5:
-                    VehicleColorMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, _vehicleColor, MenuChoices);
+                    // VehicleColorMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, _vehicleColor, MenuChoices);
+                    MainMenu colorMenu = new MainMenu(_vehicleColor.ColorList, "Select the paint color for your vehicle");
+                    menuItemNum = _vehicleColor.ColorList.Count;
+                    menuChoice = colorMenu.Run();
+                    MenuChoices.MenuChoicesFromUserInput["color"] = menuChoice;
+                    menuControl += MenuActions.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice + 1);
                     break;
                 case 6:
                     VehicleMileageMenu.Show(ref menuControl, MenuChoices);
@@ -105,9 +110,9 @@ public class ShowMenus
         MenuChoiceData.Add("type", _vehicleType.GetVehicleTypeByIdx(MenuChoices.MenuChoicesFromUserInput["vehicle"]));
         MenuChoiceData.Add("make", _vehicleMake.GetVehicleMakeByIdx(MenuChoices.MenuChoicesFromUserInput["make"]));
         var vehicleMakeKey = MenuChoiceData["make"] + MenuChoiceData["type"];
-        MenuChoiceData.Add("model", _vehicleModel.GetVehicleModelByIdx(vehicleMakeKey, MenuChoices.MenuChoicesFromUserInput["model"] - 1));
-        MenuChoiceData.Add("engine", _vehicleEngine.GetEngineTypeByIdx(MenuChoices.MenuChoicesFromUserInput["engine"] - 1));
-        MenuChoiceData.Add("color", _vehicleColor.GetVehicleColorByIdx(MenuChoices.MenuChoicesFromUserInput["color"] - 1));
+        MenuChoiceData.Add("model", _vehicleModel.GetVehicleModelByIdx(vehicleMakeKey, MenuChoices.MenuChoicesFromUserInput["model"]));
+        MenuChoiceData.Add("engine", _vehicleEngine.GetEngineTypeByIdx(MenuChoices.MenuChoicesFromUserInput["engine"]));
+        MenuChoiceData.Add("color", _vehicleColor.GetVehicleColorByIdx(MenuChoices.MenuChoicesFromUserInput["color"]));
         MenuChoiceData.Add("year", MenuChoices.MenuChoicesFromUserInput["year"].ToString());
         MenuChoiceData.Add("mileage", MenuChoices.MenuChoicesFromUserInput["mileage"].ToString());
         // var MPG = 25; //hardcoded for now
