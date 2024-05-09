@@ -27,7 +27,9 @@ public class MainMenu
     public static void Show(ref int menuItemNum, ref int menuChoice, ref int menuControl, MainMenuData mainMenuData, MenuChoices menuChoices)
     {
         StandardUiMessages.MenuSeparator();
-        Console.WriteLine("Please make a selection");
+        StandardUiMessages.BuildAVehicleBanner();
+        StandardUiMessages.LineOfVehicles();
+
         var menuText = "";
         menuItemNum = MenuActions.ShowMenuItems(mainMenuData.MainMenuDataList, menuText);
         menuChoice = Input.MenuInput(menuItemNum);

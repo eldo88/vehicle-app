@@ -4,8 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.ForegroundColor = ConsoleColor.DarkRed;
-        ShowMenus showMenus = MenuFactory.CreateShowMenus();
+        ShowMenus showMenus = new();
         showMenus.DisplayMainMenu();
 
         var menuChoices = showMenus.MenuChoices.MenuChoicesFromUserInput;
@@ -18,7 +17,7 @@ class Program
             createdVehicle = VehicleFactory.BuildFromMenuChoices(data);
             DisplayCreatedVehicle.PrintToConsole(createdVehicle);
             var vehicleService = VehicleServiceFactory.CreateVehicleService();
-            var saveMenu = MenuFactory.CreateSaveMenu();
+            SaveMenu saveMenu = new();
             saveMenu.SaveVehicleEvent += vehicleService.OnVehicleSaved;
             saveMenu.SaveVehicleMenu(createdVehicle);
 

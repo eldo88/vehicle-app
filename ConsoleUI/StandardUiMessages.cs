@@ -66,4 +66,37 @@ public static class StandardUiMessages
     {
         Console.WriteLine($"Would you like to save your {vehicle.Make} {vehicle.Model}? (Y/N)");
     }
+
+    public static void BuildAVehicleBanner()
+    {
+        Console.ForegroundColor = ConsoleColor.DarkRed;
+        Console.WriteLine(@"
+        
+ ____   __ __  ____  _      ___         ____      __ __    ___  __ __  ____   __  _        ___ 
+|    \ |  |  ||    || |    |   \       /    |    |  |  |  /  _]|  |  ||    | /  ]| |      /  _]
+|  o  )|  |  | |  | | |    |    \     |  o  |    |  |  | /  [_ |  |  | |  | /  / | |     /  [_ 
+|     ||  |  | |  | | |___ |  D  |    |     |    |  |  ||    _]|  _  | |  |/  /  | |___ |    _]
+|  O  ||  :  | |  | |     ||     |    |  _  |    |  :  ||   [_ |  |  | |  /   \_ |     ||   [_ 
+|     ||     | |  | |     ||     |    |  |  |     \   / |     ||  |  | |  \     ||     ||     |
+|_____| \__,_||____||_____||_____|    |__|__|      \_/  |_____||__|__||____\____||_____||_____|
+                                                                                               
+");
+    Console.ResetColor();
+
+    }
+
+    public static void LineOfVehicles()
+    {
+        Console.ForegroundColor = ConsoleColor.DarkRed;
+        Console.WriteLine(@"
+  
+                                                         _________________________   
+                    /\\      _____          _____       |   |     |     |    | |  \  
+     ,-----,       /  \\____/__|__\_    ___/__|__\___   |___|_____|_____|____|_|___\ 
+  ,--'---:---`--, /  |  _     |     `| |      |      `| |                    | |    \
+ ==(o)-----(o)==J    `(o)-------(o)=   `(o)------(o)'   `--(o)(o)--------------(o)--'  
+`````````````````````````````````````````````````````````````````````````````````````
+        ");
+        Console.ResetColor();
+    }
 }
