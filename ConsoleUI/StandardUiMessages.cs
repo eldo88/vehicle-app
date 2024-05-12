@@ -80,7 +80,7 @@ public static class StandardUiMessages
 |     ||     | |  | |     ||     |    |  |  |     \   / |     ||  |  | |  \     ||     ||     |
 |_____| \__,_||____||_____||_____|    |__|__|      \_/  |_____||__|__||____\____||_____||_____|
                                                                                                
-");
+".TrimEnd());
     Console.ResetColor();
 
     }
@@ -88,7 +88,21 @@ public static class StandardUiMessages
     public static void LineOfVehicles()
     {
         Console.ForegroundColor = ConsoleColor.DarkRed;
-        Console.WriteLine(@"
+        Console.Write(@"
+  
+                                                         _________________________   
+                    /\\      _____          _____       |   |     |     |    | |  \  
+     ,-----,       /  \\____/__|__\_    ___/__|__\___   |___|_____|_____|____|_|___\ 
+  ,--'---:---`--, /  |  _     |     `| |      |      `| |                    | |    \
+ ==(o)-----(o)==J    `(o)-------(o)=   `(o)------(o)'   `--(o)(o)--------------(o)--'  
+`````````````````````````````````````````````````````````````````````````````````````");
+        Console.WriteLine();
+        Console.ResetColor();
+    }
+
+    public static string TestPrint()
+    {
+        return @"
   
                                                          _________________________   
                     /\\      _____          _____       |   |     |     |    | |  \  
@@ -96,7 +110,6 @@ public static class StandardUiMessages
   ,--'---:---`--, /  |  _     |     `| |      |      `| |                    | |    \
  ==(o)-----(o)==J    `(o)-------(o)=   `(o)------(o)'   `--(o)(o)--------------(o)--'  
 `````````````````````````````````````````````````````````````````````````````````````
-        ");
-        Console.ResetColor();
+        ";
     }
 }

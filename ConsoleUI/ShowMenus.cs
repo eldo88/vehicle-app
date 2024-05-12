@@ -14,12 +14,13 @@ public class ShowMenus
     }
 
     public MenuChoices MenuChoices;
-    VehicleColor _vehicleColor;
-    VehicleEngine _vehicleEngine;
-    VehicleMake _vehicleMake;
-    VehicleModel _vehicleModel;
-    VehicleType _vehicleType;
-    MainMenuData _mainMenuData;
+    readonly VehicleColor _vehicleColor;
+    readonly VehicleEngine _vehicleEngine;
+    readonly VehicleMake _vehicleMake;
+    readonly VehicleModel _vehicleModel;
+    readonly VehicleType _vehicleType;
+    readonly MainMenuData _mainMenuData;
+    //readonly UiMessage _uiMessages;
 
     public void DisplayBuildVehicleMenus()
     {
@@ -38,8 +39,10 @@ public class ShowMenus
                     break;
                 case 1:
                     MainMenu typeMenu = new MainMenu(_vehicleType.VehicleTypeList, "Select the type of your vehicle");
+                    PrintMessages printMessages = StandardUiMessages.BuildAVehicleBanner; 
+                    printMessages += StandardUiMessages.MenuSeparator;
                     menuItemNum = _vehicleType.VehicleTypeList.Count;
-                    menuChoice = typeMenu.Run();
+                    menuChoice = typeMenu.TestRun(printMessages);
                     MenuChoices.MenuChoicesFromUserInput["vehicle"] = menuChoice;
                     menuControl += MenuActions.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice + 1);
                     break;
