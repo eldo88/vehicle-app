@@ -25,17 +25,17 @@ public class MenuActions
     {
         var changeMenuValue = 0;
 
-        if (menuItemNum == menuChoice)
+        if (menuItemNum == menuChoice) // go back
         {
             return changeMenuValue - 1;
         }
-        else if (menuChoice < 1 || menuChoice > menuItemNum)
+        else if (menuChoice < 0 || menuChoice > menuItemNum) // invalid input
         {
             return changeMenuValue;
         }
         else 
         {
-            return changeMenuValue + 1;
+            return changeMenuValue + 1; // go to next menu
         }
     }
 }

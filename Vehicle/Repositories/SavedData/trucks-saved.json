@@ -195,5 +195,32 @@
       "HorsePower": 400,
       "Torque": 455
     }
+  },
+  {
+    "IsFourWheelDrive": true,
+    "BedLength": 6.5,
+    "PayLoadCapacity": 2500,
+    "TowingCapacity": 6500,
+    "IsDully": false,
+    "EngineType": "Turbo Diesel",
+    "MPG": 25,
+    "Range": 500,
+    "FuelCapacity": 20,
+    "Guid": "4c1c288e-483c-4fad-aaae-b72d7c8010e4",
+    "Color": "Black",
+    "Capacity": 4,
+    "Make": "Ford",
+    "Model": "F-350",
+    "Year": 2009,
+    "VehicleTypeEnum": 1,
+    "CurrentMileage": 204300,
+    "Engine": {
+      "$type": "diesel",
+      "NumberOfCylinders": 6,
+      "HasTurbo": true,
+      "FuelType": "Diesel",
+      "HorsePower": 350,
+      "Torque": 550
+    }
   }
 ]

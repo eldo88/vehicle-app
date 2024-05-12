@@ -20,7 +20,6 @@ public class ShowMenus
     readonly VehicleModel _vehicleModel;
     readonly VehicleType _vehicleType;
     readonly MainMenuData _mainMenuData;
-    //readonly UiMessage _uiMessages;
 
     public void DisplayBuildVehicleMenus()
     {
@@ -39,17 +38,20 @@ public class ShowMenus
                     break;
                 case 1:
                     MainMenu typeMenu = new MainMenu(_vehicleType.VehicleTypeList, "Select the type of your vehicle");
-                    PrintMessages printMessages = StandardUiMessages.BuildAVehicleBanner; 
-                    printMessages += StandardUiMessages.MenuSeparator;
+                    //PrintMessages printMessages = StandardUiMessages.BuildAVehicleBanner; 
+                    //printMessages += StandardUiMessages.MenuSeparator;
                     menuItemNum = _vehicleType.VehicleTypeList.Count;
-                    menuChoice = typeMenu.TestRun(printMessages);
+                    menuChoice = typeMenu.Run();
+                    _vehicleType.VehicleTypeList.RemoveAt(menuItemNum - 1);
                     MenuChoices.MenuChoicesFromUserInput["vehicle"] = menuChoice;
+                    Console.WriteLine($"{menuItemNum} {menuChoice}");
                     menuControl += MenuActions.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice + 1);
                     break;
                 case 2:
                     MainMenu makeMenu = new MainMenu(_vehicleMake.VehicleMakeList, "Select the make of your vehicle");
                     menuItemNum = _vehicleMake.VehicleMakeList.Count;
                     menuChoice = makeMenu.Run();
+                    _vehicleMake.VehicleMakeList.RemoveAt(menuItemNum - 1);
                     MenuChoices.MenuChoicesFromUserInput["make"] = menuChoice;
                     Console.Write($"{menuItemNum} {menuChoice}");
                     menuControl += MenuActions.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice + 1);
@@ -60,13 +62,16 @@ public class ShowMenus
                     MainMenu modelMenu = new MainMenu(modelValues, "Select the model of your vehicle");
                     menuItemNum = modelValues.Count;
                     menuChoice = modelMenu.Run();
+                    modelValues.RemoveAt(menuItemNum - 1);
                     MenuChoices.MenuChoicesFromUserInput["model"] = menuChoice;
+                    Console.WriteLine($"{menuItemNum} {menuChoice}");
                     menuControl += MenuActions.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice + 1);
                     break;
                 case 4:
                     MainMenu engineMenu = new MainMenu(_vehicleEngine.EngineList, "Select the engine/motor for your vehicle");
                     menuItemNum = _vehicleEngine.EngineList.Count;
                     menuChoice = engineMenu.Run();
+                    _vehicleEngine.EngineList.RemoveAt(menuItemNum - 1);
                     MenuChoices.MenuChoicesFromUserInput["engine"] = menuChoice;
                     menuControl += MenuActions.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice + 1);
                     break;
@@ -74,6 +79,7 @@ public class ShowMenus
                     MainMenu colorMenu = new MainMenu(_vehicleColor.ColorList, "Select the paint color for your vehicle");
                     menuItemNum = _vehicleColor.ColorList.Count;
                     menuChoice = colorMenu.Run();
+                    _vehicleColor.ColorList.RemoveAt(menuItemNum - 1);
                     MenuChoices.MenuChoicesFromUserInput["color"] = menuChoice;
                     menuControl += MenuActions.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice + 1);
                     break;

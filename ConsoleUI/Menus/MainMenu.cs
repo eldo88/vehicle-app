@@ -21,7 +21,7 @@ public class MainMenu
     public MainMenu(List<string> options, string prompt) 
     {
         Options = options;
-        //Options.Add("Go back");
+        Options.Add("Go back");
         Prompt = prompt;
         SelectedIndex = 0;
     }
