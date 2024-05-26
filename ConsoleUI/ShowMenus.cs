@@ -13,23 +13,23 @@ public class ShowMenus
         _mainMenuData = new();
     }
 
-    public MenuChoices MenuChoices;
-    readonly VehicleColor _vehicleColor;
-    readonly VehicleEngine _vehicleEngine;
-    readonly VehicleMake _vehicleMake;
-    readonly VehicleModel _vehicleModel;
-    readonly VehicleType _vehicleType;
-    readonly MainMenuData _mainMenuData;
+    public readonly MenuChoices MenuChoices;
+    private readonly VehicleColor _vehicleColor;
+    private readonly VehicleEngine _vehicleEngine;
+    private readonly VehicleMake _vehicleMake;
+    private readonly VehicleModel _vehicleModel;
+    private readonly VehicleType _vehicleType;
+    private readonly MainMenuData _mainMenuData;
 
-    public void DisplayBuildVehicleMenus()
+    private void DisplayBuildVehicleMenus()
     {
         var menuControl = 1;
         var displayMenu = true;
 
         do
         {
-            int menuItemNum = 0;
-            int menuChoice = 0;
+            var menuItemNum = 0;
+            var menuChoice = 0;
             switch (menuControl)
             {
                 case 0:
@@ -48,7 +48,7 @@ public class ShowMenus
                     menuControl += MenuActions.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice + 1);
                     break;
                 case 2:
-                    MainMenu makeMenu = new MainMenu(_vehicleMake.VehicleMakeList, "Select the make of your vehicle");
+                    var makeMenu = new MainMenu(_vehicleMake.VehicleMakeList, "Select the make of your vehicle");
                     menuItemNum = _vehicleMake.VehicleMakeList.Count;
                     menuChoice = makeMenu.Run();
                     _vehicleMake.VehicleMakeList.RemoveAt(menuItemNum - 1);
@@ -59,7 +59,7 @@ public class ShowMenus
                 case 3:
                     var modelKey = _vehicleMake.VehicleMakeList[MenuChoices.MenuChoicesFromUserInput["make"]] + _vehicleType.VehicleTypeList[MenuChoices.MenuChoicesFromUserInput["vehicle"]];
                     var modelValues = _vehicleModel.VehicleModelDict[modelKey];
-                    MainMenu modelMenu = new MainMenu(modelValues, "Select the model of your vehicle");
+                    var modelMenu = new MainMenu(modelValues, "Select the model of your vehicle");
                     menuItemNum = modelValues.Count;
                     menuChoice = modelMenu.Run();
                     modelValues.RemoveAt(menuItemNum - 1);
@@ -68,7 +68,7 @@ public class ShowMenus
                     menuControl += MenuActions.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice + 1);
                     break;
                 case 4:
-                    MainMenu engineMenu = new MainMenu(_vehicleEngine.EngineList, "Select the engine/motor for your vehicle");
+                    var engineMenu = new MainMenu(_vehicleEngine.EngineList, "Select the engine/motor for your vehicle");
                     menuItemNum = _vehicleEngine.EngineList.Count;
                     menuChoice = engineMenu.Run();
                     _vehicleEngine.EngineList.RemoveAt(menuItemNum - 1);
@@ -76,7 +76,7 @@ public class ShowMenus
                     menuControl += MenuActions.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice + 1);
                     break;
                 case 5:
-                    MainMenu colorMenu = new MainMenu(_vehicleColor.ColorList, "Select the paint color for your vehicle");
+                    var colorMenu = new MainMenu(_vehicleColor.ColorList, "Select the paint color for your vehicle");
                     menuItemNum = _vehicleColor.ColorList.Count;
                     menuChoice = colorMenu.Run();
                     _vehicleColor.ColorList.RemoveAt(menuItemNum - 1);
@@ -100,8 +100,6 @@ public class ShowMenus
                     }
 
                     break;
-                default:
-                    break;
             }
 
         } while (displayMenu);
@@ -109,19 +107,19 @@ public class ShowMenus
 
     public Dictionary<string, string> GetMenuChoiceData()
     {
-        Dictionary<string, string> MenuChoiceData = new();
+        Dictionary<string, string> menuChoiceData = new();
 
-        MenuChoiceData.Add("type", _vehicleType.GetVehicleTypeByIdx(MenuChoices.MenuChoicesFromUserInput["vehicle"]));
-        MenuChoiceData.Add("make", _vehicleMake.GetVehicleMakeByIdx(MenuChoices.MenuChoicesFromUserInput["make"]));
-        var vehicleMakeKey = MenuChoiceData["make"] + MenuChoiceData["type"];
-        MenuChoiceData.Add("model", _vehicleModel.GetVehicleModelByIdx(vehicleMakeKey, MenuChoices.MenuChoicesFromUserInput["model"]));
-        MenuChoiceData.Add("engine", _vehicleEngine.GetEngineTypeByIdx(MenuChoices.MenuChoicesFromUserInput["engine"]));
-        MenuChoiceData.Add("color", _vehicleColor.GetVehicleColorByIdx(MenuChoices.MenuChoicesFromUserInput["color"]));
-        MenuChoiceData.Add("year", MenuChoices.MenuChoicesFromUserInput["year"].ToString());
-        MenuChoiceData.Add("mileage", MenuChoices.MenuChoicesFromUserInput["mileage"].ToString());
+        menuChoiceData.Add("type", _vehicleType.GetVehicleTypeByIdx(MenuChoices.MenuChoicesFromUserInput["vehicle"]));
+        menuChoiceData.Add("make", _vehicleMake.GetVehicleMakeByIdx(MenuChoices.MenuChoicesFromUserInput["make"]));
+        var vehicleMakeKey = menuChoiceData["make"] + menuChoiceData["type"];
+        menuChoiceData.Add("model", _vehicleModel.GetVehicleModelByIdx(vehicleMakeKey, MenuChoices.MenuChoicesFromUserInput["model"]));
+        menuChoiceData.Add("engine", _vehicleEngine.GetEngineTypeByIdx(MenuChoices.MenuChoicesFromUserInput["engine"]));
+        menuChoiceData.Add("color", _vehicleColor.GetVehicleColorByIdx(MenuChoices.MenuChoicesFromUserInput["color"]));
+        menuChoiceData.Add("year", MenuChoices.MenuChoicesFromUserInput["year"].ToString());
+        menuChoiceData.Add("mileage", MenuChoices.MenuChoicesFromUserInput["mileage"].ToString());
         // var MPG = 25; //hardcoded for now
         // var occupantCapacity = 4; // hardcoded for now
-        return MenuChoiceData;
+        return menuChoiceData;
     }
 
     public void DisplayMainMenu()
@@ -130,8 +128,8 @@ public class ShowMenus
         var displayMenu = true;
         do
         {
-            int menuItemNum = 0;
-            int menuChoice = 0;
+            var menuItemNum = 0;
+            var menuChoice = 0;
             switch (menuControl)
             {
                 case 0:
@@ -149,8 +147,6 @@ public class ShowMenus
                 case 2:
                     DisplayBuildVehicleMenus();
                     displayMenu = false;
-                    break;
-                default:
                     break;
             }
 

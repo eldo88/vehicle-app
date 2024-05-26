@@ -1,6 +1,6 @@
 namespace vehicle_app;
 
-public class ExitProgram
+public static class ExitProgram
 {
     public static bool ExitProgramValidator(Dictionary<string, int> menuCHoices)
     {

@@ -1,12 +1,12 @@
 ﻿namespace vehicle_app;
 
-public class CreatedVehicleSearchScreen
+public static class CreatedVehicleSearchScreen
 {
     public static void Show()
     {
         Console.WriteLine();
         StandardUiMessages.MenuSeparator();
-        var menuText = "the make you want to search for";
+        const string menuText = "the make you want to search for";
         Console.WriteLine("Search Criteria");
         var makes = new VehicleMake();
         var menuItemNum = MenuActions.ShowMenuItems(makes.VehicleMakeList, menuText);
@@ -36,24 +36,21 @@ public class CreatedVehicleSearchScreen
         Console.WriteLine();
     }
 
-    public static string CreatedVehicleSearch(int choice)
+    private static string CreatedVehicleSearch(int choice)
     {
-        switch (choice)
+        return choice switch
         {
-            case 1:
-                return "Toyota";
-            case 2:
-                return "Ford";
-            case 3:
-                return "Chevrolet";
-            default:
-                return "";
-        }
+            1 => "Toyota",
+            2 => "Ford",
+            3 => "Chevrolet",
+            _ => ""
+        };
     }
 
-    public static void ShowCars(IEnumerable<Car> cars)
+    private static void ShowCars(IEnumerable<Car> cars)
     {
-        if (!cars.Any())
+        var enumerable = cars.ToList();
+        if (!enumerable.Any())
         {
             Console.WriteLine("\nNo cars found");
         }
@@ -61,16 +58,17 @@ public class CreatedVehicleSearchScreen
         {
             Console.WriteLine();
             Console.WriteLine("List of cars:");
-            foreach (var car in cars)
+            foreach (var car in enumerable)
             {
                 Console.WriteLine($"{car.Year} {car.Make} {car.Model} {car.Color}");
             }
         }
     }
 
-    public static void ShowTrucks(IEnumerable<Truck> trucks)
+    private static void ShowTrucks(IEnumerable<Truck> trucks)
     {
-        if (!trucks.Any())
+        var enumerable = trucks.ToList();
+        if (!enumerable.Any())
         {
             Console.WriteLine("\nNo trucks found");
         }
@@ -78,16 +76,17 @@ public class CreatedVehicleSearchScreen
         {
             Console.WriteLine();
             Console.WriteLine("List of trucks:");
-            foreach (var truck in trucks)
+            foreach (var truck in enumerable)
             {
                 Console.WriteLine($"{truck.Year} {truck.Make} {truck.Model} {truck.Color}");
             }
         }
     }
 
-    public static void ShowSuvs(IEnumerable<Suv> suvs)
+    private static void ShowSuvs(IEnumerable<Suv> suvs)
     {
-        if (!suvs.Any())
+        var enumerable = suvs.ToList();
+        if (!enumerable.Any())
         {
             Console.WriteLine("\nNo SUVs found");
         }
@@ -95,7 +94,7 @@ public class CreatedVehicleSearchScreen
         {
             Console.WriteLine();
             Console.WriteLine("List of SUVs:");
-            foreach (var suv in suvs)
+            foreach (var suv in enumerable)
             {
                 Console.WriteLine($"{suv.Year} {suv.Make} {suv.Model} {suv.Color}");
             }

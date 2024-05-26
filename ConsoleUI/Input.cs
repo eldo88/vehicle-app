@@ -1,6 +1,6 @@
 namespace vehicle_app;
 
-public class Input
+public static class Input
 {
     public static int MenuInput(int menuItemNum)
     {

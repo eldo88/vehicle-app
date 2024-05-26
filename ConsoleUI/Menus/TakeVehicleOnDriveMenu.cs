@@ -1,6 +1,6 @@
 ﻿namespace vehicle_app;
 
-public class TakeVehicleOnDriveMenu
+public static class TakeVehicleOnDriveMenu
 {
     public static bool GoOnDrive(string vehicleMake, string vehicleModel)
     {
@@ -12,24 +12,25 @@ public class TakeVehicleOnDriveMenu
         
             var choice = Console.ReadLine();
 
-            if (char.TryParse(choice, out char result))
+            if (!char.TryParse(choice, out var result)) continue;
+            switch (char.ToLower(result))
             {
-                if (char.ToLower(result) == 'y')
-                {
+                case 'y':
                     drive = true;
                     displayMenu = false;
-                }
-                else if (char.ToLower(result) == 'n')
-                {
+                    break;
+                case 'n':
                     drive = false;
                     displayMenu = false;
-                }
-                else if (choice is not null)
+                    break;
+                default:
                 {
                     StandardUiMessages.InvalidInputMessage(choice);
+
+                    break;
                 }
             }
-            
+
         } while(displayMenu);
 
         return drive;

@@ -1,11 +1,11 @@
 namespace vehicle_app;
 
-public class VehicleMileageMenu
+public static class VehicleMileageMenu
 {
     public static int Show(ref int menuControl, MenuChoices menuChoices)
     {
         var vehicleMileage = 0;
-        bool displayMenu = true;
+        var displayMenu = true;
 
         do
         {
@@ -14,7 +14,7 @@ public class VehicleMileageMenu
 
             var inputStr = Console.ReadLine();
 
-            if (int.TryParse(inputStr, out int result) && result > 1)
+            if (int.TryParse(inputStr, out var result) && result > 1)
             {
                 vehicleMileage = result;
                 menuChoices.MenuChoicesFromUserInput["mileage"] = result;

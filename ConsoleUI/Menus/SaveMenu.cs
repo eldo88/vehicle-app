@@ -2,43 +2,41 @@ using System.Collections;
 
 namespace vehicle_app;
 
-public class SaveMenu
+public sealed class SaveMenu
 {
     
     public event EventHandler<VehicleEvent>? SaveVehicleEvent;
     public void SaveVehicleMenu(IVehicle vehicle)
     {
-        bool displayMenu = true;
+        var displayMenu = true;
         do
         {
             StandardUiMessages.MenuSeparator();
             StandardUiMessages.SaveVehicleMessage(vehicle);
             var choice = Console.ReadLine();
 
-            if (char.TryParse(choice, out char result))
+            if (!char.TryParse(choice, out var result)) continue;
+            switch (char.ToLower(result))
             {
-                if (char.ToLower(result) == 'y')
-                {
+                case 'y':
                     OnSaveVehicle(vehicle);
                     displayMenu = false;
-                }
-                else if (char.ToLower(result) == 'n')
-                {
+                    break;
+                case 'n':
                     displayMenu = false;
-                }
-                else if (choice is not null)
+                    break;
+                default:
                 {
                     StandardUiMessages.InvalidInputMessage(choice);
+
+                    break;
                 }
             }
         }while(displayMenu);
     }
 
-    protected virtual void OnSaveVehicle(IVehicle vehicle)
+    private void OnSaveVehicle(IVehicle vehicle)
     {
-        if (SaveVehicleEvent is not null)
-        {
-            SaveVehicleEvent(this, new VehicleEvent(vehicle));
-        }
+        SaveVehicleEvent?.Invoke(this, new VehicleEvent(vehicle));
     }
 }

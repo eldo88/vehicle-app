@@ -1,6 +1,6 @@
 namespace vehicle_app;
 
-public class MenuActions
+public static class MenuActions
 {
     public static int ShowMenuItems(List<string> menuItems, string menuText)
     {

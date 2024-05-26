@@ -1,6 +1,6 @@
 ﻿namespace vehicle_app;
 
-public class DriveLengthScreen
+public static class DriveLengthScreen
 {
     public static int EnterDriveLength()
     {

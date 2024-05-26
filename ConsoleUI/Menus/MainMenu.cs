@@ -5,24 +5,24 @@ public delegate void PrintMessages();
 public class MainMenu
 {
     private int SelectedIndex { get; set; }
-    private readonly List<string> Options;
-    private readonly string Prompt;
+    private readonly List<string> _options;
+    private readonly string _prompt;
     // private readonly MenuChoices? MenuChoices;
     // private readonly string Key;
 
     public MainMenu() 
     {
-        Options = new();
-        Prompt = "";
+        _options = new List<string>();
+        _prompt = "";
         SelectedIndex = 0;
         // Key = "";
     }
 
     public MainMenu(List<string> options, string prompt) 
     {
-        Options = options;
-        Options.Add("Go back");
-        Prompt = prompt;
+        _options = options;
+        _options.Add("Go back");
+        _prompt = prompt;
         SelectedIndex = 0;
     }
 
@@ -41,9 +41,9 @@ public class MainMenu
 
     private void DisplayOptions()
     {
-        Console.WriteLine(Prompt);
+        Console.WriteLine(_prompt);
 
-        for (int i = 0; i < Options.Count; i++) 
+        for (var i = 0; i < _options.Count; i++) 
         {
             if (i == SelectedIndex) 
             {
@@ -55,17 +55,17 @@ public class MainMenu
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.BackgroundColor = ConsoleColor.Black;
             }
-            Console.WriteLine($" {i + 1}.  << {Options[i]} >>");
+            Console.WriteLine($" {i + 1}.  << {_options[i]} >>");
         }
         Console.ResetColor();
     }
 
     private void TestDisplayOptions(PrintMessages printMessages) //testing delegate
     {
-        Console.WriteLine(Prompt);
+        Console.WriteLine(_prompt);
         printMessages();
 
-        for (int i = 0; i < Options.Count; i++) 
+        for (var i = 0; i < _options.Count; i++) 
         {
             if (i == SelectedIndex) 
             {
@@ -78,7 +78,7 @@ public class MainMenu
                 Console.BackgroundColor = ConsoleColor.Black;
             }
             Console.WriteLine();
-            Console.WriteLine($" {i + 1}.  << {Options[i]} >>");
+            Console.WriteLine($" {i + 1}.  << {_options[i]} >>");
         }
         Console.ResetColor();
     }
@@ -93,23 +93,30 @@ public class MainMenu
         
             TestDisplayOptions(printMessages);
 
-            ConsoleKeyInfo consoleKeyInfo = Console.ReadKey(true);
+            var consoleKeyInfo = Console.ReadKey(true);
             consoleKey = consoleKeyInfo.Key;
 
-            if (consoleKey == ConsoleKey.UpArrow)
+            switch (consoleKey)
             {
-                SelectedIndex--;
-                if (SelectedIndex < 0)
+                case ConsoleKey.UpArrow:
                 {
-                    SelectedIndex = Options.Count - 1;
+                    SelectedIndex--;
+                    if (SelectedIndex < 0)
+                    {
+                        SelectedIndex = _options.Count - 1;
+                    }
+
+                    break;
                 }
-            }
-            else if (consoleKey == ConsoleKey.DownArrow)
-            {
-                SelectedIndex++;
-                if (SelectedIndex > Options.Count - 1)
+                case ConsoleKey.DownArrow:
                 {
-                    SelectedIndex = 0;
+                    SelectedIndex++;
+                    if (SelectedIndex > _options.Count - 1)
+                    {
+                        SelectedIndex = 0;
+                    }
+
+                    break;
                 }
             }
 
@@ -128,23 +135,30 @@ public class MainMenu
             DisplayOptions();
             //TestDisplayOptions(PrintUiMessage);
 
-            ConsoleKeyInfo consoleKeyInfo = Console.ReadKey(true);
+            var consoleKeyInfo = Console.ReadKey(true);
             consoleKey = consoleKeyInfo.Key;
 
-            if (consoleKey == ConsoleKey.UpArrow)
+            switch (consoleKey)
             {
-                SelectedIndex--;
-                if (SelectedIndex < 0)
+                case ConsoleKey.UpArrow:
                 {
-                    SelectedIndex = Options.Count - 1;
+                    SelectedIndex--;
+                    if (SelectedIndex < 0)
+                    {
+                        SelectedIndex = _options.Count - 1;
+                    }
+
+                    break;
                 }
-            }
-            else if (consoleKey == ConsoleKey.DownArrow)
-            {
-                SelectedIndex++;
-                if (SelectedIndex > Options.Count - 1)
+                case ConsoleKey.DownArrow:
                 {
-                    SelectedIndex = 0;
+                    SelectedIndex++;
+                    if (SelectedIndex > _options.Count - 1)
+                    {
+                        SelectedIndex = 0;
+                    }
+
+                    break;
                 }
             }
 

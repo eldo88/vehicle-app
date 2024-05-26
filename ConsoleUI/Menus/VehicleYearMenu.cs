@@ -1,6 +1,6 @@
 ﻿namespace vehicle_app;
 
-public class VehicleYearMenu
+public static class VehicleYearMenu
 {
     public static int Show()
     {
@@ -13,7 +13,7 @@ public class VehicleYearMenu
             StandardUiMessages.YearSelectionMessage();
 
             var inputStr = Console.ReadLine();
-            var validInput = int.TryParse(inputStr, out int result);
+            var validInput = int.TryParse(inputStr, out var result);
 
             if ((validInput && result >= 1990 && result <= DateTime.Now.Year + 1) || result == 1)
             {
