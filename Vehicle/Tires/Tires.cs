@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace vehicle_app;
 
 public class Tires : ITires
@@ -31,5 +33,13 @@ public class Tires : ITires
                 Radius = 17;
                 break;
         }
+    }
+
+    [JsonConstructor] 
+    public Tires(string brandName, string size, decimal radius)
+    {
+        BrandName = brandName;
+        Size = size;
+        Radius = radius;
     }
 }

@@ -6,16 +6,25 @@
     "MPG": 25,
     "Range": 500,
     "FuelCapacity": 20,
-    "Guid": "b78b1d1b-7b8d-4680-8090-b86ecc615724",
-    "Color": "Grey",
+    "Guid": "e1aea7d4-14db-4eb9-b71f-e15c7ab1914e",
+    "Color": "White",
     "Capacity": 4,
-    "Make": "Ford",
-    "Model": "Focus",
-    "Year": 1998,
+    "Make": "Toyota",
+    "Model": "Corrolla",
+    "Year": 2004,
     "VehicleTypeEnum": 0,
-    "Wheels": null,
-    "Tires": null,
-    "CurrentMileage": 115988,
+    "Wheels": {
+      "$type": "wheels",
+      "WheelBrand": "Toyota",
+      "Radius": 18
+    },
+    "Tires": {
+      "$type": "tires",
+      "BrandName": "Michelin",
+      "Size": "245/65-17",
+      "Radius": 17
+    },
+    "CurrentMileage": 23456,
     "Engine": {
       "$type": "gas",
       "RecommendedFuelOctane": 85,
@@ -25,41 +34,6 @@
       "FuelType": "Gas",
       "HorsePower": 250,
       "Torque": 260
-    }
-  },
-  {
-    "NumDoors": 4,
-    "IsConvertible": false,
-    "EngineType": "V6 Hybrid",
-    "MPG": 25,
-    "Range": 500,
-    "FuelCapacity": 20,
-    "Guid": "52f070af-a070-4c14-9058-ce7f6d127d92",
-    "Color": "Blue",
-    "Capacity": 4,
-    "Make": "Chevrolet",
-    "Model": "Camaro",
-    "Year": 2019,
-    "VehicleTypeEnum": 0,
-    "Wheels": {
-      "WheelBrand": "Chevrolet",
-      "Radius": 18
-    },
-    "Tires": {
-      "BrandName": "Michelin",
-      "Size": "245/65-17",
-      "Radius": 17
-    },
-    "CurrentMileage": 23000,
-    "Engine": {
-      "$type": "gas",
-      "RecommendedFuelOctane": 85,
-      "HasSuperCharger": false,
-      "NumberOfCylinders": 6,
-      "HasTurbo": false,
-      "FuelType": "Gas",
-      "HorsePower": 330,
-      "Torque": 360
     }
   }
 ]

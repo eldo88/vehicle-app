@@ -1,5 +1,9 @@
+using System.Text.Json.Serialization;
+
 namespace vehicle_app;
 
+[JsonPolymorphic(UnknownDerivedTypeHandling = JsonUnknownDerivedTypeHandling.FallBackToNearestAncestor)]
+[JsonDerivedType(typeof(Tires), typeDiscriminator: "tires")]
 public interface ITires
 {
     public string BrandName { get; set; }
