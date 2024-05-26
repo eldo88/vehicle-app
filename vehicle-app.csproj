@@ -9,18 +9,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ConsoleUI/Menus/Factory/" />
-    <Folder Include="Vehicle/Interfaces/" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="data\vehicle-data\chevrolet-car-data.csv" />
     <None Remove="data\vehicle-data\chevrolet-suv-data.csv" />
     <None Remove="data\vehicle-data\vehicle-type-data.csv" />
+    <None Remove="ConsoleUI\Menus\Factory\**" />
+    <None Remove="Vehicle\Interfaces\**" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="data\vehicle-data\chevrolet-car-data.csv" />
     <EmbeddedResource Include="data\vehicle-data\chevrolet-suv-data.csv" />
     <EmbeddedResource Include="data\vehicle-data\vehicle-type-data.csv" />
+    <EmbeddedResource Remove="ConsoleUI\Menus\Factory\**" />
+    <EmbeddedResource Remove="Vehicle\Interfaces\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="ConsoleUI\Menus\Factory\**" />
+    <Compile Remove="Vehicle\Interfaces\**" />
   </ItemGroup>
 </Project>

@@ -5,7 +5,7 @@ public class Suv : ISuv
 {
     public Suv() {}
 
-    public Suv(string color, int capacity, string make, string model, int year, string vehicleType, string engineType, int mpg, int currentMileage, IEngine engine)
+    public Suv(string color, int capacity, string make, string model, int year, string vehicleType, string engineType, int mpg, int currentMileage, IEngine engine, IWheels wheels, ITires tires)
     {
         if (string.IsNullOrWhiteSpace(color))
             {throw new ArgumentException("Color is required");}
@@ -49,6 +49,10 @@ public class Suv : ISuv
         CurrentMileage = currentMileage;
 
         Engine = engine;
+
+        Wheels = wheels;
+
+        Tires = tires;
     }
 
     public bool? IsFourWheelDrive {get; set;} = false;
@@ -68,6 +72,8 @@ public class Suv : ISuv
     public string Model { get; set; } = "";
     public int Year { get; set; }
     public VehicleTypeEnum VehicleTypeEnum { get; set; }
+    public IWheels? Wheels { get; set; }
+    public ITires? Tires { get; set;  }
     public int CurrentMileage { get; set; }
     public IEngine? Engine {get; set;}
 

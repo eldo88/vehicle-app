@@ -7,7 +7,7 @@ public class Car : ICar
 {
    public Car(){}
 
-    public Car(string color, int capacity, string make, string model, int year, string vehicleType, string engineType, int mpg, int currentMileage, IEngine engine)
+    public Car(string color, int capacity, string make, string model, int year, string vehicleType, string engineType, int mpg, int currentMileage, IEngine engine, IWheels wheels, ITires tires)
     {
         if (string.IsNullOrWhiteSpace(color))
             {throw new ArgumentException("Color is required");}
@@ -51,6 +51,10 @@ public class Car : ICar
         CurrentMileage = currentMileage;
 
         Engine = engine;
+
+        Wheels = wheels;
+
+        Tires = tires;
     }
 
     public int? NumDoors {get; set;} = 4;
@@ -68,6 +72,8 @@ public class Car : ICar
     public string Model { get; set; } = "";
     public int Year { get; set; }
     public VehicleTypeEnum VehicleTypeEnum { get; set; }
+    public IWheels? Wheels { get; set; }
+    public ITires? Tires { get; set;  }
     public int CurrentMileage { get; set; }
     public IEngine? Engine { get; set; }
 

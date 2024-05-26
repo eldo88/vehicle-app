@@ -16,6 +16,8 @@
     "Model": "Tundra",
     "Year": 2024,
     "VehicleTypeEnum": 1,
+    "Wheels": null,
+    "Tires": null,
     "CurrentMileage": 2000,
     "Engine": {
       "$type": "gas",
@@ -45,6 +47,8 @@
     "Model": "Silverado 1500",
     "Year": 2009,
     "VehicleTypeEnum": 1,
+    "Wheels": null,
+    "Tires": null,
     "CurrentMileage": 23411,
     "Engine": {
       "$type": "gas",
@@ -74,6 +78,8 @@
     "Model": "Maverick",
     "Year": 2024,
     "VehicleTypeEnum": 1,
+    "Wheels": null,
+    "Tires": null,
     "CurrentMileage": 250,
     "Engine": {
       "$type": "electric",
@@ -99,6 +105,8 @@
     "Model": "Silverado 2500",
     "Year": 2004,
     "VehicleTypeEnum": 1,
+    "Wheels": null,
+    "Tires": null,
     "CurrentMileage": 234088,
     "Engine": {
       "$type": "diesel",
@@ -126,6 +134,8 @@
     "Model": "Tacoma",
     "Year": 2022,
     "VehicleTypeEnum": 1,
+    "Wheels": null,
+    "Tires": null,
     "CurrentMileage": 23000,
     "Engine": {
       "$type": "gas",
@@ -155,6 +165,8 @@
     "Model": "Tundra",
     "Year": 2024,
     "VehicleTypeEnum": 1,
+    "Wheels": null,
+    "Tires": null,
     "CurrentMileage": 2023,
     "Engine": {
       "$type": "gas",
@@ -184,6 +196,8 @@
     "Model": "Silverado 1500",
     "Year": 2020,
     "VehicleTypeEnum": 1,
+    "Wheels": null,
+    "Tires": null,
     "CurrentMileage": 2004,
     "Engine": {
       "$type": "gas",
@@ -213,6 +227,8 @@
     "Model": "F-350",
     "Year": 2009,
     "VehicleTypeEnum": 1,
+    "Wheels": null,
+    "Tires": null,
     "CurrentMileage": 204300,
     "Engine": {
       "$type": "diesel",
@@ -221,6 +237,44 @@
       "FuelType": "Diesel",
       "HorsePower": 350,
       "Torque": 550
+    }
+  },
+  {
+    "IsFourWheelDrive": true,
+    "BedLength": 6.5,
+    "PayLoadCapacity": 2500,
+    "TowingCapacity": 6500,
+    "IsDully": false,
+    "EngineType": "V8",
+    "MPG": 25,
+    "Range": 500,
+    "FuelCapacity": 20,
+    "Guid": "c3541144-3ae2-4b69-b410-8d29a07406c2",
+    "Color": "Black",
+    "Capacity": 4,
+    "Make": "Toyota",
+    "Model": "Tacoma",
+    "Year": 1999,
+    "VehicleTypeEnum": 1,
+    "Wheels": {
+      "WheelBrand": "Toyota",
+      "Radius": 18
+    },
+    "Tires": {
+      "BrandName": "BF Goodrich",
+      "Size": "285/65-18",
+      "Radius": 18
+    },
+    "CurrentMileage": 254000,
+    "Engine": {
+      "$type": "gas",
+      "RecommendedFuelOctane": 85,
+      "HasSuperCharger": false,
+      "NumberOfCylinders": 8,
+      "HasTurbo": false,
+      "FuelType": "Gas",
+      "HorsePower": 400,
+      "Torque": 455
     }
   }
 ]

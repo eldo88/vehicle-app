@@ -1,3 +1,5 @@
+using vehicle_app.Vehicle.Wheels;
+
 namespace vehicle_app;
 
 public static class VehicleFactory
@@ -34,13 +36,15 @@ public static class VehicleFactory
         var numberOfCylinders = EngineHelper.GetNumberOfCylinders(menuData["engine"]);
         var hasTurbo = EngineHelper.HasTurbo(menuData["engine"]);
         var engine = EngineFactory.Build(fuelType, numberOfCylinders, hasTurbo);
+        var wheels = new Wheels(menuData["make"]);
+        var tires = new Tires(menuData["type"]);
 
         return menuData["type"] switch
         {
-            "Car" => new Car(menuData["color"], 4, menuData["make"], menuData["model"], int.Parse(menuData["year"]), menuData["type"], menuData["engine"], 25, int.Parse(menuData["mileage"]), engine),
-            "Truck" => new Truck(menuData["color"], 4, menuData["make"], menuData["model"], int.Parse(menuData["year"]), menuData["type"], menuData["engine"], 25, int.Parse(menuData["mileage"]), engine),
-            "SUV" => new Suv(menuData["color"], 4, menuData["make"], menuData["model"], int.Parse(menuData["year"]), menuData["type"], menuData["engine"], 25, int.Parse(menuData["mileage"]), engine),
-            _ => new Car(menuData["color"], 4, menuData["make"], menuData["model"], int.Parse(menuData["year"]), menuData["type"], menuData["engine"], 25, int.Parse(menuData["mileage"]), engine)
+            "Car" => new Car(menuData["color"], 4, menuData["make"], menuData["model"], int.Parse(menuData["year"]), menuData["type"], menuData["engine"], 25, int.Parse(menuData["mileage"]), engine, wheels, tires),
+            "Truck" => new Truck(menuData["color"], 4, menuData["make"], menuData["model"], int.Parse(menuData["year"]), menuData["type"], menuData["engine"], 25, int.Parse(menuData["mileage"]), engine, wheels, tires),
+            "SUV" => new Suv(menuData["color"], 4, menuData["make"], menuData["model"], int.Parse(menuData["year"]), menuData["type"], menuData["engine"], 25, int.Parse(menuData["mileage"]), engine, wheels, tires),
+            _ => new Car(menuData["color"], 4, menuData["make"], menuData["model"], int.Parse(menuData["year"]), menuData["type"], menuData["engine"], 25, int.Parse(menuData["mileage"]), engine, wheels, tires)
         };
     }
 }
