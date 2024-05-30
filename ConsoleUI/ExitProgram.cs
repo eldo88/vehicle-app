@@ -2,13 +2,10 @@ namespace vehicle_app;
 
 public static class ExitProgram
 {
-    public static bool ExitProgramValidator(Dictionary<string, int> menuCHoices)
+    public static bool ExitProgramValidator(Dictionary<string, int> menuChoices)
     {
-        if(menuCHoices["vehicle"] == 99)
-        {
-            StandardUiMessages.ExitProgramMessage();
-            return true;
-        }
-        return false;
+        if (menuChoices["vehicle"] != 99) return false;
+        StandardUiMessages.ExitProgramMessage();
+        return true;
     }
 }

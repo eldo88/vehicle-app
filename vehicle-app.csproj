@@ -17,6 +17,7 @@
     <None Remove="Vehicle\Car\**" />
     <None Remove="Vehicle\Suv\**" />
     <None Remove="Vehicle\Truck\**" />
+    <None Remove="ConsoleUI\Menus\**" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="data\vehicle-data\chevrolet-car-data.csv" />
@@ -27,6 +28,7 @@
     <EmbeddedResource Remove="Vehicle\Car\**" />
     <EmbeddedResource Remove="Vehicle\Suv\**" />
     <EmbeddedResource Remove="Vehicle\Truck\**" />
+    <EmbeddedResource Remove="ConsoleUI\Menus\**" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="ConsoleUI\Menus\Factory\**" />
@@ -34,5 +36,7 @@
     <Compile Remove="Vehicle\Car\**" />
     <Compile Remove="Vehicle\Suv\**" />
     <Compile Remove="Vehicle\Truck\**" />
+    <Compile Remove="ConsoleUI\Input.cs" />
+    <Compile Remove="ConsoleUI\Menus\**" />
   </ItemGroup>
 </Project>
