@@ -9,6 +9,6 @@ public interface IVehicle
     public string Model { get; set; }
     public int Year { get; set; }
     public VehicleTypeEnum VehicleTypeEnum { get; set; }
-    public IWheels Wheels { get; set; }
-    public ITires Tires { get; set; }
+    public IWheels? Wheels { get; set; }
+    public ITires? Tires { get; set; }
 }

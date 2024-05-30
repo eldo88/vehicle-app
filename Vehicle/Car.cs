@@ -93,14 +93,14 @@ public class Car : ICar
 
         if (MPG == 0)
         {
-            decimal numberOfChargesNeeded = (decimal)tripLength / (decimal)Range;
+            var numberOfChargesNeeded = (decimal)tripLength / (decimal)Range;
             message = ("Number Of Charges Needed", numberOfChargesNeeded);
             tripDetail.Add(message);
         }
         else
         {
-            decimal totalGallonsOfFuelNeeded = (decimal)tripLength / (decimal)MPG;
-            decimal numberOfTanksOfGasNeeded = totalGallonsOfFuelNeeded / FuelCapacity;
+            var totalGallonsOfFuelNeeded = (decimal)tripLength / (decimal)MPG;
+            var numberOfTanksOfGasNeeded = totalGallonsOfFuelNeeded / FuelCapacity;
             message = ("Total Gallons Of Fuel Needed", totalGallonsOfFuelNeeded);
             tripDetail.Add(message);
             message = ("Number Of Tanks Of Gas Needed",numberOfTanksOfGasNeeded);
@@ -119,11 +119,8 @@ public class Car : ICar
 
     public override bool Equals(object? obj)
     {
-        return base.Equals(obj);
+        return this == obj;
     }
 
-    public override int GetHashCode()
-    {
-        return base.GetHashCode();
-    }
+    public override int GetHashCode() => GetHashCode();
 }
