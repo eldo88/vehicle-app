@@ -37,7 +37,7 @@ public class ShowMenus
                     displayMenu = false;
                     break;
                 case 1:
-                    MainMenu typeMenu = new MainMenu(_vehicleType.VehicleTypeList, "Select the type of your vehicle");
+                    var typeMenu = new MainMenu(_vehicleType.VehicleTypeList, "Select the type of your vehicle");
                     //PrintMessages printMessages = StandardUiMessages.BuildAVehicleBanner; 
                     //printMessages += StandardUiMessages.MenuSeparator;
                     menuItemNum = _vehicleType.VehicleTypeList.Count;
@@ -108,7 +108,7 @@ public class ShowMenus
     public Dictionary<string, string> GetMenuChoiceData()
     {
         Dictionary<string, string> menuChoiceData = new();
-
+        
         menuChoiceData.Add("type", _vehicleType.GetVehicleTypeByIdx(MenuChoices.MenuChoicesFromUserInput["vehicle"]));
         menuChoiceData.Add("make", _vehicleMake.GetVehicleMakeByIdx(MenuChoices.MenuChoicesFromUserInput["make"]));
         var vehicleMakeKey = menuChoiceData["make"] + menuChoiceData["type"];
@@ -128,8 +128,6 @@ public class ShowMenus
         var displayMenu = true;
         do
         {
-            var menuItemNum = 0;
-            var menuChoice = 0;
             switch (menuControl)
             {
                 case 0:
@@ -137,11 +135,21 @@ public class ShowMenus
                     displayMenu = false;
                     break;
                 case 1:
-                    MainMenu.Show(ref menuItemNum, ref menuChoice, ref menuControl, _mainMenuData, MenuChoices);
-                    if (menuChoice == 1)
+                    var mainMenu = new MainMenu(_mainMenuData.MainMenuDataList,
+                        "Please choose from the following options");
+                    var menuItemNum = _mainMenuData.MainMenuDataList.Count;
+                    var menuChoice = mainMenu.Run();
+                    _mainMenuData.MainMenuDataList.RemoveAt(menuItemNum - 1);
+                    menuControl += MenuActions.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice);
+                    switch (menuChoice)
                     {
-                        CreatedVehicleSearchScreen.Show();
-                        menuControl = 1;
+                        case 0:
+                            CreatedVehicleSearchScreen.Show();
+                            menuControl = 1;
+                            break;
+                        case 2:
+                            menuControl = 0;
+                            break;
                     }
                     break;
                 case 2:
