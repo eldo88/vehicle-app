@@ -21,7 +21,7 @@ internal class CarRepository : IVehicleRepository<Car>
 
     public List<Car> GetVehicleByModel(string model)
     {
-        List<Car> cars = GetVehicles();
+        var cars = GetVehicles();
         return cars.FindAll(c => c.Model == model);
     }
 
@@ -34,7 +34,18 @@ internal class CarRepository : IVehicleRepository<Car>
 
         if (!string.IsNullOrWhiteSpace(jd))
         {
-            cars = JsonSerializer.Deserialize<List<Car>>(jd);
+            try
+            {
+                cars = JsonSerializer.Deserialize<List<Car>>(jd);
+            }
+            catch(Exception e) when 
+            (
+                e is ArgumentNullException or JsonException or NotSupportedException
+            )
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
         }
         
         if (cars is null)
@@ -55,34 +66,31 @@ internal class CarRepository : IVehicleRepository<Car>
         {
             try
             {
-            cars = JsonSerializer.Deserialize<List<Car>>(jd);
+                cars = JsonSerializer.Deserialize<List<Car>>(jd);
             }
             catch(Exception e) when 
             (
-                e is ArgumentNullException ||
-                e is JsonException ||
-                e is NotSupportedException
+                e is ArgumentNullException or JsonException or NotSupportedException
             )
             {
                 Console.WriteLine(e.Message);
+                throw;
             }
         }
 
-        if (cars is not null)
-        {
-            cars.Add(car);
+        if (cars is null) return;
+        cars.Add(car);
                     
-            var options = new JsonSerializerOptions(){WriteIndented=true};
-            var jsonData = JsonSerializer.Serialize<IList<Car>>(cars, options);
-            using StreamWriter streamWriter = new(MockDbFilePath, false);
-            streamWriter.Write(jsonData);
-        }
+        var options = new JsonSerializerOptions(){WriteIndented=true};
+        var jsonData = JsonSerializer.Serialize<IList<Car>>(cars, options);
+        using StreamWriter streamWriter = new(MockDbFilePath, false);
+        streamWriter.Write(jsonData);
 
     }
 
     public IEnumerable<Car> GetVehicleByMake(string make)
     {
-        List<Car> cars = GetVehicles();
+        var cars = GetVehicles();
         return cars.Where(c => c.Make == make)
                     .OrderByDescending(c => c.Year);
     }

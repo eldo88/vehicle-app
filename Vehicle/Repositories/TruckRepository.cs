@@ -15,7 +15,7 @@ internal class TruckRepository : IVehicleRepository<Truck>
 
     public List<Truck> GetVehicleByModel(string model)
     {
-        List<Truck> trucks = GetVehicles();
+        var trucks = GetVehicles();
         return trucks.FindAll(t => t.Model == model);
     }
 
@@ -28,7 +28,16 @@ internal class TruckRepository : IVehicleRepository<Truck>
 
         if (!string.IsNullOrWhiteSpace(jd))
         {
-            trucks = JsonSerializer.Deserialize<List<Truck>>(jd);
+            try
+            {
+                trucks = JsonSerializer.Deserialize<List<Truck>>(jd);
+            }
+            catch (Exception e) when
+                (e is ArgumentNullException or JsonException or NotSupportedException)
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
         }
         
         if (trucks is null)
@@ -47,17 +56,20 @@ internal class TruckRepository : IVehicleRepository<Truck>
 
         if (!string.IsNullOrWhiteSpace(jd))
         {
-            trucks = JsonSerializer.Deserialize<List<Truck>>(jd);
+            try
+            {
+                trucks = JsonSerializer.Deserialize<List<Truck>>(jd);
+            }
+            catch (Exception e) when
+                (e is ArgumentNullException or JsonException or NotSupportedException)
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
         }
 
-        if (trucks is null)
-        {
-            trucks = new List<Truck>{truck};
-        }
-        else
-        {
-            trucks.Add(truck);
-        }
+        if (trucks is null) return;
+        trucks.Add(truck);
         
         var options = new JsonSerializerOptions(){WriteIndented=true};
         var jsonData = JsonSerializer.Serialize<IList<Truck>>(trucks, options);
@@ -67,7 +79,7 @@ internal class TruckRepository : IVehicleRepository<Truck>
 
     public IEnumerable<Truck> GetVehicleByMake(string make)
     {
-        List<Truck> trucks = GetVehicles();
+        var trucks = GetVehicles();
         return trucks.Where(t => t.Make == make)
                     .OrderByDescending(t => t.Year);
     }

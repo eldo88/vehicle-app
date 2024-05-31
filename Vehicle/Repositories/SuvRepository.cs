@@ -15,14 +15,14 @@ internal class SuvRepository : IVehicleRepository<Suv>
 
     public IEnumerable<Suv> GetVehicleByMake(string make)
     {
-        List<Suv> suvs = GetVehicles();
+        var suvs = GetVehicles();
         return suvs.Where(s => s.Make == make)
                     .OrderByDescending(s => s.Year);
     }
 
     public List<Suv> GetVehicleByModel(string model)
     {
-        List<Suv> suvs = GetVehicles();
+        var suvs = GetVehicles();
         return suvs.FindAll(s => s.Model == model);
     }
 
@@ -35,7 +35,16 @@ internal class SuvRepository : IVehicleRepository<Suv>
 
         if (!string.IsNullOrWhiteSpace(jd))
         {
-            suvs = JsonSerializer.Deserialize<List<Suv>>(jd);
+            try
+            {
+                suvs = JsonSerializer.Deserialize<List<Suv>>(jd);
+            }
+            catch (Exception e) when
+                (e is ArgumentNullException or JsonException or NotSupportedException)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
         
         if (suvs is null)
@@ -56,7 +65,7 @@ internal class SuvRepository : IVehicleRepository<Suv>
         {
             try
             {
-            suvs = JsonSerializer.Deserialize<List<Suv>>(jd);
+                suvs = JsonSerializer.Deserialize<List<Suv>>(jd);
             }
             catch(Exception e) when 
             (
@@ -69,14 +78,12 @@ internal class SuvRepository : IVehicleRepository<Suv>
             }
         }
 
-        if (suvs is not null)
-        {
-            suvs.Add(suv);
+        if (suvs is null) return;
+        suvs.Add(suv);
                     
-            var options = new JsonSerializerOptions(){WriteIndented=true};
-            var jsonData = JsonSerializer.Serialize<IList<Suv>>(suvs, options);
-            using StreamWriter streamWriter = new(MockDbFilePath, false);
-            streamWriter.Write(jsonData);
-        }
+        var options = new JsonSerializerOptions(){WriteIndented=true};
+        var jsonData = JsonSerializer.Serialize<IList<Suv>>(suvs, options);
+        using StreamWriter streamWriter = new(MockDbFilePath, false);
+        streamWriter.Write(jsonData);
     }
 }
