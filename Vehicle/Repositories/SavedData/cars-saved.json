@@ -35,5 +35,42 @@
       "HorsePower": 250,
       "Torque": 260
     }
+  },
+  {
+    "NumDoors": 4,
+    "IsConvertible": false,
+    "EngineType": "V8",
+    "MPG": 25,
+    "Range": 500,
+    "FuelCapacity": 20,
+    "Guid": "105fb055-05b3-4385-af87-7cf82d4fd3e3",
+    "Color": "Blue",
+    "Capacity": 4,
+    "Make": "Chevrolet",
+    "Model": "Corvette",
+    "Year": 1999,
+    "VehicleTypeEnum": 0,
+    "Wheels": {
+      "$type": "wheels",
+      "WheelBrand": "Chevrolet",
+      "Radius": 18
+    },
+    "Tires": {
+      "$type": "tires",
+      "BrandName": "Michelin",
+      "Size": "245/65-17",
+      "Radius": 17
+    },
+    "CurrentMileage": 2345,
+    "Engine": {
+      "$type": "gas",
+      "RecommendedFuelOctane": 85,
+      "HasSuperCharger": false,
+      "NumberOfCylinders": 8,
+      "HasTurbo": false,
+      "FuelType": "Gas",
+      "HorsePower": 400,
+      "Torque": 455
+    }
   }
 ]
