@@ -56,34 +56,31 @@ internal class SuvRepository : IVehicleRepository<Suv>
 
     public void SaveVehicle(Suv suv)
     {
-        using StreamReader fileReader = new(File.OpenRead(MockDbFilePath));
-        var jd = fileReader.ReadToEnd();
+        var data = FileOperations.LoadDataFromDbFile(MockDbFilePath);
 
-        List<Suv>? suvs = new();
-
-         if (!string.IsNullOrWhiteSpace(jd))
+        if (string.IsNullOrWhiteSpace(data)) return;
+        try
         {
-            try
-            {
-                suvs = JsonSerializer.Deserialize<List<Suv>>(jd);
-            }
-            catch(Exception e) when 
-            (
-                e is ArgumentNullException ||
-                e is JsonException ||
-                e is NotSupportedException
-            )
-            {
-                Console.WriteLine(e.Message);
-            }
-        }
-
-        if (suvs is null) return;
-        suvs.Add(suv);
+            var suvs = JsonSerializer.Deserialize<List<Suv>>(data);
+            if (suvs is null) return;
+            suvs.Add(suv);
                     
-        var options = new JsonSerializerOptions(){WriteIndented=true};
-        var jsonData = JsonSerializer.Serialize<IList<Suv>>(suvs, options);
-        using StreamWriter streamWriter = new(MockDbFilePath, false);
-        streamWriter.Write(jsonData);
+            var options = new JsonSerializerOptions(){WriteIndented=true};
+            var jsonData = JsonSerializer.Serialize<IList<Suv>>(suvs, options);
+            using StreamWriter streamWriter = new(MockDbFilePath, false);
+            streamWriter.Write(jsonData);
+        }
+        catch(Exception e) when 
+        (
+            e is ArgumentNullException 
+                or JsonException 
+                or NotSupportedException
+                or ObjectDisposedException
+                or IOException
+        )
+        {
+            Console.WriteLine(e.Message);
+            throw;
+        }
     }
 }

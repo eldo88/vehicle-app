@@ -49,32 +49,32 @@ internal class TruckRepository : IVehicleRepository<Truck>
 
     public void SaveVehicle(Truck truck)
     {
-        using StreamReader fileReader = new(File.OpenRead(MockDbFilePath));
-        var jd = fileReader.ReadToEnd();
+        var data = FileOperations.LoadDataFromDbFile(MockDbFilePath);
 
-        List<Truck>? trucks = new();
-
-        if (!string.IsNullOrWhiteSpace(jd))
+        if (string.IsNullOrWhiteSpace(data)) return;
+        try
         {
-            try
-            {
-                trucks = JsonSerializer.Deserialize<List<Truck>>(jd);
-            }
-            catch (Exception e) when
-                (e is ArgumentNullException or JsonException or NotSupportedException)
-            {
-                Console.WriteLine(e.Message);
-                throw;
-            }
+            var trucks = JsonSerializer.Deserialize<List<Truck>>(data);
+            if (trucks is null) return;
+            trucks.Add(truck);
+                    
+            var options = new JsonSerializerOptions(){WriteIndented=true};
+            var jsonData = JsonSerializer.Serialize<IList<Truck>>(trucks, options);
+            using StreamWriter streamWriter = new(MockDbFilePath, false);
+            streamWriter.Write(jsonData);
         }
-
-        if (trucks is null) return;
-        trucks.Add(truck);
-        
-        var options = new JsonSerializerOptions(){WriteIndented=true};
-        var jsonData = JsonSerializer.Serialize<IList<Truck>>(trucks, options);
-        using StreamWriter streamWriter = new(MockDbFilePath, false);
-        streamWriter.Write(jsonData);
+        catch(Exception e) when 
+        (
+            e is ArgumentNullException 
+                or JsonException 
+                or NotSupportedException
+                or ObjectDisposedException
+                or IOException
+        )
+        {
+            Console.WriteLine(e.Message);
+            throw;
+        }
     }
 
     public IEnumerable<Truck> GetVehicleByMake(string make)

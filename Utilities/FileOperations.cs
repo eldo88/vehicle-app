@@ -58,8 +58,8 @@ public static class FileOperations
                     {
                         Console.WriteLine(ex);
                     }
+                    }
                 }
-            }
             }
             else
             {
@@ -103,5 +103,33 @@ public static class FileOperations
             streamWriter.Write(line + ',');
         }
         streamWriter.WriteLine();
+    }
+    
+    public static string LoadDataFromDbFile(string mockDbFilePath)
+    {
+        string jd;
+        try
+        {
+            using StreamReader fileReader = new(File.OpenRead(mockDbFilePath));
+            jd = fileReader.ReadToEnd();
+        }
+        catch (Exception e) when
+        (
+            e is PathTooLongException
+                or DirectoryNotFoundException
+                or ArgumentException
+                or DirectoryNotFoundException
+                or UnauthorizedAccessException
+                or FileNotFoundException
+                or NotSupportedException
+                or IOException
+                or OutOfMemoryException
+        )
+        {
+            Console.WriteLine(e.Message);
+            return "";
+        }
+      
+        return jd;
     }
 }
