@@ -36,7 +36,7 @@ public static class VehicleFactory
         var numberOfCylinders = EngineHelper.GetNumberOfCylinders(menuData["engine"]);
         var hasTurbo = EngineHelper.HasTurbo(menuData["engine"]);
         var engine = EngineFactory.Build(fuelType, numberOfCylinders, hasTurbo);
-        var wheels = new Wheels(menuData["make"]);
+        var wheels = new Wheels(menuData["make"], menuData["type"]);
         var tires = new Tires(menuData["type"]);
 
         return menuData["type"] switch
