@@ -13,7 +13,7 @@ public static class CreatedVehicleSearchScreen
         var menuItemNum = makes.VehicleMakeList.Count;
         var choiceNum = searchMenu.Run();
         makes.VehicleMakeList.RemoveAt(menuItemNum - 1);
-        var choice = CreatedVehicleSearch(choiceNum);
+        var choice = makes.VehicleMakeList.ElementAt(choiceNum);
         var car = VehicleRepositoryFactory.BuildCarRepo();
         var truck = VehicleRepositoryFactory.BuildTruckRepo();
         var suv = VehicleRepositoryFactory.BuildSuvRepo();
@@ -36,17 +36,6 @@ public static class CreatedVehicleSearchScreen
         }
 
         Console.WriteLine();
-    }
-
-    private static string CreatedVehicleSearch(int choice)
-    {
-        return choice switch
-        {
-            0 => "Toyota",
-            1 => "Ford",
-            2 => "Chevrolet",
-            _ => ""
-        };
     }
 
     private static void ShowCars(IEnumerable<Car> cars)
