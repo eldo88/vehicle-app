@@ -12,8 +12,8 @@ public static class CreatedVehicleSearchScreen
         var searchMenu = new MainMenu(makes.VehicleMakeList, menuText);
         var menuItemNum = makes.VehicleMakeList.Count;
         var choiceNum = searchMenu.Run();
-        makes.VehicleMakeList.RemoveAt(menuItemNum - 1);
         var choice = makes.VehicleMakeList.ElementAt(choiceNum);
+        makes.VehicleMakeList.RemoveAt(menuItemNum - 1);
         var car = VehicleRepositoryFactory.BuildCarRepo();
         var truck = VehicleRepositoryFactory.BuildTruckRepo();
         var suv = VehicleRepositoryFactory.BuildSuvRepo();
