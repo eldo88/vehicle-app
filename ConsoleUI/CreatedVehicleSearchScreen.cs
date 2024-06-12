@@ -33,6 +33,10 @@ public static class CreatedVehicleSearchScreen
             {
                 Console.WriteLine($"Error occurred: {ex.Message}");
             }
+            catch (ArgumentNullException ex)
+            {
+                Console.WriteLine($"Unexpected null value return from database {ex.Message}");
+            }
         }
 
         Console.WriteLine();

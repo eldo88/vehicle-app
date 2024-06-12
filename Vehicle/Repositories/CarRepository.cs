@@ -40,11 +40,12 @@ internal class CarRepository : IVehicleRepository<Car>
             }
             catch(Exception e) when 
             (
-                e is ArgumentNullException or JsonException or NotSupportedException
+                e is ArgumentNullException 
+                    or JsonException 
+                    or NotSupportedException
             )
             {
-                Console.WriteLine(e.Message);
-                throw;
+                Console.WriteLine($"An error occurred during deserialization {e.Message}");
             }
         }
         
@@ -80,8 +81,7 @@ internal class CarRepository : IVehicleRepository<Car>
                 or IOException
         )
         {
-            Console.WriteLine(e.Message);
-            throw;
+            Console.WriteLine($"An error occurred while saving vehicle {e.Message}");
         }
     }
 

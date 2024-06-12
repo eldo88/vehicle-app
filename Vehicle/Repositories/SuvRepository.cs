@@ -40,10 +40,11 @@ internal class SuvRepository : IVehicleRepository<Suv>
                 suvs = JsonSerializer.Deserialize<List<Suv>>(jd);
             }
             catch (Exception e) when
-                (e is ArgumentNullException or JsonException or NotSupportedException)
+                (e is ArgumentNullException 
+                    or JsonException 
+                    or NotSupportedException)
             {
-                Console.WriteLine(e);
-                throw;
+                Console.WriteLine($"An error occurred during deserialization {e.Message}");
             }
         }
         
@@ -79,8 +80,7 @@ internal class SuvRepository : IVehicleRepository<Suv>
                 or IOException
         )
         {
-            Console.WriteLine(e.Message);
-            throw;
+            Console.WriteLine($"An error occurred while saving vehicle {e.Message}");
         }
     }
 }
