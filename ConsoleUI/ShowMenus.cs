@@ -2,24 +2,13 @@ namespace vehicle_app;
 
 public class ShowMenus
 {
-    public ShowMenus()
-    {
-        MenuChoices = new();
-        _vehicleColor = new();
-        _vehicleEngine = new();
-        _vehicleMake = new();
-        _vehicleModel = new();
-        _vehicleType = new();
-        _mainMenuData = new();
-    }
-
-    public readonly MenuChoices MenuChoices;
-    private readonly VehicleColor _vehicleColor;
-    private readonly VehicleEngine _vehicleEngine;
-    private readonly VehicleMake _vehicleMake;
-    private readonly VehicleModel _vehicleModel;
-    private readonly VehicleType _vehicleType;
-    private readonly MainMenuData _mainMenuData;
+    public readonly MenuChoices MenuChoices = new();
+    private readonly VehicleColor _vehicleColor = new();
+    private readonly VehicleEngine _vehicleEngine = new();
+    private readonly VehicleMake _vehicleMake = new();
+    private readonly VehicleModel _vehicleModel = new();
+    private readonly VehicleType _vehicleType = new();
+    private readonly MainMenuData _mainMenuData = new();
 
     private void DisplayBuildVehicleMenus()
     {

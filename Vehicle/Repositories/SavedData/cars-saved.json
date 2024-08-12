@@ -72,5 +72,42 @@
       "HorsePower": 400,
       "Torque": 455
     }
+  },
+  {
+    "NumDoors": 4,
+    "IsConvertible": false,
+    "EngineType": "V4",
+    "MPG": 25,
+    "Range": 500,
+    "FuelCapacity": 20,
+    "Guid": "00000000-0000-0000-0000-000000000000",
+    "Color": "Silver",
+    "Capacity": 4,
+    "Make": "Toyota",
+    "Model": "Corrolla",
+    "Year": 2020,
+    "VehicleTypeEnum": 0,
+    "Wheels": {
+      "$type": "wheels",
+      "WheelBrand": "Toyota",
+      "Radius": 17
+    },
+    "Tires": {
+      "$type": "tires",
+      "BrandName": "Michelin",
+      "Size": "245/65-17",
+      "Radius": 17
+    },
+    "CurrentMileage": 240000,
+    "Engine": {
+      "$type": "gas",
+      "RecommendedFuelOctane": 85,
+      "HasSuperCharger": false,
+      "NumberOfCylinders": 4,
+      "HasTurbo": false,
+      "FuelType": "Gas",
+      "HorsePower": 250,
+      "Torque": 260
+    }
   }
 ]
