@@ -11,4 +11,5 @@ public interface IVehicle
     public VehicleTypeEnum VehicleTypeEnum { get; set; }
     public IWheels? Wheels { get; set; }
     public ITires? Tires { get; set; }
+    public int CurrentMileage { get; set; }
 }

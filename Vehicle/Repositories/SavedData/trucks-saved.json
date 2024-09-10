@@ -38,5 +38,121 @@
       "HorsePower": 400,
       "Torque": 455
     }
+  },
+  {
+    "IsFourWheelDrive": true,
+    "BedLength": 6.5,
+    "PayLoadCapacity": 2500,
+    "TowingCapacity": 6500,
+    "IsDully": false,
+    "EngineType": "V6 Hybrid",
+    "MPG": 25,
+    "Range": 500,
+    "FuelCapacity": 20,
+    "Guid": "be3fe7d6-0489-481c-b9a0-c178cd76ecff",
+    "Color": "Red",
+    "Capacity": 4,
+    "Make": "Ford",
+    "Model": "Ranger",
+    "Year": 2025,
+    "VehicleTypeEnum": 1,
+    "Wheels": {
+      "$type": "wheels",
+      "WheelBrand": "Ford",
+      "Radius": 18
+    },
+    "Tires": {
+      "$type": "tires",
+      "BrandName": "BF Goodrich",
+      "Size": "285/65-18",
+      "Radius": 18
+    },
+    "CurrentMileage": 2000,
+    "Engine": {
+      "$type": "gas",
+      "RecommendedFuelOctane": 85,
+      "HasSuperCharger": false,
+      "NumberOfCylinders": 6,
+      "HasTurbo": false,
+      "FuelType": "Gas",
+      "HorsePower": 330,
+      "Torque": 360
+    }
+  },
+  {
+    "IsFourWheelDrive": true,
+    "BedLength": 6.5,
+    "PayLoadCapacity": 2500,
+    "TowingCapacity": 6500,
+    "IsDully": false,
+    "EngineType": "V8",
+    "MPG": 25,
+    "Range": 500,
+    "FuelCapacity": 20,
+    "Guid": "b0560145-8e43-4df8-81db-2c3bca110857",
+    "Color": "Red",
+    "Capacity": 4,
+    "Make": "Toyota",
+    "Model": "Tundra",
+    "Year": 2004,
+    "VehicleTypeEnum": 1,
+    "Wheels": {
+      "$type": "wheels",
+      "WheelBrand": "Toyota",
+      "Radius": 18
+    },
+    "Tires": {
+      "$type": "tires",
+      "BrandName": "BF Goodrich",
+      "Size": "285/65-18",
+      "Radius": 18
+    },
+    "CurrentMileage": 200455,
+    "Engine": {
+      "$type": "gas",
+      "RecommendedFuelOctane": 85,
+      "HasSuperCharger": false,
+      "NumberOfCylinders": 8,
+      "HasTurbo": false,
+      "FuelType": "Gas",
+      "HorsePower": 400,
+      "Torque": 455
+    }
+  },
+  {
+    "IsFourWheelDrive": true,
+    "BedLength": 6.5,
+    "PayLoadCapacity": 2500,
+    "TowingCapacity": 6500,
+    "IsDully": false,
+    "EngineType": "Electric",
+    "MPG": 0,
+    "Range": 350,
+    "FuelCapacity": 0,
+    "Guid": "fcb7c2df-7efa-4380-a82e-c37588431a99",
+    "Color": "Blue",
+    "Capacity": 4,
+    "Make": "Toyota",
+    "Model": "Tacoma",
+    "Year": 2002,
+    "VehicleTypeEnum": 1,
+    "Wheels": {
+      "$type": "wheels",
+      "WheelBrand": "Toyota",
+      "Radius": 18
+    },
+    "Tires": {
+      "$type": "tires",
+      "BrandName": "BF Goodrich",
+      "Size": "285/65-18",
+      "Radius": 18
+    },
+    "CurrentMileage": 345000,
+    "Engine": {
+      "$type": "electric",
+      "HorsePower": 400,
+      "Torque": 350,
+      "FuelType": "Electric"
+    }
   }
 ]

@@ -112,5 +112,43 @@
       "HorsePower": 330,
       "Torque": 360
     }
+  },
+  {
+    "IsFourWheelDrive": false,
+    "TowingCapacity": 5000,
+    "CargoSpace": 15,
+    "EngineType": "V8",
+    "MPG": 25,
+    "Range": 500,
+    "FuelCapacity": 20,
+    "Guid": "db1d9ef5-89d5-425e-a0e3-c62c8a1ce097",
+    "Color": "Red",
+    "Capacity": 4,
+    "Make": "Chevrolet",
+    "Model": "Tahoe",
+    "Year": 2007,
+    "VehicleTypeEnum": 2,
+    "Wheels": {
+      "$type": "wheels",
+      "WheelBrand": "Chevrolet",
+      "Radius": 19
+    },
+    "Tires": {
+      "$type": "tires",
+      "BrandName": "Goodyear",
+      "Size": "275/65-19",
+      "Radius": 19
+    },
+    "CurrentMileage": 0,
+    "Engine": {
+      "$type": "gas",
+      "RecommendedFuelOctane": 85,
+      "HasSuperCharger": false,
+      "NumberOfCylinders": 8,
+      "HasTurbo": false,
+      "FuelType": "Gas",
+      "HorsePower": 400,
+      "Torque": 455
+    }
   }
 ]

@@ -41,5 +41,10 @@
     <Compile Remove="ConsoleUI\Input.cs" />
     <Compile Remove="ConsoleUI\Menus\**" />
     <Compile Remove="Vehicle\VehicleFacory\**" />
+    <Compile Remove="Vehicle\TruckStats.cs" />
+    <Compile Remove="Vehicle\SuvStats.cs" />
+    <Compile Remove="Vehicle\IVehicleStats.cs" />
+    <Compile Remove="Vehicle\CarStats.cs" />
+    <Compile Remove="Vehicle\Builder\VehicleBuilders\SuvBuilder.cs" />
   </ItemGroup>
 </Project>

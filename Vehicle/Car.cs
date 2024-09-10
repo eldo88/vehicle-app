@@ -5,32 +5,33 @@ namespace vehicle_app;
 
 public class Car : ICar
 {
-   public Car(){}
+    private int _currentMileage;
+    public Car(){ Guid = Guid.NewGuid(); }
 
     public Car(string color, int capacity, string make, string model, int year, string vehicleType, string engineType, int mpg, int currentMileage, IEngine engine, IWheels wheels, ITires tires)
     {
         if (string.IsNullOrWhiteSpace(color))
-            {throw new ArgumentException("Color is required");}
+        {throw new ArgumentException("Color is required");}
         Color = color;
 
         Capacity = capacity;
 
         if (string.IsNullOrWhiteSpace(make))
-            {throw new ArgumentException("Make is required");}
+        {throw new ArgumentException("Make is required");}
         Make = make;
 
         if (string.IsNullOrWhiteSpace(model))
-            {throw new ArgumentException("Model is required");}
+        {throw new ArgumentException("Model is required");}
         Model = model;
 
         Year = year;
 
         if (string.IsNullOrWhiteSpace(vehicleType))
-            {throw new ArgumentException("Make is required");}
+        {throw new ArgumentException("Make is required");}
         VehicleTypeEnum = (VehicleTypeEnum) Enum.Parse(typeof(VehicleTypeEnum), vehicleType);
 
         if (string.IsNullOrWhiteSpace(engineType))
-            {throw new ArgumentException("Engine type is required");}
+        {throw new ArgumentException("Engine type is required");}
         EngineType = engineType;
 
         if (engineType == "Electric")
@@ -74,6 +75,7 @@ public class Car : ICar
     public VehicleTypeEnum VehicleTypeEnum { get; set; }
     public IWheels? Wheels { get; set; }
     public ITires? Tires { get; set;  }
+    
     public int CurrentMileage { get; set; }
     public IEngine? Engine { get; set; }
 

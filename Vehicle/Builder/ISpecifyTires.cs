@@ -1,4 +1,4 @@
-namespace vehicle_app.Builder;
+namespace vehicle_app.Vehicle.Builder;
 
 public interface ISpecifyTires
 {

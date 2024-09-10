@@ -109,5 +109,145 @@
       "HorsePower": 250,
       "Torque": 260
     }
+  },
+  {
+    "NumDoors": 4,
+    "IsConvertible": false,
+    "EngineType": "Electric",
+    "MPG": 25,
+    "Range": 350,
+    "FuelCapacity": 0,
+    "Guid": "edad9e78-8d9e-4802-aefa-4a869a1d8dcd",
+    "Color": "Black",
+    "Capacity": 4,
+    "Make": "Toyota",
+    "Model": "Prius",
+    "Year": 2024,
+    "VehicleTypeEnum": 0,
+    "Wheels": {
+      "$type": "wheels",
+      "WheelBrand": "Toyota",
+      "Radius": 17
+    },
+    "Tires": {
+      "$type": "tires",
+      "BrandName": "Michelin",
+      "Size": "245/65-17",
+      "Radius": 17
+    },
+    "CurrentMileage": 23000,
+    "Engine": {
+      "$type": "electric",
+      "HorsePower": 400,
+      "Torque": 350,
+      "FuelType": "Electric"
+    }
+  },
+  {
+    "NumDoors": 4,
+    "IsConvertible": false,
+    "EngineType": "V4",
+    "MPG": 25,
+    "Range": 500,
+    "FuelCapacity": 20,
+    "Guid": "36637606-cc4f-4b08-8aed-55d37fc50450",
+    "Color": "White",
+    "Capacity": 4,
+    "Make": "Toyota",
+    "Model": "Corrolla",
+    "Year": 2025,
+    "VehicleTypeEnum": 0,
+    "Wheels": {
+      "$type": "wheels",
+      "WheelBrand": "Toyota",
+      "Radius": 17
+    },
+    "Tires": {
+      "$type": "tires",
+      "BrandName": "Michelin",
+      "Size": "245/65-17",
+      "Radius": 17
+    },
+    "CurrentMileage": 2005,
+    "Engine": {
+      "$type": "gas",
+      "RecommendedFuelOctane": 85,
+      "HasSuperCharger": false,
+      "NumberOfCylinders": 4,
+      "HasTurbo": false,
+      "FuelType": "Gas",
+      "HorsePower": 250,
+      "Torque": 260
+    }
+  },
+  {
+    "NumDoors": 4,
+    "IsConvertible": false,
+    "EngineType": "V4",
+    "MPG": 25,
+    "Range": 500,
+    "FuelCapacity": 20,
+    "Guid": "617e5f61-ad27-4f4d-af86-3c212d1cc942",
+    "Color": "White",
+    "Capacity": 4,
+    "Make": "Toyota",
+    "Model": "Camry",
+    "Year": 1991,
+    "VehicleTypeEnum": 0,
+    "Wheels": {
+      "$type": "wheels",
+      "WheelBrand": "Toyota",
+      "Radius": 17
+    },
+    "Tires": {
+      "$type": "tires",
+      "BrandName": "Michelin",
+      "Size": "245/65-17",
+      "Radius": 17
+    },
+    "CurrentMileage": 230,
+    "Engine": {
+      "$type": "gas",
+      "RecommendedFuelOctane": 85,
+      "HasSuperCharger": false,
+      "NumberOfCylinders": 4,
+      "HasTurbo": false,
+      "FuelType": "Gas",
+      "HorsePower": 250,
+      "Torque": 260
+    }
+  },
+  {
+    "NumDoors": 4,
+    "IsConvertible": false,
+    "EngineType": "Electric",
+    "MPG": 25,
+    "Range": 350,
+    "FuelCapacity": 0,
+    "Guid": "a2ce87ec-b53d-4f04-bd98-5b9fd9e83d63",
+    "Color": "Blue",
+    "Capacity": 4,
+    "Make": "Toyota",
+    "Model": "Prius",
+    "Year": 2005,
+    "VehicleTypeEnum": 0,
+    "Wheels": {
+      "$type": "wheels",
+      "WheelBrand": "Toyota",
+      "Radius": 17
+    },
+    "Tires": {
+      "$type": "tires",
+      "BrandName": "Michelin",
+      "Size": "245/65-17",
+      "Radius": 17
+    },
+    "CurrentMileage": 278000,
+    "Engine": {
+      "$type": "electric",
+      "HorsePower": 400,
+      "Torque": 350,
+      "FuelType": "Electric"
+    }
   }
 ]

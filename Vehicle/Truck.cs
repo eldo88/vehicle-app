@@ -3,6 +3,7 @@ namespace vehicle_app;
 
 public class Truck : ITruck
 {
+    private int _currentMileage;
     public Truck() {}
 
     public Truck(string color, int capacity, string make, string model, int year, string vehicleType, string engineType, int mpg, int currentMileage, IEngine engine, IWheels wheels, ITires tires)
@@ -44,7 +45,7 @@ public class Truck : ITruck
             Range = FuelCapacity * MPG;
         }
 
-        Guid = Guid.NewGuid(); 
+        Guid = Guid.NewGuid();
 
         CurrentMileage = currentMileage;
 
@@ -76,6 +77,7 @@ public class Truck : ITruck
     public VehicleTypeEnum VehicleTypeEnum { get; set; }
     public IWheels? Wheels { get; set; }
     public ITires? Tires { get; set;  }
+    
     public int CurrentMileage { get; set; }
     public IEngine? Engine { get; set; }
 

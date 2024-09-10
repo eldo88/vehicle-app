@@ -5,9 +5,25 @@ namespace vehicle_app;
 
 internal class SuvRepository : IVehicleRepository<Suv>
 {
+    public delegate bool SearchCriteria();
     private readonly List<List<string>> _suvs = new();
     private const string MockDbFilePath = "./Vehicle/Repositories/SavedData/suvs-saved.json";
 
+    public IEnumerable<Suv> CustomSearch(Suv suv, SearchCriteria searchCriteria)
+    {
+        var savedSuvs = GetVehicles();
+        try
+        {
+            searchCriteria?.Invoke();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+
+        return savedSuvs;
+    }
     public Suv GetVehicleById(Guid id)
     {
         throw new NotImplementedException();

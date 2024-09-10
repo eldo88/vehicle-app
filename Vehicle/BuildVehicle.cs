@@ -2,7 +2,7 @@ using vehicle_app.Vehicle.Wheels;
 
 namespace vehicle_app;
 
-public static class VehicleFactory
+public static class BuildVehicle
 {
     public static IMotorizedVehicle Build(string vehicleType)
     {

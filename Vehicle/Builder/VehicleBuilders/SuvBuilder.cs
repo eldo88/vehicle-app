@@ -3,7 +3,7 @@ using vehicle_app.Vehicle.Builder;
 
 namespace vehicle_app;
 
-public class CarBuilder
+public class SuvBuilder
 {
     public static ISpecifyColor Create()
     {
@@ -21,98 +21,93 @@ public class CarBuilder
         ISpecifyMileage,
         ISpecifyEngine,
         ISpecifyWheels,
-        IBuildCar, 
-        ISpecifyTires
+        ISpecifySuvTires,
+        IBuildSuv
     {
-        private Car _car = new Car();
+        private Suv suv = new Suv();
         
         public ISpecifyCapacity WithColor(string color)
         {
-            _car.Color = color;
+            suv.Color = color;
             return this;
         }
 
         public ISpecifyMake WithCapacity(int capacity)
         {
-            _car.Capacity = capacity;
+            suv.Capacity = capacity;
             return this;
         }
 
         public ISpecifyModel WithMake(string make)
         {
-            _car.Make = make;
+            suv.Make = make;
             return this;
         }
 
         public ISpecifyYear WithModel(string model)
         {
-            _car.Model = model;
+            suv.Model = model;
             return this;
         }
 
         public ISpecifyType WithYear(int year)
         {
-            _car.Year = year;
+            suv.Year = year;
             return this;
         }
 
         public ISpecifyEngineType OfType(string type)
         {
-            _car.VehicleTypeEnum = (VehicleTypeEnum) Enum.Parse(typeof(VehicleTypeEnum), type);
+            suv.VehicleTypeEnum = (VehicleTypeEnum) Enum.Parse(typeof(VehicleTypeEnum), type);
             return this;
         }
 
         public ISpecifyMpg WithEngineType(string engineType, int mpg)
         {
-            _car.EngineType = engineType;
+            suv.EngineType = engineType;
             if (engineType == "Electric")
             {
-                _car.Range = 350;
-                _car.FuelCapacity = 0;
-                _car.MPG = 0;
+                suv.Range = 350;
+                suv.FuelCapacity = 0;
+                suv.MPG = 0;
             }
             else
             {
-                _car.MPG = mpg;
-                _car.FuelCapacity = 20;
-                _car.Range = _car.FuelCapacity * _car.MPG;
+                suv.MPG = mpg;
+                suv.FuelCapacity = 20;
+                suv.Range = suv.FuelCapacity * suv.MPG;
             }
             return this;
         }
 
         public ISpecifyMileage WithMpg(int mpg)
         {
-            _car.MPG = mpg;
+            suv.MPG = mpg;
             return this;
         }
 
         public ISpecifyEngine WithMileage(int currentMileage)
         {
-            _car.CurrentMileage = currentMileage;
+            suv.CurrentMileage = currentMileage;
             return this;
         }
 
         public ISpecifyWheels WithEngine(IEngine engine)
         {
-            _car.Engine = engine;
+            suv.Engine = engine;
             return this;
         }
 
-        public ISpecifyTires WithWheels(IWheels wheels)
+        public IBuildSuv WithTires(ITires tires)
         {
-            _car.Wheels = wheels;
+            suv.Tires = tires;
             return this;
         }
 
-        public IBuildCar WithTires(ITires tires)
+        public Suv Build()
         {
-            _car.Tires = tires;
-            return this;
+            return suv;
         }
-
-        public Car Build()
-        {
-            return _car;
-        }
+        
     }
 }
