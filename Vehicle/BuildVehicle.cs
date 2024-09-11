@@ -42,7 +42,7 @@ public static class BuildVehicle
         return menuData["type"] switch
         {
             //"Car" => new Car(menuData["color"], 4, menuData["make"], menuData["model"], int.Parse(menuData["year"]), menuData["type"], menuData["engine"], 25, int.Parse(menuData["mileage"]), engine, wheels, tires),
-            "Car" => (Car)CarBuilder.Create()
+            "Car" => CarBuilder.Create()
                 .WithColor(menuData["color"])
                 .WithCapacity(4)
                 .WithMake(menuData["make"])
@@ -56,11 +56,23 @@ public static class BuildVehicle
                 .WithWheels(wheels)
                 .WithTires(tires)
                 .Build(),
-
-
-            "Truck" => new Truck(menuData["color"], 4, menuData["make"], menuData["model"], int.Parse(menuData["year"]), menuData["type"], menuData["engine"], 25, int.Parse(menuData["mileage"]), engine, wheels, tires),
+            //"Truck" => new Truck(menuData["color"], 4, menuData["make"], menuData["model"], int.Parse(menuData["year"]), menuData["type"], menuData["engine"], 25, int.Parse(menuData["mileage"]), engine, wheels, tires),
+            "Truck" => TruckBuilder.Create()
+                .WithColor(menuData["color"])
+                .WithCapacity(4)
+                .WithMake(menuData["make"])
+                .WithModel(menuData["model"])
+                .WithYear(int.Parse(menuData["year"]))
+                .OfType(menuData["type"])
+                .WithEngineType(menuData["engine"], 25)
+                .WithMpg(25)
+                .WithMileage(int.Parse(menuData["mileage"]))
+                .WithEngine(engine)
+                .WithWheels(wheels)
+                .WithTires(tires)
+                .Build(),
             //"SUV" => new Suv(menuData["color"], 4, menuData["make"], menuData["model"], int.Parse(menuData["year"]), menuData["type"], menuData["engine"], 25, int.Parse(menuData["mileage"]), engine, wheels, tires),
-            "SUV" => (Suv)SuvBuilder.Create()
+            "SUV" => SuvBuilder.Create()
                 .WithColor(menuData["color"])
                 .WithCapacity(4)
                 .WithMake(menuData["make"])

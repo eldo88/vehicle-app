@@ -111,7 +111,7 @@ public class CarBuilder
             return this;
         }
 
-        public IVehicle Build()
+        public IMotorizedVehicle Build()
         {
             return _car;
         }
