@@ -150,5 +150,43 @@
       "HorsePower": 400,
       "Torque": 455
     }
+  },
+  {
+    "IsFourWheelDrive": false,
+    "TowingCapacity": 5000,
+    "CargoSpace": 15,
+    "EngineType": "V8",
+    "MPG": 25,
+    "Range": 500,
+    "FuelCapacity": 20,
+    "Guid": "00000000-0000-0000-0000-000000000000",
+    "Color": "Silver",
+    "Capacity": 4,
+    "Make": "Toyota",
+    "Model": "Land Cruiser",
+    "Year": 2000,
+    "VehicleTypeEnum": 2,
+    "Wheels": {
+      "$type": "wheels",
+      "WheelBrand": "Toyota",
+      "Radius": 19
+    },
+    "Tires": {
+      "$type": "tires",
+      "BrandName": "Goodyear",
+      "Size": "275/65-19",
+      "Radius": 19
+    },
+    "CurrentMileage": 430000,
+    "Engine": {
+      "$type": "gas",
+      "RecommendedFuelOctane": 85,
+      "HasSuperCharger": false,
+      "NumberOfCylinders": 8,
+      "HasTurbo": false,
+      "FuelType": "Gas",
+      "HorsePower": 400,
+      "Torque": 455
+    }
   }
 ]

@@ -21,7 +21,8 @@ public class CarBuilder
         ISpecifyMileage,
         ISpecifyEngine,
         ISpecifyWheels,
-        IBuildCar, 
+        //IBuildCar, 
+        IBuildVehicle,
         ISpecifyTires
     {
         private Car _car = new Car();
@@ -104,13 +105,13 @@ public class CarBuilder
             return this;
         }
 
-        public IBuildCar WithTires(ITires tires)
+        public IBuildVehicle WithTires(ITires tires)
         {
             _car.Tires = tires;
             return this;
         }
 
-        public Car Build()
+        public IVehicle Build()
         {
             return _car;
         }

@@ -21,92 +21,99 @@ public class SuvBuilder
         ISpecifyMileage,
         ISpecifyEngine,
         ISpecifyWheels,
-        ISpecifySuvTires,
-        IBuildSuv
+        ISpecifyTires,
+        //IBuildSuv
+        IBuildVehicle
     {
-        private Suv suv = new Suv();
+        private Suv _suv = new Suv();
         
         public ISpecifyCapacity WithColor(string color)
         {
-            suv.Color = color;
+            _suv.Color = color;
             return this;
         }
 
         public ISpecifyMake WithCapacity(int capacity)
         {
-            suv.Capacity = capacity;
+            _suv.Capacity = capacity;
             return this;
         }
 
         public ISpecifyModel WithMake(string make)
         {
-            suv.Make = make;
+            _suv.Make = make;
             return this;
         }
 
         public ISpecifyYear WithModel(string model)
         {
-            suv.Model = model;
+            _suv.Model = model;
             return this;
         }
 
         public ISpecifyType WithYear(int year)
         {
-            suv.Year = year;
+            _suv.Year = year;
             return this;
         }
 
         public ISpecifyEngineType OfType(string type)
         {
-            suv.VehicleTypeEnum = (VehicleTypeEnum) Enum.Parse(typeof(VehicleTypeEnum), type);
+            _suv.VehicleTypeEnum = (VehicleTypeEnum) Enum.Parse(typeof(VehicleTypeEnum), type);
             return this;
         }
 
         public ISpecifyMpg WithEngineType(string engineType, int mpg)
         {
-            suv.EngineType = engineType;
+            _suv.EngineType = engineType;
             if (engineType == "Electric")
             {
-                suv.Range = 350;
-                suv.FuelCapacity = 0;
-                suv.MPG = 0;
+                _suv.Range = 350;
+                _suv.FuelCapacity = 0;
+                _suv.MPG = 0;
             }
             else
             {
-                suv.MPG = mpg;
-                suv.FuelCapacity = 20;
-                suv.Range = suv.FuelCapacity * suv.MPG;
+                _suv.MPG = mpg;
+                _suv.FuelCapacity = 20;
+                _suv.Range = _suv.FuelCapacity * _suv.MPG;
             }
             return this;
         }
 
         public ISpecifyMileage WithMpg(int mpg)
         {
-            suv.MPG = mpg;
+            _suv.MPG = mpg;
             return this;
         }
 
         public ISpecifyEngine WithMileage(int currentMileage)
         {
-            suv.CurrentMileage = currentMileage;
+            _suv.CurrentMileage = currentMileage;
             return this;
         }
 
         public ISpecifyWheels WithEngine(IEngine engine)
         {
-            suv.Engine = engine;
+            _suv.Engine = engine;
             return this;
         }
 
-        public IBuildSuv WithTires(ITires tires)
+        public ISpecifyTires WithWheels(IWheels wheels)
         {
-            suv.Tires = tires;
+            _suv.Wheels = wheels;
             return this;
         }
 
-        public Suv Build()
+        public IBuildVehicle WithTires(ITires tires)
         {
-            return suv;
+            _suv.Tires = tires;
+            return this;
+        }
+
+        public IVehicle Build()
+        {
+            return _suv;
         }
         
     }
