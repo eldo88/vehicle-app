@@ -99,4 +99,9 @@ public static class StandardUiMessages
         Console.WriteLine();
         Console.ResetColor();
     }
+
+    public static void PressAnyKeyToContinue()
+    {
+        Console.WriteLine("Press any key to continue....");
+    }
 }

@@ -8,6 +8,10 @@ public class ShowStats
         var loadStats = new LoadVehicleStats();
         var vehicleStats = loadStats.GetVehicleStats();
         DisplayStats(vehicleStats);
+        Console.WriteLine();
+        StandardUiMessages.PressAnyKeyToContinue();
+        Console.WriteLine();
+        Console.ReadKey();
     }
     
     private void DisplayStats(List<VehicleStats> statsList)

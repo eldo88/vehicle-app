@@ -130,13 +130,13 @@ public class ShowMenus
                     var menuChoice = mainMenu.Run();
                     _mainMenuData.MainMenuDataList.RemoveAt(menuItemNum - 1);
                     menuControl += MenuActions.GoToPreviousNextOrSameMenu(menuItemNum, menuChoice);
-                    switch (menuChoice)
+                    switch (menuChoice) // separate path because these actions return the user to the main menu when done
                     {
-                        case 0:
+                        case 0: // search by make
                             CreatedVehicleSearchScreen.Show();
                             menuControl = 1;
                             break;
-                        case 2:
+                        case 2: // see stats on vehicle fleet
                             var showStats = new ShowStats();
                             showStats.Show();
                             menuControl = 1;
@@ -146,7 +146,7 @@ public class ShowMenus
                             break;
                     }
                     break;
-                case 2:
+                case 2: // create new vehicle
                     DisplayBuildVehicleMenus();
                     displayMenu = false;
                     break;

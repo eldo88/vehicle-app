@@ -39,6 +39,8 @@ public static class CreatedVehicleSearchScreen
             }
         }
 
+        StandardUiMessages.PressAnyKeyToContinue();
+        Console.ReadKey();
         Console.WriteLine();
     }
 
