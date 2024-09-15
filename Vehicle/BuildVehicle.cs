@@ -1,3 +1,4 @@
+using vehicle_app.Builder;
 using vehicle_app.Vehicle.Wheels;
 
 namespace vehicle_app;
@@ -14,34 +15,15 @@ public static class BuildVehicle
             _ => new Car(),
         };
     }
-
-    // public static IMotorizedVehicle Build(string vehicleColor, int occupantCapacity, string vehicleMake, string vehicleModel, int year, string vehicleType, string vehicleEngine, int MPG, int currentMileage)
-    // {
-    //     var fuelType = EngineHelper.GetFuelType(menuData);
-    //     var numberOfCylinders = EngineHelper.GetNumberOfCylinders(menuData);
-    //     var hasTurbo = EngineHelper.HasTurbo(menuData);
-    //     var engine = EngineFactory.Build(fuelType, numberOfCylinders, hasTurbo);
-    //     return vehicleType switch
-    //     {
-    //         "Car" => new Car(vehicleColor, occupantCapacity, vehicleMake, vehicleModel, year, vehicleType, vehicleEngine, MPG, currentMileage),
-    //         "Truck" => new Truck(vehicleColor, occupantCapacity, vehicleMake, vehicleModel, year, vehicleType, vehicleEngine, MPG, currentMileage),
-    //         "SUV" => new Suv(vehicleColor, occupantCapacity, vehicleMake, vehicleModel, year, vehicleType, vehicleEngine, MPG, currentMileage),
-    //         _ => new Car(vehicleColor, occupantCapacity, vehicleMake, vehicleModel, year, vehicleType, vehicleEngine, MPG, currentMileage),
-    //     };
-    // }
-
+    
     public static IMotorizedVehicle BuildFromMenuChoices(Dictionary<string, string> menuData)
     {
-        var fuelType = EngineHelper.GetFuelType(menuData["engine"]);
-        var numberOfCylinders = EngineHelper.GetNumberOfCylinders(menuData["engine"]);
-        var hasTurbo = EngineHelper.HasTurbo(menuData["engine"]);
-        var engine = EngineFactory.Build(fuelType, numberOfCylinders, hasTurbo);
+        var engine = BuildEngine(menuData);
         var wheels = new Wheels(menuData["make"], menuData["type"]);
         var tires = new Tires(menuData["type"]);
 
         return menuData["type"] switch
         {
-            //"Car" => new Car(menuData["color"], 4, menuData["make"], menuData["model"], int.Parse(menuData["year"]), menuData["type"], menuData["engine"], 25, int.Parse(menuData["mileage"]), engine, wheels, tires),
             "Car" => CarBuilder.Create()
                 .WithColor(menuData["color"])
                 .WithCapacity(4)
@@ -56,7 +38,7 @@ public static class BuildVehicle
                 .WithWheels(wheels)
                 .WithTires(tires)
                 .Build(),
-            //"Truck" => new Truck(menuData["color"], 4, menuData["make"], menuData["model"], int.Parse(menuData["year"]), menuData["type"], menuData["engine"], 25, int.Parse(menuData["mileage"]), engine, wheels, tires),
+            
             "Truck" => TruckBuilder.Create()
                 .WithColor(menuData["color"])
                 .WithCapacity(4)
@@ -71,7 +53,7 @@ public static class BuildVehicle
                 .WithWheels(wheels)
                 .WithTires(tires)
                 .Build(),
-            //"SUV" => new Suv(menuData["color"], 4, menuData["make"], menuData["model"], int.Parse(menuData["year"]), menuData["type"], menuData["engine"], 25, int.Parse(menuData["mileage"]), engine, wheels, tires),
+            
             "SUV" => SuvBuilder.Create()
                 .WithColor(menuData["color"])
                 .WithCapacity(4)
@@ -87,6 +69,19 @@ public static class BuildVehicle
                 .WithTires(tires)
                 .Build(),
             _ => new Car(menuData["color"], 4, menuData["make"], menuData["model"], int.Parse(menuData["year"]), menuData["type"], menuData["engine"], 25, int.Parse(menuData["mileage"]), engine, wheels, tires)
-        };
+        }; // TODO change default selection to empty vehicle or throw exception
+    }
+
+    private static IEngine BuildEngine(Dictionary<string, string> menuData)
+    {
+        var fuelType = EngineHelper.GetFuelType(menuData["engine"]);
+        var numberOfCylinders = EngineHelper.GetNumberOfCylinders(menuData["engine"]);
+        var hasTurbo = EngineHelper.HasTurbo(menuData["engine"]);
+        var engine = EngineBuilder.Create()
+            .WithFuelType(fuelType)
+            .WithNumberOfCylinders(numberOfCylinders)
+            .WithTurbo(hasTurbo)
+            .Build();
+        return engine;
     }
 }

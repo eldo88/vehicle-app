@@ -4,6 +4,7 @@ namespace vehicle_app;
 
 public class GasEngine : IGasEngine
 {
+    public GasEngine() {}
     public GasEngine(int numberOfCylinders, bool hasTurbo)
     {
         NumberOfCylinders = numberOfCylinders;

@@ -192,5 +192,45 @@
       "HorsePower": 350,
       "Torque": 550
     }
+  },
+  {
+    "IsFourWheelDrive": true,
+    "BedLength": 6.5,
+    "PayLoadCapacity": 2500,
+    "TowingCapacity": 6500,
+    "IsDully": false,
+    "EngineType": "Turbo Diesel",
+    "MPG": 25,
+    "Range": 500,
+    "FuelCapacity": 20,
+    "Guid": "00000000-0000-0000-0000-000000000000",
+    "Color": "Blue",
+    "Capacity": 4,
+    "Make": "Ford",
+    "Model": "Ranger",
+    "Year": 1999,
+    "VehicleTypeEnum": 1,
+    "Wheels": {
+      "$type": "wheels",
+      "WheelBrand": "Ford",
+      "Radius": 18
+    },
+    "Tires": {
+      "$type": "tires",
+      "BrandName": "BF Goodrich",
+      "Size": "285/65-18",
+      "Radius": 18
+    },
+    "CurrentMileage": 343000,
+    "Engine": {
+      "$type": "gas",
+      "RecommendedFuelOctane": 0,
+      "HasSuperCharger": false,
+      "NumberOfCylinders": 6,
+      "HasTurbo": true,
+      "FuelType": "Diesel",
+      "HorsePower": 0,
+      "Torque": 0
+    }
   }
 ]
