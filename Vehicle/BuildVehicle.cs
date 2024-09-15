@@ -19,8 +19,8 @@ public static class BuildVehicle
     public static IMotorizedVehicle BuildFromMenuChoices(Dictionary<string, string> menuData)
     {
         var engine = BuildEngine(menuData);
-        var wheels = new Wheels(menuData["make"], menuData["type"]);
-        var tires = new Tires(menuData["type"]);
+        var wheels = BuildWheels(menuData);
+        var tires = BuildTires(menuData);
 
         return menuData["type"] switch
         {
@@ -91,5 +91,15 @@ public static class BuildVehicle
             //.WithTurbo(hasTurbo)
             //.Build();
         //return engine;
+    }
+
+    private static Wheels BuildWheels(Dictionary<string, string> menuData)
+    {
+        return new Wheels(menuData["make"], menuData["type"]);
+    }
+
+    private static Tires BuildTires(Dictionary<string, string> menuData)
+    {
+        return new Tires(menuData["type"]);
     }
 }
