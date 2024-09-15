@@ -4,7 +4,7 @@ namespace vehicle_app;
 public class Truck : ITruck
 {
     private int _currentMileage;
-    public Truck() {}
+    public Truck() { Guid = Guid.NewGuid(); }
 
     public Truck(string color, int capacity, string make, string model, int year, string vehicleType, string engineType, int mpg, int currentMileage, IEngine engine, IWheels wheels, ITires tires)
     {

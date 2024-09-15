@@ -77,11 +77,19 @@ public static class BuildVehicle
         var fuelType = EngineHelper.GetFuelType(menuData["engine"]);
         var numberOfCylinders = EngineHelper.GetNumberOfCylinders(menuData["engine"]);
         var hasTurbo = EngineHelper.HasTurbo(menuData["engine"]);
-        var engine = EngineBuilder.Create()
-            .WithFuelType(fuelType)
-            .WithNumberOfCylinders(numberOfCylinders)
-            .WithTurbo(hasTurbo)
-            .Build();
-        return engine;
+        
+        return fuelType switch 
+        {
+            "Gas" => new GasEngine(numberOfCylinders, hasTurbo),
+            "Diesel" => new DieselEngine(numberOfCylinders),
+            "Electric" => new ElectricMotor(),
+            _ => new GasEngine(numberOfCylinders, hasTurbo)
+        };
+        //var engine = EngineBuilder.Create()
+            //.WithFuelType(fuelType)
+            //.WithNumberOfCylinders(numberOfCylinders)
+            //.WithTurbo(hasTurbo)
+            //.Build();
+        //return engine;
     }
 }

@@ -4,7 +4,7 @@ namespace vehicle_app;
 public class Suv : ISuv
 {
     private int _currentMileage;
-    public Suv() {}
+    public Suv() { Guid = Guid.NewGuid(); }
 
     public Suv(string color, int capacity, string make, string model, int year, string vehicleType, string engineType, int mpg, int currentMileage, IEngine engine, IWheels wheels, ITires tires)
     {

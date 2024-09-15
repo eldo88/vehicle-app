@@ -249,5 +249,42 @@
       "Torque": 350,
       "FuelType": "Electric"
     }
+  },
+  {
+    "NumDoors": 4,
+    "IsConvertible": false,
+    "EngineType": "V8",
+    "MPG": 25,
+    "Range": 500,
+    "FuelCapacity": 20,
+    "Guid": "337b137d-60c7-4b29-bdf0-ccc01a4fa205",
+    "Color": "Silver",
+    "Capacity": 4,
+    "Make": "Ford",
+    "Model": "Fusion",
+    "Year": 2024,
+    "VehicleTypeEnum": 0,
+    "Wheels": {
+      "$type": "wheels",
+      "WheelBrand": "Ford",
+      "Radius": 17
+    },
+    "Tires": {
+      "$type": "tires",
+      "BrandName": "Michelin",
+      "Size": "245/65-17",
+      "Radius": 17
+    },
+    "CurrentMileage": 2300,
+    "Engine": {
+      "$type": "gas",
+      "RecommendedFuelOctane": 85,
+      "HasSuperCharger": false,
+      "NumberOfCylinders": 8,
+      "HasTurbo": false,
+      "FuelType": "Gas",
+      "HorsePower": 400,
+      "Torque": 455
+    }
   }
 ]

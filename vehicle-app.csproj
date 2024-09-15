@@ -45,5 +45,6 @@
     <Compile Remove="Vehicle\SuvStats.cs" />
     <Compile Remove="Vehicle\IVehicleStats.cs" />
     <Compile Remove="Vehicle\CarStats.cs" />
+    <Compile Remove="Vehicle\Engine\EngineFactory.cs" />
   </ItemGroup>
 </Project>
