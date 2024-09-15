@@ -137,6 +137,11 @@ public class ShowMenus
                             menuControl = 1;
                             break;
                         case 2:
+                            var showStats = new ShowStats();
+                            showStats.Show();
+                            menuControl = 1;
+                            break;
+                        case 3:
                             menuControl = 0;
                             break;
                     }

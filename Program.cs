@@ -20,11 +20,11 @@ class Program
             saveMenu.SaveVehicleEvent += vehicleService.OnVehicleSaved;
             saveMenu.SaveVehicleMenu(createdVehicle);
             
-            var loadStats = new LoadVehicleStats();
-            var vehicleStats = loadStats.GetVehicleStats();
-            var displayStats = new DisplayVehicleStats();
-            displayStats.DisplayStats(vehicleStats);
-            Console.ReadKey();
+            //var loadStats = new LoadVehicleStats();
+            //var vehicleStats = loadStats.GetVehicleStats();
+            //var displayStats = new DisplayVehicleStats();
+            //displayStats.DisplayStats(vehicleStats);
+            //Console.ReadKey();
 
             if (!TakeVehicleOnDriveMenu.GoOnDrive(createdVehicle.Make, createdVehicle.Model)) return;
             var driveLength = DriveLengthScreen.EnterDriveLength();
