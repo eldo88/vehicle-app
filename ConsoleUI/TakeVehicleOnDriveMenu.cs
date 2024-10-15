@@ -2,13 +2,13 @@
 
 public static class TakeVehicleOnDriveMenu
 {
-    public static bool GoOnDrive(string vehicleMake, string vehicleModel)
+    public static bool GoOnDrive(string vehicleMakeAndModel)
     {
         var drive = false;
         var displayMenu = true;
         do
         {
-            StandardUiMessages.TakeOnDriveMessage(vehicleMake, vehicleModel);
+            StandardUiMessages.TakeOnDriveMessage(vehicleMakeAndModel);
         
             var choice = Console.ReadLine();
 

@@ -42,9 +42,9 @@ public static class StandardUiMessages
         Console.WriteLine($"\nPlease enter the year of your vehicle (must be newer than 1990), if you want to go back enter 1 ");
     }
 
-    public static void TakeOnDriveMessage(string vehicleMake, string vehicleModel)
+    public static void TakeOnDriveMessage(string vehicleMakeAndModel)
     {
-        Console.WriteLine($"Would you like to take your {vehicleMake} {vehicleModel} on a drive? (enter Y/N)");
+        Console.WriteLine($"Would you like to take your {vehicleMakeAndModel} on a drive? (enter Y/N)");
     }
 
     public static void DriveLengthMessage()

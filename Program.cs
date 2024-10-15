@@ -22,7 +22,7 @@ class Program
             saveMenu.SaveVehicleEvent += vehicleService.OnVehicleSaved;
             saveMenu.SaveVehicleMenu(createdVehicle);
 
-            if (!TakeVehicleOnDriveMenu.GoOnDrive(createdVehicle.Make, createdVehicle.Model)) return;
+            if (!TakeVehicleOnDriveMenu.GoOnDrive(createdVehicle.GetVehicleMakeAndModel())) return;
             var driveLength = DriveLengthScreen.EnterDriveLength();
             var driver = new Driver.Driver(new Person("Lee", "Jones"), createdVehicle);
             DisplayCreatedVehicle.PrintDriveDetails(driver, driveLength);
