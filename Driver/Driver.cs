@@ -3,23 +3,23 @@ namespace vehicle_app.Driver;
 public class Driver
 {
     private Person DriverOfVehicle { get; set; }
-
-    public Person GetDriverOfVehicle()
-    {
-        return DriverOfVehicle;
-    }
     
     private IMotorizedVehicle Vehicle { get; set; }
-
-    public string GetVehicle()
-    {
-        return Vehicle.GetVehicleMakeAndModel();
-    }
 
     public Driver(Person driverOfVehicle, IMotorizedVehicle vehicle)
     {
         DriverOfVehicle = driverOfVehicle;
         Vehicle = vehicle;
+    }
+    
+    public Person GetDriverOfVehicle()
+    {
+        return DriverOfVehicle;
+    }
+    
+    public string GetVehicle()
+    {
+        return Vehicle.GetVehicleMakeAndModel();
     }
 
     public List<(string, decimal)> DriveVehicle(decimal tripLength)
