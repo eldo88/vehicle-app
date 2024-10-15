@@ -1,5 +1,6 @@
 using vehicle_app.Builder;
 using vehicle_app.Vehicle.Wheels;
+using InvalidDataException = System.IO.InvalidDataException;
 
 namespace vehicle_app;
 
@@ -68,8 +69,8 @@ public static class BuildVehicle
                 .WithWheels(wheels)
                 .WithTires(tires)
                 .Build(),
-            _ => new Car(menuData["color"], 4, menuData["make"], menuData["model"], int.Parse(menuData["year"]), menuData["type"], menuData["engine"], 25, int.Parse(menuData["mileage"]), engine, wheels, tires)
-        }; // TODO change default selection to empty vehicle or throw exception
+            _ => throw new InvalidDataException()
+        };
     }
 
     private static IEngine BuildEngine(Dictionary<string, string> menuData)
