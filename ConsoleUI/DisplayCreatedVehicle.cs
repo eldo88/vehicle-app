@@ -7,9 +7,10 @@ public static class DisplayCreatedVehicle
         Console.WriteLine(createdVehicle);
     }
 
-    public static void PrintDriveDetails(List<(string, decimal)> tripDetails)
+    public static void PrintDriveDetails(Driver.Driver driver, decimal tripLength)
     {
-        Console.WriteLine("\nThe details of your drive are:\n");
+        var tripDetails = driver.DriveVehicle(tripLength);
+        Console.WriteLine($"\nThe details of {driver.GetDriverOfVehicle()}'s drive in the {driver.GetVehicle()} are:\n");
         foreach (var item in tripDetails)
         {
             Console.WriteLine("{0}: {1:0.00}", item.Item1, item.Item2);

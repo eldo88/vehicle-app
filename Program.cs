@@ -1,4 +1,6 @@
-﻿namespace vehicle_app;
+﻿using vehicle_app.Driver;
+
+namespace vehicle_app;
 
 class Program
 {
@@ -22,7 +24,8 @@ class Program
 
             if (!TakeVehicleOnDriveMenu.GoOnDrive(createdVehicle.Make, createdVehicle.Model)) return;
             var driveLength = DriveLengthScreen.EnterDriveLength();
-            DisplayCreatedVehicle.PrintDriveDetails(createdVehicle.Drive(driveLength));
+            var driver = new Driver.Driver(new Person("Lee", "Jones"), createdVehicle);
+            DisplayCreatedVehicle.PrintDriveDetails(driver, driveLength);
         }
         catch(Exception ex)
         {

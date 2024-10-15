@@ -80,44 +80,7 @@ public class Truck : ITruck
     
     public int CurrentMileage { get; set; }
     public IEngine? Engine { get; set; }
-
-    List<(string, decimal)> IMotorizedVehicle.Drive(decimal tripLength)
-    {
-        List<(string, decimal)> tripDetail = new();
-        (string, decimal) message;
-
-        if (tripLength <= 0)
-        {
-            message = ("Error", 0);
-            tripDetail.Add(message);
-        }
-
-        message = ("Drive length", tripLength);
-        tripDetail.Add(message);
-
-        if (Mpg == 0)
-        {
-            decimal numberOfChargesNeeded = (decimal)tripLength / (decimal)Range;
-            message = ("Number Of Charges Needed", numberOfChargesNeeded);
-            tripDetail.Add(message);
-        }
-        else
-        {
-            decimal totalGallonsOfFuelNeeded = (decimal)tripLength / (decimal)Mpg;
-            decimal numberOfTanksOfGasNeeded = totalGallonsOfFuelNeeded / FuelCapacity;
-            message = ("Total Gallons Of Fuel Needed", totalGallonsOfFuelNeeded);
-            tripDetail.Add(message);
-            message = ("Number Of Tanks Of Gas Needed",numberOfTanksOfGasNeeded);
-            tripDetail.Add(message);
-            message = ("Vehicle Mpg", Mpg);
-            tripDetail.Add(message);
-        }
-
-        message = ("Vehicle Range", Range);
-        tripDetail.Add(message);
-
-        return tripDetail;
-    }
+    
 
     public override string ToString() => $"\nThe details of your vehicle are:\n\nMake: {Make}\nModel: {Model}\nYear: {Year}\nType: {VehicleTypeEnum}\nColor: {Color}\nEngine Type: {EngineType}\nRange: {Range}\n";
 

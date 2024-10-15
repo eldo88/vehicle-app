@@ -6,6 +6,5 @@ public interface IMotorizedVehicle : IVehicle
     public decimal Mpg {get; set;}
     public decimal Range {get; set;}
     public decimal FuelCapacity {get; set;} 
-    List<(string, decimal)> Drive(decimal tripLength);
     IEngine? Engine { get; set; }
 }
