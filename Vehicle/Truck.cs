@@ -36,13 +36,13 @@ public class Truck : ITruck
         {
             Range = 350;
             FuelCapacity = 0;
-            MPG = 0;
+            Mpg = 0;
         }
         else
         {
-            MPG = mpg;
+            Mpg = mpg;
             FuelCapacity = 20;
-            Range = FuelCapacity * MPG;
+            Range = FuelCapacity * Mpg;
         }
 
         Guid = Guid.NewGuid();
@@ -63,7 +63,7 @@ public class Truck : ITruck
     public bool? IsDully {get; set;} = false;
 
     public string EngineType { get; set; } = "";
-    public decimal MPG { get; set; }
+    public decimal Mpg { get; set; }
     public decimal Range { get; set; }
     public decimal FuelCapacity { get; set; }
 
@@ -95,7 +95,7 @@ public class Truck : ITruck
         message = ("Drive length", tripLength);
         tripDetail.Add(message);
 
-        if (MPG == 0)
+        if (Mpg == 0)
         {
             decimal numberOfChargesNeeded = (decimal)tripLength / (decimal)Range;
             message = ("Number Of Charges Needed", numberOfChargesNeeded);
@@ -103,13 +103,13 @@ public class Truck : ITruck
         }
         else
         {
-            decimal totalGallonsOfFuelNeeded = (decimal)tripLength / (decimal)MPG;
+            decimal totalGallonsOfFuelNeeded = (decimal)tripLength / (decimal)Mpg;
             decimal numberOfTanksOfGasNeeded = totalGallonsOfFuelNeeded / FuelCapacity;
             message = ("Total Gallons Of Fuel Needed", totalGallonsOfFuelNeeded);
             tripDetail.Add(message);
             message = ("Number Of Tanks Of Gas Needed",numberOfTanksOfGasNeeded);
             tripDetail.Add(message);
-            message = ("Vehicle Mpg", MPG);
+            message = ("Vehicle Mpg", Mpg);
             tripDetail.Add(message);
         }
 

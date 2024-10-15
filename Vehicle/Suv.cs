@@ -36,13 +36,13 @@ public class Suv : ISuv
         {
             Range = 350;
             FuelCapacity = 0;
-            MPG = 0;
+            Mpg = 0;
         }
         else
         {
-            MPG = mpg;
+            Mpg = mpg;
             FuelCapacity = 20;
-            Range = FuelCapacity * MPG;
+            Range = FuelCapacity * Mpg;
         }
 
         Guid = Guid.NewGuid(); 
@@ -61,7 +61,7 @@ public class Suv : ISuv
     public int? CargoSpace {get; set;} = 15;
 
     public string EngineType { get; set; } = "";
-    public decimal MPG { get; set; }
+    public decimal Mpg { get; set; }
     public decimal Range { get; set; }
     public decimal FuelCapacity { get; set; }
 
@@ -93,7 +93,7 @@ public class Suv : ISuv
         message = ("Drive length", tripLength);
         tripDetail.Add(message);
 
-        if (MPG == 0)
+        if (Mpg == 0)
         {
             var numberOfChargesNeeded = (decimal)tripLength / (decimal)Range;
             message = ("Number Of Charges Needed", numberOfChargesNeeded);
@@ -101,13 +101,13 @@ public class Suv : ISuv
         }
         else
         {
-            var totalGallonsOfFuelNeeded = (decimal)tripLength / (decimal)MPG;
+            var totalGallonsOfFuelNeeded = (decimal)tripLength / (decimal)Mpg;
             var numberOfTanksOfGasNeeded = totalGallonsOfFuelNeeded / FuelCapacity;
             message = ("Total Gallons Of Fuel Needed", totalGallonsOfFuelNeeded);
             tripDetail.Add(message);
             message = ("Number Of Tanks Of Gas Needed",numberOfTanksOfGasNeeded);
             tripDetail.Add(message);
-            message = ("Vehicle Mpg", MPG);
+            message = ("Vehicle Mpg", Mpg);
             tripDetail.Add(message);
         }
 

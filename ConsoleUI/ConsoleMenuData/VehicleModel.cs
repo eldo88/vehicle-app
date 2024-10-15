@@ -4,10 +4,10 @@ public class VehicleModel
 {
     public VehicleModel()
     {
-        VehicleModelDict = FileOperations.ReadModelDataIntoDict(modelDataFilePaths);
+        VehicleModelDict = FileOperations.ReadModelDataIntoDict(ModelDataFilePaths);
     }
 
-    public List<string> modelDataFilePaths = new()
+    public List<string> ModelDataFilePaths = new()
     {
             "./data/vehicle-data/toyota-car-data.csv",
             "./data/vehicle-data/toyota-truck-data.csv",

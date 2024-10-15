@@ -8,7 +8,7 @@ public class FormatData
         var capacity = Convert.ToString(motorizedVehicle.Capacity);
         var year = Convert.ToString(motorizedVehicle.Year);
         var vehicleType = Enum.GetName(typeof(VehicleTypeEnum), motorizedVehicle.VehicleTypeEnum);
-        var mpg = Convert.ToString(motorizedVehicle.MPG);
+        var mpg = Convert.ToString(motorizedVehicle.Mpg);
         var range = Convert.ToString(motorizedVehicle.Range);
         var fuelCapacity = Convert.ToString(motorizedVehicle.FuelCapacity);
         List<string> data = new();

@@ -18,7 +18,7 @@ public class VehicleService : IVehicleService
                 var car = (Car)vehicleEvent.Vehicle;
                 carRepository.SaveVehicle(car);
                 break;
-            case VehicleTypeEnum.SUV:
+            case VehicleTypeEnum.Suv:
                 var suvRepository = VehicleRepositoryFactory.BuildSuvRepo();
                 var suv = (Suv)vehicleEvent.Vehicle;
                 suvRepository.SaveVehicle(suv);

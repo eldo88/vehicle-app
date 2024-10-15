@@ -4,5 +4,5 @@ public enum VehicleTypeEnum
 {
     Car = 0,
     Truck = 1,
-    SUV = 2
+    Suv = 2
 }

@@ -24,7 +24,7 @@ public class TruckBuilder
         ISpecifyTires,
         IBuildVehicle
     {
-        private Truck _truck = new Truck();
+        private readonly Truck _truck = new Truck();
         
         public ISpecifyCapacity WithColor(string color)
         {
@@ -69,20 +69,20 @@ public class TruckBuilder
             {
                 _truck.Range = 350;
                 _truck.FuelCapacity = 0;
-                _truck.MPG = 0;
+                _truck.Mpg = 0;
             }
             else
             {
-                _truck.MPG = mpg;
+                _truck.Mpg = mpg;
                 _truck.FuelCapacity = 20;
-                _truck.Range = _truck.FuelCapacity * _truck.MPG;
+                _truck.Range = _truck.FuelCapacity * _truck.Mpg;
             }
             return this;
         }
 
         public ISpecifyMileage WithMpg(int mpg)
         {
-            _truck.MPG = mpg;
+            _truck.Mpg = mpg;
             return this;
         }
 

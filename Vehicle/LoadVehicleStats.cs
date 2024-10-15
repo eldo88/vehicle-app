@@ -2,14 +2,14 @@ namespace vehicle_app;
 
 public class LoadVehicleStats
 {
-    private IVehicleRepository<Car> carRepo = VehicleRepositoryFactory.BuildCarRepo();
-    private IVehicleRepository<Truck> truckRepo = VehicleRepositoryFactory.BuildTruckRepo();
-    private IVehicleRepository<Suv> suvRepo = VehicleRepositoryFactory.BuildSuvRepo();
+    private readonly IVehicleRepository<Car> _carRepo = VehicleRepositoryFactory.BuildCarRepo();
+    private readonly IVehicleRepository<Truck> _truckRepo = VehicleRepositoryFactory.BuildTruckRepo();
+    private readonly IVehicleRepository<Suv> _suvRepo = VehicleRepositoryFactory.BuildSuvRepo();
 
     public List<VehicleStats> GetVehicleStats()
     {
         var data = new List<VehicleStats>();
-        var carData = carRepo.GetVehicles();
+        var carData = _carRepo.GetVehicles();
 
         foreach (var car in carData)
         {
@@ -17,7 +17,7 @@ public class LoadVehicleStats
             data.Add(carStats);
         }
 
-        var truckData = truckRepo.GetVehicles();
+        var truckData = _truckRepo.GetVehicles();
 
         foreach (var truck in truckData)
         {
@@ -25,7 +25,7 @@ public class LoadVehicleStats
             data.Add(truckStats);
         }
 
-        var suvData = suvRepo.GetVehicles();
+        var suvData = _suvRepo.GetVehicles();
 
         foreach (var suv in suvData)
         {

@@ -13,7 +13,7 @@ public class EngineBuilder
         ISpecifyTurbo,
         IBuildEngine
     {
-        private GasEngine _engine = new GasEngine();
+        private readonly GasEngine _engine = new GasEngine();
         
         public ISpecifyNumberOfCylinders WithFuelType(string fuelType)
         {

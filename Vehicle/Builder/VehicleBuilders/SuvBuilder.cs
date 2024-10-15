@@ -24,7 +24,7 @@ public class SuvBuilder
         ISpecifyTires,
         IBuildVehicle
     {
-        private Suv _suv = new Suv();
+        private readonly Suv _suv = new Suv();
         
         public ISpecifyCapacity WithColor(string color)
         {
@@ -69,20 +69,20 @@ public class SuvBuilder
             {
                 _suv.Range = 350;
                 _suv.FuelCapacity = 0;
-                _suv.MPG = 0;
+                _suv.Mpg = 0;
             }
             else
             {
-                _suv.MPG = mpg;
+                _suv.Mpg = mpg;
                 _suv.FuelCapacity = 20;
-                _suv.Range = _suv.FuelCapacity * _suv.MPG;
+                _suv.Range = _suv.FuelCapacity * _suv.Mpg;
             }
             return this;
         }
 
         public ISpecifyMileage WithMpg(int mpg)
         {
-            _suv.MPG = mpg;
+            _suv.Mpg = mpg;
             return this;
         }
 
